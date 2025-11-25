@@ -1,0 +1,78 @@
+name: Fetch You.com Search Results
+
+on:
+  workflow_dispatch:  # Manual trigger
+    inputs:
+      batch_size:
+        description: 'Number of artifacts to fetch (default: all 227)'
+        required: false
+        default: '227'
+      results_per_artifact:
+        description: 'Number of search results per artifact'
+        required: false
+        default: '3'
+
+jobs:
+  fetch-results:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch You.com results
+        env:
+          YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
+        run: |
+          echo "Starting batch fetch..."
+          echo "API Key configured: ${YOU_API_KEY:0:10}...${YOU_API_KEY: -5}"
+
+          # Run the fetch script
+          node fetch-you-results.js
+
+      - name: Upload results artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: you-search-results
+          path: dashboard/data/you-search-results.json
+
+      - name: Create commit with results
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          if [ -f dashboard/data/you-search-results.json ]; then
+            git add dashboard/data/you-search-results.json
+
+            if git diff --staged --quiet; then
+              echo "No changes to commit"
+            else
+              git commit -m "Update You.com search results (automated fetch)"
+              git push
+              echo "Results committed and pushed!"
+            fi
+          else
+            echo "No results file generated"
+            exit 1
+          fi
+
+      - name: Summary
+        run: |
+          if [ -f dashboard/data/you-search-results.json ]; then
+            echo "## Fetch Results Summary" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            TOTAL=$(jq '.metadata.totalArtifacts' dashboard/data/you-search-results.json)
+            PROCESSED=$(jq '.metadata.processedArtifacts' dashboard/data/you-search-results.json)
+
+            echo "- **Total Artifacts:** $TOTAL" >> $GITHUB_STEP_SUMMARY
+            echo "- **Processed:** $PROCESSED" >> $GITHUB_STEP_SUMMARY
+            echo "- **File:** \`dashboard/data/you-search-results.json\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ Results committed to repository" >> $GITHUB_STEP_SUMMARY
+          fi
