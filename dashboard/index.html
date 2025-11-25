@@ -1312,27 +1312,58 @@
             if (testBtn) testBtn.disabled = true;
 
             try {
+                // First, initialize the MCP session
+                const initPayload = {
+                    jsonrpc: '2.0',
+                    id: 1,
+                    method: 'initialize',
+                    params: {
+                        protocolVersion: '2024-11-05',
+                        capabilities: {},
+                        clientInfo: {
+                            name: 'artifact-index-dashboard',
+                            version: '1.0'
+                        }
+                    }
+                };
+                const initRes = await fetch(mcpEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json, text/event-stream'
+                    },
+                    body: JSON.stringify(initPayload)
+                });
+                if (!initRes.ok) throw new Error(`HTTP ${initRes.status}`);
+                const initData = await initRes.json();
+
+                // Then test with resources/list
                 const payload = {
                     jsonrpc: '2.0',
-                    id: 'ping',
+                    id: 2,
                     method: 'resources/list',
                     params: {}
                 };
                 const res = await fetch(mcpEndpoint, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json, text/event-stream'
+                    },
                     body: JSON.stringify(payload)
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
+
                 if (statusEl) statusEl.textContent = 'Connected ✓';
                 if (chatBox) {
+                    const resourceCount = data.result?.resources?.length || 0;
                     chatBox.innerHTML =
-                        '<p style="margin:0; color: #81B29A; font-size: 0.9em;">✓ MCP server is reachable. Use your MCP-enabled client (Claude Code/VS Code/Cursor) with endpoint: <code style="color: #4285F4;">' +
+                        '<p style="margin:0; color: #81B29A; font-size: 0.9em;">✓ MCP server is reachable (' + resourceCount + ' resources available). Use your MCP-enabled client (Claude Code/VS Code/Cursor) with endpoint: <code style="color: #4285F4;">' +
                         mcpEndpoint +
                         '</code></p>';
                 }
-                console.log('[mcp] Connection successful', data);
+                console.log('[mcp] Connection successful', { init: initData, resources: data });
             } catch (err) {
                 console.error('[mcp] Test failed', err);
                 if (statusEl) statusEl.textContent = 'Unavailable';
