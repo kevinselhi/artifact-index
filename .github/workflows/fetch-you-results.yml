@@ -26,6 +26,8 @@ jobs:
           node-version: '20'
 
       - name: Fetch You.com results
+        id: fetch
+        continue-on-error: true
         env:
           YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
           MAX_ARTIFACTS: ${{ github.event.inputs.batch_size || '227' }}
@@ -37,11 +39,8 @@ jobs:
           echo "Results per artifact: $RESULTS_PER_ARTIFACT"
           echo ""
 
-          # Run the fetch script
-          node fetch-you-results.js || {
-            echo "::error::Fetch script failed. Check logs above for API errors."
-            exit 1
-          }
+          # Run the fetch script (allow to continue even if exits with error)
+          node fetch-you-results.js
 
       - name: Upload results artifact
         if: always()
@@ -52,6 +51,7 @@ jobs:
 
       - name: Check results quality
         id: check_results
+        if: always()
         run: |
           if [ ! -f dashboard/data/you-search-results.json ]; then
             echo "::error::No results file generated"
@@ -95,28 +95,39 @@ jobs:
             ERRORS=${{ steps.check_results.outputs.errors }}
             TOTAL=${{ steps.check_results.outputs.total }}
 
-            git commit -m "Update You.com search results ($SUCCESS/$TOTAL successful)
-
-Automated fetch via GitHub Actions
-- Successful: $SUCCESS artifacts
-- Errors: $ERRORS artifacts
-- Total processed: $TOTAL"
+            git commit -m "Update You.com search results ($SUCCESS/$TOTAL successful)" \
+                       -m "Automated fetch via GitHub Actions" \
+                       -m "- Successful: $SUCCESS artifacts" \
+                       -m "- Errors: $ERRORS artifacts" \
+                       -m "- Total processed: $TOTAL"
             git push
             echo "✅ Results committed and pushed!"
           fi
 
       - name: Summary
+        if: always()
         run: |
           if [ -f dashboard/data/you-search-results.json ]; then
             echo "## Fetch Results Summary" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
 
-            TOTAL=$(jq '.metadata.totalArtifacts' dashboard/data/you-search-results.json)
-            PROCESSED=$(jq '.metadata.processedArtifacts' dashboard/data/you-search-results.json)
+            TOTAL=$(jq '.metadata.processedArtifacts' dashboard/data/you-search-results.json)
+            SUCCESS=$(jq '[.artifacts[] | select(.results | length > 0)] | length' dashboard/data/you-search-results.json)
+            ERRORS=$(jq '[.artifacts[] | select(.error != null or (.results | length == 0))] | length' dashboard/data/you-search-results.json)
 
-            echo "- **Total Artifacts:** $TOTAL" >> $GITHUB_STEP_SUMMARY
-            echo "- **Processed:** $PROCESSED" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total Processed:** $TOTAL" >> $GITHUB_STEP_SUMMARY
+            echo "- **Successful:** $SUCCESS ✅" >> $GITHUB_STEP_SUMMARY
+            echo "- **Errors:** $ERRORS ❌" >> $GITHUB_STEP_SUMMARY
             echo "- **File:** \`dashboard/data/you-search-results.json\`" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "✅ Results committed to repository" >> $GITHUB_STEP_SUMMARY
+
+            if [ "$SUCCESS" -gt 0 ]; then
+              echo "✅ Results committed to repository" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ No successful fetches - check API key and endpoint" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "## ❌ No Results Generated" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The fetch script did not create any output file." >> $GITHUB_STEP_SUMMARY
           fi
