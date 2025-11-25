@@ -109,10 +109,11 @@ Using multiple models and comparing results produces more comprehensive insights
 
 ## Working with This Repository
 
-### This is NOT a Development Project
-- There is **no code to build, test, or run**
-- No package managers, dependencies, or build systems
-- This is a **documentation and data repository only**
+### Project Structure
+- **Dashboard:** Self-contained HTML/JS (`dashboard/index.html`) - no build system required
+- **Data:** JSON files in `dashboard/data/` are reference copies; dashboard uses inline data
+- **Documentation:** Markdown files for analysis and research outputs
+- **No dependencies:** Open `dashboard/index.html` directly in any browser
 
 ### Common Tasks
 
@@ -449,6 +450,8 @@ Proposals were developed but not submitted as working demos:
 
 **Last Updated:** November 25, 2025
 **Project Directory:** `/Users/kevinselhi/artifact-index/`
-**Project Status:** Active multi-model evaluation / 7 models tested
-**Models Evaluated:** Claude Sonnet 4.5, Gemini 2.5 Pro Deep Research, GPT, o3pro, Claude Opus 4.5, Perplexity, ChatGPT 5-1 Deep Research
-**Hackathon Context:** You.com Agentic Hackathon 2025 concluded (Oct 27-30) - $60 API credits remaining
+**Project Status:** Active multi-model evaluation / 8 models tested
+**Dashboard Stats:** 227 artifacts, 28 sectors, 8 models
+**Models Evaluated:** Claude Sonnet 4.5, Claude Opus 4.5, Gemini 2.5 Pro, Gemini 3.0 Pro, ChatGPT 5, ChatGPT 5-1, o3pro, Perplexity
+**License:** MIT
+**Live Dashboard:** https://kevinselhi.github.io/artifact-index/dashboard/index.html
