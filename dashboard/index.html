@@ -707,7 +707,7 @@
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9em;">
                     Bubble size = Market Size. Industries in the <strong style="color: #81B29A;">upper-right</strong> have many artifacts with high automation feasibility. <strong style="color: #4285F4;">Larger bubbles</strong> = bigger market opportunity.
-                    <span style="display: block; margin-top: 5px; font-size: 0.85em; color: #888;">🔍 Scroll to zoom • Drag to pan • Click bubble to explore</span>
+                    <span style="display: block; margin-top: 5px; font-size: 0.85em; color: #888;">🔍 Ctrl+scroll to zoom • Two-finger drag to pan • Pinch to zoom on touch • Click bubble to explore</span>
                 </p>
                 <div class="dashboard-grid" style="margin: 0;">
                     <div>
@@ -4471,6 +4471,7 @@
                             pan: {
                                 enabled: true,
                                 mode: 'xy',
+                                threshold: 5,
                                 onPan: function() {
                                     document.getElementById('resetZoomBtn').style.display = 'block';
                                 }
@@ -4478,18 +4479,13 @@
                             zoom: {
                                 wheel: {
                                     enabled: true,
-                                    speed: 0.1
+                                    speed: 0.1,
+                                    modifierKey: 'ctrl'
                                 },
                                 pinch: {
                                     enabled: true
                                 },
                                 mode: 'xy',
-                                drag: {
-                                    enabled: true,
-                                    backgroundColor: 'rgba(224, 122, 95, 0.2)',
-                                    borderColor: 'rgba(224, 122, 95, 0.8)',
-                                    borderWidth: 1
-                                },
                                 onZoom: function() {
                                     document.getElementById('resetZoomBtn').style.display = 'block';
                                 }
