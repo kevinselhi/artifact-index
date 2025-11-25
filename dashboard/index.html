@@ -1098,21 +1098,21 @@
                         </div>
                     </div>
                 </div>
-                <!-- MCP Agent Panel -->
-                <div class="card" style="margin-top: 15px;">
+                <!-- MCP Agent Panel (hidden by default, shown when artifact selected) -->
+                <div id="mcpPanel" class="card" style="margin-top: 15px; display: none;">
                     <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
                         <span>MCP Agent (Artifact Deep Dive)</span>
-                        <small id="mcpStatus" style="color: var(--text-secondary); font-size: 0.8em;">Connecting...</small>
+                        <small id="mcpStatus" style="color: var(--text-secondary); font-size: 0.8em;">Not connected</small>
                     </div>
                     <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">
                         This chat uses the MCP server to pull artifact context and subagent prompts. Configure the MCP endpoint below (defaults to local HTTP at <code>http://localhost:3000/mcp</code>). If unavailable, the panel will show a fallback message.
                     </div>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
                         <input id="mcpEndpointInput" type="text" placeholder="http://localhost:3000/mcp" style="flex: 1; min-width: 220px; padding: 8px; border-radius: 6px; border: 1px solid #3d3d5c; background: #0f1525; color: #eaeaea;">
-                        <button onclick="testMcpConnection()" style="padding: 8px 14px; border-radius: 6px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; cursor: pointer;">Test</button>
+                        <button id="mcpTestButton" onclick="testMcpConnection()" style="padding: 8px 14px; border-radius: 6px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; cursor: pointer;">Test</button>
                     </div>
                     <div id="mcpChatBox" style="min-height: 140px; padding: 10px; border-radius: 8px; border: 1px solid #3d3d5c; background: rgba(255,255,255,0.02); color: #eaeaea;">
-                        <p style="color: var(--text-secondary); font-size: 0.9em; margin: 0;">Select an artifact and configure MCP to begin chatting.</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9em; margin: 0;">Click "Test" to verify MCP server connectivity.</p>
                     </div>
                 </div>
             </div>
@@ -1278,15 +1278,39 @@
             }
         }
 
-        // MCP helper to test connection
+        // MCP helper to test connection (with debouncing to prevent rate limiting)
+        let mcpTestInProgress = false;
+        let lastMcpTestTime = 0;
+        const MCP_TEST_COOLDOWN = 2000; // 2 seconds between tests
+
         async function testMcpConnection() {
+            // Prevent rapid-fire requests
+            const now = Date.now();
+            if (mcpTestInProgress) {
+                console.log('[mcp] Test already in progress, skipping...');
+                return;
+            }
+            if (now - lastMcpTestTime < MCP_TEST_COOLDOWN) {
+                console.log('[mcp] Cooldown active, please wait...');
+                const statusEl = document.getElementById('mcpStatus');
+                if (statusEl) statusEl.textContent = 'Please wait...';
+                return;
+            }
+
+            mcpTestInProgress = true;
+            lastMcpTestTime = now;
+
             const input = document.getElementById('mcpEndpointInput');
             if (input && input.value) {
                 mcpEndpoint = input.value;
             }
             const statusEl = document.getElementById('mcpStatus');
             const chatBox = document.getElementById('mcpChatBox');
+            const testBtn = document.getElementById('mcpTestButton');
+
             if (statusEl) statusEl.textContent = 'Testing...';
+            if (testBtn) testBtn.disabled = true;
+
             try {
                 const payload = {
                     jsonrpc: '2.0',
@@ -1301,20 +1325,28 @@
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                if (statusEl) statusEl.textContent = 'Connected';
+                if (statusEl) statusEl.textContent = 'Connected ✓';
                 if (chatBox) {
                     chatBox.innerHTML =
-                        '<p style="margin:0; color: var(--text-secondary); font-size: 0.9em;">MCP reachable. Use your MCP-enabled client to chat (Claude Code/VS Code/Cursor) with endpoint: ' +
+                        '<p style="margin:0; color: #81B29A; font-size: 0.9em;">✓ MCP server is reachable. Use your MCP-enabled client (Claude Code/VS Code/Cursor) with endpoint: <code style="color: #4285F4;">' +
                         mcpEndpoint +
-                        '.</p>';
+                        '</code></p>';
                 }
-                console.log('MCP resources/list', data);
+                console.log('[mcp] Connection successful', data);
             } catch (err) {
-                console.error('MCP test failed', err);
+                console.error('[mcp] Test failed', err);
                 if (statusEl) statusEl.textContent = 'Unavailable';
                 if (chatBox) {
                     chatBox.innerHTML =
-                        '<p style="margin:0; color:#FF6B6B; font-size:0.9em;">MCP not reachable. Ensure the server is running and CORS allows this origin.</p>';
+                        '<p style="margin:0; color:#E07A5F; font-size:0.9em;">✗ MCP server not reachable. Ensure the server is running (<code>npm run dev:http</code>) and CORS allows this origin.</p>';
+                }
+            } finally {
+                mcpTestInProgress = false;
+                if (testBtn) {
+                    // Re-enable button after cooldown
+                    setTimeout(() => {
+                        testBtn.disabled = false;
+                    }, MCP_TEST_COOLDOWN);
                 }
             }
         }
@@ -5900,19 +5932,22 @@
                 const consensusView = document.getElementById('consensusDefaultView');
                 const detailView = document.getElementById('artifactDetailView');
                 const clearBtn = document.getElementById('clearArtifactBtn');
+                const mcpPanel = document.getElementById('mcpPanel');
 
                 if (!artifact) {
-                    // Show default consensus view
+                    // Show default consensus view, hide MCP panel
                     consensusView.style.display = 'block';
                     detailView.style.display = 'none';
                     clearBtn.style.display = 'none';
+                    if (mcpPanel) mcpPanel.style.display = 'none';
                     return;
                 }
 
-                // Show detail view, hide consensus view, show clear button
+                // Show detail view, hide consensus view, show clear button and MCP panel
                 consensusView.style.display = 'none';
                 detailView.style.display = 'block';
                 clearBtn.style.display = 'inline-block';
+                if (mcpPanel) mcpPanel.style.display = 'block';
 
                 // Update chart
                 if (artifactChart) artifactChart.destroy();
