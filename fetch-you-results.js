@@ -110,8 +110,8 @@ function buildQuery(artifact) {
     .replace(/\(.*?\)/g, '') // Remove parenthetical clarifications
     .trim();
 
-  // Build query focused on AI disruption and industry news since mid-2024
-  return `AI impact on ${searchableTerm} ${sector} 2024`.trim();
+  // Build broad query - date filter handled by API parameter, not query text
+  return `AI impact ${searchableTerm} ${sector}`.trim();
 }
 
 // Process artifacts in batches
