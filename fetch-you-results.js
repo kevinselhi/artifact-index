@@ -58,6 +58,7 @@ async function fetchYouSearch(query, limit = 3) {
   const url = new URL('/search', YOU_BASE_URL);
   url.searchParams.set('query', query);
   url.searchParams.set('count', String(limit));
+  url.searchParams.set('freshness', 'year'); // Focus on recent results from past year
 
   try {
     const response = await fetch(url.toString(), {
@@ -95,8 +96,9 @@ function buildQuery(artifact) {
   const sector = artifact.sector || '';
   const name = artifact.name || '';
 
-  // Create focused query: artifact name + sector + AI automation terms
-  return `${name} ${sector} AI automation agents artificial intelligence proof of concept pilot 2024 2025`.trim();
+  // Simplified query: just the artifact name + AI automation + recent timeframe
+  // Keep it concise per You.com best practices
+  return `${name} ${sector} AI automation 2024`.trim();
 }
 
 // Process artifacts in batches
