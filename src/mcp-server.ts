@@ -631,6 +631,27 @@ async function startHttp(port: number, allowedOrigins?: string[], allowedHosts?:
   const app = express();
   app.use(express.json());
 
+  // CORS middleware
+  app.use((req, res, next) => {
+    const origin = req.headers.origin;
+
+    // If no allowedOrigins specified, allow all origins
+    if (!allowedOrigins || (origin && allowedOrigins.includes(origin))) {
+      res.setHeader('Access-Control-Allow-Origin', origin || '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+    }
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+      return;
+    }
+
+    next();
+  });
+
   const corsCheck = (origin?: string | null, host?: string | null) => {
     if (allowedHosts && host && !allowedHosts.includes(host)) return false;
     if (allowedOrigins && origin && !allowedOrigins.includes(origin)) return false;
