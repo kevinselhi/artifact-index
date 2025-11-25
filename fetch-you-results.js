@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const YOU_API_KEY = process.env.YOU_API_KEY;
-const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://api.ydc-index.io';
+const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://ydc-index.io';
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE) || 5;
 const DELAY_BETWEEN_BATCHES = 3000; // 3 seconds to avoid rate limits
 const RESULTS_PER_ARTIFACT = parseInt(process.env.RESULTS_PER_ARTIFACT) || 3;
@@ -53,12 +53,11 @@ console.log('='.repeat(60));
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Fetch You.com search results (using MINA's approach)
+// Fetch You.com search results
 async function fetchYouSearch(query, limit = 3) {
-  const url = new URL('/search', YOU_BASE_URL);
+  const url = new URL('/v1/search', YOU_BASE_URL);
   url.searchParams.set('query', query);
-  url.searchParams.set('num_web_results', String(limit));
-  url.searchParams.set('safesearch', 'moderate');
+  url.searchParams.set('count', String(limit));
 
   try {
     const response = await fetch(url.toString(), {
@@ -75,11 +74,10 @@ async function fetchYouSearch(query, limit = 3) {
     }
 
     const data = await response.json();
-    // MINA uses data.hits, not data.results.web
-    const results = (data.hits || []).map(item => ({
+    const results = (data.results?.web || []).map(item => ({
       title: item.title || '',
       url: item.url || '',
-      snippet: item.description || '',
+      snippet: item.description || item.snippets?.[0] || '',
       source: extractSource(item.url || '')
     }));
 
