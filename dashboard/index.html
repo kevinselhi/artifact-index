@@ -69,25 +69,36 @@
             gap: 10px;
             margin-bottom: 20px;
             flex-wrap: wrap;
+            justify-content: center;
+            background: var(--bg-card);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         .tab {
             padding: 12px 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: transparent;
+            border: 2px solid transparent;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
         }
 
-        .tab:hover, .tab.active {
-            background: var(--border);
+        .tab:hover {
+            background: rgba(224, 122, 95, 0.1);
             color: var(--text-primary);
         }
 
         .tab.active {
+            background: linear-gradient(135deg, rgba(224, 122, 95, 0.2), rgba(224, 122, 95, 0.1));
             border-color: var(--claude-sonnet45);
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(224, 122, 95, 0.2);
         }
 
         .dashboard-grid {
@@ -287,19 +298,25 @@
 
             /* Tabs - horizontal scroll */
             .tabs {
-                display: flex;
-                gap: 6px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
                 margin-bottom: 15px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 5px;
+                padding: 10px;
             }
 
             .tab {
-                padding: 10px 14px;
-                font-size: 0.85rem;
+                padding: 14px 12px;
+                font-size: 0.9rem;
                 white-space: nowrap;
-                flex-shrink: 0;
+                text-align: center;
+                border: 2px solid var(--border);
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .tab.active {
+                border-color: var(--claude-sonnet45);
+                background: linear-gradient(135deg, rgba(224, 122, 95, 0.25), rgba(224, 122, 95, 0.1));
             }
 
             /* Dashboard grid - single column */
@@ -503,9 +520,16 @@
                 font-size: 0.7rem;
             }
 
+            .tabs {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+                padding: 8px;
+            }
+
             .tab {
-                padding: 8px 10px;
-                font-size: 0.8rem;
+                padding: 12px 8px;
+                font-size: 0.75rem;
+                font-weight: 600;
             }
 
             .stats-grid {
