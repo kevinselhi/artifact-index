@@ -5712,7 +5712,33 @@
                             document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
                             document.querySelector('[data-view="artifact"]').classList.add('active');
                             document.getElementById('artifact').classList.remove('hidden');
-                            // Set the industry filter
+
+                            // Fully reset all filters and state before applying industry filter
+                            // Reset artifact selection
+                            document.getElementById('artifactSelect').value = '';
+                            document.getElementById('consensusDefaultView').style.display = 'block';
+                            document.getElementById('artifactDetailView').style.display = 'none';
+                            document.getElementById('clearArtifactBtn').style.display = 'none';
+
+                            // Reset confidence filter
+                            currentConfidenceFilter = 'all';
+                            document.getElementById('confidenceFilter').value = 'all';
+
+                            // Reset sort to A-Z
+                            currentArtifactSort = 'alpha';
+                            document.querySelectorAll('.artifact-sort-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                                btn.style.background = 'transparent';
+                                btn.style.color = '#a0a0a0';
+                            });
+                            const alphaBtn = document.querySelector('.artifact-sort-btn[data-sort="alpha"]');
+                            if (alphaBtn) {
+                                alphaBtn.classList.add('active');
+                                alphaBtn.style.background = '#3d3d5c';
+                                alphaBtn.style.color = '#fff';
+                            }
+
+                            // Now set the industry filter (this will update dropdown and show industry panel)
                             document.getElementById('industryFilter').value = industry.sector;
                             filterByIndustry(industry.sector);
                         }
