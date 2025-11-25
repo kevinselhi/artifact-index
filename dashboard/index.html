@@ -5304,6 +5304,11 @@
                 document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.view).classList.remove('hidden');
+
+                // Reset Artifact Deep Dive tab to default state when clicked directly
+                if (tab.dataset.view === 'artifact') {
+                    resetArtifactView();
+                }
             });
         });
 
@@ -5327,10 +5332,31 @@
             artifactTab.classList.add('active');
             document.getElementById('artifact').classList.remove('hidden');
 
-            // Reset industry filter to ensure artifact is available in dropdown
+            // Fully reset all filters and state before selecting the new artifact
+            // Reset industry filter
             currentIndustryFilter = 'all';
             document.getElementById('industryFilter').value = 'all';
             document.getElementById('industryOverviewPanel').style.display = 'none';
+
+            // Reset confidence filter
+            currentConfidenceFilter = 'all';
+            document.getElementById('confidenceFilter').value = 'all';
+
+            // Reset sort to A-Z
+            currentArtifactSort = 'alpha';
+            document.querySelectorAll('.artifact-sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'transparent';
+                btn.style.color = '#a0a0a0';
+            });
+            const alphaBtn = document.querySelector('.artifact-sort-btn[data-sort="alpha"]');
+            if (alphaBtn) {
+                alphaBtn.classList.add('active');
+                alphaBtn.style.background = '#3d3d5c';
+                alphaBtn.style.color = '#fff';
+            }
+
+            // Repopulate dropdown with all artifacts
             updateArtifactDropdown();
             populateConsensusView('all');
 
