@@ -16,7 +16,7 @@ This project captures a unique moment in history—the last full year before gen
 
 ### The Core Insight
 
-Different AI models produced **fundamentally different valuations** for the same artifacts because they measured different things:
+Different AI models can produce **fundamentally different valuations** for the same artifacts because they often measure different things. For example:
 
 | Model | Approach | Example: NDA Filing |
 |-------|----------|---------------------|
@@ -24,7 +24,7 @@ Different AI models produced **fundamentally different valuations** for the same
 | **Claude Sonnet 4.5** | Professional services billing | $4M-$7M |
 | **ChatGPT 5** | Median market fees | $900K |
 
-Both perspectives are valid—they answer different business questions.
+Using multiple methods and models can be valuable because they ask different business questions, which help users to understand a larger surface area of the problem.
 
 ## Features
 
