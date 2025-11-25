@@ -101,12 +101,15 @@ function buildQueries(artifact) {
   const queries = [
     `${name} market size and pricing 2024`,
     `how much does ${name} cost`,
-    `${name} industry trends and value`
+    `${name} industry trends and value`,
+    `AI automation impact on ${name}`,
+    `${name} artificial intelligence disruption`
   ];
 
-  // Add sector-specific query if sector is meaningful
+  // Add sector-specific queries if sector is meaningful
   if (sector && sector !== 'Other' && sector.length > 3) {
     queries.push(`${sector} ${name} professional services`);
+    queries.push(`AI tools for ${sector} ${name}`);
   }
 
   return queries.filter(q => q.trim().length > 0);
@@ -137,7 +140,8 @@ async function processBatches() {
       console.log(`  Fetching: ${artifact.name.slice(0, 50)}... (${queries.length} queries)`);
 
       // Run all queries for this artifact in parallel
-      const queryPromises = queries.map(q => fetchYouSearch(q, 1)); // 1 result per query
+      // Fetch 1 result per query (5-7 queries) then deduplicate and take top RESULTS_PER_ARTIFACT
+      const queryPromises = queries.map(q => fetchYouSearch(q, 1));
       const queryResults = await Promise.all(queryPromises);
 
       // Combine all results, removing duplicates by URL
