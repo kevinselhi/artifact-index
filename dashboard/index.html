@@ -576,9 +576,27 @@
                 width: 100%;
             }
 
-            /* Variance chart even smaller */
+            /* Variance chart - taller on mobile for readability */
             #variance .chart-container {
-                height: 280px !important;
+                height: 400px !important;
+            }
+
+            /* Variance card title - stack vertically on mobile */
+            #variance .card-title {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+
+            #variance .card-title > span {
+                font-size: 0.9em;
+            }
+
+            /* Variance toggle buttons - full width row on mobile */
+            #variance .card-title > div {
+                width: 100%;
+                display: flex;
+                justify-content: stretch;
             }
 
             /* Top count buttons */
@@ -587,10 +605,13 @@
                 font-size: 0.7em !important;
             }
 
-            /* Variance toggles */
+            /* Variance toggles - equal width on mobile */
             .variance-toggle {
-                padding: 5px 8px !important;
-                font-size: 0.7em !important;
+                padding: 8px 6px !important;
+                font-size: 0.75em !important;
+                flex: 1;
+                text-align: center;
+                min-height: 40px;
             }
 
             /* Make methodology table scrollable on mobile */
@@ -6168,6 +6189,7 @@
         // Update variance chart with given artifacts
         function updateVarianceChart(artifactList, varianceType) {
             const ctx = document.getElementById('varianceChart');
+            const isMobileVariance = window.innerWidth < 768;
 
             // Destroy existing chart if it exists
             if (varianceChart) {
@@ -6195,11 +6217,17 @@
             // Store chart data globally for click handling
             window.varianceChartData = chartData;
 
+            // Truncate labels for mobile
+            const maxLabelLength = isMobileVariance ? 18 : 30;
+            const truncatedLabels = chartData.map(d =>
+                d.name.length > maxLabelLength ? d.name.substring(0, maxLabelLength - 2) + '...' : d.name
+            );
+
             // Create floating bar chart showing min-max ranges
             varianceChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: chartData.map(d => d.name),
+                    labels: truncatedLabels,
                     datasets: [{
                         label: 'Value Range',
                         data: chartData.map(d => [d.min, d.max]),
@@ -6254,11 +6282,14 @@
                             type: 'logarithmic',
                             title: {
                                 display: true,
-                                text: 'Value Range (USD, log scale)',
-                                color: '#a0a0a0'
+                                text: isMobileVariance ? 'Value (USD)' : 'Value Range (USD, log scale)',
+                                color: '#a0a0a0',
+                                font: { size: isMobileVariance ? 10 : 12 }
                             },
                             ticks: {
                                 color: '#a0a0a0',
+                                font: { size: isMobileVariance ? 9 : 11 },
+                                maxTicksLimit: isMobileVariance ? 5 : 10,
                                 callback: function(value) {
                                     if (value >= 1000000000) return '$' + (value/1000000000) + 'B';
                                     if (value >= 1000000) return '$' + (value/1000000) + 'M';
@@ -6271,7 +6302,7 @@
                         y: {
                             ticks: {
                                 color: '#a0a0a0',
-                                font: { size: 11 }
+                                font: { size: isMobileVariance ? 9 : 11 }
                             },
                             grid: { display: false }
                         }
