@@ -704,7 +704,7 @@
                     <div class="card-title" style="margin-bottom: 0;">Automation Opportunity by Industry</div>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9em;">
-                    Identify where AI agents can deliver the most value. Industries in the <strong style="color: #81B29A;">upper-right quadrant</strong> offer the best automation ROI: high value + high feasibility.
+                    Bubble size = Market Size. Industries in the <strong style="color: #81B29A;">upper-right</strong> have many artifacts with high automation feasibility. <strong style="color: #4285F4;">Larger bubbles</strong> = bigger market opportunity.
                 </p>
                 <div class="dashboard-grid" style="margin: 0;">
                     <div>
@@ -4284,21 +4284,34 @@
 
             // Option A: Automation Opportunity Matrix (Bubble Chart)
             // X-axis: Automation Feasibility (higher = easier to automate)
-            // Y-axis: Total Addressable Value (log scale)
-            // Bubble size: Number of artifacts
+            // Y-axis: Number of artifacts
+            // Bubble size: Market Size (larger market = bigger bubble)
             // Store industries globally for click handling
             window.bubbleChartIndustries = industries;
 
-            // Calculate dynamic Y-axis range based on actual market sizes
+            // Calculate dynamic bubble size based on market size (log scale for visual balance)
             const marketSizes = industries.map(i => i.marketSize).filter(v => v > 0);
-            const minMarket = Math.min(...marketSizes) * 0.5;
-            const maxMarket = Math.max(...marketSizes) * 1.5;
+            const minMarket = Math.min(...marketSizes);
+            const maxMarket = Math.max(...marketSizes);
 
             // Detect mobile for smaller bubble sizes
             const isMobile = window.innerWidth < 768;
-            const bubbleScale = isMobile ? 1.2 : 2;
-            const minBubble = isMobile ? 5 : 8;
-            const maxBubble = isMobile ? 15 : 25;
+            const minBubble = isMobile ? 6 : 10;
+            const maxBubble = isMobile ? 25 : 45;
+
+            // Scale market size to bubble radius using log scale
+            function marketToBubbleSize(marketSize) {
+                if (!marketSize || marketSize <= 0) return minBubble;
+                const logMin = Math.log10(minMarket);
+                const logMax = Math.log10(maxMarket);
+                const logVal = Math.log10(marketSize);
+                const normalized = (logVal - logMin) / (logMax - logMin);
+                return minBubble + normalized * (maxBubble - minBubble);
+            }
+
+            // Calculate Y-axis range based on artifact counts
+            const artifactCounts = industries.map(i => i.artifactCount);
+            const maxArtifacts = Math.max(...artifactCounts);
 
             const bubbleChart = new Chart(document.getElementById('automationMatrixChart'), {
                 type: 'bubble',
@@ -4307,8 +4320,8 @@
                         label: i.sector,
                         data: [{
                             x: i.feasibilityScore,
-                            y: i.marketSize,
-                            r: Math.min(Math.max(i.artifactCount * bubbleScale, minBubble), maxBubble)
+                            y: i.artifactCount,
+                            r: marketToBubbleSize(i.marketSize)
                         }],
                         backgroundColor: (industryColors[i.sector] || '#888888') + '99',
                         borderColor: industryColors[i.sector] || '#888888',
@@ -4406,24 +4419,19 @@
                             grid: { color: 'rgba(255,255,255,0.1)' }
                         },
                         y: {
-                            type: 'logarithmic',
-                            min: minMarket || 100000000,
-                            max: maxMarket || 100000000000,
+                            type: 'linear',
+                            min: 0,
+                            max: maxArtifacts + 5,
                             title: {
                                 display: !isMobile,
-                                text: 'Total Addressable Value →',
+                                text: 'Number of Artifacts →',
                                 color: '#a0a0a0',
                                 font: { size: 11 }
                             },
                             ticks: {
                                 color: '#a0a0a0',
                                 font: { size: isMobile ? 9 : 11 },
-                                callback: function(value) {
-                                    if (value >= 1000000000) return '$' + (value/1000000000).toFixed(0) + 'B';
-                                    if (value >= 1000000) return '$' + (value/1000000).toFixed(0) + 'M';
-                                    if (value >= 1000) return '$' + (value/1000).toFixed(0) + 'K';
-                                    return '$' + value;
-                                }
+                                stepSize: isMobile ? 10 : 5
                             },
                             grid: { color: 'rgba(255,255,255,0.1)' }
                         }
