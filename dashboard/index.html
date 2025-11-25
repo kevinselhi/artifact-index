@@ -1113,23 +1113,18 @@
         // Load data from JSON files
         async function loadData() {
             try {
-                const [valuationsResponse, metadataResponse] = await Promise.all([
-                    fetch('data/master_valuations.json'),
-                    fetch('data/model_metadata.json')
-                ]);
-                
-                const valuationsData = await valuationsResponse.json();
-                const metadataData = await metadataResponse.json();
-                
+                const response = await fetch('data/master_valuations.json');
+                const valuationsData = await response.json();
+
                 // Set artifacts from JSON
                 artifacts = valuationsData.artifacts;
-                
+
                 // Update artifact count display
                 document.getElementById('artifactCount').textContent = artifacts.length;
-                
+
                 console.log(`Loaded ${artifacts.length} artifacts from JSON`);
                 dataLoaded = true;
-                return { valuationsData, metadataData };
+                return valuationsData;
             } catch (error) {
                 console.error('Error loading data:', error);
                 document.getElementById('artifactCount').textContent = 'Error';

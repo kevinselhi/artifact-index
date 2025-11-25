@@ -20,7 +20,7 @@ type ComparisonPayload = {
   note?: string;
 };
 
-const comparisonFile = process.env.MODEL_COMPARISON_PATH ?? 'model_comparison.md';
+const comparisonFile = process.env.MODEL_COMPARISON_PATH ?? '7_model_comparison_analysis.md';
 const comparisonPath = path.resolve(process.cwd(), comparisonFile);
 const comparisonResourceUri = 'comparison://model-comparison';
 
@@ -85,18 +85,18 @@ server.registerResource(
       resources: [
         {
           name: 'model-comparison',
-          title: '7-model comparison (JSON)',
+          title: '8-model comparison (JSON)',
           uri: comparisonResourceUri,
           description:
-            'JSON view of the 7-model evaluation markdown set via MODEL_COMPARISON_PATH or model_comparison.md',
+            'JSON view of the 8-model evaluation markdown. Set MODEL_COMPARISON_PATH or defaults to 7_model_comparison_analysis.md',
           mimeType: 'application/json'
         }
       ]
     })
   }),
   {
-    title: '7-model comparison (JSON)',
-    description: 'Serves the 7-model comparison markdown as structured JSON',
+    title: '8-model comparison (JSON)',
+    description: 'Serves the 8-model comparison markdown as structured JSON',
     mimeType: 'application/json'
   },
   async () => {
