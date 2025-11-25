@@ -606,6 +606,15 @@
                             <option value="all">All Industries</option>
                         </select>
                     </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Confidence:</span>
+                        <select id="confidenceFilter" onchange="filterByConfidence(this.value)" style="padding: 5px 10px; border-radius: 4px; border: 1px solid #3d3d5c; background: #1a1a2e; color: #a0a0a0; font-size: 0.8em; cursor: pointer;">
+                            <option value="all">All Confidence</option>
+                            <option value="high">High (≥80%)</option>
+                            <option value="medium">Medium (65-79%)</option>
+                            <option value="lower">Lower (&lt;65%)</option>
+                        </select>
+                    </div>
                     <span id="artifactCountLabel" style="color: var(--text-secondary); font-size: 0.8em; margin-left: auto;">Showing all artifacts</span>
                     <button onclick="resetArtifactView()" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; font-size: 0.8em; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#E07A5F'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#E07A5F';">Reset</button>
                 </div>
@@ -5351,10 +5360,16 @@
             document.getElementById('clearArtifactBtn').style.display = 'none';
 
             // Reset industry filter
+            currentIndustryFilter = 'all';
             document.getElementById('industryFilter').value = 'all';
             document.getElementById('industryOverviewPanel').style.display = 'none';
 
+            // Reset confidence filter
+            currentConfidenceFilter = 'all';
+            document.getElementById('confidenceFilter').value = 'all';
+
             // Reset sort to A-Z
+            currentArtifactSort = 'alpha';
             document.querySelectorAll('.artifact-sort-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.style.background = 'transparent';
@@ -5368,7 +5383,7 @@
             }
 
             // Repopulate artifact dropdown with all artifacts sorted alphabetically
-            sortArtifacts('alpha');
+            updateArtifactDropdown();
 
             // Reset consensus view to show all industries
             populateConsensusView('all');
@@ -6585,6 +6600,7 @@
         let artifactChart = null;
         let currentArtifactSort = 'alpha';
         let currentIndustryFilter = 'all';
+        let currentConfidenceFilter = 'all';
 
         // Calculate consensus score for an artifact (higher = better consensus)
         function calculateConsensusScore(artifact) {
@@ -6624,16 +6640,35 @@
             const select = document.getElementById('artifactSelect');
             const currentValue = select.value;
 
-            // Filter by industry
-            let filtered = currentIndustryFilter === 'all'
-                ? [...artifacts]
-                : artifacts.filter(a => a.sector === currentIndustryFilter);
-
             // Helper to get market value for an artifact
             function getMarketValue(artifact) {
                 const marketData = artifactMarketData[artifact.id];
                 if (!marketData || !marketData.totalMarketValue) return 0;
                 return (marketData.totalMarketValue.low + marketData.totalMarketValue.high) / 2;
+            }
+
+            // Helper to get confidence for an artifact
+            function getConfidence(artifact) {
+                const marketData = artifactMarketData[artifact.id];
+                return marketData ? marketData.confidence : 0;
+            }
+
+            // Helper to get confidence level (high/medium/lower)
+            function getConfidenceLevel(artifact) {
+                const conf = getConfidence(artifact);
+                if (conf >= 80) return 'high';
+                if (conf >= 65) return 'medium';
+                return 'lower';
+            }
+
+            // Filter by industry
+            let filtered = currentIndustryFilter === 'all'
+                ? [...artifacts]
+                : artifacts.filter(a => a.sector === currentIndustryFilter);
+
+            // Filter by confidence
+            if (currentConfidenceFilter !== 'all') {
+                filtered = filtered.filter(a => getConfidenceLevel(a) === currentConfidenceFilter);
             }
 
             // Sort
@@ -6652,23 +6687,67 @@
                     break;
             }
 
+            // When confidence filter is active, sort by confidence cluster then by market size within each cluster
+            if (currentConfidenceFilter === 'all' && currentArtifactSort === 'alpha') {
+                // Default view: cluster by confidence, then sort by market size within clusters
+            }
+
             // Rebuild dropdown
             select.innerHTML = '<option value="">Select an artifact to analyze...</option>';
-            filtered.forEach(a => {
-                const avgVal = calculateAverageValue(a);
-                const consensusScore = calculateConsensusScore(a);
-                let suffix = '';
-                if (currentArtifactSort === 'value') {
-                    suffix = ` — ${formatCurrency(avgVal)} avg`;
-                } else if (currentArtifactSort === 'market') {
-                    const mktVal = getMarketValue(a);
-                    suffix = mktVal > 0 ? ` — ${formatCurrency(mktVal)} market` : ' — N/A';
-                } else if (currentArtifactSort === 'consensus') {
-                    const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                    suffix = ` — ${modelCount} models, ${a.variance_ratio.toFixed(1)}x var`;
+
+            // Group by confidence level if viewing all with alpha sort
+            if (currentConfidenceFilter === 'all' && currentArtifactSort === 'alpha') {
+                const highConf = filtered.filter(a => getConfidenceLevel(a) === 'high').sort((a, b) => getMarketValue(b) - getMarketValue(a));
+                const medConf = filtered.filter(a => getConfidenceLevel(a) === 'medium').sort((a, b) => getMarketValue(b) - getMarketValue(a));
+                const lowConf = filtered.filter(a => getConfidenceLevel(a) === 'lower').sort((a, b) => getMarketValue(b) - getMarketValue(a));
+
+                if (highConf.length > 0) {
+                    select.innerHTML += `<option disabled style="font-weight: bold; color: #81B29A;">── High Confidence (≥80%) ──</option>`;
+                    highConf.forEach(a => {
+                        const mktVal = getMarketValue(a);
+                        const conf = getConfidence(a);
+                        select.innerHTML += `<option value="${a.id}">${a.name} — ${formatCurrency(mktVal)} (${conf}%)</option>`;
+                    });
                 }
-                select.innerHTML += `<option value="${a.id}">${a.name}${suffix}</option>`;
-            });
+                if (medConf.length > 0) {
+                    select.innerHTML += `<option disabled style="font-weight: bold; color: #F4A261;">── Medium Confidence (65-79%) ──</option>`;
+                    medConf.forEach(a => {
+                        const mktVal = getMarketValue(a);
+                        const conf = getConfidence(a);
+                        select.innerHTML += `<option value="${a.id}">${a.name} — ${formatCurrency(mktVal)} (${conf}%)</option>`;
+                    });
+                }
+                if (lowConf.length > 0) {
+                    select.innerHTML += `<option disabled style="font-weight: bold; color: #E07A5F;">── Lower Confidence (<65%) ──</option>`;
+                    lowConf.forEach(a => {
+                        const mktVal = getMarketValue(a);
+                        const conf = getConfidence(a);
+                        select.innerHTML += `<option value="${a.id}">${a.name} — ${formatCurrency(mktVal)} (${conf}%)</option>`;
+                    });
+                }
+            } else {
+                // Standard list with suffix based on sort type
+                filtered.forEach(a => {
+                    const avgVal = calculateAverageValue(a);
+                    const consensusScore = calculateConsensusScore(a);
+                    let suffix = '';
+                    if (currentArtifactSort === 'value') {
+                        suffix = ` — ${formatCurrency(avgVal)} avg`;
+                    } else if (currentArtifactSort === 'market') {
+                        const mktVal = getMarketValue(a);
+                        suffix = mktVal > 0 ? ` — ${formatCurrency(mktVal)} market` : ' — N/A';
+                    } else if (currentArtifactSort === 'consensus') {
+                        const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
+                        suffix = ` — ${modelCount} models, ${a.variance_ratio.toFixed(1)}x var`;
+                    } else if (currentConfidenceFilter !== 'all') {
+                        // Show market value when filtered by confidence
+                        const mktVal = getMarketValue(a);
+                        const conf = getConfidence(a);
+                        suffix = ` — ${formatCurrency(mktVal)} (${conf}%)`;
+                    }
+                    select.innerHTML += `<option value="${a.id}">${a.name}${suffix}</option>`;
+                });
+            }
 
             // Restore selection if still in filtered list
             if (filtered.find(a => a.id === currentValue)) {
@@ -6677,11 +6756,15 @@
 
             // Update count label
             const countLabel = document.getElementById('artifactCountLabel');
-            if (currentIndustryFilter === 'all') {
-                countLabel.textContent = `Showing all ${filtered.length} artifacts`;
-            } else {
-                countLabel.textContent = `Showing ${filtered.length} artifacts in ${currentIndustryFilter}`;
+            let labelText = `Showing ${filtered.length} artifacts`;
+            if (currentIndustryFilter !== 'all') {
+                labelText += ` in ${currentIndustryFilter}`;
             }
+            if (currentConfidenceFilter !== 'all') {
+                const confLabels = { high: 'High', medium: 'Medium', lower: 'Lower' };
+                labelText += ` (${confLabels[currentConfidenceFilter]} confidence)`;
+            }
+            countLabel.textContent = labelText;
         }
 
         // Sort artifacts
@@ -6720,6 +6803,30 @@
 
             // Update consensus view to show industry-specific results
             populateConsensusView(industry);
+        }
+
+        // Filter by market estimate confidence
+        function filterByConfidence(confidence) {
+            currentConfidenceFilter = confidence;
+
+            // When filtering by confidence, also sort by market size within that confidence level
+            if (confidence !== 'all') {
+                currentArtifactSort = 'market';
+                // Update sort button styles
+                document.querySelectorAll('.artifact-sort-btn').forEach(btn => {
+                    if (btn.dataset.sort === 'market') {
+                        btn.style.background = '#3d3d5c';
+                        btn.style.color = '#fff';
+                        btn.classList.add('active');
+                    } else {
+                        btn.style.background = 'transparent';
+                        btn.style.color = '#a0a0a0';
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            updateArtifactDropdown();
         }
 
         // US Annual Market Spend by Industry (2024, in billions USD)
