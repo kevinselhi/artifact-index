@@ -91,14 +91,17 @@ async function fetchYouSearch(query, limit = 3) {
   }
 }
 
-// Build search query for an artifact
-function buildQuery(artifact) {
+// Build multiple search queries for an artifact to maximize coverage
+function buildQueries(artifact) {
   const sector = artifact.sector || '';
   const name = artifact.name || '';
 
-  // Simplified query: just the artifact name + AI automation + recent timeframe
-  // Keep it concise per You.com best practices
-  return `${name} ${sector} AI automation 2024`.trim();
+  // Multiple focused queries to capture different angles
+  return [
+    `${name} AI automation 2024`,
+    `${name} ${sector} artificial intelligence`,
+    `${name} automation agents 2024`
+  ].filter(q => q.trim().length > 0);
 }
 
 // Process artifacts in batches
@@ -122,18 +125,37 @@ async function processBatches() {
 
     // Process batch in parallel
     const promises = batch.map(async (artifact) => {
-      const query = buildQuery(artifact);
-      console.log(`  Fetching: ${artifact.name.slice(0, 50)}...`);
+      const queries = buildQueries(artifact);
+      console.log(`  Fetching: ${artifact.name.slice(0, 50)}... (${queries.length} queries)`);
 
-      const result = await fetchYouSearch(query, RESULTS_PER_ARTIFACT);
+      // Run all queries for this artifact in parallel
+      const queryPromises = queries.map(q => fetchYouSearch(q, 1)); // 1 result per query
+      const queryResults = await Promise.all(queryPromises);
+
+      // Combine all results, removing duplicates by URL
+      const allResults = [];
+      const seenUrls = new Set();
+
+      queryResults.forEach(qr => {
+        if (qr.results && Array.isArray(qr.results)) {
+          qr.results.forEach(item => {
+            if (item.url && !seenUrls.has(item.url)) {
+              seenUrls.add(item.url);
+              allResults.push(item);
+            }
+          });
+        }
+      });
+
+      // Take top RESULTS_PER_ARTIFACT results
+      const finalResults = allResults.slice(0, RESULTS_PER_ARTIFACT);
 
       return {
         id: artifact.id,
         name: artifact.name,
         sector: artifact.sector,
-        query,
-        results: result.results,
-        error: result.error,
+        queries: queries, // Store all queries used
+        results: finalResults,
         fetchedAt: new Date().toISOString()
       };
     });
