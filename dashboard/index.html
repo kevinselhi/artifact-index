@@ -5743,6 +5743,44 @@
             document.getElementById('artifactCountLabel').textContent = `Showing all ${artifacts.length} artifacts`;
         }
 
+        // Navigate to Artifact Deep Dive with industry filter
+        function navigateToIndustry(industry) {
+            // Switch to Artifact Deep Dive tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+            document.querySelector('[data-view="artifact"]').classList.add('active');
+            document.getElementById('artifact').classList.remove('hidden');
+
+            // Fully reset all filters and state before applying industry filter
+            // Reset artifact selection
+            document.getElementById('artifactSelect').value = '';
+            document.getElementById('consensusDefaultView').style.display = 'block';
+            document.getElementById('artifactDetailView').style.display = 'none';
+            document.getElementById('clearArtifactBtn').style.display = 'none';
+
+            // Reset confidence filter
+            currentConfidenceFilter = 'all';
+            document.getElementById('confidenceFilter').value = 'all';
+
+            // Reset sort to A-Z
+            currentArtifactSort = 'alpha';
+            document.querySelectorAll('.artifact-sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.background = 'transparent';
+                btn.style.color = '#a0a0a0';
+            });
+            const alphaBtn = document.querySelector('.artifact-sort-btn[data-sort="alpha"]');
+            if (alphaBtn) {
+                alphaBtn.classList.add('active');
+                alphaBtn.style.background = '#3d3d5c';
+                alphaBtn.style.color = '#fff';
+            }
+
+            // Now set the industry filter (this will update dropdown and show industry panel)
+            document.getElementById('industryFilter').value = industry;
+            filterByIndustry(industry);
+        }
+
         // Initialize Overview Charts
         function initOverviewCharts() {
             // Model keys in same order as modelData (which matches modelNames)
@@ -6343,7 +6381,13 @@
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; border-left: 4px solid ${color};">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                             <div>
-                                <h4 style="margin: 0; color: ${color}; font-size: 1em;">${ind.sector}</h4>
+                                <h4
+                                    onclick="navigateToIndustry('${ind.sector}')"
+                                    style="margin: 0; color: ${color}; font-size: 1em; cursor: pointer; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px;"
+                                    onmouseover="this.style.textDecoration='underline'"
+                                    onmouseout="this.style.textDecoration='underline'; this.style.textDecorationStyle='dotted'"
+                                    title="View all ${ind.sector} artifacts"
+                                >${ind.sector}</h4>
                                 <div style="font-size: 0.75em; color: var(--text-secondary); margin-top: 2px;">${ind.artifactCount} artifacts analyzed</div>
                             </div>
                             <div style="text-align: right;">
