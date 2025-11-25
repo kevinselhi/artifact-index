@@ -92,16 +92,24 @@ async function fetchYouSearch(query, limit = 3) {
 }
 
 // Build multiple search queries for an artifact to maximize coverage
+// Use natural language queries per You.com best practices
 function buildQueries(artifact) {
   const sector = artifact.sector || '';
   const name = artifact.name || '';
 
-  // Multiple focused queries to capture different angles
-  return [
-    `${name} AI automation 2024`,
-    `${name} ${sector} artificial intelligence`,
-    `${name} automation agents 2024`
-  ].filter(q => q.trim().length > 0);
+  // Natural language queries that describe what we're looking for
+  const queries = [
+    `${name} market size and pricing 2024`,
+    `how much does ${name} cost`,
+    `${name} industry trends and value`
+  ];
+
+  // Add sector-specific query if sector is meaningful
+  if (sector && sector !== 'Other' && sector.length > 3) {
+    queries.push(`${sector} ${name} professional services`);
+  }
+
+  return queries.filter(q => q.trim().length > 0);
 }
 
 // Process artifacts in batches

@@ -65,7 +65,8 @@ async function fetchYouSearch(query, limit = 3) {
 }
 
 function buildQuery(artifact) {
-  return `${artifact.name} ${artifact.sector} AI automation agents artificial intelligence 2024 2025`.trim();
+  // Use natural language query per You.com best practices
+  return `${artifact.name} market size and pricing 2024`.trim();
 }
 
 async function main() {
