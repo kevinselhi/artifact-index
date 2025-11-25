@@ -1,4 +1,11 @@
 {
+  "metadata": {
+    "generated": "2025-11-25",
+    "total_artifacts": 227,
+    "total_sectors": 28,
+    "total_models": 8,
+    "note": "Dashboard uses inline data; this file provides reference metadata"
+  },
   "models": {
     "claude_sonnet45": {
       "name": "Claude Sonnet 4.5",

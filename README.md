@@ -1,6 +1,6 @@
 # 2020 Human Artifact Index
 
-An interactive dashboard comparing how 8 different AI models valued 211 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data.
+An interactive dashboard comparing how 8 different AI models valued 227 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data.
 
 ## Live Dashboard
 
@@ -37,7 +37,7 @@ Both perspectives are valid—they answer different business questions.
   - Top artifact values and methodology comparison across all 8 models
 
 - **Artifact Deep Dive**:
-  - Analyze any of 211 artifacts with detailed breakdowns
+  - Analyze any of 227 artifacts with detailed breakdowns
   - Sort by: A-Z, Value, Market Size, or Model Consensus
   - Filter by industry sector
   - **NEW**: Filter by market estimate confidence (High ≥80%, Medium 65-79%, Lower <65%)
@@ -50,7 +50,7 @@ Both perspectives are valid—they answer different business questions.
 
 ### Data Included
 
-- **211 professional artifacts** across 19 industry sectors
+- **227 professional artifacts** across 28 industry sectors
 - **8 AI model valuations** per artifact (where available)
 - **2024 Market estimates** for each artifact type:
   - Annual volume (e.g., "150-250 Phase III trials/year")
@@ -92,6 +92,8 @@ artifact-index/
 │   ├── artifact_data_export.csv
 │   ├── master_artifact_valuations.csv
 │   └── visualizations_data.json
+├── LICENSE                       # MIT License
+├── CLAUDE.md                     # Claude Code guidance
 └── README.md
 ```
 
