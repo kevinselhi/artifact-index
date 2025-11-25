@@ -163,7 +163,7 @@ Note: Research documents and analysis files live at the repository root, not in 
 
 ## MCP Server (Experimental)
 
-An experimental Model Context Protocol (MCP) server is included for programmatic access to the model comparison data.
+An experimental Model Context Protocol (MCP) server is included for programmatic access (and powering the dashboard chat).
 
 ### Setup
 ```bash
@@ -173,12 +173,29 @@ npm run build
 
 ### Run
 ```bash
-npm run dev    # Development mode with ts-node
-npm start      # Production mode
+npm run dev:stdio    # Local stdio (Claude Code, VS Code, Cursor)
+npm run dev:http     # HTTP (defaults to http://localhost:3000/mcp)
+npm start            # Production HTTP (after build)
 ```
 
-### Resource
-The server exposes `comparison://model-comparison` which serves the 7-model comparison markdown as structured JSON. Set `MODEL_COMPARISON_PATH` environment variable to customize the source file (defaults to `model_comparison.md`).
+### Resources & Tools
+- Resources: `resource://artifact-index/comparison`, `resource://artifact-index/valuations`, `resource://artifact-index/models`, `resource://artifact-index/artifacts/{id}`
+- Tools: `query-artifacts`, `top-variance`, `consensus`, `list-models`, `industry-news`
+- Live search (You.com, requires `YOU_API_KEY`): `you-news-search`, `you-web-search`
+- Prompts: `orchestrator` plus sector subprompts (e.g., medical-pharma, technology, engineering)
+- News: `industry-news` tool (returns AI deployment news for the last six months of 2025; requires `NEWS_FEED_PATH` JSON feed)
+
+### Dashboard Chat (beta)
+- The Artifact Deep Dive view includes an MCP Agent panel. Set the MCP endpoint (default `http://localhost:3000/mcp`) and click Test. If running via HTTP with CORS allowing `kevinselhi.github.io`, the dashboard can reach the MCP server.
+
+### Env Vars
+- `MODEL_COMPARISON_PATH` (default: `7_model_comparison_analysis.md`)
+- `VALUATIONS_PATH` (default: `dashboard/data/master_valuations.json`)
+- `MODEL_METADATA_PATH` (default: `dashboard/data/model_metadata.json`)
+- `NEWS_FEED_PATH` (optional: `dashboard/data/industry-news.json`)
+- `YOU_API_KEY` (required for live You.com search tools)
+- `YOU_BASE_URL` (optional, defaults to `https://api.ydc-index.io`)
+- `PORT`, `HTTP_ORIGINS`, `HTTP_HOSTS` for HTTP transport
 
 ## Recent Updates
 

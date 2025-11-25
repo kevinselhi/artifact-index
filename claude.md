@@ -113,15 +113,18 @@ Using multiple models and comparing results produces more comprehensive insights
 - **Dashboard:** HTML/JS app (`dashboard/index.html`) that loads data from JSON files at runtime
   - Fetches `dashboard/data/master_valuations.json` for artifact valuations
   - Must be served via HTTP (not file://) due to fetch; GitHub Pages handles this
+  - Artifact Deep Dive includes an MCP Agent panel (set endpoint, click Test)
 - **Data Files:** JSON files in `dashboard/data/` are the source of truth
   - `master_valuations.json` - 227 artifacts with all 8 model valuations
   - `model_metadata.json` - Model characteristics, colors, and comparison insights
   - **Important:** If you edit artifact data, update these JSON files to keep dashboard in sync
 - **MCP Server:** TypeScript server in `src/mcp-server.ts` for programmatic access
   - Requires `npm install` for dependencies
-  - Run with `npm run dev` (development) or `npm start` (production)
-  - Exposes `comparison://model-comparison` resource (serves 8-model comparison markdown as JSON)
-  - Set `MODEL_COMPARISON_PATH` env var to specify comparison file (default: `7_model_comparison_analysis.md`)
+  - Run with `npm run dev:stdio` (stdio) or `npm run dev:http` (HTTP at `http://localhost:3000/mcp`); `npm start` for built HTTP
+  - Resources: `resource://artifact-index/comparison`, `resource://artifact-index/valuations`, `resource://artifact-index/models`, `resource://artifact-index/artifacts/{id}`
+  - Tools: `query-artifacts`, `top-variance`, `consensus`, `list-models`, `industry-news`, `you-news-search`, `you-web-search`
+  - Prompts: `orchestrator` plus sector subprompts (e.g., medical-pharma, technology, engineering)
+  - Env: `MODEL_COMPARISON_PATH` (default `7_model_comparison_analysis.md`), `VALUATIONS_PATH` (default `dashboard/data/master_valuations.json`), `MODEL_METADATA_PATH` (default `dashboard/data/model_metadata.json`), `NEWS_FEED_PATH` (optional `dashboard/data/industry-news.json`), `YOU_API_KEY` (required for live You.com tools), `YOU_BASE_URL` (optional, default `https://api.ydc-index.io`), `PORT`, `HTTP_ORIGINS`, `HTTP_HOSTS`
 - **Documentation:** Research outputs and analysis files live at repository root
 - **Dependencies:** `npm install` required only for MCP server; dashboard is standalone HTML/JS
 
