@@ -75,27 +75,30 @@ open dashboard/index.html
 ```
 artifact-index/
 ├── dashboard/
-│   ├── index.html              # Main interactive dashboard
+│   ├── index.html                    # Main interactive dashboard (static HTML/JS)
 │   └── data/
-│       ├── master_valuations.json
-│       └── model_metadata.json
-├── Research Documents/
-│   ├── 2020_Human_Artifact_Index_Claude_Research.md
-│   ├── GPT5_HumanArtifactsReport_v3.md
-│   ├── o3pro_HumanArtivactsReport_v4.md
-│   └── [Other model outputs...]
-├── Analysis/
-│   ├── Comparative_Analysis_Claude_vs_Gemini_2020_Artifact_Index.md
-│   ├── Data_Visualizations_Report.md
-│   └── PROJECT_SUMMARY.md
-├── Data Files/
-│   ├── artifact_data_export.csv
-│   ├── master_artifact_valuations.csv
-│   └── visualizations_data.json
-├── LICENSE                       # MIT License
-├── CLAUDE.md                     # Claude Code guidance
+│       ├── master_valuations.json    # 227 artifacts with valuations
+│       └── model_metadata.json       # Model characteristics and insights
+├── src/
+│   └── mcp-server.ts                 # MCP server (experimental)
+├── dist/
+│   └── mcp-server.js                 # Compiled MCP server
+├── 2020_Human_Artifact_Index_Claude_Research.md
+├── GPT5_HumanArtifactsReport_v3.md
+├── o3pro_HumanArtivactsReport_v4.md
+├── Comparative_Analysis_Claude_vs_Gemini_2020_Artifact_Index.md
+├── Data_Visualizations_Report.md
+├── PROJECT_SUMMARY.md
+├── artifact_data_export.csv
+├── master_artifact_valuations.csv
+├── visualizations_data.json
+├── package.json
+├── LICENSE                           # MIT License
+├── CLAUDE.md                         # Claude Code guidance
 └── README.md
 ```
+
+Note: Research documents and analysis files live at the repository root, not in subdirectories.
 
 ## AI Models Compared
 
@@ -158,12 +161,32 @@ artifact-index/
 - **USPTO**: Patent litigation statistics
 - **Industry Research**: Statista, IBISWorld, Grand View Research, MarketsandMarkets, Mordor Intelligence, Precedence Research (2023-2024 reports)
 
+## MCP Server (Experimental)
+
+An experimental Model Context Protocol (MCP) server is included for programmatic access to the model comparison data.
+
+### Setup
+```bash
+npm install
+npm run build
+```
+
+### Run
+```bash
+npm run dev    # Development mode with ts-node
+npm start      # Production mode
+```
+
+### Resource
+The server exposes `comparison://model-comparison` which serves the 7-model comparison markdown as structured JSON. Set `MODEL_COMPARISON_PATH` environment variable to customize the source file (defaults to `model_comparison.md`).
+
 ## Recent Updates
 
 - **Confidence Filter**: Filter artifacts by market estimate confidence level
-- **2024 Market Data**: All 211 artifacts now have research-backed market estimates
+- **2024 Market Data**: All 227 artifacts now have research-backed market estimates
 - **Mobile Optimization**: Improved bubble chart rendering on mobile devices
 - **Industry Market Sizes**: Updated with 2024 research data from industry reports
+- **Industry Hyperlinks**: Click industry names in AI Disruption Readiness cards to navigate to filtered view
 
 ## Contributing
 

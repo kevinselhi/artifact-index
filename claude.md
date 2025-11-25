@@ -110,10 +110,15 @@ Using multiple models and comparing results produces more comprehensive insights
 ## Working with This Repository
 
 ### Project Structure
-- **Dashboard:** Self-contained HTML/JS (`dashboard/index.html`) - no build system required
-- **Data:** JSON files in `dashboard/data/` are reference copies; dashboard uses inline data
-- **Documentation:** Markdown files for analysis and research outputs
-- **No dependencies:** Open `dashboard/index.html` directly in any browser
+- **Dashboard:** Self-contained HTML/JS (`dashboard/index.html`) with inline data
+- **Data:** JSON files in `dashboard/data/` contain artifact valuations and model metadata
+  - `master_valuations.json` - 227 artifacts with all model valuations
+  - `model_metadata.json` - Model characteristics, colors, and comparison insights
+- **MCP Server:** TypeScript server in `src/mcp-server.ts` for programmatic access
+  - Run with `npm run dev` (development) or `npm start` (production)
+  - Exposes `comparison://model-comparison` resource
+- **Documentation:** Research outputs and analysis files live at repository root
+- **Dependencies:** `npm install` required only for MCP server; dashboard is standalone
 
 ### Common Tasks
 
