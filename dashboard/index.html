@@ -1098,21 +1098,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- MCP Agent Panel (hidden by default, shown when artifact selected) -->
-                <div id="mcpPanel" class="card" style="margin-top: 15px; display: none;">
+                <!-- AI News & Research Panel (hidden by default, shown when artifact selected) -->
+                <div id="newsPanel" class="card" style="margin-top: 15px; display: none;">
                     <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
-                        <span>MCP Agent (Artifact Deep Dive)</span>
-                        <small id="mcpStatus" style="color: var(--text-secondary); font-size: 0.8em;">Not connected</small>
+                        <span>AI Impact & Industry News</span>
+                        <small id="newsCount" style="color: var(--text-secondary); font-size: 0.8em;"></small>
                     </div>
-                    <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">
-                        This chat uses the MCP server to pull artifact context and subagent prompts. Configure the MCP endpoint below (defaults to local HTTP at <code>http://localhost:3000/mcp</code>). If unavailable, the panel will show a fallback message.
+                    <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 15px;">
+                        Recent articles and research about AI's impact on this artifact type (powered by You.com Search API)
                     </div>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
-                        <input id="mcpEndpointInput" type="text" placeholder="http://localhost:3000/mcp" style="flex: 1; min-width: 220px; padding: 8px; border-radius: 6px; border: 1px solid #3d3d5c; background: #0f1525; color: #eaeaea;">
-                        <button id="mcpTestButton" onclick="testMcpConnection()" style="padding: 8px 14px; border-radius: 6px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; cursor: pointer;">Test</button>
-                    </div>
-                    <div id="mcpChatBox" style="min-height: 140px; padding: 10px; border-radius: 8px; border: 1px solid #3d3d5c; background: rgba(255,255,255,0.02); color: #eaeaea;">
-                        <p style="color: var(--text-secondary); font-size: 0.9em; margin: 0;">Click "Test" to verify MCP server connectivity.</p>
+                    <div id="newsResults" style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- News results will be populated here -->
                     </div>
                 </div>
             </div>
@@ -1276,6 +1272,68 @@
                 document.getElementById('artifactCount').textContent = 'Error';
                 throw error;
             }
+        }
+
+        // Load You.com search results
+        let youSearchData = null;
+
+        async function loadYouSearchData() {
+            if (youSearchData) return youSearchData;
+
+            try {
+                const response = await fetch('data/you-search-results.json');
+                youSearchData = await response.json();
+                return youSearchData;
+            } catch (error) {
+                console.error('Failed to load You.com search results:', error);
+                return null;
+            }
+        }
+
+        async function loadNewsResults(artifactId) {
+            const newsPanel = document.getElementById('newsPanel');
+            const newsResults = document.getElementById('newsResults');
+            const newsCount = document.getElementById('newsCount');
+
+            if (!newsPanel || !newsResults) return;
+
+            // Show loading state
+            newsPanel.style.display = 'block';
+            newsResults.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">Loading news...</p>';
+
+            // Load the data
+            const data = await loadYouSearchData();
+
+            if (!data || !data.artifacts || !data.artifacts[artifactId]) {
+                newsResults.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">No news results available for this artifact.</p>';
+                newsCount.textContent = '';
+                return;
+            }
+
+            const artifact = data.artifacts[artifactId];
+            const results = artifact.results || [];
+
+            if (results.length === 0) {
+                newsResults.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">No news results found.</p>';
+                newsCount.textContent = '';
+                return;
+            }
+
+            // Display results
+            newsCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+            newsResults.innerHTML = results.map(result => `
+                <div style="padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid #3d3d5c;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px;">
+                        <a href="${result.url}" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 500; flex: 1; line-height: 1.4;">
+                            ${result.title}
+                        </a>
+                        <span style="color: var(--text-secondary); font-size: 0.75em; margin-left: 10px; white-space: nowrap;">${result.source}</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.85em; margin: 0; line-height: 1.5;">
+                        ${result.snippet.substring(0, 200)}${result.snippet.length > 200 ? '...' : ''}
+                    </p>
+                </div>
+            `).join('');
         }
 
         // MCP helper to test connection (with debouncing to prevent rate limiting)
@@ -5968,19 +6026,22 @@
                 const mcpPanel = document.getElementById('mcpPanel');
 
                 if (!artifact) {
-                    // Show default consensus view, hide MCP panel
+                    // Show default consensus view, hide news panel
                     consensusView.style.display = 'block';
                     detailView.style.display = 'none';
                     clearBtn.style.display = 'none';
-                    if (mcpPanel) mcpPanel.style.display = 'none';
+                    const newsPanel = document.getElementById('newsPanel');
+                    if (newsPanel) newsPanel.style.display = 'none';
                     return;
                 }
 
-                // Show detail view, hide consensus view, show clear button and MCP panel
+                // Show detail view, hide consensus view, show clear button and news panel
                 consensusView.style.display = 'none';
                 detailView.style.display = 'block';
                 clearBtn.style.display = 'inline-block';
-                if (mcpPanel) mcpPanel.style.display = 'block';
+
+                // Load and display You.com news results
+                loadNewsResults(artifact.id);
 
                 // Update chart
                 if (artifactChart) artifactChart.destroy();
