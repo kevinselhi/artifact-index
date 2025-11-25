@@ -1,16 +1,18 @@
 # 2020 Human Artifact Index
 
-An interactive dashboard comparing how 8 different AI models valued 211 professional artifacts (deliverables) from the pre-AI era of 2020.
+An interactive dashboard comparing how 8 different AI models valued 211 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data.
 
 ## Live Dashboard
 
-**[View the Dashboard](https://kevinselhi.github.io/artifact-index/dashboard/index.html)** *(requires GitHub Pages to be enabled)*
+**[View the Dashboard](https://kevinselhi.github.io/artifact-index/dashboard/index.html)**
 
 Or open locally: `dashboard/index.html`
 
 ## What is This?
 
 This project captures a unique moment in history—the last full year before generative AI transformed professional services. It documents the most economically valuable professional artifacts created in 2020 and compares how different AI models approach valuation.
+
+*All models had Deep Research or Extended Thinking enabled.*
 
 ### The Core Insight
 
@@ -28,34 +30,45 @@ Both perspectives are valid—they answer different business questions.
 
 ### Interactive Dashboard
 
-- **Overview Tab**: Compare all 8 models' methodologies, top valuations, and approaches
-- **Artifact Deep Dive**: Analyze any of 211 artifacts with detailed breakdowns
+- **Overview Tab**:
+  - Automation Opportunity Matrix (bubble chart by industry)
+  - AI Disruption Readiness cards with 2024 market sizes
+  - Filter industries by readiness level (High/Medium/Low)
+  - Top artifact values and methodology comparison across all 8 models
+
+- **Artifact Deep Dive**:
+  - Analyze any of 211 artifacts with detailed breakdowns
   - Sort by: A-Z, Value, Market Size, or Model Consensus
   - Filter by industry sector
-  - View market volume estimates and total addressable market
+  - **NEW**: Filter by market estimate confidence (High ≥80%, Medium 65-79%, Lower <65%)
+  - View US Market Estimates (2024) with volume, TAM, and confidence scores
+  - Clustered dropdown view showing artifacts grouped by confidence level
+
 - **Variance Analysis**: Identify where models agree vs. disagree most
-- **Industry Overview**: Bubble chart showing automation opportunity by sector
+
+- **Model Comparison**: Side-by-side methodology and approach analysis
 
 ### Data Included
 
 - **211 professional artifacts** across 19 industry sectors
 - **8 AI model valuations** per artifact (where available)
-- **Market estimates** for each artifact type (volume, TAM, confidence scores)
-- **Source citations** from FDA, SEC, USPTO, and industry research firms
+- **2024 Market estimates** for each artifact type:
+  - Annual volume (e.g., "150-250 Phase III trials/year")
+  - Total addressable market (e.g., "$3B-$6B")
+  - Confidence scores (55-95%)
+  - Source citations (FDA, SEC, USPTO, industry research)
 
 ## Quick Start
 
-### Option 1: View Locally
+### Option 1: View Live
+Visit: **https://kevinselhi.github.io/artifact-index/dashboard/index.html**
+
+### Option 2: View Locally
 ```bash
 git clone https://github.com/kevinselhi/artifact-index.git
 cd artifact-index
 open dashboard/index.html
 ```
-
-### Option 2: Enable GitHub Pages
-1. Go to repository Settings > Pages
-2. Set source to "main" branch, root folder
-3. Access at `https://kevinselhi.github.io/artifact-index/dashboard/index.html`
 
 ## Repository Structure
 
@@ -115,6 +128,7 @@ artifact-index/
 ### For Startup Founders
 - Identify large market opportunities for AI automation
 - Sort artifacts by "Market" to find biggest TAM
+- Filter by "High Confidence" to focus on well-researched markets
 - Use industry filtering to focus on your vertical
 
 ### For Consultants
@@ -129,11 +143,25 @@ artifact-index/
 
 ## Data Sources
 
-Market estimates sourced from:
-- **FDA**: Clinical trials, drug approvals, device submissions
-- **SEC**: IPOs, M&A filings, public company audits
+### Model Valuations
+- Claude Sonnet 4.5 & Opus 4.5 (Anthropic)
+- Gemini 2.5 Pro & 3.0 Pro (Google)
+- ChatGPT 5 & 5-1 (OpenAI)
+- o3pro (OpenAI)
+- Perplexity
+
+### 2024 Market Research
+- **FDA**: Clinical trials (ClinicalTrials.gov), drug approvals (CDER), device submissions (CDRH)
+- **SEC**: IPO filings, M&A activity, public company audits
 - **USPTO**: Patent litigation statistics
-- **Industry Research**: Statista, IBISWorld, Grand View Research, MarketsandMarkets, Mordor Intelligence (2023-2024 reports)
+- **Industry Research**: Statista, IBISWorld, Grand View Research, MarketsandMarkets, Mordor Intelligence, Precedence Research (2023-2024 reports)
+
+## Recent Updates
+
+- **Confidence Filter**: Filter artifacts by market estimate confidence level
+- **2024 Market Data**: All 211 artifacts now have research-backed market estimates
+- **Mobile Optimization**: Improved bubble chart rendering on mobile devices
+- **Industry Market Sizes**: Updated with 2024 research data from industry reports
 
 ## Contributing
 
@@ -145,15 +173,6 @@ This is primarily a research archive, but contributions are welcome:
 ## License
 
 MIT License - See LICENSE file for details.
-
-## Acknowledgments
-
-Research conducted October 2025 using:
-- Claude Sonnet 4.5 & Opus 4.5 (Anthropic)
-- Gemini 2.5 Pro & 3.0 Pro (Google)
-- ChatGPT 5 & 5-1 (OpenAI)
-- o3pro (OpenAI)
-- Perplexity
 
 ---
 
