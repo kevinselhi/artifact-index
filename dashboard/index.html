@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8-Model Artifact Comparison Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0"></script>
     <style>
         :root {
             --claude-sonnet45: #E07A5F;
@@ -705,11 +707,17 @@
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9em;">
                     Bubble size = Market Size. Industries in the <strong style="color: #81B29A;">upper-right</strong> have many artifacts with high automation feasibility. <strong style="color: #4285F4;">Larger bubbles</strong> = bigger market opportunity.
+                    <span style="display: block; margin-top: 5px; font-size: 0.85em; color: #888;">🔍 Scroll to zoom • Drag to pan • Click bubble to explore</span>
                 </p>
                 <div class="dashboard-grid" style="margin: 0;">
                     <div>
-                        <div class="chart-container" style="height: 320px;">
-                            <canvas id="automationMatrixChart"></canvas>
+                        <div style="position: relative;">
+                            <div class="chart-container" style="height: 320px;">
+                                <canvas id="automationMatrixChart"></canvas>
+                            </div>
+                            <button id="resetZoomBtn" onclick="if(window.bubbleChart){ window.bubbleChart.resetZoom(); this.style.display='none'; }" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.75em; background: rgba(30, 30, 50, 0.9); border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; transition: all 0.2s; display: none;" onmouseover="this.style.borderColor='#E07A5F'; this.style.color='#E07A5F';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">
+                                Reset Zoom
+                            </button>
                         </div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.75em; color: var(--text-secondary); margin-top: 5px; padding: 0 10px;">
                             <span>← Lower Feasibility (High Variance)</span>
@@ -746,9 +754,9 @@
                         <div style="margin-top: 15px; padding: 12px; background: rgba(129,178,154,0.1); border-radius: 6px; border-left: 3px solid #81B29A;">
                             <div style="font-size: 0.85em; color: var(--text-secondary);">
                                 <strong style="color: var(--text-primary);">Reading the Matrix:</strong><br>
-                                • <strong>Bubble size</strong> = Number of artifacts<br>
+                                • <strong>Bubble size</strong> = Market size (larger = bigger opportunity)<br>
                                 • <strong>X-axis</strong> = Automation feasibility (standardization)<br>
-                                • <strong>Y-axis</strong> = Total addressable value
+                                • <strong>Y-axis</strong> = Number of artifacts
                             </div>
                         </div>
                     </div>
@@ -1030,6 +1038,23 @@
                         </div>
                     </div>
                 </div>
+                <!-- MCP Agent Panel -->
+                <div class="card" style="margin-top: 15px;">
+                    <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>MCP Agent (Artifact Deep Dive)</span>
+                        <small id="mcpStatus" style="color: var(--text-secondary); font-size: 0.8em;">Connecting...</small>
+                    </div>
+                    <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 10px;">
+                        This chat uses the MCP server to pull artifact context and subagent prompts. Configure the MCP endpoint below (defaults to local HTTP at <code>http://localhost:3000/mcp</code>). If unavailable, the panel will show a fallback message.
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+                        <input id="mcpEndpointInput" type="text" placeholder="http://localhost:3000/mcp" style="flex: 1; min-width: 220px; padding: 8px; border-radius: 6px; border: 1px solid #3d3d5c; background: #0f1525; color: #eaeaea;">
+                        <button onclick="testMcpConnection()" style="padding: 8px 14px; border-radius: 6px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; cursor: pointer;">Test</button>
+                    </div>
+                    <div id="mcpChatBox" style="min-height: 140px; padding: 10px; border-radius: 8px; border: 1px solid #3d3d5c; background: rgba(255,255,255,0.02); color: #eaeaea;">
+                        <p style="color: var(--text-secondary); font-size: 0.9em; margin: 0;">Select an artifact and configure MCP to begin chatting.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Industry Overview Panel (shown when industry is selected) -->
@@ -1169,6 +1194,7 @@
         // Artifacts loaded from JSON via init()
         let artifacts = [];
         let dataLoaded = false;
+        let mcpEndpoint = 'http://localhost:3000/mcp';
 
         // Load data from JSON files
         async function loadData() {
@@ -1189,6 +1215,47 @@
                 console.error('Error loading data:', error);
                 document.getElementById('artifactCount').textContent = 'Error';
                 throw error;
+            }
+        }
+
+        // MCP helper to test connection
+        async function testMcpConnection() {
+            const input = document.getElementById('mcpEndpointInput');
+            if (input && input.value) {
+                mcpEndpoint = input.value;
+            }
+            const statusEl = document.getElementById('mcpStatus');
+            const chatBox = document.getElementById('mcpChatBox');
+            if (statusEl) statusEl.textContent = 'Testing...';
+            try {
+                const payload = {
+                    jsonrpc: '2.0',
+                    id: 'ping',
+                    method: 'resources/list',
+                    params: {}
+                };
+                const res = await fetch(mcpEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                if (statusEl) statusEl.textContent = 'Connected';
+                if (chatBox) {
+                    chatBox.innerHTML =
+                        '<p style="margin:0; color: var(--text-secondary); font-size: 0.9em;">MCP reachable. Use your MCP-enabled client to chat (Claude Code/VS Code/Cursor) with endpoint: ' +
+                        mcpEndpoint +
+                        '.</p>';
+                }
+                console.log('MCP resources/list', data);
+            } catch (err) {
+                console.error('MCP test failed', err);
+                if (statusEl) statusEl.textContent = 'Unavailable';
+                if (chatBox) {
+                    chatBox.innerHTML =
+                        '<p style="margin:0; color:#FF6B6B; font-size:0.9em;">MCP not reachable. Ensure the server is running and CORS allows this origin.</p>';
+                }
             }
         }
 
@@ -4313,7 +4380,7 @@
             const artifactCounts = industries.map(i => i.artifactCount);
             const maxArtifacts = Math.max(...artifactCounts);
 
-            const bubbleChart = new Chart(document.getElementById('automationMatrixChart'), {
+            window.bubbleChart = new Chart(document.getElementById('automationMatrixChart'), {
                 type: 'bubble',
                 data: {
                     datasets: industries.map(i => ({
@@ -4398,6 +4465,38 @@
                                         '(Click to explore)'
                                     ];
                                 }
+                            }
+                        },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'xy',
+                                onPan: function() {
+                                    document.getElementById('resetZoomBtn').style.display = 'block';
+                                }
+                            },
+                            zoom: {
+                                wheel: {
+                                    enabled: true,
+                                    speed: 0.1
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'xy',
+                                drag: {
+                                    enabled: true,
+                                    backgroundColor: 'rgba(224, 122, 95, 0.2)',
+                                    borderColor: 'rgba(224, 122, 95, 0.8)',
+                                    borderWidth: 1
+                                },
+                                onZoom: function() {
+                                    document.getElementById('resetZoomBtn').style.display = 'block';
+                                }
+                            },
+                            limits: {
+                                x: { min: 0, max: 10 },
+                                y: { min: 0, max: maxArtifacts + 10 }
                             }
                         }
                     },
