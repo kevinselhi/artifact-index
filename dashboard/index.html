@@ -1336,8 +1336,9 @@
                 });
                 if (!initRes.ok) throw new Error(`HTTP ${initRes.status}`);
                 const initData = await initRes.json();
+                const sessionId = initRes.headers.get('mcp-session-id');
 
-                // Then test with resources/list
+                // Then test with resources/list (using session ID)
                 const payload = {
                     jsonrpc: '2.0',
                     id: 2,
@@ -1348,7 +1349,8 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json, text/event-stream'
+                        'Accept': 'application/json, text/event-stream',
+                        'mcp-session-id': sessionId
                     },
                     body: JSON.stringify(payload)
                 });
@@ -1363,7 +1365,7 @@
                         mcpEndpoint +
                         '</code></p>';
                 }
-                console.log('[mcp] Connection successful', { init: initData, resources: data });
+                console.log('[mcp] Connection successful', { init: initData, resources: data, sessionId });
             } catch (err) {
                 console.error('[mcp] Test failed', err);
                 if (statusEl) statusEl.textContent = 'Unavailable';

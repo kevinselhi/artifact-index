@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MCP Test</title>
+</head>
+<body>
+    <h1>MCP Connection Test</h1>
+    <button onclick="testMcp()">Test MCP Connection</button>
+    <div id="result" style="margin-top: 20px; padding: 20px; background: #f0f0f0;"></div>
+
+    <script>
+        async function testMcp() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+
+            try {
+                // Initialize
+                const initRes = await fetch('http://localhost:3000/mcp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json, text/event-stream'
+                    },
+                    body: JSON.stringify({
+                        jsonrpc: '2.0',
+                        id: 1,
+                        method: 'initialize',
+                        params: {
+                            protocolVersion: '2024-11-05',
+                            capabilities: {},
+                            clientInfo: { name: 'test', version: '1.0' }
+                        }
+                    })
+                });
+
+                const initData = await initRes.json();
+                const sessionId = initRes.headers.get('mcp-session-id');
+                console.log('Init response:', initData, 'Session ID:', sessionId);
+
+                // List resources (with session ID)
+                const listRes = await fetch('http://localhost:3000/mcp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json, text/event-stream',
+                        'mcp-session-id': sessionId
+                    },
+                    body: JSON.stringify({
+                        jsonrpc: '2.0',
+                        id: 2,
+                        method: 'resources/list',
+                        params: {}
+                    })
+                });
+
+                const listData = await listRes.json();
+                console.log('Resources response:', listData);
+
+                const resourceCount = listData.result?.resources?.length || 0;
+                resultDiv.innerHTML = '<h3 style="color: green;">✓ Success!</h3>' +
+                    '<p>Session ID: ' + sessionId + '</p>' +
+                    '<p>Resources found: ' + resourceCount + '</p>' +
+                    '<pre>' + JSON.stringify({ init: initData, resources: listData }, null, 2) + '</pre>';
+
+            } catch (err) {
+                console.error('Error:', err);
+                resultDiv.innerHTML = '<h3 style="color: red;">✗ Failed!</h3>' +
+                    '<p>' + err.message + '</p>' +
+                    '<p>Check console for details</p>';
+            }
+        }
+    </script>
+</body>
+</html>
