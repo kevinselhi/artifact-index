@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const YOU_API_KEY = process.env.YOU_API_KEY;
-const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://api.ydc-index.io';
+const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://ydc-index.io/v1';
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE) || 5;
 const DELAY_BETWEEN_BATCHES = 3000; // 3 seconds to avoid rate limits
 const RESULTS_PER_ARTIFACT = parseInt(process.env.RESULTS_PER_ARTIFACT) || 3;

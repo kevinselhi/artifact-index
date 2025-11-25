@@ -5,11 +5,15 @@
  * Use this to verify everything works before running full batch
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const YOU_API_KEY = process.env.YOU_API_KEY;
-const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://api.ydc-index.io';
+const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://ydc-index.io/v1';
 const TEST_LIMIT = 10; // Only process first 10 artifacts
 const DELAY_BETWEEN_REQUESTS = 500; // 0.5 seconds
 
