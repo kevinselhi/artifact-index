@@ -110,15 +110,20 @@ Using multiple models and comparing results produces more comprehensive insights
 ## Working with This Repository
 
 ### Project Structure
-- **Dashboard:** Self-contained HTML/JS (`dashboard/index.html`) with inline data
-- **Data:** JSON files in `dashboard/data/` contain artifact valuations and model metadata
-  - `master_valuations.json` - 227 artifacts with all model valuations
+- **Dashboard:** HTML/JS app (`dashboard/index.html`) that loads data from JSON files at runtime
+  - Fetches `dashboard/data/master_valuations.json` for artifact valuations
+  - Must be served via HTTP (not file://) due to fetch; GitHub Pages handles this
+- **Data Files:** JSON files in `dashboard/data/` are the source of truth
+  - `master_valuations.json` - 227 artifacts with all 8 model valuations
   - `model_metadata.json` - Model characteristics, colors, and comparison insights
+  - **Important:** If you edit artifact data, update these JSON files to keep dashboard in sync
 - **MCP Server:** TypeScript server in `src/mcp-server.ts` for programmatic access
+  - Requires `npm install` for dependencies
   - Run with `npm run dev` (development) or `npm start` (production)
-  - Exposes `comparison://model-comparison` resource
+  - Exposes `comparison://model-comparison` resource (serves 8-model comparison markdown as JSON)
+  - Set `MODEL_COMPARISON_PATH` env var to specify comparison file (default: `7_model_comparison_analysis.md`)
 - **Documentation:** Research outputs and analysis files live at repository root
-- **Dependencies:** `npm install` required only for MCP server; dashboard is standalone
+- **Dependencies:** `npm install` required only for MCP server; dashboard is standalone HTML/JS
 
 ### Common Tasks
 

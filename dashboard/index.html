@@ -769,7 +769,8 @@
                     <div id="comparisonPageDots" style="display: flex; justify-content: center; gap: 8px; margin-top: 15px;"></div>
                 </div>
                 <div class="card">
-                    <div class="card-title">Sector Coverage by Model (All Artifacts)</div>
+                    <div class="card-title">Highest-Value Sectors (Avg. Across Models)</div>
+                    <p style="color: var(--text-secondary); font-size: 0.85em; margin-bottom: 10px;">Top 10 sectors by average artifact valuation</p>
                     <div class="chart-container">
                         <canvas id="sectorChart"></canvas>
                     </div>
@@ -4719,53 +4720,94 @@
             // Create page dots
             createComparisonPageDots();
 
-            // Sector Chart - dynamically computed from all artifacts
-            const sectors = ['Medical/Pharma', 'Financial Services', 'Technology', 'Legal/Financial', 'Management Consulting', 'Engineering', 'Real Estate'];
-            const sectorMapping = {
-                'Medical/Pharma': 'Medical/Pharma',
-                'Financial Services': 'Financial Services',
-                'Technology': 'Technology',
-                'Legal/Financial': 'Legal/Financial',
-                'Financial/Legal': 'Legal/Financial',
-                'Management Consulting': 'Management Consulting',
-                'Engineering': 'Engineering',
-                'Real Estate': 'Real Estate'
-            };
+            // Sector Chart - Top 10 sectors by average artifact value
+            // Calculate average valuation per sector across all models
+            function calculateSectorAverages() {
+                const sectorData = {};
 
-            // Count artifacts per sector per model
-            function countSectorsByModel(modelKey) {
-                const counts = { 'Medical/Pharma': 0, 'Financial Services': 0, 'Technology': 0, 'Legal/Financial': 0, 'Management Consulting': 0, 'Engineering': 0, 'Real Estate': 0 };
                 artifacts.forEach(a => {
-                    if (a.valuations[modelKey] !== null) {
-                        const mappedSector = sectorMapping[a.sector] || a.sector;
-                        if (counts[mappedSector] !== undefined) {
-                            counts[mappedSector]++;
-                        }
+                    const sector = a.sector;
+                    if (!sectorData[sector]) {
+                        sectorData[sector] = { total: 0, count: 0, artifacts: 0 };
+                    }
+
+                    // Calculate average across all models for this artifact
+                    const vals = Object.values(a.valuations).filter(v => v !== null && v > 0);
+                    if (vals.length > 0) {
+                        const avgVal = vals.reduce((sum, v) => sum + v, 0) / vals.length;
+                        sectorData[sector].total += avgVal;
+                        sectorData[sector].artifacts++;
                     }
                 });
-                return sectors.map(s => counts[s]);
+
+                // Calculate average per sector and sort
+                const sectorAvgs = Object.entries(sectorData)
+                    .map(([sector, data]) => ({
+                        sector,
+                        avgValue: data.artifacts > 0 ? data.total / data.artifacts : 0,
+                        artifactCount: data.artifacts
+                    }))
+                    .filter(s => s.avgValue > 0)
+                    .sort((a, b) => b.avgValue - a.avgValue)
+                    .slice(0, 10); // Top 10 sectors
+
+                return sectorAvgs;
             }
 
+            const sectorAvgs = calculateSectorAverages();
+
             new Chart(document.getElementById('sectorChart'), {
-                type: 'radar',
+                type: 'bar',
                 data: {
-                    labels: sectors,
-                    datasets: [
-                        { label: 'Claude', data: countSectorsByModel('claude_sonnet45'), borderColor: modelColors.claude_sonnet45, fill: true, backgroundColor: 'rgba(224,122,95,0.2)' },
-                        { label: 'Gemini 2.5', data: countSectorsByModel('gemini'), borderColor: modelColors.gemini, fill: true, backgroundColor: 'rgba(66,133,244,0.2)' },
-                        { label: 'Opus 4.5', data: countSectorsByModel('opus45'), borderColor: modelColors.opus45, fill: true, backgroundColor: 'rgba(129,178,154,0.2)' },
-                        { label: 'ChatGPT 5-1', data: countSectorsByModel('chatgpt51'), borderColor: modelColors.chatgpt51, fill: true, backgroundColor: 'rgba(16,163,127,0.2)' },
-                        { label: 'ChatGPT 5', data: countSectorsByModel('chatgpt5'), borderColor: modelColors.chatgpt5, fill: true, backgroundColor: 'rgba(255,107,107,0.2)' },
-                        { label: 'o3pro', data: countSectorsByModel('o3pro'), borderColor: modelColors.o3pro, fill: true, backgroundColor: 'rgba(155,93,229,0.2)' },
-                        { label: 'Perplexity', data: countSectorsByModel('perplexity'), borderColor: modelColors.perplexity, fill: true, backgroundColor: 'rgba(249,132,74,0.2)' },
-                        { label: 'Gemini 3.0', data: countSectorsByModel('gemini30'), borderColor: modelColors.gemini30, fill: true, backgroundColor: 'rgba(0,191,165,0.2)' }
-                    ]
+                    labels: sectorAvgs.map(s => s.sector),
+                    datasets: [{
+                        label: 'Avg. Artifact Value',
+                        data: sectorAvgs.map(s => s.avgValue),
+                        backgroundColor: sectorAvgs.map(s => industryColors[s.sector] || '#4285F4'),
+                        borderColor: sectorAvgs.map(s => industryColors[s.sector] || '#4285F4'),
+                        borderWidth: 1
+                    }]
                 },
                 options: {
+                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom', labels: { color: '#a0a0a0' } } },
-                    scales: { r: { ticks: { color: '#a0a0a0' }, grid: { color: 'rgba(255,255,255,0.1)' } } }
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const idx = context.dataIndex;
+                                    const sectorInfo = sectorAvgs[idx];
+                                    return [
+                                        `Avg Value: ${formatCurrency(context.raw)}`,
+                                        `Artifacts: ${sectorInfo.artifactCount}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'logarithmic',
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#a0a0a0', callback: v => formatCurrency(v) }
+                        },
+                        y: {
+                            ticks: { color: '#a0a0a0' },
+                            grid: { display: false }
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const idx = elements[0].index;
+                            const sector = sectorAvgs[idx].sector;
+                            navigateToIndustry(sector);
+                        }
+                    },
+                    onHover: (event, elements) => {
+                        event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
+                    }
                 }
             });
 
