@@ -5505,6 +5505,7 @@
                     industryData[sector] = {
                         artifacts: [],
                         totalValue: 0,
+                        totalMarketSize: 0,
                         totalVariance: 0,
                         modelCounts: [],
                         minValues: [],
@@ -5527,6 +5528,14 @@
                         modelCount: values.length
                     });
                     industryData[sector].totalValue += avgVal;
+
+                    // Add market size from research data
+                    const marketData = artifactMarketData[a.id];
+                    if (marketData && marketData.totalMarketValue) {
+                        const avgMarketValue = (marketData.totalMarketValue.low + marketData.totalMarketValue.high) / 2;
+                        industryData[sector].totalMarketSize += avgMarketValue;
+                    }
+
                     industryData[sector].totalVariance += a.variance_ratio;
                     industryData[sector].modelCounts.push(values.length);
                     industryData[sector].minValues.push(minVal);
@@ -5599,6 +5608,7 @@
                         avgModelCount,
                         artifactCount: data.artifacts.length,
                         totalValue: data.totalValue,
+                        marketSize: data.totalMarketSize,
                         quickWin: quickWin.name,
                         quickWinId: quickWin.id,
                         quickWinValue: quickWin.avgValue,
@@ -5622,7 +5632,7 @@
                         label: i.sector,
                         data: [{
                             x: i.feasibilityScore,
-                            y: i.totalValue,
+                            y: i.marketSize,
                             r: Math.min(Math.max(i.artifactCount * 2, 8), 25) // Scale bubble size
                         }],
                         backgroundColor: (industryColors[i.sector] || '#888888') + '99',
@@ -5658,7 +5668,7 @@
                                     const i = industries[context.datasetIndex];
                                     return [
                                         i.sector,
-                                        `Total Value: ${formatCurrency(i.totalValue)}`,
+                                        `Market Size: ${formatCurrency(i.marketSize)}`,
                                         `Feasibility: ${i.feasibilityScore.toFixed(1)}/10`,
                                         `Readiness: ${i.readiness}`,
                                         `Artifacts: ${i.artifactCount}`,
@@ -5717,8 +5727,8 @@
             // Option C: Enhanced Industry Table with Actionable Columns
             // Store all industries globally for filtering
             window.allIndustriesForTable = [...industries].sort((a, b) => {
-                const scoreA = a.feasibilityScore * Math.log10(a.totalValue);
-                const scoreB = b.feasibilityScore * Math.log10(b.totalValue);
+                const scoreA = a.feasibilityScore * Math.log10(a.marketSize || 1);
+                const scoreB = b.feasibilityScore * Math.log10(b.marketSize || 1);
                 return scoreB - scoreA;
             });
 
@@ -5817,7 +5827,7 @@
                             ${i.readiness}
                         </span>
                     </td>
-                    <td style="font-size: 0.9em; font-weight: bold;">${formatCurrency(i.totalValue)}</td>
+                    <td style="font-size: 0.9em; font-weight: bold;">${formatCurrency(i.marketSize)}</td>
                     <td style="font-size: 0.8em;">${quickWinLink}</td>
                 </tr>
             `}).join('');
