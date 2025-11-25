@@ -629,6 +629,24 @@
                 </div>
             </div>
 
+            <!-- Artifact Detail View (shown after artifact selection) - positioned above Industry Overview -->
+            <div id="artifactDetailView" style="display: none; margin-bottom: 20px;">
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-title">Valuation by Model</div>
+                        <div class="chart-container">
+                            <canvas id="artifactValueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" id="artifactDetailTitle">Artifact Details</div>
+                        <div id="artifactDetails" style="padding: 10px;">
+                            <p style="color: var(--text-secondary);">Select an artifact to view details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Industry Overview Panel (shown when industry is selected) -->
             <div id="industryOverviewPanel" style="display: none; margin-bottom: 20px;">
                 <div class="card">
@@ -674,24 +692,6 @@
                             <p style="margin-bottom: 12px;"><strong style="color: var(--text-primary);">Multi-Model Coverage:</strong> Artifacts valued by 4+ models have been cross-validated across different AI approaches.</p>
                             <p style="margin-bottom: 12px;"><strong style="color: var(--text-primary);">Consensus Cluster:</strong> The price range where most models converge, representing the market's "center of gravity."</p>
                             <p><strong style="color: var(--text-primary);">Tip:</strong> Select an artifact above to see detailed model-by-model comparisons.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Artifact Detail View (shown after artifact selection) -->
-            <div id="artifactDetailView" style="display: none;">
-                <div class="dashboard-grid">
-                    <div class="card">
-                        <div class="card-title">Valuation by Model</div>
-                        <div class="chart-container">
-                            <canvas id="artifactValueChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-title" id="artifactDetailTitle">Artifact Details</div>
-                        <div id="artifactDetails" style="padding: 10px;">
-                            <p style="color: var(--text-secondary);">Select an artifact to view details</p>
                         </div>
                     </div>
                 </div>
