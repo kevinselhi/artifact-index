@@ -240,12 +240,324 @@
         }
 
         @media (max-width: 768px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            header {
+                padding: 15px;
+                margin-bottom: 15px;
             }
 
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .subtitle {
+                font-size: 0.85rem;
+            }
+
+            /* Model Legend - 2 columns on mobile */
+            .model-legend {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 10px;
+            }
+
+            .legend-item {
+                font-size: 0.75rem;
+            }
+
+            .legend-color {
+                width: 12px;
+                height: 12px;
+            }
+
+            /* Tabs - horizontal scroll */
+            .tabs {
+                display: flex;
+                gap: 6px;
+                margin-bottom: 15px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+            }
+
+            .tab {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            /* Dashboard grid - single column */
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            /* Cards */
+            .card {
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+
+            /* Stats grid - 2x2 on mobile */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 12px;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            /* Chart container */
+            .chart-container {
+                height: 250px;
+            }
+
+            /* Tables - horizontal scroll wrapper */
+            table {
+                font-size: 0.8rem;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            th, td {
+                padding: 8px 10px;
+                white-space: nowrap;
+            }
+
+            /* Artifact select */
+            .artifact-select {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            /* Mobile sort/filter controls */
+            .mobile-controls-wrapper {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+            }
+
+            /* Readiness filter buttons */
+            .readiness-filter-btn {
+                padding: 6px 10px !important;
+                font-size: 0.75em !important;
+            }
+
+            /* Sort buttons */
+            .artifact-sort-btn {
+                padding: 6px 8px !important;
+                font-size: 0.7em !important;
+            }
+
+            /* Artifact controls mobile layout */
+            .artifact-controls {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+            }
+
+            .artifact-controls .sort-group {
+                width: 100%;
+            }
+
+            .artifact-controls .filter-group {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .artifact-controls .control-actions {
+                width: 100%;
+                justify-content: space-between;
+                margin-left: 0 !important;
+            }
+
+            .artifact-controls select {
+                flex: 1;
+                min-width: 0 !important;
+            }
+
+            /* Artifact selector mobile */
+            .artifact-selector {
+                flex-direction: column !important;
+            }
+
+            .artifact-selector .artifact-select {
+                width: 100% !important;
+                min-width: 0 !important;
+            }
+
+            .artifact-selector #clearArtifactBtn {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Industry filter label text on table */
+            #industryConsensusTable td:first-child {
+                max-width: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* Disruption readiness cards */
+            #disruptionReadinessContainer > div:first-child {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Summary stats row mobile */
+            #disruptionReadinessContainer > div:last-child {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            #disruptionReadinessContainer > div:last-child > div {
+                border-left: none !important;
+                padding-left: 0 !important;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-top: 12px;
+            }
+
+            #disruptionReadinessContainer > div:last-child > div:first-child {
+                border-top: none;
+                padding-top: 0;
+            }
+
+            /* Variance toggle buttons mobile */
+            .variance-toggle {
+                padding: 6px 10px !important;
+                font-size: 0.75em !important;
+            }
+
+            /* Top count buttons mobile */
+            .top-count-btn {
+                padding: 5px 10px !important;
+                font-size: 0.75em !important;
+            }
+
+            /* Comparison view header mobile */
+            #comparison .card-title {
+                font-size: 0.9rem;
+            }
+
+            /* Variance chart smaller height on mobile */
+            #variance .chart-container {
+                height: 350px !important;
+            }
+
+            /* Model Comparison pagination */
+            #comparison .dashboard-grid > .card.full-width > div:first-child {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            h1 {
+                font-size: 1.1rem;
+            }
+
+            .subtitle {
+                font-size: 0.75rem;
+            }
+
+            .model-legend {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .legend-item {
+                font-size: 0.7rem;
+            }
+
+            .tab {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-value {
+                font-size: 1rem;
+            }
+
+            .chart-container {
+                height: 200px;
+            }
+
+            th, td {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+            }
+
+            /* Card padding reduced on small screens */
+            .card {
+                padding: 12px;
+            }
+
+            /* Smaller sort buttons on extra small */
+            .artifact-sort-btn {
+                padding: 5px 6px !important;
+                font-size: 0.65em !important;
+            }
+
+            /* Filter dropdowns */
+            .filter-group {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+
+            .filter-group > div {
+                width: 100%;
+            }
+
+            .filter-group select {
+                width: 100%;
+            }
+
+            /* Variance chart even smaller */
+            #variance .chart-container {
+                height: 280px !important;
+            }
+
+            /* Top count buttons */
+            .top-count-btn {
+                padding: 4px 8px !important;
+                font-size: 0.7em !important;
+            }
+
+            /* Variance toggles */
+            .variance-toggle {
+                padding: 5px 8px !important;
+                font-size: 0.7em !important;
             }
         }
     </style>
@@ -590,41 +902,48 @@
         <div id="artifact" class="view hidden">
             <div class="card" style="margin-bottom: 20px;">
                 <!-- Sort and Filter Controls -->
-                <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 15px; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Sort by:</span>
-                        <div style="display: flex; gap: 4px;">
+                <div class="artifact-controls" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 15px; align-items: center;">
+                    <!-- Sort buttons row -->
+                    <div class="sort-group" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Sort:</span>
+                        <div style="display: flex; gap: 4px; flex-wrap: wrap;">
                             <button class="artifact-sort-btn active" data-sort="alpha" onclick="sortArtifacts('alpha')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: #3d3d5c; color: #fff; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">A-Z</button>
-                            <button class="artifact-sort-btn" data-sort="value" onclick="sortArtifacts('value')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">Value ↓</button>
-                            <button class="artifact-sort-btn" data-sort="market" onclick="sortArtifacts('market')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">Market ↓</button>
-                            <button class="artifact-sort-btn" data-sort="consensus" onclick="sortArtifacts('consensus')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">Consensus ↓</button>
+                            <button class="artifact-sort-btn" data-sort="value" onclick="sortArtifacts('value')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">Value</button>
+                            <button class="artifact-sort-btn" data-sort="market" onclick="sortArtifacts('market')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">Market</button>
+                            <button class="artifact-sort-btn" data-sort="consensus" onclick="sortArtifacts('consensus')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; cursor: pointer; transition: all 0.2s;">Consensus</button>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Industry:</span>
-                        <select id="industryFilter" onchange="filterByIndustry(this.value)" style="padding: 5px 10px; border-radius: 4px; border: 1px solid #3d3d5c; background: #1a1a2e; color: #a0a0a0; font-size: 0.8em; cursor: pointer;">
-                            <option value="all">All Industries</option>
-                        </select>
+                    <!-- Filter dropdowns row -->
+                    <div class="filter-group" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Industry:</span>
+                            <select id="industryFilter" onchange="filterByIndustry(this.value)" style="padding: 6px 10px; border-radius: 4px; border: 1px solid #3d3d5c; background: #1a1a2e; color: #a0a0a0; font-size: 0.8em; cursor: pointer; min-width: 120px;">
+                                <option value="all">All Industries</option>
+                            </select>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Confidence:</span>
+                            <select id="confidenceFilter" onchange="filterByConfidence(this.value)" style="padding: 6px 10px; border-radius: 4px; border: 1px solid #3d3d5c; background: #1a1a2e; color: #a0a0a0; font-size: 0.8em; cursor: pointer; min-width: 100px;">
+                                <option value="all">All</option>
+                                <option value="high">High (≥80%)</option>
+                                <option value="medium">Medium (65-79%)</option>
+                                <option value="lower">Lower (&lt;65%)</option>
+                            </select>
+                        </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Confidence:</span>
-                        <select id="confidenceFilter" onchange="filterByConfidence(this.value)" style="padding: 5px 10px; border-radius: 4px; border: 1px solid #3d3d5c; background: #1a1a2e; color: #a0a0a0; font-size: 0.8em; cursor: pointer;">
-                            <option value="all">All Confidence</option>
-                            <option value="high">High (≥80%)</option>
-                            <option value="medium">Medium (65-79%)</option>
-                            <option value="lower">Lower (&lt;65%)</option>
-                        </select>
+                    <!-- Count and Reset -->
+                    <div class="control-actions" style="display: flex; align-items: center; gap: 10px; margin-left: auto;">
+                        <span id="artifactCountLabel" style="color: var(--text-secondary); font-size: 0.8em;">Showing all artifacts</span>
+                        <button onclick="resetArtifactView()" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; font-size: 0.8em; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#E07A5F'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#E07A5F';">Reset</button>
                     </div>
-                    <span id="artifactCountLabel" style="color: var(--text-secondary); font-size: 0.8em; margin-left: auto;">Showing all artifacts</span>
-                    <button onclick="resetArtifactView()" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; font-size: 0.8em; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#E07A5F'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#E07A5F';">Reset</button>
                 </div>
                 <!-- Artifact Selector -->
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <select id="artifactSelect" class="artifact-select" style="flex: 1;">
+                <div class="artifact-selector" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <select id="artifactSelect" class="artifact-select" style="flex: 1; min-width: 200px;">
                         <option value="">Select an artifact to analyze...</option>
                     </select>
-                    <button id="clearArtifactBtn" onclick="clearArtifactSelection()" style="padding: 10px 20px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: all 0.2s; display: none;" onmouseover="this.style.borderColor='#E07A5F'; this.style.color='#E07A5F';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">
-                        ← Back to Overview
+                    <button id="clearArtifactBtn" onclick="clearArtifactSelection()" style="padding: 10px 16px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.85em; transition: all 0.2s; display: none; white-space: nowrap;" onmouseover="this.style.borderColor='#E07A5F'; this.style.color='#E07A5F';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">
+                        ← Back
                     </button>
                 </div>
             </div>
