@@ -639,7 +639,8 @@ async function startHttp(port: number, allowedOrigins?: string[], allowedHosts?:
     if (!allowedOrigins || (origin && allowedOrigins.includes(origin))) {
       res.setHeader('Access-Control-Allow-Origin', origin || '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, mcp-session-id');
+      res.setHeader('Access-Control-Expose-Headers', 'mcp-session-id');
       res.setHeader('Access-Control-Allow-Credentials', 'true');
     }
 
