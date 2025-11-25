@@ -1,0 +1,201 @@
+{
+  "artifacts": [
+    {
+      "id": "clinical_trial_phase3",
+      "name": "Phase III Clinical Trial",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "claude_sonnet45": {"min": 15000000, "max": 30000000, "mid": 22500000},
+        "gemini": {"min": 50000000, "max": 100000000, "mid": 75000000},
+        "opus45": {"min": 19000000, "max": 20000000, "mid": 19500000},
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null
+      },
+      "perplexity_rank": 1,
+      "model_count": 3,
+      "variance_ratio": 3.85
+    },
+    {
+      "id": "nda_bla_application",
+      "name": "New Drug Application (NDA)",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "claude_sonnet45": {"min": 3000000, "max": 8000000, "mid": 5500000},
+        "gemini": {"min": 100000000, "max": 500000000, "mid": 300000000},
+        "opus45": null,
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null
+      },
+      "perplexity_rank": 4,
+      "model_count": 2,
+      "variance_ratio": 54.55
+    },
+    {
+      "id": "ma_advisory_large",
+      "name": "Large-Cap M&A Advisory",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_sonnet45": {"min": 2000000, "max": 10000000, "mid": 6000000},
+        "gemini": {"min": 4000000, "max": 10000000, "mid": 7000000},
+        "opus45": {"min": 2500000, "max": 7500000, "mid": 5000000},
+        "chatgpt51": null,
+        "chatgpt5": {"min": 500000, "max": 500000, "mid": 500000},
+        "o3pro": {"min": 2200000, "max": 2200000, "mid": 2200000}
+      },
+      "perplexity_rank": 6,
+      "model_count": 5,
+      "variance_ratio": 1.4
+    },
+    {
+      "id": "erp_implementation",
+      "name": "ERP System Implementation",
+      "sector": "Technology",
+      "valuations": {
+        "claude_sonnet45": {"min": 500000, "max": 2000000, "mid": 1250000},
+        "gemini": {"min": 3000000, "max": 10000000, "mid": 6500000},
+        "opus45": {"min": 1000000, "max": 5000000, "mid": 3000000},
+        "chatgpt51": {"min": 5000000, "max": 20000000, "mid": 12500000},
+        "chatgpt5": {"min": 900000, "max": 900000, "mid": 900000},
+        "o3pro": {"min": 1200000, "max": 1200000, "mid": 1200000}
+      },
+      "perplexity_rank": 57,
+      "model_count": 6,
+      "variance_ratio": 22.22
+    },
+    {
+      "id": "digital_transformation",
+      "name": "Digital Transformation Strategy",
+      "sector": "Management Consulting",
+      "valuations": {
+        "claude_sonnet45": {"min": 1000000, "max": 3000000, "mid": 2000000},
+        "gemini": {"min": 2500000, "max": 7500000, "mid": 5000000},
+        "opus45": {"min": 1500000, "max": 5000000, "mid": 3250000},
+        "chatgpt51": null,
+        "chatgpt5": {"min": 450000, "max": 450000, "mid": 450000},
+        "o3pro": {"min": 1650000, "max": 1650000, "mid": 1650000}
+      },
+      "perplexity_rank": 39,
+      "model_count": 5,
+      "variance_ratio": 11.11
+    },
+    {
+      "id": "bankruptcy_restructuring",
+      "name": "Chapter 11 Restructuring Plan",
+      "sector": "Legal/Financial",
+      "valuations": {
+        "claude_sonnet45": {"min": 1000000, "max": 5000000, "mid": 3000000},
+        "gemini": {"min": 20000000, "max": 75000000, "mid": 47500000},
+        "opus45": {"min": 5000000, "max": 20000000, "mid": 12500000},
+        "chatgpt51": {"min": 5000000, "max": 10000000, "mid": 7500000},
+        "chatgpt5": null,
+        "o3pro": null
+      },
+      "perplexity_rank": 16,
+      "model_count": 4,
+      "variance_ratio": 15.83
+    },
+    {
+      "id": "ipo_s1_registration",
+      "name": "IPO S-1 Registration Statement",
+      "sector": "Financial/Legal",
+      "valuations": {
+        "claude_sonnet45": {"min": 700000, "max": 2000000, "mid": 1350000},
+        "gemini": {"min": 5000000, "max": 15000000, "mid": 10000000},
+        "opus45": {"min": 2000000, "max": 8000000, "mid": 5000000},
+        "chatgpt51": {"min": 5000000, "max": 20000000, "mid": 12500000},
+        "chatgpt5": null,
+        "o3pro": null
+      },
+      "perplexity_rank": 27,
+      "model_count": 4,
+      "variance_ratio": 9.26
+    },
+    {
+      "id": "cloud_migration",
+      "name": "Enterprise Cloud Migration",
+      "sector": "Technology",
+      "valuations": {
+        "claude_sonnet45": {"min": 400000, "max": 1500000, "mid": 950000},
+        "gemini": {"min": 1000000, "max": 4000000, "mid": 2500000},
+        "opus45": {"min": 500000, "max": 2000000, "mid": 1250000},
+        "chatgpt51": null,
+        "chatgpt5": {"min": 600000, "max": 600000, "mid": 600000},
+        "o3pro": {"min": 950000, "max": 950000, "mid": 950000}
+      },
+      "perplexity_rank": 56,
+      "model_count": 5,
+      "variance_ratio": 4.17
+    },
+    {
+      "id": "cybersecurity_assessment",
+      "name": "Enterprise Cybersecurity Assessment",
+      "sector": "Technology",
+      "valuations": {
+        "claude_sonnet45": {"min": 100000, "max": 500000, "mid": 300000},
+        "gemini": {"min": 750000, "max": 2000000, "mid": 1375000},
+        "opus45": {"min": 200000, "max": 800000, "mid": 500000},
+        "chatgpt51": null,
+        "chatgpt5": {"min": 400000, "max": 400000, "mid": 400000},
+        "o3pro": {"min": 800000, "max": 800000, "mid": 800000}
+      },
+      "perplexity_rank": 59,
+      "model_count": 5,
+      "variance_ratio": 4.58
+    },
+    {
+      "id": "medical_device_510k",
+      "name": "Medical Device 510(k) Submission",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "claude_sonnet45": {"min": 200000, "max": 400000, "mid": 300000},
+        "gemini": {"min": 150000, "max": 450000, "mid": 300000},
+        "opus45": {"min": 200000, "max": 400000, "mid": 300000},
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null
+      },
+      "perplexity_rank": 5,
+      "model_count": 3,
+      "variance_ratio": 1.0
+    },
+    {
+      "id": "infrastructure_engineering",
+      "name": "Major Infrastructure Engineering Design",
+      "sector": "Engineering",
+      "valuations": {
+        "claude_sonnet45": null,
+        "gemini": {"min": 50000000, "max": 150000000, "mid": 100000000},
+        "opus45": {"min": 300000000, "max": 500000000, "mid": 400000000},
+        "chatgpt51": {"min": 5000000, "max": 15000000, "mid": 10000000},
+        "chatgpt5": {"min": 750000, "max": 750000, "mid": 750000},
+        "o3pro": null
+      },
+      "perplexity_rank": 67,
+      "model_count": 4,
+      "variance_ratio": 533.33
+    },
+    {
+      "id": "due_diligence_financial",
+      "name": "Financial Due Diligence Report",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_sonnet45": {"min": 500000, "max": 1500000, "mid": 1000000},
+        "gemini": {"min": 500000, "max": 2000000, "mid": 1250000},
+        "opus45": {"min": 400000, "max": 1200000, "mid": 800000},
+        "chatgpt51": null,
+        "chatgpt5": {"min": 300000, "max": 300000, "mid": 300000},
+        "o3pro": {"min": 800000, "max": 800000, "mid": 800000}
+      },
+      "perplexity_rank": 11,
+      "model_count": 5,
+      "variance_ratio": 1.56
+    }
+  ],
+  "metadata": {
+    "generated": "2025-11-25",
+    "total_artifacts": 12,
+    "models": ["claude_sonnet45", "gemini", "opus45", "chatgpt51", "chatgpt5", "o3pro", "perplexity"]
+  }
+}

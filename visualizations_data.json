@@ -1,0 +1,360 @@
+{
+  "top_10_comparison": {
+    "gemini": [
+      {
+        "rank": 1,
+        "artifact": "NDA Submission",
+        "min_value": 100000000,
+        "max_value": 500000000,
+        "midpoint": 300000000,
+        "sector": "Medical/Pharma"
+      },
+      {
+        "rank": 2,
+        "artifact": "Infrastructure Engineering Design",
+        "min_value": 50000000,
+        "max_value": 150000000,
+        "midpoint": 100000000,
+        "sector": "Engineering"
+      },
+      {
+        "rank": 3,
+        "artifact": "Phase III Clinical Trial Report",
+        "min_value": 50000000,
+        "max_value": 100000000,
+        "midpoint": 75000000,
+        "sector": "Medical/Pharma"
+      },
+      {
+        "rank": 4,
+        "artifact": "Chapter 11 Restructuring Plan",
+        "min_value": 20000000,
+        "max_value": 75000000,
+        "midpoint": 47500000,
+        "sector": "Legal/Financial"
+      },
+      {
+        "rank": 5,
+        "artifact": "IPO S-1 Registration",
+        "min_value": 5000000,
+        "max_value": 15000000,
+        "midpoint": 10000000,
+        "sector": "Financial/Legal"
+      },
+      {
+        "rank": 6,
+        "artifact": "Urban Master Plan",
+        "min_value": 5000000,
+        "max_value": 10000000,
+        "midpoint": 7500000,
+        "sector": "Architecture/Eng"
+      },
+      {
+        "rank": 7,
+        "artifact": "M&A Definitive Agreement",
+        "min_value": 4000000,
+        "max_value": 10000000,
+        "midpoint": 7000000,
+        "sector": "Legal"
+      },
+      {
+        "rank": 8,
+        "artifact": "Enterprise Software Architecture",
+        "min_value": 3000000,
+        "max_value": 10000000,
+        "midpoint": 6500000,
+        "sector": "Technology"
+      },
+      {
+        "rank": 9,
+        "artifact": "Digital Transformation Roadmap",
+        "min_value": 2500000,
+        "max_value": 7500000,
+        "midpoint": 5000000,
+        "sector": "Consulting"
+      },
+      {
+        "rank": 10,
+        "artifact": "Super Bowl Commercial",
+        "min_value": 2000000,
+        "max_value": 7000000,
+        "midpoint": 4500000,
+        "sector": "Creative/Marketing"
+      }
+    ],
+    "claude": [
+      {
+        "rank": 1,
+        "artifact": "Phase 3 Clinical Trial",
+        "min_value": 15000000,
+        "max_value": 30000000,
+        "midpoint": 22500000,
+        "sector": "Pharmaceutical"
+      },
+      {
+        "rank": 2,
+        "artifact": "NDA/BLA Application",
+        "min_value": 3000000,
+        "max_value": 8000000,
+        "midpoint": 5500000,
+        "sector": "Pharmaceutical"
+      },
+      {
+        "rank": 3,
+        "artifact": "M&A Advisory Package",
+        "min_value": 2000000,
+        "max_value": 10000000,
+        "midpoint": 6000000,
+        "sector": "Investment Banking"
+      },
+      {
+        "rank": 4,
+        "artifact": "Corporate Due Diligence",
+        "min_value": 500000,
+        "max_value": 1500000,
+        "midpoint": 1000000,
+        "sector": "Financial Advisory"
+      },
+      {
+        "rank": 5,
+        "artifact": "IPO Legal Services",
+        "min_value": 700000,
+        "max_value": 2000000,
+        "midpoint": 1350000,
+        "sector": "Securities Law"
+      },
+      {
+        "rank": 6,
+        "artifact": "Fairness Opinion",
+        "min_value": 500000,
+        "max_value": 7500000,
+        "midpoint": 4000000,
+        "sector": "Financial Advisory"
+      },
+      {
+        "rank": 7,
+        "artifact": "Phase 2 Clinical Trial",
+        "min_value": 8000000,
+        "max_value": 15000000,
+        "midpoint": 11500000,
+        "sector": "Pharmaceutical"
+      },
+      {
+        "rank": 8,
+        "artifact": "Environmental Impact Statement",
+        "min_value": 700000,
+        "max_value": 2000000,
+        "midpoint": 1350000,
+        "sector": "Environmental"
+      },
+      {
+        "rank": 9,
+        "artifact": "Bankruptcy Restructuring",
+        "min_value": 1000000,
+        "max_value": 5000000,
+        "midpoint": 3000000,
+        "sector": "Restructuring"
+      },
+      {
+        "rank": 10,
+        "artifact": "Digital Transformation",
+        "min_value": 1000000,
+        "max_value": 3000000,
+        "midpoint": 2000000,
+        "sector": "Consulting"
+      }
+    ]
+  },
+  "sector_distribution": {
+    "gemini_top_50": {
+      "Medical/Pharma": 12,
+      "Legal": 15,
+      "Financial Services": 10,
+      "Consulting": 10,
+      "Technology": 12,
+      "Engineering": 8,
+      "Architecture": 5,
+      "Creative/Marketing": 8,
+      "Real Estate": 5,
+      "Environmental": 7,
+      "Scientific R&D": 8
+    },
+    "claude_top_50": {
+      "Medical/Pharma": 8,
+      "Legal": 12,
+      "Financial Services": 14,
+      "Consulting": 11,
+      "Technology": 15,
+      "Engineering": 4,
+      "Architecture": 6,
+      "Creative/Marketing": 10,
+      "Real Estate": 4,
+      "Environmental": 6,
+      "Scientific R&D": 5
+    }
+  },
+  "value_tier_distribution_claude": {
+    "tier_1_ultra_high": {
+      "range": ">$5M",
+      "count": 3,
+      "examples": ["Phase 3 Clinical Trial", "NDA/BLA", "M&A Advisory"]
+    },
+    "tier_2_very_high": {
+      "range": "$1M-$5M",
+      "count": 7,
+      "examples": ["Corporate Due Diligence", "IPO Legal", "Fairness Opinion"]
+    },
+    "tier_3_high": {
+      "range": "$500K-$1M",
+      "count": 10,
+      "examples": ["Custom ERP", "Cloud Migration", "Patent Litigation"]
+    },
+    "tier_4_medium_high": {
+      "range": "$250K-$500K",
+      "count": 10,
+      "examples": ["SOC 2 Audit", "Transfer Pricing", "Custom Software"]
+    },
+    "tier_5_medium": {
+      "range": "$100K-$250K",
+      "count": 10,
+      "examples": ["Tax Opinion", "Executive Comp Study", "QoE Report"]
+    },
+    "tier_6_medium_low": {
+      "range": "$50K-$100K",
+      "count": 10,
+      "examples": ["Patent Application", "Financial Valuation", "Change Management"]
+    },
+    "tier_7_lower_medium": {
+      "range": "$25K-$50K",
+      "count": 10,
+      "examples": ["ISO Certification", "Real Estate Appraisal", "Privacy Impact Assessment"]
+    },
+    "tier_8_low_medium": {
+      "range": "$10K-$25K",
+      "count": 10,
+      "examples": ["Website Development", "UX Research", "Environmental Site Assessment"]
+    },
+    "tier_9_low": {
+      "range": "$5K-$10K",
+      "count": 10,
+      "examples": ["SEO Strategy", "Financial Statements", "Policy Manual"]
+    },
+    "tier_10_entry": {
+      "range": "$2K-$5K",
+      "count": 20,
+      "examples": ["Logo Design", "Tax Return", "Employment Agreement"]
+    }
+  },
+  "covid_impact_2020": {
+    "increased_demand": [
+      {
+        "artifact_type": "Clinical Trial Protocols (vaccines)",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "explosive"
+      },
+      {
+        "artifact_type": "Bankruptcy/Restructuring Plans",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "high"
+      },
+      {
+        "artifact_type": "Digital Transformation Roadmaps",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "explosive"
+      },
+      {
+        "artifact_type": "Cloud Migration Services",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "high"
+      },
+      {
+        "artifact_type": "Cybersecurity Assessments",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "high"
+      },
+      {
+        "artifact_type": "Business Continuity Plans",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "medium"
+      }
+    ],
+    "decreased_demand": [
+      {
+        "artifact_type": "Commercial Real Estate Services",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "severe"
+      },
+      {
+        "artifact_type": "M&A (Q2 freeze)",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "high",
+        "note": "Rebounded Q3/Q4"
+      },
+      {
+        "artifact_type": "Trade Show/Event Production",
+        "gemini_noted": true,
+        "claude_noted": true,
+        "magnitude": "severe"
+      },
+      {
+        "artifact_type": "Travel/Hospitality Consulting",
+        "gemini_noted": true,
+        "claude_noted": false,
+        "magnitude": "severe"
+      }
+    ]
+  },
+  "methodology_comparison_metrics": {
+    "research_time": {
+      "claude_websearch": "~30 minutes",
+      "gemini_deep_research": "unknown (delegated)"
+    },
+    "number_of_searches": {
+      "claude_websearch": 15,
+      "gemini_deep_research": "unknown"
+    },
+    "detail_level": {
+      "claude_top_10": "full profiles",
+      "claude_11_100": "full profiles",
+      "gemini_top_10": "detailed profiles",
+      "gemini_11_100": "summary table only"
+    },
+    "sources_cited": {
+      "claude": "embedded in text",
+      "gemini": "16 source bibliography"
+    },
+    "2020_data_specificity": {
+      "claude": "mixed (often 2023-2025 sources)",
+      "gemini": "mixed (used data scarcity protocol)"
+    }
+  },
+  "overlap_analysis": {
+    "common_artifacts_in_top_20": [
+      "Clinical Trials (various phases)",
+      "NDA/Pharmaceutical submissions",
+      "M&A services",
+      "IPO services",
+      "Restructuring/Bankruptcy plans",
+      "Digital transformation",
+      "Environmental Impact Statements"
+    ],
+    "gemini_unique_top_20": [
+      "Major Infrastructure Engineering Design",
+      "Urban Master Plan",
+      "Super Bowl Commercial (as top 10)"
+    ],
+    "claude_unique_top_20": [
+      "Corporate Due Diligence (standalone)",
+      "Fairness Opinion (standalone)",
+      "Phase 2 Clinical Trial (higher placement)"
+    ]
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "artifact_mapping": {
+    "clinical_trial_phase3": {
+      "canonical_name": "Phase III Clinical Trial Protocol & Execution",
+      "sector": "Medical/Pharma",
+      "aliases": {
+        "claude_sonnet45": "Phase 3 Clinical Trial Protocol & Execution",
+        "gemini": "Phase III Clinical Trial Final Report & Data Pkg",
+        "claude_opus45": "Phase III Clinical Trial Protocol",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Phase III Clinical Trial Protocol & Execution Plan"
+      }
+    },
+    "clinical_trial_phase2": {
+      "canonical_name": "Phase II Clinical Trial Protocol & Execution",
+      "sector": "Medical/Pharma",
+      "aliases": {
+        "claude_sonnet45": "Phase 2 Clinical Trial Protocol & Execution",
+        "gemini": "Phase II Clinical Trial Protocol",
+        "claude_opus45": "Phase II Clinical Trial Protocol",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Phase II Clinical Trial Protocol & Execution Plan"
+      }
+    },
+    "clinical_trial_phase1": {
+      "canonical_name": "Phase I Clinical Trial Protocol & Execution",
+      "sector": "Medical/Pharma",
+      "aliases": {
+        "claude_sonnet45": "Phase 1 Clinical Trial Protocol & Execution",
+        "gemini": "Phase I Clinical Trial Protocol",
+        "claude_opus45": "Phase I Clinical Trial Protocol",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Phase I Clinical Trial Protocol & Execution Plan"
+      }
+    },
+    "nda_bla_application": {
+      "canonical_name": "New Drug Application (NDA) / BLA Submission",
+      "sector": "Medical/Pharma",
+      "aliases": {
+        "claude_sonnet45": "New Drug Application (NDA) / Biologics License Application (BLA)",
+        "gemini": "New Drug Application (NDA) Submission",
+        "claude_opus45": "New Drug Application (NDA)",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Drug Development Regulatory Strategy & Submission Plan (IND/NDA)"
+      }
+    },
+    "ma_advisory_large": {
+      "canonical_name": "Large-Cap M&A Advisory Package",
+      "sector": "Financial Services",
+      "aliases": {
+        "claude_sonnet45": "Large-Cap M&A Advisory Package (>$500M deal)",
+        "gemini": "Large-Cap M&A Definitive Agreement",
+        "claude_opus45": "M&A Advisory Mandate",
+        "chatgpt51": null,
+        "chatgpt5": "Merger & Acquisition Advisory",
+        "o3pro": "M&A advisory services",
+        "perplexity": "Large-Cap Sell-Side M&A Advisory Mandate (1B+ deals)"
+      }
+    },
+    "due_diligence_financial": {
+      "canonical_name": "Financial Due Diligence Report",
+      "sector": "Financial Services",
+      "aliases": {
+        "claude_sonnet45": "Corporate Due Diligence Report (Fortune 500 M&A)",
+        "gemini": "Buy-Side Due Diligence Report (Large Cap)",
+        "claude_opus45": "Financial Due Diligence",
+        "chatgpt51": null,
+        "chatgpt5": "Financial Due Diligence",
+        "o3pro": "Financial due-diligence report",
+        "perplexity": "Financial Due Diligence Report"
+      }
+    },
+    "ipo_s1_registration": {
+      "canonical_name": "IPO S-1 Registration Statement",
+      "sector": "Financial/Legal",
+      "aliases": {
+        "claude_sonnet45": "IPO Legal Services Package (S-1 Filing & Securities Work)",
+        "gemini": "Large-Cap IPO S-1 Registration Statement",
+        "claude_opus45": "IPO Registration Statement",
+        "chatgpt51": "IPO Prospectus & S-1 Filing",
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "IPO/Equity Offering Prospectus & Registration Statement (S-1)"
+      }
+    },
+    "fairness_opinion": {
+      "canonical_name": "Fairness Opinion (M&A)",
+      "sector": "Financial Services",
+      "aliases": {
+        "claude_sonnet45": "Fairness Opinion (Major M&A)",
+        "gemini": "Fairness Opinion (Large M&A)",
+        "claude_opus45": "Fairness Opinion",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Fairness Opinion (Mid-Market M&A)"
+      }
+    },
+    "environmental_impact_statement": {
+      "canonical_name": "Environmental Impact Statement (EIS)",
+      "sector": "Environmental/Engineering",
+      "aliases": {
+        "claude_sonnet45": "Environmental Impact Statement (Major Infrastructure)",
+        "gemini": "Environmental Impact Statement (EIS) - Major",
+        "claude_opus45": "Environmental Impact Statement",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Comprehensive Environmental Impact Statement (EIS)"
+      }
+    },
+    "bankruptcy_restructuring": {
+      "canonical_name": "Chapter 11 Restructuring Plan",
+      "sector": "Legal/Financial",
+      "aliases": {
+        "claude_sonnet45": "Bankruptcy Restructuring Plan (Large Corporate)",
+        "gemini": "Chapter 11 Corporate Restructuring Plan",
+        "claude_opus45": "Chapter 11 Restructuring Plan",
+        "chatgpt51": "Chapter 11 Plan & Disclosure Statement",
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Restructuring/Chapter 11 Plan & Disclosure Statement"
+      }
+    },
+    "digital_transformation": {
+      "canonical_name": "Enterprise Digital Transformation Strategy",
+      "sector": "Management Consulting",
+      "aliases": {
+        "claude_sonnet45": "Enterprise Digital Transformation Strategy",
+        "gemini": "Large-Scale Digital Transformation Roadmap",
+        "claude_opus45": "Digital Transformation Roadmap",
+        "chatgpt51": null,
+        "chatgpt5": "Digital Transformation Strategy",
+        "o3pro": "Digital transformation strategy",
+        "perplexity": "Enterprise Digital Transformation Program Blueprint"
+      }
+    },
+    "erp_implementation": {
+      "canonical_name": "ERP System Implementation",
+      "sector": "Technology",
+      "aliases": {
+        "claude_sonnet45": "Custom ERP System Development & Implementation",
+        "gemini": "Enterprise-Scale Custom Software Architecture",
+        "claude_opus45": "ERP Implementation",
+        "chatgpt51": "Enterprise ERP Implementation",
+        "chatgpt5": "ERP System Integration",
+        "o3pro": "ERP system implementation plan",
+        "perplexity": "Mid-Size Enterprise Software Implementation (ERP/CRM/HCM)"
+      }
+    },
+    "cloud_migration": {
+      "canonical_name": "Enterprise Cloud Migration",
+      "sector": "Technology",
+      "aliases": {
+        "claude_sonnet45": "Data Center Migration to Cloud",
+        "gemini": "Enterprise Cloud Migration Strategy & Plan",
+        "claude_opus45": "Cloud Migration Strategy",
+        "chatgpt51": null,
+        "chatgpt5": "Cloud Migration Project",
+        "o3pro": "Cloud-migration strategy",
+        "perplexity": "Enterprise Cloud Migration Strategy & Implementation Plan"
+      }
+    },
+    "cybersecurity_assessment": {
+      "canonical_name": "Enterprise Cybersecurity Assessment",
+      "sector": "Technology",
+      "aliases": {
+        "claude_sonnet45": "Comprehensive Cybersecurity Assessment (Enterprise)",
+        "gemini": "Enterprise Cybersecurity Remediation Plan",
+        "claude_opus45": "Cybersecurity Assessment",
+        "chatgpt51": null,
+        "chatgpt5": "Cybersecurity Assessment & Implementation",
+        "o3pro": "Cyber-security risk assessment",
+        "perplexity": "Large-Scale Cybersecurity Program Assessment & Roadmap"
+      }
+    },
+    "medical_device_510k": {
+      "canonical_name": "Medical Device 510(k) Submission",
+      "sector": "Medical/Pharma",
+      "aliases": {
+        "claude_sonnet45": "Medical Device 510(k) Submission",
+        "gemini": "510(k) Submission (Medical Device)",
+        "claude_opus45": "510(k) Clearance",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": "Medical Device Regulatory Submission Package (510(k), PMA)"
+      }
+    },
+    "supply_chain_optimization": {
+      "canonical_name": "Supply Chain Optimization Study",
+      "sector": "Operations/Consulting",
+      "aliases": {
+        "claude_sonnet45": "Supply Chain Optimization Study",
+        "gemini": "Supply Chain Optimization Study",
+        "claude_opus45": "Supply Chain Optimization",
+        "chatgpt51": null,
+        "chatgpt5": "Supply Chain Optimization",
+        "o3pro": "Supply-chain optimization study",
+        "perplexity": "Supply Chain Network Optimization & Facility Study"
+      }
+    },
+    "quality_of_earnings": {
+      "canonical_name": "Quality of Earnings Report",
+      "sector": "Financial Services",
+      "aliases": {
+        "claude_sonnet45": "Quality of Earnings Report (M&A)",
+        "gemini": "Sell-Side Due Diligence (QoE) Report",
+        "claude_opus45": "Quality of Earnings Report",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": null
+      }
+    },
+    "soc2_audit": {
+      "canonical_name": "SOC 2 Type 2 Audit Report",
+      "sector": "Technology/Compliance",
+      "aliases": {
+        "claude_sonnet45": "SOC 2 Type 2 Audit Report (Large Enterprise)",
+        "gemini": "SOC 2 Type 2 Audit",
+        "claude_opus45": "SOC 2 Audit",
+        "chatgpt51": null,
+        "chatgpt5": null,
+        "o3pro": null,
+        "perplexity": null
+      }
+    },
+    "strategic_planning": {
+      "canonical_name": "Corporate Strategy Development",
+      "sector": "Management Consulting",
+      "aliases": {
+        "claude_sonnet45": null,
+        "gemini": null,
+        "claude_opus45": "Corporate Strategy",
+        "chatgpt51": null,
+        "chatgpt5": "Strategic Planning Engagement",
+        "o3pro": "Corporate strategy development",
+        "perplexity": "Corporate Strategy \"North Star\" & Portfolio Review"
+      }
+    },
+    "infrastructure_engineering": {
+      "canonical_name": "Major Infrastructure Engineering Design",
+      "sector": "Engineering",
+      "aliases": {
+        "claude_sonnet45": null,
+        "gemini": "Major Infrastructure Detailed Engineering Design",
+        "claude_opus45": "Nuclear Plant Engineering Package",
+        "chatgpt51": "Highway/Bridge Design Package",
+        "chatgpt5": "IT Infrastructure Modernization",
+        "o3pro": null,
+        "perplexity": "Major Infrastructure Engineering Design Package"
+      }
+    },
+    "annual_audit": {
+      "canonical_name": "Annual Financial Audit (Public Company)",
+      "sector": "Financial Services",
+      "aliases": {
+        "claude_sonnet45": "Financial Audit (Public Company)",
+        "gemini": "Full Audit Report (Large Public Co.)",
+        "claude_opus45": "Annual Audit Report",
+        "chatgpt51": "Annual Audit Report",
+        "chatgpt5": null,
+        "o3pro": "Internal-audit report",
+        "perplexity": null
+      }
+    }
+  },
+  "metadata": {
+    "created": "2025-11-25",
+    "purpose": "Normalize artifact names across 7 AI models for comparison",
+    "models": ["claude_sonnet45", "gemini", "claude_opus45", "chatgpt51", "chatgpt5", "o3pro", "perplexity"],
+    "total_mapped_artifacts": 21
+  }
+}

@@ -1,0 +1,98 @@
+Rank,Artifact_Name,Gemini_Min,Gemini_Max,Gemini_Midpoint,Claude_Min,Claude_Max,Claude_Midpoint,Sector,In_Both_Reports
+1,New Drug Application (NDA),100000000,500000000,300000000,3000000,8000000,5500000,Medical/Pharma,Yes
+2,Major Infrastructure Engineering Design,50000000,150000000,100000000,,,,,Engineering,No (Gemini only)
+3,Phase III Clinical Trial,50000000,100000000,75000000,15000000,30000000,22500000,Medical/Pharma,Yes
+4,Chapter 11 Restructuring Plan,20000000,75000000,47500000,1000000,5000000,3000000,Legal/Financial,Yes
+5,IPO S-1 Registration,5000000,15000000,10000000,700000,2000000,1350000,Financial/Legal,Yes
+6,Urban Master Plan,5000000,10000000,7500000,,,,,Architecture/Eng,No (Gemini only)
+7,M&A Definitive Agreement,4000000,10000000,7000000,2000000,10000000,6000000,Legal,Yes
+8,Enterprise Software Architecture,3000000,10000000,6500000,200000,500000,350000,Technology,Yes
+9,Digital Transformation Roadmap,2500000,7500000,5000000,1000000,3000000,2000000,Consulting,Yes
+10,Super Bowl Commercial,2000000,7000000,4500000,50000,200000,125000,Creative/Marketing,Yes
+11,Phase II Clinical Trial,2000000,6000000,4000000,8000000,15000000,11500000,Medical/Pharma,Yes
+12,Environmental Impact Statement,2000000,5000000,3500000,700000,2000000,1350000,Environmental,Yes
+13,Post-Merger Integration Plan,2000000,5000000,3500000,,,,,Consulting,No (Gemini only)
+14,Major Federal Grant Application,1500000,5000000,3250000,50000,150000,100000,Scientific R&D,Yes
+15,Major Litigation Expert Report,1000000,5000000,3000000,,,,,Legal,No (Gemini only)
+16,Enterprise Cloud Migration,1000000,4000000,2500000,400000,1500000,950000,Technology,Yes
+17,Fairness Opinion,1000000,3000000,2000000,500000,7500000,4000000,Financial Services,Yes
+18,Internal Investigation (FCPA),1000000,3000000,2000000,,,,,Legal,No (Gemini only)
+19,Global Rebranding,1000000,2500000,1750000,250000,500000,375000,Creative/Marketing,Yes
+20,HEOR Model,750000,2500000,1625000,,,,,Medical/Pharma,No (Gemini only)
+21,Cybersecurity Remediation Plan,750000,2000000,1375000,100000,500000,300000,Technology,Yes
+22,Supply Chain Optimization,750000,2000000,1375000,200000,400000,300000,Consulting,Yes
+23,Medical Device PMA,700000,2000000,1350000,,,,,Medical/Pharma,No (Gemini only)
+24,Buy-Side Due Diligence (Large),500000,2000000,1250000,500000,1500000,1000000,Financial Services,Yes
+25,Corporate Due Diligence,500000,1500000,1000000,500000,1500000,1000000,Financial Advisory,Yes (Claude higher rank)
+26,Architectural Design (Skyscraper),500000,1500000,1000000,,,,,Architecture,No (Gemini only)
+27,AI/ML Model Development,500000,1500000,1000000,50000,200000,125000,Technology,Yes
+28,Corporate Sustainability/ESG Report,400000,1200000,800000,100000,250000,175000,Environmental,Yes
+29,Antitrust Filing (HSR),400000,1000000,700000,,,,,Legal,No (Gemini only)
+30,Quality of Earnings Report,350000,1000000,675000,75000,200000,137500,Financial Services,Yes
+31,Phase I Clinical Trial,300000,800000,550000,1400000,6600000,4000000,Medical/Pharma,Yes
+32,Enterprise Data Governance,300000,750000,525000,,,,,Technology,No (Gemini only)
+33,Change Management Program,300000,700000,500000,100000,250000,175000,Consulting,Yes
+34,Global Ad Campaign,300000,700000,500000,,,,,Creative/Marketing,No (Gemini only)
+35,Renewable Energy Feasibility,300000,650000,475000,,,,,Engineering/Env,No (Gemini only)
+36,IND Application,250000,600000,425000,,,,,Medical/Pharma,No (Gemini only)
+37,Real Estate Feasibility Study,250000,600000,425000,100000,300000,200000,Real Estate,Yes
+38,Audit Report (Public Company),250000,600000,425000,250000,1000000,625000,Financial Services,Yes
+39,Financial Instrument Valuation,250000,550000,400000,50000,150000,100000,Financial Services,Yes
+40,Market Entry Strategy,250000,500000,375000,,,,,Consulting,No (Gemini only)
+41,MEP Engineering Plan,200000,500000,350000,,,,,Engineering,No (Gemini only)
+42,Patent Litigation Opinion,200000,500000,350000,,,,,Legal,No (Gemini only)
+43,Architectural Plans (Mid Commercial),200000,450000,325000,300000,1500000,900000,Architecture,Yes
+44,Medical Device 510(k),150000,450000,300000,200000,400000,300000,Medical/Pharma,Yes
+45,Enterprise Software Selection,150000,400000,275000,,,,,Consulting,No (Gemini only)
+46,Construction Management Plan,150000,400000,275000,200000,500000,350000,Construction,Yes
+47,IT System Integration,150000,350000,250000,,,,,Technology,No (Gemini only)
+48,NIH R01 Grant,150000,350000,250000,50000,150000,100000,Scientific R&D,Yes
+49,EIA (Mid-scale),150000,300000,225000,,,,,Environmental,No (Gemini only)
+50,Geotechnical Engineering Report,100000,300000,200000,,,,,Engineering,No (Gemini only)
+51,SOC 2 Type 2 Audit,30000,60000,45000,100000,150000,125000,Technology,Yes (Claude higher value)
+52,Transfer Pricing Study,,,,,150000,500000,325000,Tax/International,No (Claude only)
+53,Machine Learning Model,,,,,50000,200000,125000,Technology,No (Claude only - distinct)
+54,Email Marketing Campaign,,,,,5000,20000,12500,Creative/Marketing,No (Claude only)
+55,Fractional CFO Services (monthly),,,,,5000,15000,10000,Financial Services,No (Claude only)
+56,API Development,,,,,50000,150000,100000,Technology,No (Claude only)
+57,Custom ERP Development,,,,,500000,2000000,1250000,Technology,No (Claude only - distinct from Gemini #8)
+58,Data Center Cloud Migration,,,,,400000,1500000,950000,Technology,No (Claude only - distinct)
+59,Brand Positioning Strategy,100000,300000,200000,250000,500000,375000,Creative/Marketing,Yes
+60,Tax Opinion Letter,100000,300000,200000,150000,350000,250000,Legal/Financial,Yes
+
+# Summary Statistics
+Metric,Gemini,Claude
+Top Value (Midpoint),$300000000,$22500000
+Top 10 Total Value,$570000000,$70000000
+Median Top 10 Value,$10000000,$3675000
+Mean Top 10 Value,$57000000,$7000000
+Standard Deviation,94742710,7241636
+
+# Sector Totals (Top 10 by Midpoint)
+Sector,Gemini_Total,Claude_Total
+Medical/Pharma,375000000,39500000
+Engineering,100000000,0
+Legal,54500000,9000000
+Financial,10000000,5350000
+Technology,6500000,950000
+Consulting,5000000,2000000
+Architecture,7500000,0
+Creative/Marketing,6250000,125000
+Environmental,3500000,1350000
+
+# COVID Impact Categories
+Category,Artifact_Examples,Gemini_Noted,Claude_Noted,Impact_Direction
+Increased_Demand,"Clinical Trials, Digital Transformation, Cloud Migration, Cybersecurity",Yes,Yes,Positive
+Decreased_Demand,"Commercial Real Estate, M&A (Q2), Trade Shows, Events",Yes,Yes,Negative
+Rebound,"M&A (Q3/Q4)",Yes,Yes,Recovery
+
+# Methodology Comparison
+Metric,Gemini,Claude
+Research_Approach,Deep research synthesis,Parallel web searches
+Valuation_Philosophy,Total production cost,Professional services billing
+Detail_Level_Top_10,Detailed profiles,Full profiles
+Detail_Level_11_100,Summary table,Full profiles
+Time_Investment,Unknown,~30 minutes
+Transparency,Medium,High
+Source_Documentation,16-source bibliography,Embedded in text
+2020_Data_Specificity,Mixed (data scarcity protocol),Mixed (2019-2025 sources)

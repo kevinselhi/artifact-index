@@ -1,0 +1,50 @@
+artifact_id,canonical_name,sector,claude_sonnet45_min,claude_sonnet45_max,claude_sonnet45_mid,gemini_min,gemini_max,gemini_mid,opus45_min,opus45_max,opus45_mid,chatgpt51_min,chatgpt51_max,chatgpt51_mid,chatgpt5_value,o3pro_value,perplexity_min,perplexity_max,perplexity_mid,perplexity_rank,gemini30_min,gemini30_max,gemini30_mid,model_count,variance_ratio,notes
+clinical_trial_phase3,Phase III Clinical Trial Protocol & Execution,Medical/Pharma,15000000,30000000,22500000,50000000,100000000,75000000,19000000,20000000,19500000,,,,,,20000000,100000000,60000000,1,175000,250000,212500,5,5.13,All models agree this is top tier; Gemini30 = CSR only
+clinical_trial_phase2,Phase II Clinical Trial Protocol & Execution,Medical/Pharma,8000000,15000000,11500000,2000000,6000000,4000000,8000000,12000000,10000000,,,,,,7000000,20000000,13500000,2,4,3.38,Perplexity aligns with Claude models
+clinical_trial_phase1,Phase I Clinical Trial Protocol & Execution,Medical/Pharma,1400000,6600000,4000000,300000,800000,550000,1500000,4000000,2750000,,,,,,1000000,5000000,3000000,19,4,10.91,Perplexity mid-range
+nda_bla_application,New Drug Application (NDA) / BLA Submission,Medical/Pharma,3000000,8000000,5500000,100000000,500000000,300000000,,,,,,,,,,,4,700000,1000000,850000,3,54.55,Largest variance - Gemini includes full R&D cost
+ma_advisory_large,Large-Cap M&A Advisory Package,Financial Services,2000000,10000000,6000000,4000000,10000000,7000000,2500000,7500000,5000000,,,500000,2200000,10000000,20000000,15000000,3,6,30.00,Perplexity highest at $15M
+ma_advisory_midmarket,Upper Mid-Market M&A Advisory,Financial Services,,,,,,,,,,,,,,,2000000,5000000,3500000,4,1,,Perplexity only
+due_diligence_financial,Financial Due Diligence Report,Financial Services,500000,1500000,1000000,500000,2000000,1250000,400000,1200000,800000,,,,300000,800000,,,,,5,4.17,Good agreement
+ipo_s1_registration,IPO S-1 Registration Statement,Financial/Legal,700000,2000000,1350000,5000000,15000000,10000000,2000000,8000000,5000000,5000000,20000000,12500000,,,,,,,1000000,1500000,1250000,5,9.26,ChatGPT 5-1 highest
+fairness_opinion,Fairness Opinion (M&A),Financial Services,500000,7500000,4000000,1000000,3000000,2000000,500000,3000000,1750000,,,,,,200000,1000000,600000,15,1400000,2000000,1700000,5,6.67,Perplexity lowest
+environmental_impact_statement,Environmental Impact Statement (EIS),Environmental/Engineering,700000,2000000,1350000,2000000,5000000,3500000,1000000,85000000,43000000,,,,,,100000,1000000,550000,12,100000,150000,125000,5,78.18,Perplexity at low end; Opus45 includes nuclear
+bankruptcy_restructuring,Chapter 11 Restructuring Plan,Legal/Financial,1000000,5000000,3000000,20000000,75000000,47500000,5000000,20000000,12500000,5000000,10000000,7500000,,,1000000,10000000,5500000,10,1400000,2000000,1700000,6,15.83,Perplexity aligns with Claude/ChatGPT
+digital_transformation,Enterprise Digital Transformation Strategy,Management Consulting,1000000,3000000,2000000,2500000,7500000,5000000,1500000,5000000,3250000,,,450000,1650000,2000000,10000000,6000000,7,6,13.33,Perplexity high end
+erp_implementation,ERP System Implementation,Technology,500000,2000000,1250000,3000000,10000000,6500000,1000000,5000000,3000000,5000000,20000000,12500000,900000,1200000,500000,5000000,2750000,8,300000,450000,375000,8,22.22,Wide range - scope dependent
+cloud_migration,Enterprise Cloud Migration,Technology,400000,1500000,950000,1000000,4000000,2500000,500000,2000000,1250000,,,600000,950000,,,,56,5,4.17,Good mid-range agreement
+cybersecurity_assessment,Enterprise Cybersecurity Assessment,Technology,100000,500000,300000,750000,2000000,1375000,200000,800000,500000,,,400000,800000,50000,150000,100000,18,6,20.00,Perplexity lowest - basic assessment
+cybersecurity_program,Large-Scale Cybersecurity Program & Roadmap,Technology,,,,,,,,,,,,,,,100000,500000,300000,11,1,,Perplexity only - larger scope
+medical_device_510k,Medical Device 510(k) Submission,Medical/Pharma,200000,400000,300000,150000,450000,300000,200000,400000,300000,,,,,,,,,5,20000,30000,25000,4,12.00,Gemini30 lowest at prep fees only
+supply_chain_optimization,Supply Chain Optimization Study,Operations/Consulting,200000,400000,300000,750000,2000000,1375000,300000,800000,550000,,,300000,200000,,,,53,100000,150000,125000,6,6.88,Gemini includes implementation
+quality_of_earnings,Quality of Earnings Report,Financial Services,75000,200000,137500,350000,1000000,675000,100000,300000,200000,,,,,,,,,100000,150000,125000,4,4.91,
+soc2_audit,SOC 2 Type 2 Audit Report,Technology/Compliance,100000,150000,125000,30000,60000,45000,50000,150000,100000,,,,,,,,,60000,100000,80000,4,2.78,
+strategic_planning,Corporate Strategy Development,Management Consulting,,,,,,,500000,1500000,1000000,,,400000,1700000,500000,3000000,1750000,13,4,4.25,Perplexity aligns with mid-range
+infrastructure_engineering,Major Infrastructure Engineering Design,Engineering,,,50000000,150000000,100000000,300000000,500000000,400000000,5000000,15000000,10000000,750000,,5000000,50000000,27500000,5,5,533.33,Largest absolute variance
+hospital_architecture,High-End Hospital/Complex Facility Architecture,Architecture,,,,,,,,,,,,,,,1000000,15000000,8000000,6,1,,Perplexity only
+annual_audit,Annual Financial Audit (Public Company),Financial Services,250000,1000000,625000,250000,600000,425000,300000,800000,550000,1000000,10000000,5500000,,450000,,,,5,12.94,ChatGPT 5-1 includes Big 4 premium
+data_analytics_platform,Data Analytics Platform Development,Technology,,,,750000,2500000,1625000,500000,1500000,1000000,,,700000,750000,300000,3000000,1650000,14,5,5.50,Perplexity aligns
+brand_repositioning,Global Brand Repositioning & Campaign,Creative/Marketing,250000,500000,375000,1000000,2500000,1750000,300000,800000,550000,,,150000,,1000000,10000000,5500000,9,5,36.67,Perplexity highest
+custom_software,Custom Software Development,Technology,200000,500000,350000,3000000,10000000,6500000,,,,,500000,,500000,5000000,2750000,8,4,18.57,Perplexity mid-range
+custom_software_midsize,Mid-Size Enterprise Software Implementation,Technology,,,,,,,,,,,,,,,100000,500000,300000,20,1,,Perplexity only
+market_entry_strategy,Market Entry Strategy,Management Consulting,,,250000,500000,375000,300000,700000,500000,,,250000,1300000,,,,45,4,5.20,o3pro highest
+performance_improvement,Performance Improvement Consulting,Management Consulting,250000,600000,425000,,,,300000,800000,550000,,,380000,1500000,,,,4,3.53,
+organizational_restructuring,Organizational Restructuring,Management Consulting,,,,,,,500000,1200000,850000,,,320000,1400000,,,,42,3,4.38,
+change_management,Change Management Program,Management Consulting,100000,250000,175000,300000,700000,500000,200000,500000,350000,,,280000,,,,,50,4,2.86,
+sustainability_esg,Corporate Sustainability & ESG Report,Environmental,100000,250000,175000,400000,1200000,800000,200000,600000,400000,,,200000,,,,,49,4,4.57,
+litigation_expert,Complex Litigation Expert Report,Legal,500000,1000000,750000,1000000,5000000,3000000,400000,1500000,950000,,,,,,,,,28,350000,500000,425000,4,7.06,
+patent_litigation,Patent Litigation Opinion/Brief,Legal,,,200000,500000,350000,300000,800000,550000,,,,,,,,,20,2,1.57,
+real_estate_feasibility,Real Estate Development Feasibility Study,Real Estate,100000,300000,200000,250000,600000,425000,150000,400000,275000,,,,,,100000,750000,425000,17,4,4.25,Perplexity aligns
+transportation_corridor,Civil Transportation Corridor Study,Engineering,,,,,,,,,,,,,,,250000,2000000,1125000,16,1,,Perplexity only
+transfer_pricing,Transfer Pricing Study,Tax/International,150000,500000,325000,,,,,,,,,,,,,,,22,175000,250000,212500,2,,Gemini30 adds global scope
+executive_compensation,Executive Compensation Study & Design,HR Consulting,100000,250000,175000,,,,,,,,,,,,,,,38,100000,150000,125000,2,,
+tax_opinion,Tax Opinion (Complex Transaction),Legal/Financial,150000,350000,250000,100000,300000,200000,150000,400000,275000,,,350000,,,,,45,4,1.75,
+architectural_design,Commercial Architectural Design Package,Architecture,300000,1500000,900000,200000,450000,325000,500000,2000000,1250000,,,,,,,,,76,3,3.85,
+valuation_services,Business Valuation Report,Financial Services,50000,150000,100000,250000,550000,400000,100000,300000,200000,,,200000,600000,,,,18,5,6.00,
+investment_advisory,Investment Advisory Services,Financial Services,,,,,,,400000,1000000,700000,,,400000,,,,,12,2,1.75,
+compliance_regulatory,Regulatory Compliance Audit & Remediation,Legal/Compliance,500000,1500000,1000000,,,,,,,,,,,,,,,31,1,,
+market_research,Market Research Study & Consumer Insights,Marketing,50000,150000,100000,200000,450000,325000,100000,300000,200000,,,80000,180000,,,,103,5,4.06,
+ai_ml_implementation,AI/ML Model Development & Deployment,Technology,50000,200000,125000,500000,1500000,1000000,300000,1000000,650000,,,,,,,,,65,3,8.00,Gemini highest
+blockchain_implementation,Blockchain Implementation Roadmap,Technology,,,,,,,500000,1500000,1000000,,,1300000,,,,,9,2,1.30,o3pro top 10
+penetration_test,Penetration Test & Vulnerability Assessment,Technology,50000,150000,100000,,,,,,,,,400000,,,,,30000,50000,40000,3,10.00,
+business_continuity,Business Continuity & Disaster Recovery Plan,Technology,100000,300000,200000,,,,,,,,,100000,,,,,62,2,2.00,

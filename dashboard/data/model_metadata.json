@@ -1,0 +1,126 @@
+{
+  "models": {
+    "claude_sonnet45": {
+      "name": "Claude Sonnet 4.5",
+      "color": "#E07A5F",
+      "methodology": "WebSearch-based investigation",
+      "valuation_approach": "Professional services billing",
+      "artifact_count": 100,
+      "top_artifact": "Phase 3 Clinical Trial",
+      "top_value": 22500000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "gemini": {
+      "name": "Gemini 2.5 Pro",
+      "color": "#4285F4",
+      "methodology": "Deep research synthesis",
+      "valuation_approach": "Total production cost",
+      "artifact_count": 100,
+      "top_artifact": "New Drug Application",
+      "top_value": 300000000,
+      "transparency": "Medium",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "opus45": {
+      "name": "Claude Opus 4.5",
+      "color": "#81B29A",
+      "methodology": "WebSearch with confidence ratings",
+      "valuation_approach": "Professional services billing",
+      "artifact_count": 100,
+      "top_artifact": "Nuclear Plant Engineering",
+      "top_value": 400000000,
+      "transparency": "High",
+      "has_confidence": true,
+      "has_automation_scores": false
+    },
+    "chatgpt51": {
+      "name": "ChatGPT 5-1 Deep Research",
+      "color": "#10A37F",
+      "methodology": "Deep research synthesis",
+      "valuation_approach": "Market rates with scope",
+      "artifact_count": 100,
+      "top_artifact": "IPO Prospectus",
+      "top_value": 12500000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "chatgpt5": {
+      "name": "ChatGPT 5",
+      "color": "#FF6B6B",
+      "methodology": "Market analysis",
+      "valuation_approach": "Median project values",
+      "artifact_count": 100,
+      "top_artifact": "ERP System Integration",
+      "top_value": 900000,
+      "transparency": "Medium",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "o3pro": {
+      "name": "o3pro",
+      "color": "#9B5DE5",
+      "methodology": "Market analysis with automation",
+      "valuation_approach": "Typical project fees",
+      "artifact_count": 100,
+      "top_artifact": "M&A Advisory Services",
+      "top_value": 2200000,
+      "transparency": "Medium",
+      "has_confidence": false,
+      "has_automation_scores": true
+    },
+    "perplexity": {
+      "name": "Perplexity",
+      "color": "#F9844A",
+      "methodology": "Taxonomy generation with 40 citations",
+      "valuation_approach": "Research-backed ranges",
+      "artifact_count": 111,
+      "top_artifact": "Phase III Clinical Trial",
+      "top_value": 60000000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "gemini30": {
+      "name": "Gemini 3.0 Pro",
+      "color": "#00BFA5",
+      "methodology": "Deep Research with Thinking",
+      "valuation_approach": "Maximum Economic Value",
+      "artifact_count": 100,
+      "top_artifact": "SPAC Merger Proxy Statement",
+      "top_value": 2500000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false
+    }
+  },
+  "comparison_insights": {
+    "highest_variance": {
+      "artifact": "Infrastructure Engineering",
+      "ratio": 533.33,
+      "low_model": "chatgpt5",
+      "low_value": 750000,
+      "high_model": "opus45",
+      "high_value": 400000000
+    },
+    "lowest_variance": {
+      "artifact": "Tax Opinion (Complex Transaction)",
+      "ratio": 1.75,
+      "low_value": 200000,
+      "high_value": 350000
+    },
+    "model_agreement_zones": [
+      "Tax Opinion - 4 models within 1.75x range",
+      "M&A Advisory - 5 models within 1.4x range",
+      "Financial Due Diligence - 5 models within 1.56x range"
+    ],
+    "model_controversy_zones": [
+      "NDA: $5.5M (Claude) vs $300M (Gemini) - 55x variance",
+      "Infrastructure: $750K (GPT) vs $400M (Opus) - 533x variance",
+      "ERP: $900K (GPT) vs $12.5M (ChatGPT) - 14x variance"
+    ]
+  }
+}
