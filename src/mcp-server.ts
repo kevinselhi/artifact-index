@@ -702,6 +702,7 @@ async function startHttp(port: number, allowedOrigins?: string[], allowedHosts?:
     if (sessionId && sessions.has(sessionId)) {
       // Reuse existing session
       transport = sessions.get(sessionId)!;
+      console.log(`[mcp] Reusing session: ${sessionId}`);
     } else {
       // Create new session
       const newSessionId = randomUUID();
@@ -710,15 +711,19 @@ async function startHttp(port: number, allowedOrigins?: string[], allowedHosts?:
         sessionIdGenerator: () => newSessionId
       });
       sessions.set(newSessionId, transport);
-
-      // Clean up session on close
-      res.on('close', () => {
-        sessions.delete(newSessionId);
-        transport.close();
-      });
+      console.log(`[mcp] Created new session: ${newSessionId}`);
 
       // Connect to server for new session only
       await server.connect(transport);
+
+      // Clean up session after 5 minutes of inactivity
+      setTimeout(() => {
+        if (sessions.has(newSessionId)) {
+          console.log(`[mcp] Cleaning up inactive session: ${newSessionId}`);
+          sessions.delete(newSessionId);
+          transport.close();
+        }
+      }, 5 * 60 * 1000);
     }
 
     await transport.handleRequest(req, res, req.body);
