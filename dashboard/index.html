@@ -5769,6 +5769,19 @@
 
             // Option B: AI Disruption Readiness by Industry - Detailed Cards
             // Build detailed industry data with top 3 automation candidates (store globally for pagination)
+            // Helper to get market value for an artifact
+            function getArtifactMarketValue(artifactId) {
+                const marketData = artifactMarketData[artifactId];
+                if (!marketData || !marketData.totalMarketValue) return 0;
+                return (marketData.totalMarketValue.low + marketData.totalMarketValue.high) / 2;
+            }
+
+            // Helper to get confidence for an artifact
+            function getArtifactConfidence(artifactId) {
+                const marketData = artifactMarketData[artifactId];
+                return marketData ? marketData.confidence : 0;
+            }
+
             window.allDetailedIndustries = Object.entries(industryData)
                 .filter(([sector, data]) => data.artifacts.length >= 2)
                 .map(([sector, data]) => {
@@ -5780,28 +5793,34 @@
                     const coverageScore = (avgModelCount / 8) * 100;
                     const readinessScore = Math.round((varianceScore * 0.7) + (coverageScore * 0.3));
 
-                    // Get top 3 automation candidates (highest value/variance ratio)
+                    // Get top 3 automation candidates by market value (using research data)
                     const top3Candidates = [...data.artifacts]
                         .map(a => ({
                             ...a,
-                            opportunityScore: a.avgValue / Math.max(a.variance, 1)
+                            marketValue: getArtifactMarketValue(a.id),
+                            confidence: getArtifactConfidence(a.id),
+                            opportunityScore: getArtifactMarketValue(a.id) / Math.max(a.variance, 1)
                         }))
-                        .sort((a, b) => b.opportunityScore - a.opportunityScore)
+                        .filter(a => a.marketValue > 0)
+                        .sort((a, b) => b.marketValue - a.marketValue)
                         .slice(0, 3);
 
-                    // Estimated savings (30-50% of total value based on readiness)
+                    // Use market research data for total market size
+                    const totalMarketSize = data.totalMarketSize || 0;
+
+                    // Estimated savings (30-50% of market size based on readiness)
                     const savingsRate = readinessScore >= 70 ? 0.50 :
                                        readinessScore >= 50 ? 0.40 :
                                        readinessScore >= 30 ? 0.35 : 0.30;
                     const estimatedSavings = {
-                        low: data.totalValue * 0.30,
-                        high: data.totalValue * savingsRate,
+                        low: totalMarketSize * 0.30,
+                        high: totalMarketSize * savingsRate,
                         rate: savingsRate
                     };
 
                     return {
                         sector,
-                        totalValue: data.totalValue,
+                        totalValue: totalMarketSize,
                         readinessScore,
                         avgVariance,
                         avgModelCount,
@@ -5936,7 +5955,7 @@
 
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
                             <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
-                                <div style="font-size: 0.7em; color: var(--text-secondary); text-transform: uppercase;">Total Addressable Value</div>
+                                <div style="font-size: 0.7em; color: var(--text-secondary); text-transform: uppercase;">Total Market Size (2024)</div>
                                 <div style="font-size: 1.1em; font-weight: bold; color: var(--text-primary);">${formatCurrency(ind.totalValue)}</div>
                             </div>
                             <div style="background: rgba(129,178,154,0.15); padding: 8px; border-radius: 4px;">
@@ -5946,22 +5965,27 @@
                         </div>
 
                         <div style="margin-bottom: 8px;">
-                            <div style="font-size: 0.75em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 6px;">Top 3 Automation Candidates</div>
-                            ${ind.top3Candidates.map((c, idx) => `
+                            <div style="font-size: 0.75em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 6px;">Top 3 by Market Value</div>
+                            ${ind.top3Candidates.map((c, idx) => {
+                                const confColor = c.confidence >= 80 ? '#81B29A' : c.confidence >= 65 ? '#F4A261' : '#E07A5F';
+                                return `
                                 <div
                                     onclick="navigateToArtifact('${c.id}')"
                                     style="display: flex; justify-content: space-between; align-items: center; padding: 5px 8px; background: rgba(255,255,255,0.02); border-radius: 4px; margin-bottom: 4px; font-size: 0.85em; cursor: pointer; transition: background 0.2s;"
                                     onmouseover="this.style.background='rgba(255,255,255,0.08)'"
                                     onmouseout="this.style.background='rgba(255,255,255,0.02)'"
-                                    title="Click to view detailed analysis"
+                                    title="Click to view detailed analysis (${c.confidence}% confidence)"
                                 >
                                     <span style="color: var(--text-secondary);">
                                         <span style="color: ${color}; font-weight: bold;">${idx + 1}.</span>
-                                        <span style="text-decoration: underline; text-decoration-style: dotted;">${c.name.length > 28 ? c.name.substring(0, 28) + '...' : c.name}</span>
+                                        <span style="text-decoration: underline; text-decoration-style: dotted;">${c.name.length > 25 ? c.name.substring(0, 25) + '...' : c.name}</span>
                                     </span>
-                                    <span style="color: var(--text-primary); font-weight: bold;">${formatCurrency(c.avgValue)}</span>
+                                    <span style="display: flex; align-items: center; gap: 6px;">
+                                        <span style="color: var(--text-primary); font-weight: bold;">${formatCurrency(c.marketValue)}</span>
+                                        <span style="font-size: 0.75em; color: ${confColor};">${c.confidence}%</span>
+                                    </span>
                                 </div>
-                            `).join('')}
+                            `}).join('')}
                         </div>
 
                         <div style="font-size: 0.7em; color: var(--text-secondary); display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-top: 8px;">
@@ -5982,7 +6006,7 @@
             cardsHTML += `
                 <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, rgba(129,178,154,0.15) 0%, rgba(66,133,244,0.15) 100%); border-radius: 8px; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 15px;">
                     <div>
-                        <div style="font-size: 0.75em; color: var(--text-secondary); text-transform: uppercase;">Total Market Analyzed (All ${allIndustries.length} Industries)</div>
+                        <div style="font-size: 0.75em; color: var(--text-secondary); text-transform: uppercase;">Total Market Size 2024 (${allIndustries.length} Industries)</div>
                         <div style="font-size: 1.5em; font-weight: bold; color: var(--text-primary);">${formatCurrency(totalMarketValue)}</div>
                     </div>
                     <div style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 30px;">
