@@ -101,17 +101,19 @@ function buildQuery(artifact) {
   // Map technical artifact names to searchable industry terms
   const searchableTerm = name
     .replace(/Phase [I]+/i, 'clinical trial')
-    .replace(/510\(k\)/i, 'medical device approval')
+    .replace(/510\(k\)/i, 'medical device')
     .replace(/S-1/i, 'IPO')
-    .replace(/Chapter 11/i, 'bankruptcy restructuring')
-    .replace(/SOC 2/i, 'security compliance audit')
-    .replace(/M&A/i, 'merger and acquisition')
+    .replace(/Chapter 11/i, 'bankruptcy')
+    .replace(/SOC 2/i, 'security audit')
+    .replace(/M&A/i, 'mergers acquisitions')
     .replace(/ERP/i, 'enterprise software')
     .replace(/\(.*?\)/g, '') // Remove parenthetical clarifications
+    .replace(/Type \d+/g, '') // Remove "Type 2", "Type II", etc.
+    .replace(/\s+/g, ' ') // Normalize spaces
     .trim();
 
-  // Build broad query - date filter handled by API parameter, not query text
-  return `AI impact ${searchableTerm} ${sector}`.trim();
+  // Try OR operator to broaden results - include automation OR AI OR artificial intelligence
+  return `(AI OR automation OR "artificial intelligence") ${searchableTerm}`.trim();
 }
 
 // Process artifacts in batches
