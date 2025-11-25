@@ -112,8 +112,9 @@ function buildQuery(artifact) {
     .replace(/\s+/g, ' ') // Normalize spaces
     .trim();
 
-  // Try OR operator to broaden results - include automation OR AI OR artificial intelligence
-  return `(AI OR automation OR "artificial intelligence") ${searchableTerm}`.trim();
+  // Use broad industry terms that appear in business news
+  // Include business impact terms: ROI, innovation, efficiency, cost savings, etc.
+  return `(AI OR automation OR innovation OR efficiency) ${searchableTerm}`.trim();
 }
 
 // Process artifacts in batches
