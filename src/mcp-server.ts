@@ -631,6 +631,9 @@ async function startHttp(port: number, allowedOrigins?: string[], allowedHosts?:
   const app = express();
   app.use(express.json());
 
+  // Store active MCP sessions
+  const sessions = new Map<string, StreamableHTTPServerTransport>();
+
   // CORS middleware
   app.use((req, res, next) => {
     const origin = req.headers.origin;
@@ -691,12 +694,33 @@ async function startHttp(port: number, allowedOrigins?: string[], allowedHosts?:
       res.status(403).send('Forbidden');
       return;
     }
-    const transport = new StreamableHTTPServerTransport({
-      enableJsonResponse: true,
-      sessionIdGenerator: () => randomUUID()
-    });
-    res.on('close', () => transport.close());
-    await server.connect(transport);
+
+    // Get or create session
+    const sessionId = req.headers['mcp-session-id'] as string | undefined;
+    let transport: StreamableHTTPServerTransport;
+
+    if (sessionId && sessions.has(sessionId)) {
+      // Reuse existing session
+      transport = sessions.get(sessionId)!;
+    } else {
+      // Create new session
+      const newSessionId = randomUUID();
+      transport = new StreamableHTTPServerTransport({
+        enableJsonResponse: true,
+        sessionIdGenerator: () => newSessionId
+      });
+      sessions.set(newSessionId, transport);
+
+      // Clean up session on close
+      res.on('close', () => {
+        sessions.delete(newSessionId);
+        transport.close();
+      });
+
+      // Connect to server for new session only
+      await server.connect(transport);
+    }
+
     await transport.handleRequest(req, res, req.body);
   });
 
