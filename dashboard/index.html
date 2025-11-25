@@ -39,6 +39,7 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            overflow-x: hidden;
         }
 
         header {
@@ -564,6 +565,40 @@
             .variance-toggle {
                 padding: 5px 8px !important;
                 font-size: 0.7em !important;
+            }
+
+            /* Make methodology table scrollable on mobile */
+            .card.full-width table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .card.full-width thead,
+            .card.full-width tbody,
+            .card.full-width tr {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            .card.full-width th,
+            .card.full-width td {
+                white-space: nowrap;
+                min-width: 80px;
+            }
+
+            /* Prevent cards from overflowing viewport */
+            .card {
+                max-width: 100%;
+                overflow-x: auto;
+                box-sizing: border-box;
+            }
+
+            /* Ensure charts don't overflow */
+            .chart-container {
+                max-width: 100%;
+                overflow: hidden;
             }
         }
     </style>
