@@ -713,11 +713,13 @@
                     <div>
                         <div style="position: relative;">
                             <div class="chart-container" style="height: 320px;">
-                                <canvas id="automationMatrixChart"></canvas>
+                                <canvas id="automationMatrixChart" style="touch-action: none;"></canvas>
                             </div>
-                            <button id="resetZoomBtn" onclick="if(window.bubbleChart){ window.bubbleChart.resetZoom(); this.style.display='none'; }" style="position: absolute; top: 8px; right: 8px; min-width: 44px; min-height: 44px; padding: 10px 14px; font-size: 0.8em; font-weight: 500; background: rgba(30, 30, 50, 0.95); border: 1px solid #E07A5F; color: #E07A5F; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: none; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" onmouseover="this.style.background='#E07A5F'; this.style.color='#1a1a2e';" onmouseout="this.style.background='rgba(30, 30, 50, 0.95)'; this.style.color='#E07A5F';">
-                                ↺ Reset
-                            </button>
+                            <div id="chartZoomControls" style="position: absolute; top: 8px; right: 8px; display: flex; gap: 6px;">
+                                <button id="zoomInBtn" onclick="if(window.bubbleChart){ window.bubbleChart.zoom(1.2); document.getElementById('resetZoomBtn').style.display='inline-block'; }" style="min-width: 44px; min-height: 44px; padding: 10px; font-size: 1.1em; font-weight: 600; background: rgba(30, 30, 50, 0.95); border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 6px; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" onmouseover="this.style.borderColor='#81B29A'; this.style.color='#81B29A';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">+</button>
+                                <button id="zoomOutBtn" onclick="if(window.bubbleChart){ window.bubbleChart.zoom(0.8); document.getElementById('resetZoomBtn').style.display='inline-block'; }" style="min-width: 44px; min-height: 44px; padding: 10px; font-size: 1.1em; font-weight: 600; background: rgba(30, 30, 50, 0.95); border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 6px; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" onmouseover="this.style.borderColor='#81B29A'; this.style.color='#81B29A';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">−</button>
+                                <button id="resetZoomBtn" onclick="if(window.bubbleChart){ window.bubbleChart.resetZoom(); this.style.display='none'; }" style="min-width: 44px; min-height: 44px; padding: 10px 14px; font-size: 0.8em; font-weight: 500; background: rgba(30, 30, 50, 0.95); border: 1px solid #E07A5F; color: #E07A5F; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: none; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" onmouseover="this.style.background='#E07A5F'; this.style.color='#1a1a2e';" onmouseout="this.style.background='rgba(30, 30, 50, 0.95)'; this.style.color='#E07A5F';">↺</button>
+                            </div>
                         </div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.75em; color: var(--text-secondary); margin-top: 5px; padding: 0 10px;">
                             <span>← Lower Feasibility (High Variance)</span>
@@ -4543,9 +4545,9 @@
             // Set device-appropriate instructions for the bubble chart
             const instructionsEl = document.getElementById('chartInstructions');
             if (isMobile) {
-                instructionsEl.innerHTML = '👆 Pinch to zoom • Drag to pan • Double-tap to reset • Tap bubble to explore';
+                instructionsEl.innerHTML = '👆 Use +/− buttons or pinch to zoom • Drag to pan • Tap bubble to explore';
             } else {
-                instructionsEl.innerHTML = '🔍 Scroll to zoom • Drag to pan • Shift+drag to select area • Double-click to reset • Click bubble to explore';
+                instructionsEl.innerHTML = '🔍 Scroll or use +/− to zoom • Drag to pan • Shift+drag to select area • Click bubble to explore';
             }
 
             // Add double-tap/double-click to reset zoom
