@@ -497,6 +497,43 @@
                 flex-direction: column;
                 gap: 10px;
             }
+
+            /* Variance toggle buttons at 768px */
+            .variance-toggle {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* Landscape orientation on mobile devices */
+        @media (max-height: 500px) and (orientation: landscape) {
+            /* Variance chart - shorter in landscape */
+            #variance .chart-container {
+                height: 280px !important;
+            }
+
+            /* Keep buttons in a row in landscape */
+            #variance .card-title {
+                flex-direction: row !important;
+                flex-wrap: wrap;
+                align-items: center !important;
+            }
+
+            #variance .card-title > span {
+                font-size: 0.85em;
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .variance-btn-group {
+                flex-shrink: 0;
+            }
+
+            .variance-toggle {
+                padding: 6px 10px !important;
+                font-size: 0.75em !important;
+                min-height: 36px;
+            }
         }
 
         /* Extra small devices */
@@ -1135,9 +1172,9 @@
         <div id="variance" class="view hidden">
             <div class="dashboard-grid">
                 <div class="card full-width">
-                    <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                         <span id="varianceChartTitle">Highest Variance: Value Range Comparison</span>
-                        <div style="display: flex; gap: 8px;">
+                        <div class="variance-btn-group" style="display: flex; gap: 8px; flex-shrink: 0;">
                             <button id="highVarianceBtn" class="variance-toggle active" onclick="showHighVariance()">Highest</button>
                             <button id="midVarianceBtn" class="variance-toggle" onclick="showMidVariance()">Mid-Range</button>
                             <button id="lowVarianceBtn" class="variance-toggle" onclick="showLowVariance()">Lowest</button>
