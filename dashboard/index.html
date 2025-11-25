@@ -707,7 +707,7 @@
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9em;">
                     Bubble size = Market Size. Industries in the <strong style="color: #81B29A;">upper-right</strong> have many artifacts with high automation feasibility. <strong style="color: #4285F4;">Larger bubbles</strong> = bigger market opportunity.
-                    <span style="display: block; margin-top: 5px; font-size: 0.85em; color: #888;">🔍 Ctrl+scroll to zoom • Two-finger drag to pan • Pinch to zoom on touch • Click bubble to explore</span>
+                    <span id="chartInstructions" style="display: block; margin-top: 5px; font-size: 0.85em; color: #888;"></span>
                 </p>
                 <div class="dashboard-grid" style="margin: 0;">
                     <div>
@@ -715,8 +715,8 @@
                             <div class="chart-container" style="height: 320px;">
                                 <canvas id="automationMatrixChart"></canvas>
                             </div>
-                            <button id="resetZoomBtn" onclick="if(window.bubbleChart){ window.bubbleChart.resetZoom(); this.style.display='none'; }" style="position: absolute; top: 8px; right: 8px; padding: 4px 10px; font-size: 0.75em; background: rgba(30, 30, 50, 0.9); border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; transition: all 0.2s; display: none;" onmouseover="this.style.borderColor='#E07A5F'; this.style.color='#E07A5F';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">
-                                Reset Zoom
+                            <button id="resetZoomBtn" onclick="if(window.bubbleChart){ window.bubbleChart.resetZoom(); this.style.display='none'; }" style="position: absolute; top: 8px; right: 8px; min-width: 44px; min-height: 44px; padding: 10px 14px; font-size: 0.8em; font-weight: 500; background: rgba(30, 30, 50, 0.95); border: 1px solid #E07A5F; color: #E07A5F; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: none; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" onmouseover="this.style.background='#E07A5F'; this.style.color='#1a1a2e';" onmouseout="this.style.background='rgba(30, 30, 50, 0.95)'; this.style.color='#E07A5F';">
+                                ↺ Reset
                             </button>
                         </div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.75em; color: var(--text-secondary); margin-top: 5px; padding: 0 10px;">
@@ -4471,22 +4471,28 @@
                             pan: {
                                 enabled: true,
                                 mode: 'xy',
-                                threshold: 5,
-                                onPan: function() {
+                                threshold: 10,
+                                onPanComplete: function() {
                                     document.getElementById('resetZoomBtn').style.display = 'block';
                                 }
                             },
                             zoom: {
                                 wheel: {
                                     enabled: true,
-                                    speed: 0.1,
-                                    modifierKey: 'ctrl'
+                                    speed: 0.1
                                 },
                                 pinch: {
                                     enabled: true
                                 },
+                                drag: {
+                                    enabled: !isMobile,
+                                    backgroundColor: 'rgba(224, 122, 95, 0.15)',
+                                    borderColor: 'rgba(224, 122, 95, 0.8)',
+                                    borderWidth: 1,
+                                    modifierKey: 'shift'
+                                },
                                 mode: 'xy',
-                                onZoom: function() {
+                                onZoomComplete: function() {
                                     document.getElementById('resetZoomBtn').style.display = 'block';
                                 }
                             },
@@ -4531,6 +4537,38 @@
                             grid: { color: 'rgba(255,255,255,0.1)' }
                         }
                     }
+                }
+            });
+
+            // Set device-appropriate instructions for the bubble chart
+            const instructionsEl = document.getElementById('chartInstructions');
+            if (isMobile) {
+                instructionsEl.innerHTML = '👆 Pinch to zoom • Drag to pan • Double-tap to reset • Tap bubble to explore';
+            } else {
+                instructionsEl.innerHTML = '🔍 Scroll to zoom • Drag to pan • Shift+drag to select area • Double-click to reset • Click bubble to explore';
+            }
+
+            // Add double-tap/double-click to reset zoom
+            let lastTap = 0;
+            const chartCanvas = document.getElementById('automationMatrixChart');
+            chartCanvas.addEventListener('touchend', function(e) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 300 && tapLength > 0) {
+                    // Double tap detected
+                    if (window.bubbleChart) {
+                        window.bubbleChart.resetZoom();
+                        document.getElementById('resetZoomBtn').style.display = 'none';
+                    }
+                    e.preventDefault();
+                }
+                lastTap = currentTime;
+            });
+
+            chartCanvas.addEventListener('dblclick', function(e) {
+                if (window.bubbleChart) {
+                    window.bubbleChart.resetZoom();
+                    document.getElementById('resetZoomBtn').style.display = 'none';
                 }
             });
 
