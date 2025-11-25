@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: artifact-index-mcp
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: node dist/mcp-server.js --http
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: YOU_API_KEY
+        sync: false
+      - key: HTTP_ORIGINS
+        value: "*"
+      - key: HTTP_HOSTS
+        value: "*"
+    healthCheckPath: /health
+    autoDeploy: true

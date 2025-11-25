@@ -1,0 +1,44 @@
+name: Build & Test MCP Server
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'package*.json'
+      - 'tsconfig.json'
+      - 'render.yaml'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Start server and test health endpoint
+        run: |
+          node dist/mcp-server.js --http &
+          sleep 3
+          curl -f http://localhost:3000/health
+          pkill -f "node dist/mcp-server.js" || true
+
+# Render.com auto-deploys from this repo when render.yaml is present.
+# To deploy:
+# 1. Connect your GitHub repo to Render.com
+# 2. Render will detect render.yaml and create the service
+# 3. Set YOU_API_KEY in Render dashboard under Environment Variables
+# 4. Service URL will be: https://artifact-index-mcp.onrender.com
