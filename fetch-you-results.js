@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const YOU_API_KEY = process.env.YOU_API_KEY;
-const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://ydc-index.io/v1';
+const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://api.ydc-index.io';
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE) || 5;
 const DELAY_BETWEEN_BATCHES = 3000; // 3 seconds to avoid rate limits
 const RESULTS_PER_ARTIFACT = parseInt(process.env.RESULTS_PER_ARTIFACT) || 3;
@@ -53,20 +53,18 @@ console.log('='.repeat(60));
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Fetch You.com search results
+// Fetch You.com search results (using MINA's approach)
 async function fetchYouSearch(query, limit = 3) {
   const url = new URL('/search', YOU_BASE_URL);
   url.searchParams.set('query', query);
-  url.searchParams.set('count', String(limit));
-  // Get results from June 1, 2024 onwards
-  url.searchParams.set('freshness', '2024-06-01to2025-12-31');
+  url.searchParams.set('num_web_results', String(limit));
+  url.searchParams.set('safesearch', 'moderate');
 
   try {
     const response = await fetch(url.toString(), {
       method: 'GET',
       headers: {
-        'X-API-Key': YOU_API_KEY,
-        'Accept': 'application/json'
+        'X-API-Key': YOU_API_KEY
       }
     });
 
@@ -77,12 +75,12 @@ async function fetchYouSearch(query, limit = 3) {
     }
 
     const data = await response.json();
-    const results = (data.results?.web || []).map(item => ({
+    // MINA uses data.hits, not data.results.web
+    const results = (data.hits || []).map(item => ({
       title: item.title || '',
       url: item.url || '',
-      snippet: item.description || item.snippets?.[0] || '',
-      source: item.source || '',
-      publishedAt: item.page_age || ''
+      snippet: item.description || '',
+      source: extractSource(item.url || '')
     }));
 
     return { results, query };
@@ -92,29 +90,25 @@ async function fetchYouSearch(query, limit = 3) {
   }
 }
 
-// Build ONE optimized query per artifact focused on AI disruption news
-// Single query approach with multiple results (instead of multiple queries with 1 result each)
+// Extract source from URL (from MINA)
+function extractSource(url) {
+  try {
+    const urlObj = new URL(url);
+    const domain = urlObj.hostname.replace('www.', '');
+    const domainParts = domain.split('.');
+    return domainParts[0].charAt(0).toUpperCase() + domainParts[0].slice(1);
+  } catch (e) {
+    return 'Unknown';
+  }
+}
+
+// Build simple query following MINA's approach
 function buildQuery(artifact) {
-  const sector = artifact.sector || '';
   const name = artifact.name || '';
 
-  // Map technical artifact names to searchable industry terms
-  const searchableTerm = name
-    .replace(/Phase [I]+/i, 'clinical trial')
-    .replace(/510\(k\)/i, 'medical device')
-    .replace(/S-1/i, 'IPO')
-    .replace(/Chapter 11/i, 'bankruptcy')
-    .replace(/SOC 2/i, 'security audit')
-    .replace(/M&A/i, 'mergers acquisitions')
-    .replace(/ERP/i, 'enterprise software')
-    .replace(/\(.*?\)/g, '') // Remove parenthetical clarifications
-    .replace(/Type \d+/g, '') // Remove "Type 2", "Type II", etc.
-    .replace(/\s+/g, ' ') // Normalize spaces
-    .trim();
-
-  // Use broad industry terms that appear in business news
-  // Include business impact terms: ROI, innovation, efficiency, cost savings, etc.
-  return `(AI OR automation OR innovation OR efficiency) ${searchableTerm}`.trim();
+  // Simple, natural language query like MINA uses
+  // Just ask about AI and the artifact type
+  return `AI ${name}`.trim();
 }
 
 // Process artifacts in batches
