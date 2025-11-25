@@ -37,14 +37,17 @@ jobs:
           pkill -f "node dist/mcp-server.js" || true
 
       - name: Test You.com API integration
-        if: ${{ secrets.YOU_API_KEY != '' }}
         env:
           YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
         run: |
+          if [ -z "$YOU_API_KEY" ]; then
+            echo "YOU_API_KEY not set, skipping You.com API test"
+            exit 0
+          fi
           node dist/mcp-server.js --http &
           sleep 3
           echo "Testing you-web-search tool..."
-          curl -s -X POST http://localhost:3000/mcp \
+          RESPONSE=$(curl -s -X POST http://localhost:3000/mcp \
             -H "Content-Type: application/json" \
             -d '{
               "jsonrpc": "2.0",
@@ -54,8 +57,16 @@ jobs:
                 "arguments": {"industry": "healthcare", "artifactType": "clinical trial", "limit": 3}
               },
               "id": 1
-            }' | head -100
+            }')
+          echo "$RESPONSE" | head -100
+          # Check for error in response
+          if echo "$RESPONSE" | grep -q '"error"'; then
+            echo "API call returned an error"
+            pkill -f "node dist/mcp-server.js" || true
+            exit 1
+          fi
           pkill -f "node dist/mcp-server.js" || true
+          echo "You.com API test passed!"
 
 # Render.com auto-deploys from this repo when render.yaml is present.
 # To deploy:
