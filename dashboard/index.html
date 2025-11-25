@@ -342,10 +342,10 @@
                     <div>
                         <!-- Readiness Filter Buttons -->
                         <div style="display: flex; gap: 6px; margin-bottom: 12px;">
-                            <button class="readiness-filter-btn active" data-filter="all" onclick="filterIndustryByReadiness('all')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: #3d3d5c; color: #fff; font-size: 0.8em; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                            <button class="readiness-filter-btn" data-filter="all" onclick="filterIndustryByReadiness('all')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.8em; font-weight: 500; cursor: pointer; transition: all 0.2s;">
                                 All
                             </button>
-                            <button class="readiness-filter-btn" data-filter="High" onclick="filterIndustryByReadiness('High')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #81B29A; background: transparent; color: #81B29A; font-size: 0.8em; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                            <button class="readiness-filter-btn active" data-filter="High" onclick="filterIndustryByReadiness('High')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #81B29A; background: #81B29A; color: #1a1a2e; font-size: 0.8em; font-weight: 500; cursor: pointer; transition: all 0.2s;">
                                 High
                             </button>
                             <button class="readiness-filter-btn" data-filter="Medium" onclick="filterIndustryByReadiness('Medium')" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #F4A261; background: transparent; color: #F4A261; font-size: 0.8em; font-weight: 500; cursor: pointer; transition: all 0.2s;">
@@ -5722,8 +5722,8 @@
                 return scoreB - scoreA;
             });
 
-            // Initial render with all industries
-            renderIndustryTable('all');
+            // Initial render with High readiness industries
+            renderIndustryTable('High');
 
             // Option B: AI Disruption Readiness by Industry - Detailed Cards
             // Build detailed industry data with top 3 automation candidates (store globally for pagination)
@@ -5776,7 +5776,7 @@
         }
 
         // ==================== Industry Table Filtering ====================
-        let currentReadinessFilter = 'all';
+        let currentReadinessFilter = 'High';
 
         // Render industry table based on filter
         function renderIndustryTable(filter) {
