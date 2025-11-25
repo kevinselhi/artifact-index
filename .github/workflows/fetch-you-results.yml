@@ -28,12 +28,20 @@ jobs:
       - name: Fetch You.com results
         env:
           YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
+          MAX_ARTIFACTS: ${{ github.event.inputs.batch_size || '227' }}
+          RESULTS_PER_ARTIFACT: ${{ github.event.inputs.results_per_artifact || '3' }}
         run: |
           echo "Starting batch fetch..."
           echo "API Key configured: ${YOU_API_KEY:0:10}...${YOU_API_KEY: -5}"
+          echo "Max artifacts: $MAX_ARTIFACTS"
+          echo "Results per artifact: $RESULTS_PER_ARTIFACT"
+          echo ""
 
           # Run the fetch script
-          node fetch-you-results.js
+          node fetch-you-results.js || {
+            echo "::error::Fetch script failed. Check logs above for API errors."
+            exit 1
+          }
 
       - name: Upload results artifact
         uses: actions/upload-artifact@v4

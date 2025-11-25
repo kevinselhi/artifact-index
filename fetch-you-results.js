@@ -5,28 +5,50 @@
  * Results are stored in dashboard/data/you-search-results.json
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuration
 const YOU_API_KEY = process.env.YOU_API_KEY;
 const YOU_BASE_URL = process.env.YOU_BASE_URL || 'https://api.ydc-index.io';
-const BATCH_SIZE = 5;
+const BATCH_SIZE = parseInt(process.env.BATCH_SIZE) || 5;
 const DELAY_BETWEEN_BATCHES = 3000; // 3 seconds to avoid rate limits
-const RESULTS_PER_ARTIFACT = 3;
+const RESULTS_PER_ARTIFACT = parseInt(process.env.RESULTS_PER_ARTIFACT) || 3;
+const MAX_ARTIFACTS = parseInt(process.env.MAX_ARTIFACTS) || Infinity;
 
-// Load artifacts
-const valuationsPath = path.join(__dirname, 'dashboard/data/master_valuations.json');
-const valuations = JSON.parse(fs.readFileSync(valuationsPath, 'utf8'));
-const artifacts = valuations.artifacts;
-
-console.log(`Found ${artifacts.length} artifacts to process`);
+console.log('='.repeat(60));
+console.log('You.com Search Results Batch Fetcher');
+console.log('='.repeat(60));
 
 if (!YOU_API_KEY) {
   console.error('ERROR: YOU_API_KEY environment variable is not set');
   console.error('Set it with: export YOU_API_KEY="your-api-key"');
   process.exit(1);
 }
+
+console.log(`API Key: ${YOU_API_KEY.slice(0, 10)}...${YOU_API_KEY.slice(-5)}`);
+console.log(`Base URL: ${YOU_BASE_URL}`);
+console.log(`Batch size: ${BATCH_SIZE}`);
+console.log(`Results per artifact: ${RESULTS_PER_ARTIFACT}`);
+console.log(`Max artifacts: ${MAX_ARTIFACTS === Infinity ? 'all' : MAX_ARTIFACTS}`);
+
+// Load artifacts
+const valuationsPath = path.join(__dirname, 'dashboard/data/master_valuations.json');
+const valuations = JSON.parse(fs.readFileSync(valuationsPath, 'utf8'));
+let artifacts = valuations.artifacts;
+
+// Limit artifacts if MAX_ARTIFACTS is set
+if (MAX_ARTIFACTS !== Infinity && MAX_ARTIFACTS < artifacts.length) {
+  artifacts = artifacts.slice(0, MAX_ARTIFACTS);
+  console.log(`⚠️  Limited to first ${MAX_ARTIFACTS} artifacts for testing`);
+}
+
+console.log(`Found ${artifacts.length} artifacts to process`);
+console.log('='.repeat(60));
 
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -149,15 +171,6 @@ async function processBatches() {
 
 // Main execution
 async function main() {
-  console.log('='.repeat(60));
-  console.log('You.com Search Results Batch Fetcher');
-  console.log('='.repeat(60));
-  console.log(`API Key: ${YOU_API_KEY.slice(0, 10)}...${YOU_API_KEY.slice(-5)}`);
-  console.log(`Base URL: ${YOU_BASE_URL}`);
-  console.log(`Batch size: ${BATCH_SIZE}`);
-  console.log(`Delay between batches: ${DELAY_BETWEEN_BATCHES}ms`);
-  console.log('='.repeat(60));
-
   try {
     const results = await processBatches();
 
