@@ -36,6 +36,27 @@ jobs:
           curl -f http://localhost:3000/health
           pkill -f "node dist/mcp-server.js" || true
 
+      - name: Test You.com API integration
+        if: ${{ secrets.YOU_API_KEY != '' }}
+        env:
+          YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
+        run: |
+          node dist/mcp-server.js --http &
+          sleep 3
+          echo "Testing you-web-search tool..."
+          curl -s -X POST http://localhost:3000/mcp \
+            -H "Content-Type: application/json" \
+            -d '{
+              "jsonrpc": "2.0",
+              "method": "tools/call",
+              "params": {
+                "name": "you-web-search",
+                "arguments": {"industry": "healthcare", "artifactType": "clinical trial", "limit": 3}
+              },
+              "id": 1
+            }' | head -100
+          pkill -f "node dist/mcp-server.js" || true
+
 # Render.com auto-deploys from this repo when render.yaml is present.
 # To deploy:
 # 1. Connect your GitHub repo to Render.com
