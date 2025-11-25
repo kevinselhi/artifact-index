@@ -5703,7 +5703,7 @@
 
                 details.innerHTML = `
                     <div style="margin-bottom: 15px;">
-                        <strong>Sector:</strong> ${artifact.sector}
+                        <strong>Sector:</strong> <a href="#" onclick="navigateToIndustry('${artifact.sector}'); return false;" style="color: ${industryColors[artifact.sector] || '#4285F4'}; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; cursor: pointer;" title="View all ${artifact.sector} artifacts">${artifact.sector}</a>
                     </div>
                     <div style="margin-bottom: 15px;">
                         <strong>Variance Ratio:</strong>
