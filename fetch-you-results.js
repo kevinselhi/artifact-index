@@ -58,7 +58,8 @@ async function fetchYouSearch(query, limit = 3) {
   const url = new URL('/search', YOU_BASE_URL);
   url.searchParams.set('query', query);
   url.searchParams.set('count', String(limit));
-  url.searchParams.set('freshness', 'year'); // Focus on recent results from past year
+  // Get results from June 1, 2024 onwards
+  url.searchParams.set('freshness', '2024-06-01to2025-12-31');
 
   try {
     const response = await fetch(url.toString(), {
@@ -91,28 +92,26 @@ async function fetchYouSearch(query, limit = 3) {
   }
 }
 
-// Build multiple search queries for an artifact to maximize coverage
-// Use natural language queries per You.com best practices
-function buildQueries(artifact) {
+// Build ONE optimized query per artifact focused on AI disruption news
+// Single query approach with multiple results (instead of multiple queries with 1 result each)
+function buildQuery(artifact) {
   const sector = artifact.sector || '';
   const name = artifact.name || '';
 
-  // Natural language queries that describe what we're looking for
-  const queries = [
-    `${name} market size and pricing 2024`,
-    `how much does ${name} cost`,
-    `${name} industry trends and value`,
-    `AI automation impact on ${name}`,
-    `${name} artificial intelligence disruption`
-  ];
+  // Map technical artifact names to searchable industry terms
+  const searchableTerm = name
+    .replace(/Phase [I]+/i, 'clinical trial')
+    .replace(/510\(k\)/i, 'medical device approval')
+    .replace(/S-1/i, 'IPO')
+    .replace(/Chapter 11/i, 'bankruptcy restructuring')
+    .replace(/SOC 2/i, 'security compliance audit')
+    .replace(/M&A/i, 'merger and acquisition')
+    .replace(/ERP/i, 'enterprise software')
+    .replace(/\(.*?\)/g, '') // Remove parenthetical clarifications
+    .trim();
 
-  // Add sector-specific queries if sector is meaningful
-  if (sector && sector !== 'Other' && sector.length > 3) {
-    queries.push(`${sector} ${name} professional services`);
-    queries.push(`AI tools for ${sector} ${name}`);
-  }
-
-  return queries.filter(q => q.trim().length > 0);
+  // Build query focused on AI disruption and industry news since mid-2024
+  return `AI impact on ${searchableTerm} ${sector} 2024`.trim();
 }
 
 // Process artifacts in batches
@@ -136,38 +135,20 @@ async function processBatches() {
 
     // Process batch in parallel
     const promises = batch.map(async (artifact) => {
-      const queries = buildQueries(artifact);
-      console.log(`  Fetching: ${artifact.name.slice(0, 50)}... (${queries.length} queries)`);
+      const query = buildQuery(artifact);
+      console.log(`  Fetching: ${artifact.name.slice(0, 50)}...`);
+      console.log(`    Query: "${query}"`);
 
-      // Run all queries for this artifact in parallel
-      // Fetch 1 result per query (5-7 queries) then deduplicate and take top RESULTS_PER_ARTIFACT
-      const queryPromises = queries.map(q => fetchYouSearch(q, 1));
-      const queryResults = await Promise.all(queryPromises);
-
-      // Combine all results, removing duplicates by URL
-      const allResults = [];
-      const seenUrls = new Set();
-
-      queryResults.forEach(qr => {
-        if (qr.results && Array.isArray(qr.results)) {
-          qr.results.forEach(item => {
-            if (item.url && !seenUrls.has(item.url)) {
-              seenUrls.add(item.url);
-              allResults.push(item);
-            }
-          });
-        }
-      });
-
-      // Take top RESULTS_PER_ARTIFACT results
-      const finalResults = allResults.slice(0, RESULTS_PER_ARTIFACT);
+      // Single query fetching RESULTS_PER_ARTIFACT results
+      const result = await fetchYouSearch(query, RESULTS_PER_ARTIFACT);
 
       return {
         id: artifact.id,
         name: artifact.name,
         sector: artifact.sector,
-        queries: queries, // Store all queries used
-        results: finalResults,
+        query: query, // Store the query used
+        results: result.results || [],
+        error: result.error,
         fetchedAt: new Date().toISOString()
       };
     });
