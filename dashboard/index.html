@@ -6433,9 +6433,12 @@
                     .slice(0, 6);
 
                 sectorConsensus.innerHTML = sortedSectors.map(s => `
-                    <div style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <div style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px; cursor: pointer; transition: background 0.2s;"
+                         onmouseover="this.style.background='rgba(255,255,255,0.08)'"
+                         onmouseout="this.style.background='rgba(255,255,255,0.05)'"
+                         onclick="filterByIndustry('${s.sector}'); document.getElementById('industryFilter').value='${s.sector}';">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <strong>${s.sector}</strong>
+                            <strong style="color: var(--text-primary);">${s.sector}</strong>
                             <span style="color: #81B29A; font-size: 0.85em;">${s.count} high-consensus artifacts</span>
                         </div>
                         <div style="font-size: 0.85em; color: var(--text-secondary); margin-top: 5px;">
