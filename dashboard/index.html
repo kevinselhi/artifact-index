@@ -1114,6 +1114,16 @@
                         <!-- News results will be populated here -->
                     </div>
                 </div>
+                <!-- Industry Reports Panel (hidden by default, shown when artifact selected) -->
+                <div id="industryReportsPanel" class="card" style="margin-top: 15px; display: none;">
+                    <div class="card-title">Industry Intelligence Report</div>
+                    <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 15px;">
+                        Comprehensive industry analysis across AI Impact, Trends, and Market Insights (powered by You.com Search API)
+                    </div>
+                    <div id="industryReportsContent">
+                        <!-- Industry reports will be populated here -->
+                    </div>
+                </div>
             </div>
 
             <!-- Industry Overview Panel (shown when industry is selected) -->
@@ -1337,6 +1347,125 @@
                     </p>
                 </div>
             `).join('');
+        }
+
+        // Load Industry Reports
+        let industryReportsData = null;
+
+        async function loadIndustryReportsData() {
+            if (industryReportsData) return industryReportsData;
+
+            try {
+                const response = await fetch('data/industry-reports.json');
+                industryReportsData = await response.json();
+                return industryReportsData;
+            } catch (error) {
+                console.error('Failed to load industry reports:', error);
+                return null;
+            }
+        }
+
+        async function loadIndustryReports(sector) {
+            const reportsPanel = document.getElementById('industryReportsPanel');
+            const reportsContent = document.getElementById('industryReportsContent');
+
+            if (!reportsPanel || !reportsContent) return;
+
+            // Show loading state
+            reportsPanel.style.display = 'block';
+            reportsContent.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">Loading industry intelligence...</p>';
+
+            // Load the data
+            const data = await loadIndustryReportsData();
+
+            if (!data || !data.sectors || !data.sectors[sector]) {
+                reportsContent.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">No industry reports available for this sector.</p>';
+                return;
+            }
+
+            const report = data.sectors[sector];
+            const categories = report.categories || {};
+
+            // Build categorized report display
+            let html = '';
+
+            // AI Impact & Automation
+            if (categories.ai_impact && categories.ai_impact.results && categories.ai_impact.results.length > 0) {
+                html += `
+                    <div style="margin-bottom: 25px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 12px; font-size: 1em; border-bottom: 1px solid #3d3d5c; padding-bottom: 8px;">
+                            🤖 ${categories.ai_impact.description}
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            ${categories.ai_impact.results.map(item => `
+                                <div style="padding: 10px; border-radius: 6px; background: rgba(100,150,255,0.05); border: 1px solid rgba(100,150,255,0.2);">
+                                    <a href="${item.url}" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 500; display: block; margin-bottom: 4px;">
+                                        ${item.title}
+                                    </a>
+                                    <p style="color: var(--text-secondary); font-size: 0.85em; margin: 0; line-height: 1.5;">
+                                        ${item.snippet.substring(0, 150)}${item.snippet.length > 150 ? '...' : ''}
+                                    </p>
+                                    <span style="color: var(--text-secondary); font-size: 0.75em; margin-top: 4px; display: inline-block;">${item.source}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Industry Trends & Innovation
+            if (categories.industry_trends && categories.industry_trends.results && categories.industry_trends.results.length > 0) {
+                html += `
+                    <div style="margin-bottom: 25px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 12px; font-size: 1em; border-bottom: 1px solid #3d3d5c; padding-bottom: 8px;">
+                            📈 ${categories.industry_trends.description}
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            ${categories.industry_trends.results.map(item => `
+                                <div style="padding: 10px; border-radius: 6px; background: rgba(100,255,150,0.05); border: 1px solid rgba(100,255,150,0.2);">
+                                    <a href="${item.url}" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 500; display: block; margin-bottom: 4px;">
+                                        ${item.title}
+                                    </a>
+                                    <p style="color: var(--text-secondary); font-size: 0.85em; margin: 0; line-height: 1.5;">
+                                        ${item.snippet.substring(0, 150)}${item.snippet.length > 150 ? '...' : ''}
+                                    </p>
+                                    <span style="color: var(--text-secondary); font-size: 0.75em; margin-top: 4px; display: inline-block;">${item.source}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Market Analysis & Insights
+            if (categories.market_analysis && categories.market_analysis.results && categories.market_analysis.results.length > 0) {
+                html += `
+                    <div style="margin-bottom: 10px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 12px; font-size: 1em; border-bottom: 1px solid #3d3d5c; padding-bottom: 8px;">
+                            💼 ${categories.market_analysis.description}
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            ${categories.market_analysis.results.map(item => `
+                                <div style="padding: 10px; border-radius: 6px; background: rgba(255,200,100,0.05); border: 1px solid rgba(255,200,100,0.2);">
+                                    <a href="${item.url}" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 500; display: block; margin-bottom: 4px;">
+                                        ${item.title}
+                                    </a>
+                                    <p style="color: var(--text-secondary); font-size: 0.85em; margin: 0; line-height: 1.5;">
+                                        ${item.snippet.substring(0, 150)}${item.snippet.length > 150 ? '...' : ''}
+                                    </p>
+                                    <span style="color: var(--text-secondary); font-size: 0.75em; margin-top: 4px; display: inline-block;">${item.source}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (html) {
+                reportsContent.innerHTML = html;
+            } else {
+                reportsContent.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">No reports found.</p>';
+            }
         }
 
         // MCP helper to test connection (with debouncing to prevent rate limiting)
@@ -6045,6 +6174,9 @@
 
                 // Load and display You.com news results
                 loadNewsResults(artifact.id);
+
+                // Load and display Industry Reports
+                loadIndustryReports(artifact.sector);
 
                 // Update chart
                 if (artifactChart) artifactChart.destroy();

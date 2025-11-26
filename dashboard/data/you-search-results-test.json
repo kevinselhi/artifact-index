@@ -1,0 +1,99 @@
+{
+  "artifacts": {
+    "clinical_trial_phase3": {
+      "id": "clinical_trial_phase3",
+      "name": "Phase III Clinical Trial",
+      "sector": "Medical/Pharma",
+      "query": "Phase III Clinical Trial Medical/Pharma AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:06.614Z"
+    },
+    "nda_bla_application": {
+      "id": "nda_bla_application",
+      "name": "New Drug Application",
+      "sector": "Medical/Pharma",
+      "query": "New Drug Application Medical/Pharma AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:07.198Z"
+    },
+    "ma_advisory_large": {
+      "id": "ma_advisory_large",
+      "name": "Large-Cap M&A Advisory",
+      "sector": "Financial Services",
+      "query": "Large-Cap M&A Advisory Financial Services AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:07.775Z"
+    },
+    "erp_implementation": {
+      "id": "erp_implementation",
+      "name": "ERP System Implementation",
+      "sector": "Technology",
+      "query": "ERP System Implementation Technology AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:08.351Z"
+    },
+    "digital_transformation": {
+      "id": "digital_transformation",
+      "name": "Digital Transformation Strategy",
+      "sector": "Management Consulting",
+      "query": "Digital Transformation Strategy Management Consulting AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:08.935Z"
+    },
+    "bankruptcy_restructuring": {
+      "id": "bankruptcy_restructuring",
+      "name": "Chapter 11 Restructuring",
+      "sector": "Legal/Financial",
+      "query": "Chapter 11 Restructuring Legal/Financial AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:09.510Z"
+    },
+    "ipo_s1_registration": {
+      "id": "ipo_s1_registration",
+      "name": "IPO S-1 Registration",
+      "sector": "Financial/Legal",
+      "query": "IPO S-1 Registration Financial/Legal AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:10.092Z"
+    },
+    "cloud_migration": {
+      "id": "cloud_migration",
+      "name": "Enterprise Cloud Migration",
+      "sector": "Technology",
+      "query": "Enterprise Cloud Migration Technology AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:10.668Z"
+    },
+    "medical_device_510k": {
+      "id": "medical_device_510k",
+      "name": "Medical Device 510(k)",
+      "sector": "Medical/Pharma",
+      "query": "Medical Device 510(k) Medical/Pharma AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:11.246Z"
+    },
+    "infrastructure_engineering": {
+      "id": "infrastructure_engineering",
+      "name": "Infrastructure Engineering",
+      "sector": "Engineering",
+      "query": "Infrastructure Engineering Engineering AI automation agents artificial intelligence 2024 2025",
+      "results": [],
+      "error": "HTTP 403",
+      "fetchedAt": "2025-11-25T21:57:11.829Z"
+    }
+  },
+  "metadata": {
+    "testMode": true,
+    "totalArtifacts": 10,
+    "lastUpdated": "2025-11-25T21:57:11.829Z"
+  }
+}

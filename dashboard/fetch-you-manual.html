@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual You.com Fetch - Artifact Index</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f1525 0%, #1a1a2e 100%);
+            color: #eaeaea;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #81B29A;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .config-section {
+            display: grid;
+            gap: 15px;
+        }
+        label {
+            display: block;
+            color: #81B29A;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #3d3d5c;
+            border-radius: 6px;
+            color: #eaeaea;
+            font-size: 14px;
+        }
+        .button-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background: #81B29A;
+            color: #0f1525;
+        }
+        .btn-primary:hover { background: #9ac5ad; }
+        .btn-secondary {
+            background: #4285F4;
+            color: white;
+        }
+        .btn-secondary:hover { background: #5a95f5; }
+        .btn-warning {
+            background: #F4A261;
+            color: #0f1525;
+        }
+        .btn-warning:hover { background: #f5b177; }
+        .btn-danger {
+            background: #E07A5F;
+            color: white;
+        }
+        .btn-danger:hover { background: #e58d7a; }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .progress-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .stat-box {
+            background: rgba(129,178,154,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(129,178,154,0.3);
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #81B29A;
+        }
+        .stat-label {
+            font-size: 0.85em;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+        .current-artifact {
+            background: rgba(66,133,244,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(66,133,244,0.3);
+            margin-bottom: 15px;
+        }
+        .artifact-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #4285F4;
+            margin-bottom: 5px;
+        }
+        .artifact-query {
+            font-size: 0.9em;
+            color: #a0a0a0;
+            font-family: 'Courier New', monospace;
+        }
+        .log {
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #3d3d5c;
+        }
+        .log-entry {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .log-success { color: #81B29A; }
+        .log-error { color: #E07A5F; }
+        .log-info { color: #4285F4; }
+        .results-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border: 1px solid #3d3d5c;
+        }
+        .result-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            border-left: 3px solid #4285F4;
+        }
+        .result-title {
+            color: #4285F4;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .result-url {
+            font-size: 0.8em;
+            color: #81B29A;
+            word-break: break-all;
+        }
+        .result-snippet {
+            font-size: 0.85em;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Manual You.com Fetch Tool</h1>
+        <p class="subtitle">Fetch AI/automation news for each artifact one at a time</p>
+
+        <!-- Configuration -->
+        <div class="card">
+            <h2 style="color: #81B29A; margin-bottom: 15px;">Configuration</h2>
+            <div style="background: rgba(66,133,244,0.1); padding: 12px; border-radius: 6px; margin-bottom: 15px; border-left: 3px solid #4285F4;">
+                <strong style="color: #4285F4;">⚠️ Proxy Required:</strong> Make sure the proxy server is running with:<br>
+                <code style="color: #81B29A; font-family: 'Courier New', monospace;">export YOU_API_KEY="your-key" && node you-proxy-server.js</code>
+            </div>
+            <div class="config-section">
+                <div>
+                    <label>Results Per Artifact</label>
+                    <input type="number" id="resultsPerArtifact" value="3" min="1" max="10">
+                </div>
+                <div>
+                    <label>Delay Between Fetches (ms)</label>
+                    <input type="number" id="delayMs" value="1000" min="0" max="5000" step="100">
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="card">
+            <h2 style="color: #81B29A; margin-bottom: 15px;">Progress</h2>
+            <div class="progress-section">
+                <div class="stat-box">
+                    <div class="stat-value" id="currentIndex">0</div>
+                    <div class="stat-label">Current Index</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="totalArtifacts">227</div>
+                    <div class="stat-label">Total Artifacts</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="successCount">0</div>
+                    <div class="stat-label">Successful</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="errorCount">0</div>
+                    <div class="stat-label">Errors</div>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button class="btn-primary" id="fetchOneBtn" onclick="fetchOne()">Fetch Next Artifact</button>
+                <button class="btn-secondary" id="autoFetchBtn" onclick="toggleAutoFetch()">Auto-Fetch All</button>
+                <button class="btn-warning" onclick="downloadProgress()">Download Progress</button>
+                <button class="btn-danger" onclick="resetProgress()">Reset</button>
+            </div>
+        </div>
+
+        <!-- Current Artifact -->
+        <div class="card">
+            <h2 style="color: #81B29A; margin-bottom: 15px;">Current Artifact</h2>
+            <div class="current-artifact" id="currentArtifact">
+                <div class="artifact-name">Click "Fetch Next Artifact" to begin</div>
+                <div class="artifact-query"></div>
+            </div>
+            <div id="resultsPreview"></div>
+        </div>
+
+        <!-- Log -->
+        <div class="card">
+            <h2 style="color: #81B29A; margin-bottom: 15px;">Activity Log</h2>
+            <div class="log" id="activityLog">
+                <div class="log-entry log-info">Ready to fetch. Make sure proxy server is running, then click "Fetch Next Artifact"</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let artifacts = [];
+        let currentIndex = 0;
+        let results = {};
+        let autoFetchActive = false;
+        let autoFetchTimeout = null;
+
+        // Load artifacts
+        fetch('data/master_valuations.json')
+            .then(r => r.json())
+            .then(data => {
+                artifacts = data.artifacts;
+                document.getElementById('totalArtifacts').textContent = artifacts.length;
+                log('Loaded ' + artifacts.length + ' artifacts', 'success');
+            })
+            .catch(err => log('Error loading artifacts: ' + err, 'error'));
+
+        // Load saved progress
+        const savedProgress = localStorage.getItem('you-fetch-progress');
+        if (savedProgress) {
+            const progress = JSON.parse(savedProgress);
+            currentIndex = progress.currentIndex || 0;
+            results = progress.results || {};
+            updateStats();
+            log('Resumed from index ' + currentIndex, 'info');
+        }
+
+        function buildQuery(artifact) {
+            return `${artifact.name} ${artifact.sector} AI automation agents artificial intelligence proof of concept pilot 2024 2025`;
+        }
+
+        async function fetchYouSearch(query, limit) {
+            // Use local proxy server to bypass CORS restrictions
+            const url = `http://localhost:8081/search?query=${encodeURIComponent(query)}&count=${limit}`;
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                const text = await response.text();
+                throw new Error(`HTTP ${response.status}: ${text.slice(0, 100)}`);
+            }
+
+            const data = await response.json();
+            return (data.results?.web || []).map(item => ({
+                title: item.title || '',
+                url: item.url || '',
+                snippet: item.description || item.snippets?.[0] || '',
+                source: item.source || ''
+            }));
+        }
+
+        async function fetchOne() {
+            if (currentIndex >= artifacts.length) {
+                log('All artifacts processed!', 'success');
+                stopAutoFetch();
+                return;
+            }
+
+            const artifact = artifacts[currentIndex];
+            const query = buildQuery(artifact);
+            const limit = parseInt(document.getElementById('resultsPerArtifact').value);
+
+            // Update UI
+            document.getElementById('currentArtifact').innerHTML = `
+                <div class="artifact-name">[${currentIndex + 1}/${artifacts.length}] ${artifact.name}</div>
+                <div class="artifact-query">${query.slice(0, 120)}...</div>
+            `;
+            document.getElementById('currentIndex').textContent = currentIndex + 1;
+
+            log(`Fetching: ${artifact.name}`, 'info');
+
+            try {
+                const searchResults = await fetchYouSearch(query, limit);
+
+                results[artifact.id] = {
+                    id: artifact.id,
+                    name: artifact.name,
+                    sector: artifact.sector,
+                    query: query,
+                    results: searchResults,
+                    fetchedAt: new Date().toISOString()
+                };
+
+                log(`✓ ${artifact.name}: ${searchResults.length} results`, 'success');
+                document.getElementById('successCount').textContent = parseInt(document.getElementById('successCount').textContent) + 1;
+
+                // Show preview
+                showResultsPreview(searchResults);
+
+                // Save progress
+                saveProgress();
+
+            } catch (error) {
+                log(`✗ ${artifact.name}: ${error.message}`, 'error');
+                document.getElementById('errorCount').textContent = parseInt(document.getElementById('errorCount').textContent) + 1;
+
+                results[artifact.id] = {
+                    id: artifact.id,
+                    name: artifact.name,
+                    sector: artifact.sector,
+                    query: query,
+                    results: [],
+                    error: error.message,
+                    fetchedAt: new Date().toISOString()
+                };
+                saveProgress();
+            }
+
+            currentIndex++;
+
+            // Continue auto-fetch if active
+            if (autoFetchActive && currentIndex < artifacts.length) {
+                const delay = parseInt(document.getElementById('delayMs').value);
+                autoFetchTimeout = setTimeout(fetchOne, delay);
+            } else if (currentIndex >= artifacts.length) {
+                stopAutoFetch();
+            }
+        }
+
+        function toggleAutoFetch() {
+            if (autoFetchActive) {
+                stopAutoFetch();
+            } else {
+                startAutoFetch();
+            }
+        }
+
+        function startAutoFetch() {
+            autoFetchActive = true;
+            document.getElementById('autoFetchBtn').textContent = 'Stop Auto-Fetch';
+            document.getElementById('autoFetchBtn').className = 'btn-danger';
+            document.getElementById('fetchOneBtn').disabled = true;
+            log('Auto-fetch started', 'info');
+            fetchOne();
+        }
+
+        function stopAutoFetch() {
+            autoFetchActive = false;
+            if (autoFetchTimeout) {
+                clearTimeout(autoFetchTimeout);
+                autoFetchTimeout = null;
+            }
+            document.getElementById('autoFetchBtn').textContent = 'Auto-Fetch All';
+            document.getElementById('autoFetchBtn').className = 'btn-secondary';
+            document.getElementById('fetchOneBtn').disabled = false;
+            log('Auto-fetch stopped', 'info');
+        }
+
+        function showResultsPreview(searchResults) {
+            const preview = document.getElementById('resultsPreview');
+            if (searchResults.length === 0) {
+                preview.innerHTML = '<p style="color: #E07A5F;">No results found</p>';
+                return;
+            }
+
+            preview.innerHTML = '<h3 style="color: #81B29A; margin-bottom: 10px;">Results Preview:</h3>' +
+                searchResults.map(r => `
+                    <div class="result-item">
+                        <div class="result-title">${r.title}</div>
+                        <div class="result-url">${r.url}</div>
+                        <div class="result-snippet">${r.snippet.slice(0, 150)}...</div>
+                    </div>
+                `).join('');
+        }
+
+        function saveProgress() {
+            const progress = {
+                currentIndex: currentIndex,
+                results: results,
+                lastUpdated: new Date().toISOString()
+            };
+            localStorage.setItem('you-fetch-progress', JSON.stringify(progress));
+        }
+
+        function downloadProgress() {
+            const output = {
+                artifacts: results,
+                metadata: {
+                    totalArtifacts: artifacts.length,
+                    processedArtifacts: Object.keys(results).length,
+                    successfulFetches: parseInt(document.getElementById('successCount').textContent),
+                    errors: parseInt(document.getElementById('errorCount').textContent),
+                    lastUpdated: new Date().toISOString(),
+                    resultsPerArtifact: parseInt(document.getElementById('resultsPerArtifact').value),
+                    apiProvider: 'You.com Search API'
+                }
+            };
+
+            const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `you-search-results-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            log('Downloaded progress file', 'success');
+        }
+
+        function resetProgress() {
+            if (!confirm('Reset all progress? This will clear all fetched results.')) {
+                return;
+            }
+            currentIndex = 0;
+            results = {};
+            localStorage.removeItem('you-fetch-progress');
+            document.getElementById('successCount').textContent = '0';
+            document.getElementById('errorCount').textContent = '0';
+            document.getElementById('currentIndex').textContent = '0';
+            document.getElementById('resultsPreview').innerHTML = '';
+            log('Progress reset', 'info');
+        }
+
+        function updateStats() {
+            const success = Object.values(results).filter(r => !r.error && r.results.length > 0).length;
+            const errors = Object.values(results).filter(r => r.error || r.results.length === 0).length;
+            document.getElementById('successCount').textContent = success;
+            document.getElementById('errorCount').textContent = errors;
+            document.getElementById('currentIndex').textContent = currentIndex;
+        }
+
+        function log(message, type = 'info') {
+            const logEl = document.getElementById('activityLog');
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logEl.insertBefore(entry, logEl.firstChild);
+
+            // Keep only last 50 entries
+            while (logEl.children.length > 50) {
+                logEl.removeChild(logEl.lastChild);
+            }
+        }
+    </script>
+</body>
+</html>
