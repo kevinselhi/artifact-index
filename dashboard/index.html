@@ -6174,6 +6174,12 @@
                     clearBtn.style.display = 'none';
                     const newsPanel = document.getElementById('newsPanel');
                     if (newsPanel) newsPanel.style.display = 'none';
+
+                    // Keep industry reports visible if an industry is selected
+                    const reportsPanel = document.getElementById('industryReportsPanel');
+                    if (reportsPanel && currentIndustryFilter === 'all') {
+                        reportsPanel.style.display = 'none';
+                    }
                     return;
                 }
 
