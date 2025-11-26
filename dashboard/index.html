@@ -5004,14 +5004,9 @@
                 return `
                 <tr>
                     <td>
-                        <a href="#deep-dive"
-                           class="industry-link"
-                           data-sector="${i.sector}"
-                           style="color: ${industryColors[i.sector] || '#888'}; text-decoration: none; font-weight: bold; cursor: pointer;"
-                           onmouseover="this.style.textDecoration='underline'"
-                           onmouseout="this.style.textDecoration='none'">
+                        <strong style="color: ${industryColors[i.sector] || '#888'};">
                             ${i.sector}
-                        </a>
+                        </strong>
                     </td>
                     <td>
                         <span style="background: ${i.readinessColor}; color: #1a1a2e; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em;">
@@ -6190,8 +6185,9 @@
                 // Load and display You.com news results
                 loadNewsResults(artifact.id);
 
-                // Load and display Industry Reports
-                loadIndustryReports(artifact.sector);
+                // Hide industry reports panel when viewing individual artifact
+                const reportsPanel = document.getElementById('industryReportsPanel');
+                if (reportsPanel) reportsPanel.style.display = 'none';
 
                 // Update chart
                 if (artifactChart) artifactChart.destroy();
@@ -6799,33 +6795,6 @@
                 initTop25Table();
                 initArtifactView();
                 initVarianceCharts();
-
-                // Event delegation for industry links (set up after data is loaded)
-                document.addEventListener('click', (e) => {
-                    const link = e.target.closest('.industry-link');
-                    if (link) {
-                        e.preventDefault();
-                        const sector = link.getAttribute('data-sector');
-                        console.log('Industry link clicked:', sector);
-
-                        // Switch to deep dive tab
-                        switchTab('deep-dive');
-
-                        // Wait for tab to be visible, then filter
-                        setTimeout(() => {
-                            console.log('Filtering by industry:', sector);
-                            filterByIndustry(sector);
-
-                            const filterElement = document.getElementById('industryFilter');
-                            if (filterElement) {
-                                filterElement.value = sector;
-                                console.log('Filter set to:', filterElement.value);
-                            } else {
-                                console.error('Industry filter element not found');
-                            }
-                        }, 100);
-                    }
-                });
             } catch (error) {
                 console.error('Failed to initialize dashboard:', error);
             }
