@@ -5003,7 +5003,12 @@
 
                 return `
                 <tr>
-                    <td><strong style="color: ${industryColors[i.sector] || '#888'}">${i.sector}</strong></td>
+                    <td>
+                        <strong style="color: ${industryColors[i.sector] || '#888'}; cursor: pointer; text-decoration: underline;"
+                                onclick="switchTab('deep-dive'); setTimeout(() => { filterByIndustry('${i.sector}'); document.getElementById('industryFilter').value='${i.sector}'; }, 100);">
+                            ${i.sector}
+                        </strong>
+                    </td>
                     <td>
                         <span style="background: ${i.readinessColor}; color: #1a1a2e; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em;">
                             ${i.readiness}
