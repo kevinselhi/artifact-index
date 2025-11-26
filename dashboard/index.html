@@ -5004,10 +5004,13 @@
                 return `
                 <tr>
                     <td>
-                        <strong style="color: ${industryColors[i.sector] || '#888'}; cursor: pointer; text-decoration: underline;"
-                                onclick="switchTab('deep-dive'); setTimeout(() => { filterByIndustry('${i.sector}'); document.getElementById('industryFilter').value='${i.sector}'; }, 100);">
+                        <a href="#deep-dive"
+                           style="color: ${industryColors[i.sector] || '#888'}; text-decoration: none; font-weight: bold;"
+                           onclick="event.preventDefault(); switchTab('deep-dive'); setTimeout(() => { filterByIndustry('${i.sector}'); document.getElementById('industryFilter').value='${i.sector}'; }, 100);"
+                           onmouseover="this.style.textDecoration='underline'"
+                           onmouseout="this.style.textDecoration='none'">
                             ${i.sector}
-                        </strong>
+                        </a>
                     </td>
                     <td>
                         <span style="background: ${i.readinessColor}; color: #1a1a2e; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em;">
@@ -6651,7 +6654,30 @@
 
                 // Generate contextual explanations based on artifact and variance type
                 let explanation;
-                if (a.id === 'infrastructure_engineering') explanation = 'IT vs Nuclear scope';
+                if (varianceType === 'low') {
+                    // For low variance, show consensus details
+                    const modelCount = values.length;
+                    const avgValue = values.reduce((sum, [k, v]) => sum + v, 0) / modelCount;
+                    const percentSpread = ((maxEntry[1] - minEntry[1]) / avgValue * 100).toFixed(0);
+
+                    explanation = `${modelCount} models, tight cluster (${percentSpread}% spread)`;
+                } else if (varianceType === 'mid') {
+                    // For mid-range variance, show model coverage and mean/median comparison
+                    const modelCount = values.length;
+                    const sortedValues = values.map(([k, v]) => v).sort((a, b) => a - b);
+                    const mean = sortedValues.reduce((sum, v) => sum + v, 0) / sortedValues.length;
+                    const median = sortedValues.length % 2 === 0
+                        ? (sortedValues[sortedValues.length / 2 - 1] + sortedValues[sortedValues.length / 2]) / 2
+                        : sortedValues[Math.floor(sortedValues.length / 2)];
+
+                    const meanMedianDiff = Math.abs((mean - median) / median * 100).toFixed(0);
+
+                    if (meanMedianDiff > 15) {
+                        explanation = `${modelCount}/8 models, skewed distribution (${meanMedianDiff}% mean/median gap)`;
+                    } else {
+                        explanation = `${modelCount}/8 models, balanced distribution (${meanMedianDiff}% mean/median gap)`;
+                    }
+                } else if (a.id === 'infrastructure_engineering') explanation = 'IT vs Nuclear scope';
                 else if (a.id === 'nda_bla_application') explanation = 'Fee vs R&D cost';
                 else if (a.id === 'erp_implementation') explanation = 'Mid vs Enterprise scope';
                 else if (a.id === 'environmental_impact_statement') explanation = 'Basic vs Nuclear EIS';
@@ -6660,13 +6686,7 @@
                 else if (a.id === 'water_treatment_plant') explanation = 'Capacity-dependent';
                 else if (a.id === 'saas_platform_architecture') explanation = 'Complexity varies';
                 else if (a.id === 'microservices_migration') explanation = 'Legacy system dependent';
-                else if (a.id === 'tax_opinion') explanation = 'Good model agreement';
-                else if (a.id === 'change_management') explanation = 'Consistent methodology';
-                else if (a.id === 'blockchain_implementation') explanation = 'Similar scope definition';
-                else if (a.id === 'medical_device_510k') explanation = 'Standardized process';
-                else if (a.id === 'soc2_audit') explanation = 'Well-defined scope';
                 else if (varianceType === 'high') explanation = 'Methodology difference';
-                else if (varianceType === 'mid') explanation = 'Moderate scope variation';
                 else explanation = 'Strong consensus';
 
                 table.innerHTML += `
@@ -6702,6 +6722,12 @@
             clearVarianceToggles();
             document.getElementById('highVarianceBtn').classList.add('active');
 
+            // Restore "Explanation" header
+            const headerCells = document.querySelectorAll('#variance table thead th');
+            if (headerCells.length >= 5) {
+                headerCells[4].textContent = 'Explanation';
+            }
+
             // Filter artifacts with at least 2 models and sort by highest variance
             const multiModelArtifacts = artifacts.filter(a => {
                 const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
@@ -6718,6 +6744,12 @@
             document.getElementById('varianceTableTitle').textContent = 'Mid-Range Variance Artifacts (3x-10x disagreement)';
             clearVarianceToggles();
             document.getElementById('midVarianceBtn').classList.add('active');
+
+            // Change table header to "Notes"
+            const headerCells = document.querySelectorAll('#variance table thead th');
+            if (headerCells.length >= 5) {
+                headerCells[4].textContent = 'Notes';
+            }
 
             // Filter artifacts with at least 2 models and sort by variance
             const multiModelArtifacts = artifacts.filter(a => {
@@ -6739,6 +6771,12 @@
             document.getElementById('varianceTableTitle').textContent = 'Lowest Variance Artifacts (<3x strong consensus)';
             clearVarianceToggles();
             document.getElementById('lowVarianceBtn').classList.add('active');
+
+            // Change table header from "Explanation" to "Notes"
+            const headerCells = document.querySelectorAll('#variance table thead th');
+            if (headerCells.length >= 5) {
+                headerCells[4].textContent = 'Notes';
+            }
 
             // Filter artifacts with at least 2 models and sort by lowest variance
             const multiModelArtifacts = artifacts.filter(a => {
