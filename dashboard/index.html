@@ -5005,8 +5005,9 @@
                 <tr>
                     <td>
                         <a href="#deep-dive"
-                           style="color: ${industryColors[i.sector] || '#888'}; text-decoration: none; font-weight: bold;"
-                           onclick="event.preventDefault(); switchTab('deep-dive'); setTimeout(() => { filterByIndustry('${i.sector}'); document.getElementById('industryFilter').value='${i.sector}'; }, 100);"
+                           class="industry-link"
+                           data-sector="${i.sector}"
+                           style="color: ${industryColors[i.sector] || '#888'}; text-decoration: none; font-weight: bold; cursor: pointer;"
                            onmouseover="this.style.textDecoration='underline'"
                            onmouseout="this.style.textDecoration='none'">
                             ${i.sector}
@@ -6790,6 +6791,20 @@
         }
 
         // Initialize all charts
+        // Event delegation for industry links
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('.industry-link');
+            if (link) {
+                e.preventDefault();
+                const sector = link.getAttribute('data-sector');
+                switchTab('deep-dive');
+                setTimeout(() => {
+                    filterByIndustry(sector);
+                    document.getElementById('industryFilter').value = sector;
+                }, 100);
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', async () => {
             try {
                 await loadData();
