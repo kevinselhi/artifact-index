@@ -1,4 +1,4 @@
-# The AI Opportunity Index
+# AI Opportunity Index
 
 An interactive dashboard comparing how 8 different AI models valued 227 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data and real-time industry intelligence powered by You.com Search API.
 
@@ -229,7 +229,7 @@ npm start            # Production HTTP (after build)
 ## Recent Updates (November 2025)
 
 ### Dashboard Enhancements
-- **Renamed to "The AI Opportunity Index"**: Better reflects the dashboard's focus on AI automation opportunities
+- **Renamed to "AI Opportunity Index"**: Better reflects the dashboard's focus on AI automation opportunities
 - **Model Characteristics Panel**: Quantitative behavioral analysis of each AI model
   - Coverage Score: Comprehensiveness vs. high-confidence artifacts
   - Uniqueness Score: Distinctive perspective measurement
