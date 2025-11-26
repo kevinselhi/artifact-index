@@ -6791,20 +6791,6 @@
         }
 
         // Initialize all charts
-        // Event delegation for industry links
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('.industry-link');
-            if (link) {
-                e.preventDefault();
-                const sector = link.getAttribute('data-sector');
-                switchTab('deep-dive');
-                setTimeout(() => {
-                    filterByIndustry(sector);
-                    document.getElementById('industryFilter').value = sector;
-                }, 100);
-            }
-        });
-
         document.addEventListener('DOMContentLoaded', async () => {
             try {
                 await loadData();
@@ -6813,6 +6799,33 @@
                 initTop25Table();
                 initArtifactView();
                 initVarianceCharts();
+
+                // Event delegation for industry links (set up after data is loaded)
+                document.addEventListener('click', (e) => {
+                    const link = e.target.closest('.industry-link');
+                    if (link) {
+                        e.preventDefault();
+                        const sector = link.getAttribute('data-sector');
+                        console.log('Industry link clicked:', sector);
+
+                        // Switch to deep dive tab
+                        switchTab('deep-dive');
+
+                        // Wait for tab to be visible, then filter
+                        setTimeout(() => {
+                            console.log('Filtering by industry:', sector);
+                            filterByIndustry(sector);
+
+                            const filterElement = document.getElementById('industryFilter');
+                            if (filterElement) {
+                                filterElement.value = sector;
+                                console.log('Filter set to:', filterElement.value);
+                            } else {
+                                console.error('Industry filter element not found');
+                            }
+                        }, 100);
+                    }
+                });
             } catch (error) {
                 console.error('Failed to initialize dashboard:', error);
             }
