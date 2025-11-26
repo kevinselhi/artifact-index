@@ -6164,14 +6164,12 @@
                 const mcpPanel = document.getElementById('mcpPanel');
 
                 if (!artifact) {
-                    // Show default consensus view, hide news and reports panels
+                    // Show default consensus view, hide news panel
                     consensusView.style.display = 'block';
                     detailView.style.display = 'none';
                     clearBtn.style.display = 'none';
                     const newsPanel = document.getElementById('newsPanel');
-                    const reportsPanel = document.getElementById('industryReportsPanel');
                     if (newsPanel) newsPanel.style.display = 'none';
-                    if (reportsPanel) reportsPanel.style.display = 'none';
                     return;
                 }
 
