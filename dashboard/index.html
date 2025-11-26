@@ -4301,6 +4301,9 @@
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.view).classList.remove('hidden');
 
+                // Scroll to top when switching tabs
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
                 // Reset Artifact Deep Dive tab to default state when clicked directly
                 if (tab.dataset.view === 'artifact') {
                     resetArtifactView();
@@ -4319,6 +4322,9 @@
 
         // Navigate to Artifact Deep Dive
         function navigateToArtifact(artifactId) {
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
             // Switch to Artifact Deep Dive tab
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
@@ -4416,6 +4422,9 @@
 
         // Navigate to Artifact Deep Dive with industry filter
         function navigateToIndustry(industry) {
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
             // Switch to Artifact Deep Dive tab
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
