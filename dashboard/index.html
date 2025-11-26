@@ -6013,11 +6013,17 @@
 
             // Show/hide industry overview panel
             const panel = document.getElementById('industryOverviewPanel');
+            const reportsPanel = document.getElementById('industryReportsPanel');
+
             if (industry === 'all') {
                 panel.style.display = 'none';
+                if (reportsPanel) reportsPanel.style.display = 'none';
             } else {
                 panel.style.display = 'block';
                 renderIndustryOverview(industry);
+
+                // Load industry reports for this sector
+                loadIndustryReports(industry);
             }
 
             // Update consensus view to show industry-specific results
@@ -6158,12 +6164,14 @@
                 const mcpPanel = document.getElementById('mcpPanel');
 
                 if (!artifact) {
-                    // Show default consensus view, hide news panel
+                    // Show default consensus view, hide news and reports panels
                     consensusView.style.display = 'block';
                     detailView.style.display = 'none';
                     clearBtn.style.display = 'none';
                     const newsPanel = document.getElementById('newsPanel');
+                    const reportsPanel = document.getElementById('industryReportsPanel');
                     if (newsPanel) newsPanel.style.display = 'none';
+                    if (reportsPanel) reportsPanel.style.display = 'none';
                     return;
                 }
 
