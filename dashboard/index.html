@@ -1114,16 +1114,6 @@
                         <!-- News results will be populated here -->
                     </div>
                 </div>
-                <!-- Industry Reports Panel (hidden by default, shown when artifact selected) -->
-                <div id="industryReportsPanel" class="card" style="margin-top: 15px; display: none;">
-                    <div class="card-title">Industry Intelligence Report</div>
-                    <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 15px;">
-                        Comprehensive industry analysis across AI Impact, Trends, and Market Insights (powered by You.com Search API)
-                    </div>
-                    <div id="industryReportsContent">
-                        <!-- Industry reports will be populated here -->
-                    </div>
-                </div>
             </div>
 
             <!-- Industry Overview Panel (shown when industry is selected) -->
@@ -1134,6 +1124,17 @@
                         <button onclick="filterByIndustry('all'); document.getElementById('industryFilter').value='all';" style="padding: 4px 10px; border-radius: 4px; border: 1px solid #3d3d5c; background: transparent; color: #a0a0a0; font-size: 0.75em; cursor: pointer;">Clear Filter</button>
                     </div>
                     <div id="industryOverviewContent" style="padding: 10px;"></div>
+                </div>
+            </div>
+
+            <!-- Industry Reports Panel (shown when industry is selected) -->
+            <div id="industryReportsPanel" class="card" style="margin-bottom: 20px; display: none;">
+                <div class="card-title">Industry Intelligence Report</div>
+                <div style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 15px;">
+                    Comprehensive industry analysis across AI Impact, Trends, and Market Insights (powered by You.com Search API)
+                </div>
+                <div id="industryReportsContent">
+                    <!-- Industry reports will be populated here -->
                 </div>
             </div>
 
