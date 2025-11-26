@@ -941,6 +941,29 @@
                 </div>
             </div>
 
+            <!-- Model Characteristics -->
+            <div class="card full-width" style="margin-top: 20px;">
+                <div class="card-title">Model Characteristics & Behavioral Analysis</div>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.9em;">
+                    Quantitative analysis of each model's artifact selection and valuation behavior compared to the ensemble.
+                </p>
+
+                <div id="modelCharacteristicsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                    <!-- Model cards will be populated here -->
+                </div>
+
+                <!-- Methodology Explanation -->
+                <div style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--text-secondary);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px; font-size: 0.95em;">Scoring Methodology</h4>
+                    <div style="color: var(--text-secondary); font-size: 0.85em; line-height: 1.6;">
+                        <p style="margin-bottom: 8px;"><strong>Coverage Score:</strong> % of high-confidence artifacts (≥4 models) this model included. Measures comprehensiveness.</p>
+                        <p style="margin-bottom: 8px;"><strong>Uniqueness Score:</strong> % of this model's artifacts not valued by others. Measures distinctive perspective (higher = more unique viewpoint).</p>
+                        <p style="margin-bottom: 8px;"><strong>Valuation Alignment:</strong> Median % difference from ensemble mean on shared artifacts. Lower = closer alignment with consensus.</p>
+                        <p><strong>Interpretation:</strong> High coverage + low uniqueness + low deviation = comprehensive consensus-seeker. Low coverage + high uniqueness = specialized/distinctive. High deviation = systematically different valuation methodology.</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Top Artifacts by Model -->
             <div class="card full-width" style="margin-top: 20px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
@@ -5232,6 +5255,146 @@
         const MAX_PAGES = 20; // Support up to 160 artifacts
 
         // Initialize Comparison Charts
+        // Populate Model Characteristics Panel
+        function populateModelCharacteristics() {
+            const grid = document.getElementById('modelCharacteristicsGrid');
+            if (!grid) return;
+
+            // Calculate high-confidence artifacts (≥4 models)
+            const highConfidenceArtifacts = artifacts.filter(a => {
+                const modelCount = Object.values(a.valuations).filter(v => v !== null && v > 0).length;
+                return modelCount >= 4;
+            });
+
+            const modelStats = {};
+
+            // For each model, calculate metrics
+            Object.keys(modelColors).forEach(modelKey => {
+                const modelArtifacts = artifacts.filter(a => a.valuations[modelKey] !== null && a.valuations[modelKey] > 0);
+
+                // 1. Coverage Score: % of high-confidence artifacts this model valued
+                const highConfValued = highConfidenceArtifacts.filter(a =>
+                    a.valuations[modelKey] !== null && a.valuations[modelKey] > 0
+                ).length;
+                const coverageScore = highConfidenceArtifacts.length > 0
+                    ? (highConfValued / highConfidenceArtifacts.length * 100)
+                    : 0;
+
+                // 2. Uniqueness Score: % of this model's artifacts not valued by others
+                const uniqueArtifacts = modelArtifacts.filter(a => {
+                    const otherModels = Object.keys(modelColors).filter(k => k !== modelKey);
+                    const valuedByOthers = otherModels.some(k => a.valuations[k] !== null && a.valuations[k] > 0);
+                    return !valuedByOthers;
+                }).length;
+                const uniquenessScore = modelArtifacts.length > 0
+                    ? (uniqueArtifacts / modelArtifacts.length * 100)
+                    : 0;
+
+                // 3. Valuation Alignment: Median % difference from ensemble mean
+                const deviations = [];
+                modelArtifacts.forEach(a => {
+                    // Get all other model values for this artifact
+                    const otherValues = Object.keys(modelColors)
+                        .filter(k => k !== modelKey && a.valuations[k] !== null && a.valuations[k] > 0)
+                        .map(k => a.valuations[k]);
+
+                    if (otherValues.length > 0) {
+                        const ensembleMean = otherValues.reduce((sum, v) => sum + v, 0) / otherValues.length;
+                        const modelValue = a.valuations[modelKey];
+                        const percentDiff = Math.abs((modelValue - ensembleMean) / ensembleMean * 100);
+                        deviations.push(percentDiff);
+                    }
+                });
+
+                // Calculate median deviation
+                const medianDeviation = deviations.length > 0
+                    ? deviations.sort((a, b) => a - b)[Math.floor(deviations.length / 2)]
+                    : 0;
+
+                modelStats[modelKey] = {
+                    coverage: coverageScore,
+                    uniqueness: uniquenessScore,
+                    alignment: medianDeviation,
+                    artifactCount: modelArtifacts.length
+                };
+            });
+
+            // Generate cards for each model
+            let cardsHTML = '';
+            Object.keys(modelColors).forEach(modelKey => {
+                const stats = modelStats[modelKey];
+                const color = modelColors[modelKey];
+                const name = modelNames[modelKey];
+
+                // Determine interpretation
+                let interpretation = '';
+                if (stats.coverage > 70 && stats.uniqueness < 20 && stats.alignment < 30) {
+                    interpretation = 'Comprehensive consensus-seeker';
+                } else if (stats.coverage < 50 && stats.uniqueness > 30) {
+                    interpretation = 'Distinctive perspective';
+                } else if (stats.alignment > 50) {
+                    interpretation = 'Alternative valuation approach';
+                } else if (stats.coverage > 60 && stats.uniqueness > 25) {
+                    interpretation = 'Balanced breadth & uniqueness';
+                } else {
+                    interpretation = 'Moderate coverage';
+                }
+
+                cardsHTML += `
+                    <div style="padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid ${color};">
+                        <div style="font-weight: bold; color: ${color}; margin-bottom: 12px; font-size: 1.05em;">${name}</div>
+
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px;">
+                            <!-- Coverage -->
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="font-size: 0.85em; color: var(--text-secondary);">Coverage</span>
+                                    <span style="font-size: 0.85em; font-weight: bold; color: ${stats.coverage > 70 ? '#4caf50' : stats.coverage > 50 ? '#ff9800' : '#f44336'};">
+                                        ${stats.coverage.toFixed(0)}%
+                                    </span>
+                                </div>
+                                <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
+                                    <div style="width: ${stats.coverage}%; height: 100%; background: ${color}; transition: width 0.3s;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Uniqueness -->
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="font-size: 0.85em; color: var(--text-secondary);">Uniqueness</span>
+                                    <span style="font-size: 0.85em; font-weight: bold; color: ${stats.uniqueness > 30 ? '#2196f3' : stats.uniqueness > 15 ? '#ff9800' : '#4caf50'};">
+                                        ${stats.uniqueness.toFixed(0)}%
+                                    </span>
+                                </div>
+                                <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
+                                    <div style="width: ${Math.min(stats.uniqueness, 100)}%; height: 100%; background: ${color}; transition: width 0.3s;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Alignment (lower is better) -->
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="font-size: 0.85em; color: var(--text-secondary);">Valuation Deviation</span>
+                                    <span style="font-size: 0.85em; font-weight: bold; color: ${stats.alignment < 30 ? '#4caf50' : stats.alignment < 50 ? '#ff9800' : '#f44336'};">
+                                        ${stats.alignment.toFixed(0)}%
+                                    </span>
+                                </div>
+                                <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden;">
+                                    <div style="width: ${Math.min(stats.alignment, 100)}%; height: 100%; background: ${color}; transition: width 0.3s;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 0.8em; color: var(--text-secondary); font-style: italic; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">
+                            ${interpretation}
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = cardsHTML;
+        }
+
         function initComparisonCharts() {
             // Initialize the comparison chart with pagination
             initComparisonPagination();
@@ -5239,6 +5402,9 @@
 
             // Create page dots
             createComparisonPageDots();
+
+            // Populate Model Characteristics
+            populateModelCharacteristics();
 
             // Sector Chart - Top 10 sectors by average artifact value
             // Calculate average valuation per sector across all models
