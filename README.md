@@ -12,8 +12,6 @@ Or open locally: `dashboard/index.html`
 
 This project captures a unique moment in history—the last full year before generative AI transformed professional services. It documents the most economically valuable professional artifacts created in 2020 and compares how different AI models approach valuation.
 
-*All models had Deep Research or Extended Thinking enabled.*
-
 ### The Core Insight
 
 Different AI models can produce **fundamentally different valuations** for the same artifacts because they often measure different things. For example:
