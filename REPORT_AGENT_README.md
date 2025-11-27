@@ -2,6 +2,47 @@
 
 A simple CLI tool for generating, parsing, and loading AI artifact valuation reports into the Artifact Index.
 
+## For Claude Code (Haiku/Sonnet/Opus): Generate Your Own Report
+
+If you are an AI assistant in Claude Code, you can create a report yourself:
+
+1. **Print the prompt to see what's needed:**
+   ```bash
+   npm run agent -- prompt
+   ```
+
+2. **Generate the report content** - Create a markdown file with a table of 100 artifacts in this format:
+   ```markdown
+   | Rank | Artifact Name | Sector | Typical Value (USD) | Producer Type |
+   |------|---------------|--------|---------------------|---------------|
+   | 1    | Phase III Clinical Trial | Medical/Pharma | $22,500,000 | CROs, Pharma |
+   | 2    | M&A Advisory | Financial Services | $6,000,000 | Investment Banks |
+   ...
+   ```
+
+3. **Save the report:**
+   - Save to a file like `haiku_HumanArtifactsReport.md` in the repository root
+
+4. **Parse to verify:**
+   ```bash
+   npm run agent -- parse ./haiku_HumanArtifactsReport.md
+   ```
+
+5. **Load into master data:**
+   ```bash
+   npm run agent -- load ./haiku_HumanArtifactsReport.md --model-id haiku
+   ```
+
+6. **Commit and push the changes**
+
+**Key requirements for your report:**
+- Include exactly 100 artifacts ranked by value
+- Cover all sectors: Financial, Legal, Medical/Pharma, Consulting, Engineering, Tech, etc.
+- Use 2020 market values
+- Format values as plain numbers or with $ (e.g., `5000000` or `$5,000,000`)
+
+---
+
 ## Quick Start
 
 ```bash
