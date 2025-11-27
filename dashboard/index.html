@@ -21,20 +21,20 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="AI Opportunity Index">
-    <meta name="description" content="An interactive report on how 8 frontier models (including Gemini 3.0, Claude 4.5 Opus, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
+    <meta name="description" content="An interactive report on how 8 frontier AI models (including Gemini 3.0, Claude Opus 4.5, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kevinselhi.github.io/artifact-index/dashboard/">
     <meta property="og:title" content="AI Opportunity Index">
-    <meta property="og:description" content="An interactive report on how 8 frontier models (including Gemini 3.0, Claude 4.5 Opus, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
+    <meta property="og:description" content="An interactive report on how 8 frontier AI models (including Gemini 3.0, Claude Opus 4.5, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
     <meta property="og:image" content="https://kevinselhi.github.io/artifact-index/dashboard/favicon.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://kevinselhi.github.io/artifact-index/dashboard/">
     <meta property="twitter:title" content="AI Opportunity Index">
-    <meta property="twitter:description" content="An interactive report on how 8 frontier models (including Gemini 3.0, Claude 4.5 Opus, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
+    <meta property="twitter:description" content="An interactive report on how 8 frontier AI models (including Gemini 3.0, Claude Opus 4.5, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
     <meta property="twitter:image" content="https://kevinselhi.github.io/artifact-index/dashboard/favicon.png">
 
     <!-- WhatsApp / iMessage -->
@@ -46,6 +46,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0"></script>
+
+    <!-- External CSS (modular styles) -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Original inline styles (preserved for compatibility) -->
     <style>
         :root {
             --claude-sonnet45: #E07A5F;
@@ -727,7 +732,19 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Skip link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Screen reader announcer -->
+    <div id="sr-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay" role="alert" aria-live="polite" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading dashboard...</p>
+    </div>
+
+    <div class="container" id="main-content">
         <header>
             <h1>AI Opportunity Index</h1>
             <p class="subtitle">8-Model Comparison Dashboard | November 2025</p>
@@ -772,15 +789,15 @@
         </div>
         <p style="font-size: 0.75em; color: #888; font-style: italic; text-align: center; margin-top: -10px; margin-bottom: 15px;">All models had Deep Research or Extended Thinking enabled</p>
 
-        <div class="tabs">
-            <div class="tab active" data-view="overview">Overview</div>
-            <div class="tab" data-view="comparison">Model Comparison</div>
-            <div class="tab" data-view="artifact">Artifact Deep Dive</div>
-            <div class="tab" data-view="variance">Variance Analysis</div>
+        <div class="tabs" role="tablist" aria-label="Dashboard views">
+            <button class="tab active" data-view="overview" role="tab" aria-selected="true" aria-controls="overview" tabindex="0">Overview</button>
+            <button class="tab" data-view="comparison" role="tab" aria-selected="false" aria-controls="comparison" tabindex="-1">Model Comparison</button>
+            <button class="tab" data-view="artifact" role="tab" aria-selected="false" aria-controls="artifact" tabindex="-1">Artifact Deep Dive</button>
+            <button class="tab" data-view="variance" role="tab" aria-selected="false" aria-controls="variance" tabindex="-1">Variance Analysis</button>
         </div>
 
         <!-- Overview View -->
-        <div id="overview" class="view">
+        <div id="overview" class="view" role="tabpanel" aria-labelledby="overview-tab">
             <div class="stats-grid" style="margin-bottom: 20px;">
                 <div class="stat-card">
                     <div class="stat-value">8</div>
@@ -914,7 +931,7 @@
         </div>
 
         <!-- Comparison View -->
-        <div id="comparison" class="view hidden">
+        <div id="comparison" class="view hidden" role="tabpanel" aria-labelledby="comparison-tab">
             <div class="dashboard-grid">
                 <div class="card full-width">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -1098,7 +1115,7 @@
         </div>
 
         <!-- Artifact Deep Dive View -->
-        <div id="artifact" class="view hidden">
+        <div id="artifact" class="view hidden" role="tabpanel" aria-labelledby="artifact-tab">
             <div class="card" style="margin-bottom: 20px;">
                 <!-- Sort and Filter Controls -->
                 <div class="artifact-controls" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 15px; align-items: center;">
@@ -1136,9 +1153,18 @@
                         <button onclick="resetArtifactView()" style="padding: 5px 12px; border-radius: 4px; border: 1px solid #E07A5F; background: transparent; color: #E07A5F; font-size: 0.8em; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#E07A5F'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#E07A5F';">Reset</button>
                     </div>
                 </div>
+                <!-- Search Input -->
+                <div class="artifact-search" style="margin-bottom: 15px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <label for="artifactSearch" class="sr-only">Search artifacts</label>
+                        <input type="search" id="artifactSearch" class="search-input" placeholder="Search artifacts by name..." oninput="filterArtifactsBySearch(this.value)" style="flex: 1; padding: 10px 14px; border-radius: 4px; border: 1px solid #3d3d5c; background: #1a1a2e; color: #eaeaea; font-size: 0.9em;" aria-describedby="searchHint">
+                        <span id="searchHint" class="sr-only">Type to filter artifacts by name</span>
+                    </div>
+                </div>
+
                 <!-- Artifact Selector -->
                 <div class="artifact-selector" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                    <select id="artifactSelect" class="artifact-select" style="flex: 1; min-width: 200px;">
+                    <select id="artifactSelect" class="artifact-select" style="flex: 1; min-width: 200px;" aria-label="Select artifact">
                         <option value="">Select an artifact to analyze...</option>
                     </select>
                     <button id="clearArtifactBtn" onclick="clearArtifactSelection()" style="padding: 10px 16px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.85em; transition: all 0.2s; display: none; white-space: nowrap;" onmouseover="this.style.borderColor='#E07A5F'; this.style.color='#E07A5F';" onmouseout="this.style.borderColor='#3d3d5c'; this.style.color='#a0a0a0';">
@@ -1241,7 +1267,7 @@
         </div>
 
         <!-- Variance Analysis View -->
-        <div id="variance" class="view hidden">
+        <div id="variance" class="view hidden" role="tabpanel" aria-labelledby="variance-tab">
             <div class="dashboard-grid">
                 <div class="card full-width">
                     <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
@@ -1534,19 +1560,24 @@
         // MCP helper to test connection (with debouncing to prevent rate limiting)
         let mcpTestInProgress = false;
         let lastMcpTestTime = 0;
-        const MCP_TEST_COOLDOWN = 2000; // 2 seconds between tests
+        const MCP_TEST_COOLDOWN = 1000; // 1 second between tests (reduced from 2s for better UX)
 
         async function testMcpConnection() {
             // Prevent rapid-fire requests
             const now = Date.now();
+            const statusEl = document.getElementById('mcpStatus');
+            const testBtn = document.getElementById('mcpTestButton');
+
             if (mcpTestInProgress) {
                 console.log('[mcp] Test already in progress, skipping...');
+                if (statusEl) statusEl.textContent = 'Test in progress...';
                 return;
             }
-            if (now - lastMcpTestTime < MCP_TEST_COOLDOWN) {
+
+            const remainingCooldown = MCP_TEST_COOLDOWN - (now - lastMcpTestTime);
+            if (remainingCooldown > 0) {
                 console.log('[mcp] Cooldown active, please wait...');
-                const statusEl = document.getElementById('mcpStatus');
-                if (statusEl) statusEl.textContent = 'Please wait...';
+                if (statusEl) statusEl.textContent = `Wait ${Math.ceil(remainingCooldown / 1000)}s...`;
                 return;
             }
 
@@ -4406,6 +4437,11 @@
             currentConfidenceFilter = 'all';
             document.getElementById('confidenceFilter').value = 'all';
 
+            // Reset search
+            currentSearchTerm = '';
+            const searchInput = document.getElementById('artifactSearch');
+            if (searchInput) searchInput.value = '';
+
             // Reset sort to A-Z
             currentArtifactSort = 'alpha';
             document.querySelectorAll('.artifact-sort-btn').forEach(btn => {
@@ -6039,6 +6075,22 @@
         let currentArtifactSort = 'alpha';
         let currentIndustryFilter = 'all';
         let currentConfidenceFilter = 'all';
+        let currentSearchTerm = '';
+
+        // Debounce function for search
+        function debounce(fn, delay) {
+            let timeoutId;
+            return function(...args) {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => fn.apply(this, args), delay);
+            };
+        }
+
+        // Filter artifacts by search term
+        const filterArtifactsBySearch = debounce(function(searchTerm) {
+            currentSearchTerm = searchTerm.toLowerCase().trim();
+            updateArtifactDropdown();
+        }, 200);
 
         // Calculate consensus score for an artifact (higher = better consensus)
         function calculateConsensusScore(artifact) {
@@ -6103,6 +6155,15 @@
             let filtered = currentIndustryFilter === 'all'
                 ? [...artifacts]
                 : artifacts.filter(a => a.sector === currentIndustryFilter);
+
+            // Filter by search term
+            if (currentSearchTerm) {
+                filtered = filtered.filter(a =>
+                    a.name.toLowerCase().includes(currentSearchTerm) ||
+                    a.sector.toLowerCase().includes(currentSearchTerm) ||
+                    (a.id && a.id.toLowerCase().includes(currentSearchTerm))
+                );
+            }
 
             // Filter by confidence
             if (currentConfidenceFilter !== 'all') {
@@ -7021,5 +7082,11 @@
             }
         });
     </script>
+
+    <!-- Modular JS (for gradual migration) -->
+    <script src="js/constants.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
 </body>
 </html>
