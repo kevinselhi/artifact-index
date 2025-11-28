@@ -1,0 +1,807 @@
+{
+  "model_key": "chatgpt51_codex",
+  "model_name": "chatgpt51_codex",
+  "methodology": "Extracted from report table",
+  "artifacts": [
+    {
+      "name": "Sell-Side M&A Information Memorandum & Data Room Pack",
+      "value": 3500000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Fairness Opinion (Large-Cap M&A)",
+      "value": 2500000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": "fairness_opinion",
+      "match_score": 1
+    },
+    {
+      "name": "IPO Prospectus (S-1) Drafting & Readiness",
+      "value": 2250000,
+      "sector": "Legal/Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "SPAC S-4 / De-SPAC Transaction Materials",
+      "value": 2100000,
+      "sector": "Legal/Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Restructuring Plan & Bankruptcy Petition (Chapter 11 Lg-Cap)",
+      "value": 1900000,
+      "sector": "Legal/Financial",
+      "confidence": "medium",
+      "matched_id": "restructuring-plan-plan-of-reorganization",
+      "match_score": 0.67
+    },
+    {
+      "name": "Buy-Side Quality of Earnings & Commercial DD (Large Deal)",
+      "value": 1600000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "FDA New Drug Application (NDA) Submission Dossier",
+      "value": 1450000,
+      "sector": "Medical/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Clinical Trial Protocol (Phase III)",
+      "value": 1300000,
+      "sector": "Medical/Pharma",
+      "confidence": "medium",
+      "matched_id": "clinical-trial-protocol-phase-iii-global",
+      "match_score": 1
+    },
+    {
+      "name": "Environmental Impact Statement (NEPA Major Infra)",
+      "value": 1250000,
+      "sector": "Environmental/Engineering",
+      "confidence": "medium",
+      "matched_id": "environmental_impact_statement",
+      "match_score": 1
+    },
+    {
+      "name": "Bank Stress Test Package (CCAR/DFAST)",
+      "value": 1150000,
+      "sector": "Financial/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large Enterprise Cloud Migration Build (Fortune 500)",
+      "value": 1100000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": "cloud_migration",
+      "match_score": 0.68
+    },
+    {
+      "name": "LNG / Petrochemical FEED Package",
+      "value": 1050000,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "SAP/ERP Global Rollout Blueprint & Build",
+      "value": 975000,
+      "sector": "Technology/Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "BLA (Biologics License Application) Submission",
+      "value": 975000,
+      "sector": "Medical/Regulatory",
+      "confidence": "medium",
+      "matched_id": "anda_submission",
+      "match_score": 0.8
+    },
+    {
+      "name": "Power Purchase Agreement (Utility-Scale) & Financing Case",
+      "value": 900000,
+      "sector": "Energy/Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Project Finance Model & Lenders’ Technical Advisor Report",
+      "value": 850000,
+      "sector": "Financial/Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Enterprise Zero-Trust Security Architecture",
+      "value": 825000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Anti-Trust HSR Filing Package (Mega-Deal)",
+      "value": 825000,
+      "sector": "Legal/Regulatory",
+      "confidence": "medium",
+      "matched_id": "antitrust_filing",
+      "match_score": 0.84
+    },
+    {
+      "name": "National Transportation Master Plan (Urban/State)",
+      "value": 750000,
+      "sector": "Engineering/Architecture",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Vendor Commercial Due Diligence (PE)",
+      "value": 750000,
+      "sector": "Financial/Consulting",
+      "confidence": "medium",
+      "matched_id": "due_diligence_financial",
+      "match_score": 0.61
+    },
+    {
+      "name": "IT Infrastructure Outsourcing RFP & Evaluation",
+      "value": 675000,
+      "sector": "Technology/Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Enterprise Data Platform Design & Build (Lake/Warehouse)",
+      "value": 675000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Enterprise Target Operating Model (Global)",
+      "value": 625000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Consent Decree Compliance Remediation Plan (Regulatory)",
+      "value": 625000,
+      "sector": "Legal/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Airport Terminal Expansion Design Development Set",
+      "value": 600000,
+      "sector": "Architecture/Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Utilities Rate Case Filing & Expert Testimony",
+      "value": 590000,
+      "sector": "Legal/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Cybersecurity Incident Response & Forensic Report (Major Breach)",
+      "value": 550000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Global Supply Chain Resilience Redesign",
+      "value": 525000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "supply_chain_resilience",
+      "match_score": 0.62
+    },
+    {
+      "name": "Clinical Data Management & Statistical Analysis Plan",
+      "value": 525000,
+      "sector": "Medical/Pharma",
+      "confidence": "medium",
+      "matched_id": "clinical-study-statistical-analysis-plan",
+      "match_score": 0.67
+    },
+    {
+      "name": "Hospital Telehealth Platform Implementation",
+      "value": 490000,
+      "sector": "Technology/Healthcare IT",
+      "confidence": "medium",
+      "matched_id": "saas_implementation",
+      "match_score": 0.63
+    },
+    {
+      "name": "ESG/Sustainability Report (Public Company)",
+      "value": 450000,
+      "sector": "Environmental/Regulatory",
+      "confidence": "medium",
+      "matched_id": "esg-sustainability-report",
+      "match_score": 1
+    },
+    {
+      "name": "Privacy Program (CCPA/GDPR) Readiness Package",
+      "value": 450000,
+      "sector": "Legal/Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Phase II Clinical Protocol",
+      "value": 450000,
+      "sector": "Medical/Pharma",
+      "confidence": "medium",
+      "matched_id": "clinical_trial_phase2",
+      "match_score": 0.77
+    },
+    {
+      "name": "Master Brand Repositioning & Visual Identity System",
+      "value": 415000,
+      "sector": "Creative/Marketing",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Cap Transfer Pricing Study & Documentation",
+      "value": 415000,
+      "sector": "Tax/Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "SOC 2 Type II Readiness & Audit Package (Enterprise)",
+      "value": 410000,
+      "sector": "Technology/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Litigation Expert Report (Economic Damages)",
+      "value": 390000,
+      "sector": "Legal",
+      "confidence": "medium",
+      "matched_id": "large-scale-litigation-expert-report",
+      "match_score": 0.72
+    },
+    {
+      "name": "FDA 510(k) Premarket Notification",
+      "value": 375000,
+      "sector": "Medical/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Bank Merger Integration Blueprint",
+      "value": 375000,
+      "sector": "Consulting/Financial",
+      "confidence": "medium",
+      "matched_id": "it-systems-integration-blueprint-enterprise",
+      "match_score": 0.7
+    },
+    {
+      "name": "Business Continuity & Pandemic Plan (Enterprise)",
+      "value": 360000,
+      "sector": "Consulting/Technology",
+      "confidence": "medium",
+      "matched_id": "business_continuity",
+      "match_score": 0.65
+    },
+    {
+      "name": "Enterprise Data Privacy Impact Assessment Suite",
+      "value": 360000,
+      "sector": "Legal/Tech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Highway/Bridge Detailed Design Package",
+      "value": 360000,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Loan Tape Validation & CECL Modeling",
+      "value": 345000,
+      "sector": "Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "State Medicaid Waiver Submission (1115/1915)",
+      "value": 335000,
+      "sector": "Medical/Regulatory",
+      "confidence": "medium",
+      "matched_id": "510-k-medical-device-submission",
+      "match_score": 0.63
+    },
+    {
+      "name": "Cloud Migration Strategy & Business Case",
+      "value": 335000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Corporate Carve-Out Separation Playbook",
+      "value": 330000,
+      "sector": "Consulting/Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Corporate Code of Conduct & Compliance Program",
+      "value": 315000,
+      "sector": "Legal/Compliance",
+      "confidence": "medium",
+      "matched_id": "corporate-governance-compliance-program",
+      "match_score": 0.77
+    },
+    {
+      "name": "Smart Factory / IIoT Roadmap",
+      "value": 300000,
+      "sector": "Technology/Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Digital Transformation Strategy (Enterprise)",
+      "value": 300000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "digital_transformation",
+      "match_score": 1
+    },
+    {
+      "name": "Municipal Bond Official Statement",
+      "value": 300000,
+      "sector": "Legal/Financial",
+      "confidence": "medium",
+      "matched_id": "municipal-bond-offering-package",
+      "match_score": 0.64
+    },
+    {
+      "name": "RWE/HEOR Value Dossier (Payer Submission)",
+      "value": 285000,
+      "sector": "Medical/Pharma",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Enterprise PMO Setup & Governance Toolkit",
+      "value": 285000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Airport Noise & Environmental Assessment",
+      "value": 280000,
+      "sector": "Environmental",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "IT Managed Services Transition Plan",
+      "value": 270000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Digital Product UX/UI System (Enterprise App)",
+      "value": 270000,
+      "sector": "Technology/Creative",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Class Action Settlement Administration Plan",
+      "value": 265000,
+      "sector": "Legal",
+      "confidence": "medium",
+      "matched_id": "class-action-settlement-agreement",
+      "match_score": 0.63
+    },
+    {
+      "name": "Enterprise Data Governance Framework",
+      "value": 265000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": "data_governance_framework",
+      "match_score": 0.69
+    },
+    {
+      "name": "Trademark Portfolio Strategy & Filing Set (Global)",
+      "value": 255000,
+      "sector": "Legal/IP",
+      "confidence": "medium",
+      "matched_id": "trademark-portfolio-strategy",
+      "match_score": 0.65
+    },
+    {
+      "name": "Operational Risk Model Validation (SR 11-7)",
+      "value": 255000,
+      "sector": "Financial/Risk",
+      "confidence": "medium",
+      "matched_id": "risk_model_validation",
+      "match_score": 0.64
+    },
+    {
+      "name": "PCI DSS Compliance Remediation Plan",
+      "value": 240000,
+      "sector": "Technology/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Hospital EHR Optimization & Order Set Build",
+      "value": 240000,
+      "sector": "Healthcare IT",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Smart City IoT Pilot Design",
+      "value": 225000,
+      "sector": "Technology/Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Corporate Sustainability Materiality Assessment",
+      "value": 225000,
+      "sector": "ESG",
+      "confidence": "medium",
+      "matched_id": "sustainability_esg",
+      "match_score": 0.62
+    },
+    {
+      "name": "Litigation eDiscovery Plan & TAR Protocol",
+      "value": 225000,
+      "sector": "Legal/Tech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Ransomware Readiness Assessment",
+      "value": 210000,
+      "sector": "Cybersecurity",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Real Estate Development Feasibility Study",
+      "value": 210000,
+      "sector": "Real Estate",
+      "confidence": "medium",
+      "matched_id": "real_estate_feasibility",
+      "match_score": 0.71
+    },
+    {
+      "name": "Mechanical/Electrical/Plumbing (MEP) Construction Documents (Mid-Rise)",
+      "value": 210000,
+      "sector": "Engineering/Architecture",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "HR Transformation Playbook",
+      "value": 195000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Digital Marketing Performance Audit",
+      "value": 180000,
+      "sector": "Marketing",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Cybersecurity Gap Assessment (NIST/ISO)",
+      "value": 180000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": "cybersecurity_assessment",
+      "match_score": 0.86
+    },
+    {
+      "name": "Vendor Selection RFP (SaaS/ERP mid-market)",
+      "value": 175000,
+      "sector": "Consulting/Tech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Programmatic Media Plan (National)",
+      "value": 165000,
+      "sector": "Marketing",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Corporate Policies Suite (InfoSec/HR/Finance)",
+      "value": 165000,
+      "sector": "Legal/Compliance",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Product Requirements Document & MVP Scope",
+      "value": 150000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Valuation/Appraisal (Commercial Real Estate Portfolio)",
+      "value": 150000,
+      "sector": "Real Estate",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Mechanical Product Design DFM Package",
+      "value": 150000,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "CE Mark Technical File (Medical Device)",
+      "value": 150000,
+      "sector": "Medical/Regulatory",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Environmental Site Assessment Phase II",
+      "value": 150000,
+      "sector": "Environmental",
+      "confidence": "medium",
+      "matched_id": "major-environmental-site-assessment-phase-ii",
+      "match_score": 0.61
+    },
+    {
+      "name": "SOC 1 Type II Report (Mid-Market)",
+      "value": 142500,
+      "sector": "Technology/Audit",
+      "confidence": "medium",
+      "matched_id": "soc-2-type-ii-audit-report",
+      "match_score": 0.63
+    },
+    {
+      "name": "Penetration Test & Red Team Report (Enterprise)",
+      "value": 135000,
+      "sector": "Cybersecurity",
+      "confidence": "medium",
+      "matched_id": "penetration-testing-engagement",
+      "match_score": 0.61
+    },
+    {
+      "name": "CRM Implementation Blueprint (Mid-Market)",
+      "value": 135000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Brand Campaign Creative Concepting",
+      "value": 127500,
+      "sector": "Marketing/Creative",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Digital Twin Proof-of-Concept",
+      "value": 127500,
+      "sector": "Engineering/Tech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Grant Proposal (Federal R&D Large)",
+      "value": 120000,
+      "sector": "Scientific/Research",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Training Curriculum & eLearning Suite (Enterprise)",
+      "value": 120000,
+      "sector": "Consulting/EdTech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Feasibility Study (Mining/Oil & Gas Prospect)",
+      "value": 112500,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Data Migration Plan (Legacy to Cloud)",
+      "value": 112500,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Website Redesign (Corporate)",
+      "value": 105000,
+      "sector": "Marketing/Tech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Social Media Content & Governance Playbook",
+      "value": 105000,
+      "sector": "Marketing",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "RFP Response / Proposal (Large Gov Contract)",
+      "value": 97500,
+      "sector": "Consulting/Tech",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Internal Audit Plan (SOX-heavy)",
+      "value": 95000,
+      "sector": "Audit/Compliance",
+      "confidence": "medium",
+      "matched_id": "internal_audit",
+      "match_score": 0.77
+    },
+    {
+      "name": "OSHA Process Safety Management Program",
+      "value": 90000,
+      "sector": "Environmental/Safety",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Enterprise Architecture Current/Future State Maps",
+      "value": 90000,
+      "sector": "Technology",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Market Sizing & Entry Study (Single Country)",
+      "value": 82500,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Trademark Application Set (US + 3 intl)",
+      "value": 75000,
+      "sector": "Legal/IP",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Annual Report / 10-K Drafting Support",
+      "value": 75000,
+      "sector": "Legal/Financial",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Clinical Study Report (Phase I)",
+      "value": 75000,
+      "sector": "Medical/Pharma",
+      "confidence": "medium",
+      "matched_id": "clinical_study_report",
+      "match_score": 1
+    },
+    {
+      "name": "Pricing & Packaging Study",
+      "value": 67500,
+      "sector": "Consulting/Marketing",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Content Localization Package (Multilingual)",
+      "value": 60000,
+      "sector": "Marketing/Localization",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Employee Engagement Survey & Action Plan",
+      "value": 52500,
+      "sector": "Consulting/HR",
+      "confidence": "medium",
+      "matched_id": "employee_engagement",
+      "match_score": 0.76
+    }
+  ]
+}

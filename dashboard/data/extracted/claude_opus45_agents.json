@@ -1,0 +1,807 @@
+{
+  "model_key": "claude_opus45_agents",
+  "model_name": "Anthropic Claude 4.5 Opus with Extended Thinking and Web Search via Claude Code in CLI with Agents (Claude 4.5 Opus with Agents)",
+  "methodology": "Multi-agent methodology with web search verification",
+  "artifacts": [
+    {
+      "name": "M&A Purchase Agreement",
+      "value": 12750000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "S-1 Registration Statement (IPO)",
+      "value": 8500000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": "complex-sec-registration-statement",
+      "match_score": 0.71
+    },
+    {
+      "name": "Restructuring Plan / Plan of Reorganization",
+      "value": 52500000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "SPAC IPO Documentation Package",
+      "value": 3000000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Clinical Trial Protocol",
+      "value": 11000000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "clinical-trial-protocol-phase-iii-global",
+      "match_score": 1
+    },
+    {
+      "name": "FDA Emergency Use Authorization Application",
+      "value": 27500000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "eua_dossier",
+      "match_score": 0.67
+    },
+    {
+      "name": "Private Equity Fund LPA (Limited Partnership Agreement)",
+      "value": 1750000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": "private_equity_fund",
+      "match_score": 0.81
+    },
+    {
+      "name": "Debt Financing Term Sheet & Credit Agreement",
+      "value": 2650000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Digital Transformation Strategy Document",
+      "value": 5250000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": "digital_transformation",
+      "match_score": 0.78
+    },
+    {
+      "name": "Commercial Loan Documentation Package",
+      "value": 275000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": "commercial-lease-agreement-package",
+      "match_score": 0.65
+    },
+    {
+      "name": "Patent Application (Pharmaceutical)",
+      "value": 90000,
+      "sector": "Medical/Legal",
+      "confidence": "high",
+      "matched_id": "pma_application",
+      "match_score": 0.72
+    },
+    {
+      "name": "Securities Class Action Complaint",
+      "value": 2750000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": "securities_litigation",
+      "match_score": 0.73
+    },
+    {
+      "name": "FDA New Drug Application (NDA)",
+      "value": 55000000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "nda_bla_application",
+      "match_score": 0.83
+    },
+    {
+      "name": "M&A Due Diligence Report",
+      "value": 1600000,
+      "sector": "Financial/Consulting",
+      "confidence": "high",
+      "matched_id": "m-a-due-diligence-report",
+      "match_score": 1
+    },
+    {
+      "name": "Corporate Proxy Statement (DEF 14A)",
+      "value": 300000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": "spac_merger_proxy",
+      "match_score": 0.63
+    },
+    {
+      "name": "Antitrust/Competition Filing",
+      "value": 10500000,
+      "sector": "Legal/Regulatory",
+      "confidence": "high",
+      "matched_id": "antitrust-competition-analysis-mega-deal",
+      "match_score": 0.79
+    },
+    {
+      "name": "Merger Agreement (Public Company)",
+      "value": 8000000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": "master-services-agreement",
+      "match_score": 0.6
+    },
+    {
+      "name": "Vaccine Manufacturing Protocol",
+      "value": 27500000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Software Architecture Document",
+      "value": 275000,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Real Estate Purchase & Sale Agreement (Commercial)",
+      "value": 162500,
+      "sector": "Real Estate/Legal",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Form 10-K Annual Report",
+      "value": 1750000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Crisis Management Plan",
+      "value": 1100000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": "pr-crisis-management-package",
+      "match_score": 0.71
+    },
+    {
+      "name": "PIPE (Private Investment in Public Equity) Documentation",
+      "value": 1150000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": "private_equity_fund_docs",
+      "match_score": 0.71
+    },
+    {
+      "name": "FDA Biologics License Application (BLA)",
+      "value": 82500000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "bla_application",
+      "match_score": 0.88
+    },
+    {
+      "name": "Private Placement Memorandum (PPM)",
+      "value": 550000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": "private_placement_memo",
+      "match_score": 1
+    },
+    {
+      "name": "Expert Witness Report",
+      "value": 275000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": "litigation_expert",
+      "match_score": 1
+    },
+    {
+      "name": "Cloud Migration Architecture",
+      "value": 1050000,
+      "sector": "Technology/Consulting",
+      "confidence": "high",
+      "matched_id": "iot_platform",
+      "match_score": 0.61
+    },
+    {
+      "name": "REIT Formation Documents",
+      "value": 1150000,
+      "sector": "Real Estate/Legal",
+      "confidence": "high",
+      "matched_id": "reit_formation",
+      "match_score": 0.63
+    },
+    {
+      "name": "Construction Contract (Major Project)",
+      "value": 550000,
+      "sector": "Architecture/Construction",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Tax Opinion Letter",
+      "value": 275000,
+      "sector": "Legal/Financial",
+      "confidence": "high",
+      "matched_id": "tax_opinion",
+      "match_score": 0.61
+    },
+    {
+      "name": "Environmental Impact Statement",
+      "value": 1050000,
+      "sector": "Environmental/Legal",
+      "confidence": "high",
+      "matched_id": "environmental_impact_statement",
+      "match_score": 1
+    },
+    {
+      "name": "Insurance Policy (D&O, Cyber)",
+      "value": 112500,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Regulatory Response/Consent Decree",
+      "value": 5250000,
+      "sector": "Legal/Regulatory",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Pharmaceutical CMC Dossier",
+      "value": 11000000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Building Information Model (BIM)",
+      "value": 275000,
+      "sector": "Architecture/Construction",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Executive Compensation Study",
+      "value": 287500,
+      "sector": "Consulting/HR",
+      "confidence": "high",
+      "matched_id": "executive_compensation",
+      "match_score": 1
+    },
+    {
+      "name": "Information Security Assessment",
+      "value": 275000,
+      "sector": "Technology/Consulting",
+      "confidence": "high",
+      "matched_id": "cybersecurity_assessment",
+      "match_score": 0.65
+    },
+    {
+      "name": "Fairness Opinion",
+      "value": 2750000,
+      "sector": "Financial",
+      "confidence": "high",
+      "matched_id": "fairness_opinion",
+      "match_score": 1
+    },
+    {
+      "name": "Class Action Settlement Agreement",
+      "value": 2600000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "API Documentation & Specifications",
+      "value": 112500,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Supply Chain Optimization Study",
+      "value": 1650000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": "supply_chain_optimization",
+      "match_score": 0.81
+    },
+    {
+      "name": "Patent Prosecution File",
+      "value": 60000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Lease Agreement (Commercial)",
+      "value": 55000,
+      "sector": "Real Estate/Legal",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Employee Benefits Plan Document",
+      "value": 112500,
+      "sector": "Legal/HR",
+      "confidence": "high",
+      "matched_id": "employee-benefits-valuation",
+      "match_score": 0.65
+    },
+    {
+      "name": "Pharmaceutical Label/Package Insert",
+      "value": 550000,
+      "sector": "Medical/Regulatory",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Quality Management System Documentation",
+      "value": 275000,
+      "sector": "Medical/Manufacturing",
+      "confidence": "high",
+      "matched_id": "qms_implementation",
+      "match_score": 0.64
+    },
+    {
+      "name": "Trademark Registration Application",
+      "value": 13500,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": "trademark-registration",
+      "match_score": 0.65
+    },
+    {
+      "name": "Master Services Agreement (Technology)",
+      "value": 82500,
+      "sector": "Legal/Technology",
+      "confidence": "high",
+      "matched_id": "master-services-agreement",
+      "match_score": 1
+    },
+    {
+      "name": "Investment Management Agreement",
+      "value": 175000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Actuarial Valuation Report",
+      "value": 137500,
+      "sector": "Financial/Consulting",
+      "confidence": "high",
+      "matched_id": "actuarial_valuation",
+      "match_score": 1
+    },
+    {
+      "name": "Compliance Program Documentation",
+      "value": 275000,
+      "sector": "Legal/Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Financial Model (M&A/LBO)",
+      "value": 175000,
+      "sector": "Financial",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Brand Strategy Document",
+      "value": 550000,
+      "sector": "Creative/Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Technical Specifications (Engineering)",
+      "value": 137500,
+      "sector": "Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Data Privacy Impact Assessment",
+      "value": 112500,
+      "sector": "Legal/Technology",
+      "confidence": "high",
+      "matched_id": "large-scale-data-privacy-compliance-assessment",
+      "match_score": 0.61
+    },
+    {
+      "name": "Construction Drawing Set",
+      "value": 275000,
+      "sector": "Architecture/Construction",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Shareholder Activism Response",
+      "value": 2750000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Vendor Due Diligence Report",
+      "value": 575000,
+      "sector": "Consulting/Financial",
+      "confidence": "high",
+      "matched_id": "m-a-due-diligence-report",
+      "match_score": 0.82
+    },
+    {
+      "name": "Clinical Study Report",
+      "value": 2750000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "clinical_study_report",
+      "match_score": 1
+    },
+    {
+      "name": "Marketing Authorization Application (EU)",
+      "value": 27500000,
+      "sector": "Medical/Regulatory",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Appraisal Report (Real Estate)",
+      "value": 27500,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Business Continuity Plan",
+      "value": 275000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": "business_continuity",
+      "match_score": 1
+    },
+    {
+      "name": "Employment Agreement (Executive)",
+      "value": 87500,
+      "sector": "Legal/HR",
+      "confidence": "high",
+      "matched_id": "employment-agreement-package",
+      "match_score": 0.71
+    },
+    {
+      "name": "Safety Data Sheet (SDS)",
+      "value": 5500,
+      "sector": "Regulatory/Manufacturing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "ESG/Sustainability Report",
+      "value": 275000,
+      "sector": "Consulting/Corporate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Investor Presentation Deck",
+      "value": 112500,
+      "sector": "Financial",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Healthcare Facility Design Document",
+      "value": 2750000,
+      "sector": "Architecture/Medical",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Audit Report (Financial Statements)",
+      "value": 2550000,
+      "sector": "Financial",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Product Liability Defense Brief",
+      "value": 550000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "IT Infrastructure Assessment",
+      "value": 175000,
+      "sector": "Technology/Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Competitive Intelligence Report",
+      "value": 275000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Union Collective Bargaining Agreement",
+      "value": 300000,
+      "sector": "Legal/HR",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Software Requirements Specification",
+      "value": 87500,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Medical Device 510(k) Submission",
+      "value": 275000,
+      "sector": "Medical/Regulatory",
+      "confidence": "high",
+      "matched_id": "510-k-medical-device-submission",
+      "match_score": 0.72
+    },
+    {
+      "name": "Zoning Application/Variance Request",
+      "value": 112500,
+      "sector": "Real Estate/Legal",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Customer Journey Map",
+      "value": 112500,
+      "sector": "Consulting/Creative",
+      "confidence": "high",
+      "matched_id": "customer_journey_mapping",
+      "match_score": 0.83
+    },
+    {
+      "name": "Transfer Pricing Documentation",
+      "value": 275000,
+      "sector": "Legal/Tax",
+      "confidence": "high",
+      "matched_id": "transfer_pricing",
+      "match_score": 0.6
+    },
+    {
+      "name": "Clinical Operations Manual",
+      "value": 550000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Advertising Campaign Creative Brief",
+      "value": 55000,
+      "sector": "Creative",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Organizational Design Document",
+      "value": 550000,
+      "sector": "Consulting/HR",
+      "confidence": "high",
+      "matched_id": "organizational_restructuring",
+      "match_score": 0.63
+    },
+    {
+      "name": "Patent Claim Chart",
+      "value": 42500,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Derivatives/Swap Documentation",
+      "value": 112500,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Site Assessment Report (Environmental)",
+      "value": 55000,
+      "sector": "Environmental",
+      "confidence": "high",
+      "matched_id": "risk-assessment-report",
+      "match_score": 0.86
+    },
+    {
+      "name": "User Experience Design System",
+      "value": 275000,
+      "sector": "Technology/Creative",
+      "confidence": "high",
+      "matched_id": "large-scale-digital-experience-design-system",
+      "match_score": 0.61
+    },
+    {
+      "name": "Government Contract Proposal",
+      "value": 525000,
+      "sector": "Legal/Consulting",
+      "confidence": "high",
+      "matched_id": "government_contract",
+      "match_score": 1
+    },
+    {
+      "name": "Pharmacovigilance Plan",
+      "value": 300000,
+      "sector": "Medical/Regulatory",
+      "confidence": "high",
+      "matched_id": "pharmacovigilance_system",
+      "match_score": 0.75
+    },
+    {
+      "name": "Whistleblower Investigation Report",
+      "value": 550000,
+      "sector": "Legal/Compliance",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Sourcing Strategy Document",
+      "value": 175000,
+      "sector": "Consulting/Procurement",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Network Architecture Diagram",
+      "value": 55000,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Training Curriculum (Corporate)",
+      "value": 112500,
+      "sector": "HR/Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Fire Protection Engineering Plan",
+      "value": 82500,
+      "sector": "Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Media Plan/Buy Document",
+      "value": 55000,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Change Management Plan",
+      "value": 175000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": "change_management",
+      "match_score": 0.8
+    },
+    {
+      "name": "Geotechnical Investigation Report",
+      "value": 42500,
+      "sector": "Engineering/Construction",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Influencer Marketing Contract",
+      "value": 27500,
+      "sector": "Legal/Creative",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Landscape Architecture Plan",
+      "value": 112500,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Renewable Energy Feasibility Study",
+      "value": 175000,
+      "sector": "Engineering/Environmental",
+      "confidence": "high",
+      "matched_id": "renewable_energy_feasibility",
+      "match_score": 1
+    },
+    {
+      "name": "Food Safety Plan (HACCP)",
+      "value": 42500,
+      "sector": "Regulatory/Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Acoustic Engineering Report",
+      "value": 42500,
+      "sector": "Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Accessibility Compliance Audit",
+      "value": 27500,
+      "sector": "Legal/Consulting",
+      "confidence": "high",
+      "matched_id": "compliance_regulatory",
+      "match_score": 0.63
+    }
+  ]
+}

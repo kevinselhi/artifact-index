@@ -32,7 +32,8 @@
         "perplexity": null,
         "gemini30": 850000,
         "claude_opus45_cli": 4000000,
-        "you_ari": 2500000
+        "you_ari": 2500000,
+        "claude_opus45_agents": 55000000
       },
       "variance_ratio": 352.94
     },
@@ -85,9 +86,11 @@
         "perplexity": 6000000,
         "gemini30": null,
         "claude_opus45_cli": 1250000,
-        "you_ari": 3250000
+        "you_ari": 3250000,
+        "claude_opus45_agents": 5250000,
+        "chatgpt51_codex": 300000
       },
-      "variance_ratio": 13.33
+      "variance_ratio": 20
     },
     {
       "id": "bankruptcy_restructuring",
@@ -139,7 +142,8 @@
         "perplexity": null,
         "gemini30": null,
         "claude_opus45_cli": 425000,
-        "you_ari": 1375000
+        "you_ari": 1375000,
+        "chatgpt51_codex": 1100000
       },
       "variance_ratio": 5.88
     },
@@ -192,7 +196,8 @@
         "perplexity": null,
         "gemini30": null,
         "claude_opus45_cli": 1250000,
-        "you_ari": 2125000
+        "you_ari": 2125000,
+        "chatgpt51_codex": 750000
       },
       "variance_ratio": 7.08
     },
@@ -210,7 +215,9 @@
         "perplexity": 100000,
         "gemini30": null,
         "claude_opus45_cli": 100000,
-        "you_ari": 625000
+        "you_ari": 625000,
+        "claude_opus45_agents": 275000,
+        "chatgpt51_codex": 180000
       },
       "variance_ratio": 13.75
     },
@@ -228,7 +235,9 @@
         "perplexity": 600000,
         "gemini30": 1700000,
         "claude_opus45_cli": 1100000,
-        "you_ari": 5500000
+        "you_ari": 5500000,
+        "claude_opus45_agents": 2750000,
+        "chatgpt51_codex": 2500000
       },
       "variance_ratio": 9.17
     },
@@ -279,9 +288,10 @@
         "o3pro": 200000,
         "perplexity": null,
         "gemini30": 125000,
-        "claude_opus45_cli": 300000
+        "claude_opus45_cli": 300000,
+        "claude_opus45_agents": 1650000
       },
-      "variance_ratio": 11
+      "variance_ratio": 13.2
     },
     {
       "id": "litigation_expert",
@@ -297,7 +307,8 @@
         "perplexity": null,
         "gemini30": 425000,
         "you_ari": 425000,
-        "claude_opus45_cli": 87500
+        "claude_opus45_cli": 87500,
+        "claude_opus45_agents": 275000
       },
       "variance_ratio": 34.29
     },
@@ -315,7 +326,9 @@
         "perplexity": 550000,
         "gemini30": 125000,
         "claude_opus45_cli": 275000,
-        "you_ari": 625000
+        "you_ari": 625000,
+        "claude_opus45_agents": 1050000,
+        "chatgpt51_codex": 1250000
       },
       "variance_ratio": 344
     },
@@ -332,7 +345,8 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 212500,
-        "claude_opus45_cli": 187500
+        "claude_opus45_cli": 187500,
+        "claude_opus45_agents": 275000
       },
       "variance_ratio": 1.73
     },
@@ -349,9 +363,10 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 125000,
-        "claude_opus45_cli": 125000
+        "claude_opus45_cli": 125000,
+        "claude_opus45_agents": 287500
       },
-      "variance_ratio": 1.4
+      "variance_ratio": 2.3
     },
     {
       "id": "penetration_test",
@@ -382,7 +397,8 @@
         "o3pro": null,
         "perplexity": 13500000,
         "gemini30": 150000,
-        "claude_opus45_cli": 16500000
+        "claude_opus45_cli": 16500000,
+        "chatgpt51_codex": 450000
       },
       "variance_ratio": 110
     },
@@ -566,7 +582,8 @@
         "chatgpt5": 320000,
         "o3pro": 1400000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_agents": 550000
       },
       "variance_ratio": 4.38
     },
@@ -583,7 +600,8 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "claude_opus45_cli": 100000
+        "claude_opus45_cli": 100000,
+        "claude_opus45_agents": 175000
       },
       "variance_ratio": 5
     },
@@ -601,7 +619,8 @@
         "perplexity": null,
         "gemini30": null,
         "claude_opus45_cli": 125000,
-        "you_ari": 212500
+        "you_ari": 212500,
+        "chatgpt51_codex": 225000
       },
       "variance_ratio": 6.4
     },
@@ -636,7 +655,8 @@
         "perplexity": 425000,
         "gemini30": null,
         "claude_opus45_cli": 100000,
-        "you_ari": 300000
+        "you_ari": 300000,
+        "chatgpt51_codex": 210000
       },
       "variance_ratio": 4.25
     },
@@ -670,7 +690,8 @@
         "perplexity": null,
         "gemini30": null,
         "claude_opus45_cli": 600000,
-        "you_ari": 500000
+        "you_ari": 500000,
+        "claude_opus45_agents": 275000
       },
       "variance_ratio": 3
     },
@@ -738,9 +759,10 @@
         "perplexity": null,
         "gemini30": null,
         "you_ari": 62500,
-        "claude_opus45_cli": 125000
+        "claude_opus45_cli": 125000,
+        "claude_opus45_agents": 27500
       },
-      "variance_ratio": 16
+      "variance_ratio": 36.36
     },
     {
       "id": "market_research",
@@ -808,9 +830,11 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "claude_opus45_cli": 87500
+        "claude_opus45_cli": 87500,
+        "claude_opus45_agents": 275000,
+        "chatgpt51_codex": 360000
       },
-      "variance_ratio": 2.29
+      "variance_ratio": 4.11
     },
     {
       "id": "strategic_planning",
@@ -840,7 +864,8 @@
         "chatgpt5": 4000000,
         "o3pro": null,
         "perplexity": 8000000,
-        "gemini30": 2000000
+        "gemini30": 2000000,
+        "claude_opus45_agents": 2750000
       },
       "variance_ratio": 12.5
     },
@@ -856,7 +881,8 @@
         "chatgpt5": 1200000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 600000
+        "gemini30": 600000,
+        "chatgpt51_codex": 825000
       },
       "variance_ratio": 8.33
     },
@@ -937,7 +963,8 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "claude_opus45_cli": 62500
+        "claude_opus45_cli": 62500,
+        "claude_opus45_agents": 550000
       },
       "variance_ratio": 9.6
     },
@@ -1065,7 +1092,8 @@
         "chatgpt5": 250000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "chatgpt51_codex": 265000
       },
       "variance_ratio": 3.6
     },
@@ -1130,7 +1158,8 @@
         "chatgpt5": 350000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "chatgpt51_codex": 490000
       },
       "variance_ratio": 4.29
     },
@@ -1213,9 +1242,10 @@
         "perplexity": null,
         "gemini30": null,
         "claude_opus45_cli": 1250000,
-        "you_ari": 1750000
+        "you_ari": 1750000,
+        "claude_opus45_agents": 90000
       },
-      "variance_ratio": 8
+      "variance_ratio": 111.11
     },
     {
       "id": "de_novo_classification",
@@ -1245,9 +1275,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 250000
+        "gemini30": 250000,
+        "claude_opus45_agents": 2750000,
+        "chatgpt51_codex": 75000
       },
-      "variance_ratio": 6
+      "variance_ratio": 36.67
     },
     {
       "id": "drug_master_file",
@@ -1293,9 +1325,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "chatgpt51_codex": 975000
       },
-      "variance_ratio": 3
+      "variance_ratio": 3.08
     },
     {
       "id": "pharmacovigilance_system",
@@ -1309,9 +1342,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_agents": 300000
       },
-      "variance_ratio": 3.75
+      "variance_ratio": 5
     },
     {
       "id": "qms_implementation",
@@ -1325,9 +1359,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_agents": 275000
       },
-      "variance_ratio": 3.33
+      "variance_ratio": 3.64
     },
     {
       "id": "power_plant_engineering",
@@ -1585,9 +1620,10 @@
         "chatgpt5": 90000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "chatgpt51_codex": 52500
       },
-      "variance_ratio": 3.89
+      "variance_ratio": 6.67
     },
     {
       "id": "tv_commercial_production",
@@ -1826,9 +1862,10 @@
         "chatgpt5": 175000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "chatgpt51_codex": 95000
       },
-      "variance_ratio": 3.43
+      "variance_ratio": 6.32
     },
     {
       "id": "aml_compliance",
@@ -1926,7 +1963,8 @@
         "perplexity": null,
         "gemini30": null,
         "claude_opus45_cli": 125000,
-        "you_ari": 450000
+        "you_ari": 450000,
+        "claude_opus45_agents": 137500
       },
       "variance_ratio": 4.8
     },
@@ -1991,7 +2029,8 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "claude_opus45_cli": 300000
+        "claude_opus45_cli": 300000,
+        "claude_opus45_agents": 525000
       },
       "variance_ratio": 4
     },
@@ -2056,9 +2095,10 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 2500000,
-        "claude_opus45_cli": 650000
+        "claude_opus45_cli": 650000,
+        "claude_opus45_agents": 300000
       },
-      "variance_ratio": 3.85
+      "variance_ratio": 8.33
     },
     {
       "id": "eua_dossier",
@@ -2072,9 +2112,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 1200000
+        "gemini30": 1200000,
+        "claude_opus45_agents": 27500000
       },
-      "variance_ratio": null
+      "variance_ratio": 22.92
     },
     {
       "id": "bla_application",
@@ -2089,7 +2130,8 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 1000000,
-        "you_ari": 2500000
+        "you_ari": 2500000,
+        "claude_opus45_agents": 82500000
       },
       "variance_ratio": 250
     },
@@ -2218,9 +2260,10 @@
         "chatgpt5": 125000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_agents": 112500
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.44
     },
     {
       "id": "hospital_coo_certificate",
@@ -2282,7 +2325,8 @@
         "chatgpt5": 800000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 500000
+        "gemini30": 500000,
+        "claude_opus45_agents": 1150000
       },
       "variance_ratio": 6
     },
@@ -2410,9 +2454,10 @@
         "chatgpt5": 650000,
         "o3pro": 1000000,
         "perplexity": 1500000,
-        "gemini30": 350000
+        "gemini30": 350000,
+        "claude_opus45_agents": 175000
       },
-      "variance_ratio": 10
+      "variance_ratio": 20
     },
     {
       "id": "reit_formation",
@@ -2426,7 +2471,8 @@
         "chatgpt5": 1500000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 700000
+        "gemini30": 700000,
+        "claude_opus45_agents": 1150000
       },
       "variance_ratio": 11.43
     },
@@ -2571,7 +2617,8 @@
         "chatgpt5": 2000000,
         "o3pro": 3000000,
         "perplexity": 4500000,
-        "gemini30": 800000
+        "gemini30": 800000,
+        "claude_opus45_agents": 1750000
       },
       "variance_ratio": 12.5
     },
@@ -2603,7 +2650,8 @@
         "chatgpt5": 350000,
         "o3pro": 500000,
         "perplexity": 600000,
-        "gemini30": 200000
+        "gemini30": 200000,
+        "chatgpt51_codex": 255000
       },
       "variance_ratio": 7.5
     },
@@ -2667,7 +2715,8 @@
         "chatgpt5": 1000000,
         "o3pro": 1500000,
         "perplexity": 2000000,
-        "gemini30": 500000
+        "gemini30": 500000,
+        "claude_opus45_agents": 1050000
       },
       "variance_ratio": 10
     },
@@ -3391,7 +3440,8 @@
         "chatgpt5": 800000,
         "o3pro": 1200000,
         "perplexity": 1800000,
-        "gemini30": 450000
+        "gemini30": 450000,
+        "chatgpt51_codex": 525000
       },
       "variance_ratio": 11.11
     },
@@ -3536,9 +3586,10 @@
       "name": "Municipal Bond Offering Package",
       "sector": "Financial Services",
       "valuations": {
-        "claude_opus45_cli": 1250000
+        "claude_opus45_cli": 1250000,
+        "chatgpt51_codex": 300000
       },
-      "variance_ratio": null
+      "variance_ratio": 4.17
     },
     {
       "id": "ai-ml-enterprise-implementation",
@@ -3554,9 +3605,11 @@
       "name": "510(k) Medical Device Submission",
       "sector": "Medical/Pharmaceutical",
       "valuations": {
-        "claude_opus45_cli": 300000
+        "claude_opus45_cli": 300000,
+        "claude_opus45_agents": 275000,
+        "chatgpt51_codex": 335000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.22
     },
     {
       "id": "s-p-500-annual-audit",
@@ -3590,9 +3643,10 @@
       "name": "Complex SEC Registration Statement",
       "sector": "Legal Services",
       "valuations": {
-        "claude_opus45_cli": 650000
+        "claude_opus45_cli": 650000,
+        "claude_opus45_agents": 8500000
       },
-      "variance_ratio": null
+      "variance_ratio": 13.08
     },
     {
       "id": "bridge-highway-design-package",
@@ -3635,9 +3689,10 @@
       "name": "SOC 2 Type II Audit & Report",
       "sector": "Technology Services",
       "valuations": {
-        "claude_opus45_cli": 85000
+        "claude_opus45_cli": 85000,
+        "chatgpt51_codex": 142500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.68
     },
     {
       "id": "corporate-governance-advisory-package",
@@ -3662,9 +3717,10 @@
       "name": "Penetration Testing Engagement",
       "sector": "Technology Services",
       "valuations": {
-        "claude_opus45_cli": 62500
+        "claude_opus45_cli": 62500,
+        "chatgpt51_codex": 135000
       },
-      "variance_ratio": null
+      "variance_ratio": 2.16
     },
     {
       "id": "hr-compensation-benchmark-study",
@@ -3734,18 +3790,20 @@
       "name": "Trademark Portfolio Strategy",
       "sector": "Legal Services",
       "valuations": {
-        "claude_opus45_cli": 62500
+        "claude_opus45_cli": 62500,
+        "chatgpt51_codex": 255000
       },
-      "variance_ratio": null
+      "variance_ratio": 4.08
     },
     {
       "id": "risk-assessment-report",
       "name": "Risk Assessment Report",
       "sector": "Management Consulting",
       "valuations": {
-        "claude_opus45_cli": 100000
+        "claude_opus45_cli": 100000,
+        "claude_opus45_agents": 55000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.82
     },
     {
       "id": "process-improvement-study",
@@ -3761,18 +3819,20 @@
       "name": "Employee Benefits Valuation",
       "sector": "Financial Services",
       "valuations": {
-        "claude_opus45_cli": 62500
+        "claude_opus45_cli": 62500,
+        "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.8
     },
     {
       "id": "pr-crisis-management-package",
       "name": "PR Crisis Management Package",
       "sector": "Creative Services",
       "valuations": {
-        "claude_opus45_cli": 125000
+        "claude_opus45_cli": 125000,
+        "claude_opus45_agents": 1100000
       },
-      "variance_ratio": null
+      "variance_ratio": 8.8
     },
     {
       "id": "technical-white-paper-research-report",
@@ -3788,9 +3848,10 @@
       "name": "Commercial Lease Agreement Package",
       "sector": "Legal Services",
       "valuations": {
-        "claude_opus45_cli": 50000
+        "claude_opus45_cli": 50000,
+        "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 5.5
     },
     {
       "id": "training-program-development",
@@ -3896,9 +3957,10 @@
       "name": "Employment Agreement Package",
       "sector": "Legal Services",
       "valuations": {
-        "claude_opus45_cli": 20000
+        "claude_opus45_cli": 20000,
+        "claude_opus45_agents": 87500
       },
-      "variance_ratio": null
+      "variance_ratio": 4.38
     },
     {
       "id": "nonprofit-grant-application",
@@ -3932,18 +3994,20 @@
       "name": "Trademark Registration",
       "sector": "Legal Services",
       "valuations": {
-        "claude_opus45_cli": 6000
+        "claude_opus45_cli": 6000,
+        "claude_opus45_agents": 13500
       },
-      "variance_ratio": null
+      "variance_ratio": 2.25
     },
     {
       "id": "master-services-agreement",
       "name": "Master Services Agreement",
       "sector": "Legal Services",
       "valuations": {
-        "claude_opus45_cli": 6000
+        "claude_opus45_cli": 6000,
+        "claude_opus45_agents": 82500
       },
-      "variance_ratio": null
+      "variance_ratio": 13.75
     },
     {
       "id": "small-business-audit",
@@ -4040,18 +4104,21 @@
       "name": "Clinical Trial Protocol (Phase III, Global)",
       "sector": "Medical/Pharma",
       "valuations": {
-        "you_ari": 3000000
+        "you_ari": 3000000,
+        "claude_opus45_agents": 11000000,
+        "chatgpt51_codex": 1300000
       },
-      "variance_ratio": null
+      "variance_ratio": 8.46
     },
     {
       "id": "antitrust-competition-analysis-mega-deal",
       "name": "Antitrust/Competition Analysis (Mega-Deal)",
       "sector": "Legal Services",
       "valuations": {
-        "you_ari": 3000000
+        "you_ari": 3000000,
+        "claude_opus45_agents": 10500000
       },
-      "variance_ratio": null
+      "variance_ratio": 3.5
     },
     {
       "id": "investment-banking-pitch-book-mega-deal",
@@ -4094,9 +4161,10 @@
       "name": "M&A Due Diligence Report",
       "sector": "Financial Services",
       "valuations": {
-        "you_ari": 1250000
+        "you_ari": 1250000,
+        "claude_opus45_agents": 575000
       },
-      "variance_ratio": null
+      "variance_ratio": 2.17
     },
     {
       "id": "major-transportation-corridor-design-package",
@@ -4139,9 +4207,10 @@
       "name": "IT Systems Integration Blueprint (Enterprise)",
       "sector": "Technology",
       "valuations": {
-        "you_ari": 550000
+        "you_ari": 550000,
+        "chatgpt51_codex": 375000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.47
     },
     {
       "id": "corporate-tax-structuring-report-multinational",
@@ -4157,9 +4226,10 @@
       "name": "Large-Scale Litigation Expert Report",
       "sector": "Legal Services",
       "valuations": {
-        "you_ari": 425000
+        "you_ari": 425000,
+        "chatgpt51_codex": 390000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.09
     },
     {
       "id": "enterprise-data-analytics-ai-implementation-plan",
@@ -4175,9 +4245,10 @@
       "name": "Corporate Governance & Compliance Program",
       "sector": "Legal Services",
       "valuations": {
-        "you_ari": 350000
+        "you_ari": 350000,
+        "chatgpt51_codex": 315000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.11
     },
     {
       "id": "global-supply-chain-optimization-blueprint",
@@ -4220,9 +4291,10 @@
       "name": "Clinical Study Statistical Analysis Plan",
       "sector": "Medical/Pharma",
       "valuations": {
-        "you_ari": 240000
+        "you_ari": 240000,
+        "chatgpt51_codex": 525000
       },
-      "variance_ratio": null
+      "variance_ratio": 2.19
     },
     {
       "id": "major-product-launch-go-to-market-strategy",
@@ -4274,9 +4346,10 @@
       "name": "Large-Scale Digital Experience Design System",
       "sector": "Creative/Marketing",
       "valuations": {
-        "you_ari": 212500
+        "you_ari": 212500,
+        "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.29
     },
     {
       "id": "large-scale-scientific-research-protocol",
@@ -4301,9 +4374,10 @@
       "name": "Large-Scale Data Privacy Compliance Assessment",
       "sector": "Technology",
       "valuations": {
-        "you_ari": 180000
+        "you_ari": 180000,
+        "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.6
     },
     {
       "id": "major-healthcare-it-implementation-plan",
@@ -4436,9 +4510,10 @@
       "name": "Major Environmental Site Assessment (Phase II)",
       "sector": "Environmental/Engineering",
       "valuations": {
-        "you_ari": 120000
+        "you_ari": 120000,
+        "chatgpt51_codex": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.25
     },
     {
       "id": "major-corporate-risk-assessment-report",
@@ -4709,52 +4784,1178 @@
         "you_ari": 6250
       },
       "variance_ratio": null
+    },
+    {
+      "id": "m-a-purchase-agreement",
+      "name": "M&A Purchase Agreement",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 12750000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "restructuring-plan-plan-of-reorganization",
+      "name": "Restructuring Plan / Plan of Reorganization",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 52500000,
+        "chatgpt51_codex": 1900000
+      },
+      "variance_ratio": 27.63
+    },
+    {
+      "id": "spac-ipo-documentation-package",
+      "name": "SPAC IPO Documentation Package",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 3000000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "debt-financing-term-sheet-credit-agreement",
+      "name": "Debt Financing Term Sheet & Credit Agreement",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 2650000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "vaccine-manufacturing-protocol",
+      "name": "Vaccine Manufacturing Protocol",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "claude_opus45_agents": 27500000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "software-architecture-document",
+      "name": "Software Architecture Document",
+      "sector": "Technology",
+      "valuations": {
+        "claude_opus45_agents": 275000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "real-estate-purchase-sale-agreement-commercial",
+      "name": "Real Estate Purchase & Sale Agreement (Commercial)",
+      "sector": "Real Estate/Legal",
+      "valuations": {
+        "claude_opus45_agents": 162500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "form-10-k-annual-report",
+      "name": "Form 10-K Annual Report",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 1750000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "construction-contract-major-project",
+      "name": "Construction Contract (Major Project)",
+      "sector": "Architecture/Construction",
+      "valuations": {
+        "claude_opus45_agents": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "insurance-policy-d-o-cyber",
+      "name": "Insurance Policy (D&O, Cyber)",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "regulatory-response-consent-decree",
+      "name": "Regulatory Response/Consent Decree",
+      "sector": "Legal/Regulatory",
+      "valuations": {
+        "claude_opus45_agents": 5250000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "pharmaceutical-cmc-dossier",
+      "name": "Pharmaceutical CMC Dossier",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "claude_opus45_agents": 11000000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "building-information-model-bim",
+      "name": "Building Information Model (BIM)",
+      "sector": "Architecture/Construction",
+      "valuations": {
+        "claude_opus45_agents": 275000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "class-action-settlement-agreement",
+      "name": "Class Action Settlement Agreement",
+      "sector": "Legal Services",
+      "valuations": {
+        "claude_opus45_agents": 2600000,
+        "chatgpt51_codex": 265000
+      },
+      "variance_ratio": 9.81
+    },
+    {
+      "id": "api-documentation-specifications",
+      "name": "API Documentation & Specifications",
+      "sector": "Technology",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "patent-prosecution-file",
+      "name": "Patent Prosecution File",
+      "sector": "Legal Services",
+      "valuations": {
+        "claude_opus45_agents": 60000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "lease-agreement-commercial",
+      "name": "Lease Agreement (Commercial)",
+      "sector": "Real Estate/Legal",
+      "valuations": {
+        "claude_opus45_agents": 55000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "pharmaceutical-label-package-insert",
+      "name": "Pharmaceutical Label/Package Insert",
+      "sector": "Medical/Regulatory",
+      "valuations": {
+        "claude_opus45_agents": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "investment-management-agreement",
+      "name": "Investment Management Agreement",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 175000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "compliance-program-documentation",
+      "name": "Compliance Program Documentation",
+      "sector": "Legal/Consulting",
+      "valuations": {
+        "claude_opus45_agents": 275000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "financial-model-m-a-lbo",
+      "name": "Financial Model (M&A/LBO)",
+      "sector": "Financial",
+      "valuations": {
+        "claude_opus45_agents": 175000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "brand-strategy-document",
+      "name": "Brand Strategy Document",
+      "sector": "Creative/Consulting",
+      "valuations": {
+        "claude_opus45_agents": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "technical-specifications-engineering",
+      "name": "Technical Specifications (Engineering)",
+      "sector": "Engineering",
+      "valuations": {
+        "claude_opus45_agents": 137500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "construction-drawing-set",
+      "name": "Construction Drawing Set",
+      "sector": "Architecture/Construction",
+      "valuations": {
+        "claude_opus45_agents": 275000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "shareholder-activism-response",
+      "name": "Shareholder Activism Response",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 2750000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "marketing-authorization-application-eu",
+      "name": "Marketing Authorization Application (EU)",
+      "sector": "Medical/Regulatory",
+      "valuations": {
+        "claude_opus45_agents": 27500000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "appraisal-report-real-estate",
+      "name": "Appraisal Report (Real Estate)",
+      "sector": "Real Estate",
+      "valuations": {
+        "claude_opus45_agents": 27500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "safety-data-sheet-sds",
+      "name": "Safety Data Sheet (SDS)",
+      "sector": "Regulatory/Manufacturing",
+      "valuations": {
+        "claude_opus45_agents": 5500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "esg-sustainability-report",
+      "name": "ESG/Sustainability Report",
+      "sector": "Consulting/Corporate",
+      "valuations": {
+        "claude_opus45_agents": 275000,
+        "chatgpt51_codex": 450000
+      },
+      "variance_ratio": 1.64
+    },
+    {
+      "id": "investor-presentation-deck",
+      "name": "Investor Presentation Deck",
+      "sector": "Financial",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "healthcare-facility-design-document",
+      "name": "Healthcare Facility Design Document",
+      "sector": "Architecture/Medical",
+      "valuations": {
+        "claude_opus45_agents": 2750000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "audit-report-financial-statements",
+      "name": "Audit Report (Financial Statements)",
+      "sector": "Financial",
+      "valuations": {
+        "claude_opus45_agents": 2550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "product-liability-defense-brief",
+      "name": "Product Liability Defense Brief",
+      "sector": "Legal Services",
+      "valuations": {
+        "claude_opus45_agents": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "it-infrastructure-assessment",
+      "name": "IT Infrastructure Assessment",
+      "sector": "Technology/Consulting",
+      "valuations": {
+        "claude_opus45_agents": 175000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "competitive-intelligence-report",
+      "name": "Competitive Intelligence Report",
+      "sector": "Management Consulting",
+      "valuations": {
+        "claude_opus45_agents": 275000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "union-collective-bargaining-agreement",
+      "name": "Union Collective Bargaining Agreement",
+      "sector": "Legal/HR",
+      "valuations": {
+        "claude_opus45_agents": 300000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "software-requirements-specification",
+      "name": "Software Requirements Specification",
+      "sector": "Technology",
+      "valuations": {
+        "claude_opus45_agents": 87500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "zoning-application-variance-request",
+      "name": "Zoning Application/Variance Request",
+      "sector": "Real Estate/Legal",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "clinical-operations-manual",
+      "name": "Clinical Operations Manual",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "claude_opus45_agents": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "advertising-campaign-creative-brief",
+      "name": "Advertising Campaign Creative Brief",
+      "sector": "Creative",
+      "valuations": {
+        "claude_opus45_agents": 55000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "patent-claim-chart",
+      "name": "Patent Claim Chart",
+      "sector": "Legal Services",
+      "valuations": {
+        "claude_opus45_agents": 42500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "derivatives-swap-documentation",
+      "name": "Derivatives/Swap Documentation",
+      "sector": "Financial Services",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "whistleblower-investigation-report",
+      "name": "Whistleblower Investigation Report",
+      "sector": "Legal/Compliance",
+      "valuations": {
+        "claude_opus45_agents": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "sourcing-strategy-document",
+      "name": "Sourcing Strategy Document",
+      "sector": "Consulting/Procurement",
+      "valuations": {
+        "claude_opus45_agents": 175000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "network-architecture-diagram",
+      "name": "Network Architecture Diagram",
+      "sector": "Technology",
+      "valuations": {
+        "claude_opus45_agents": 55000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "training-curriculum-corporate",
+      "name": "Training Curriculum (Corporate)",
+      "sector": "HR/Consulting",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "fire-protection-engineering-plan",
+      "name": "Fire Protection Engineering Plan",
+      "sector": "Engineering",
+      "valuations": {
+        "claude_opus45_agents": 82500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "media-plan-buy-document",
+      "name": "Media Plan/Buy Document",
+      "sector": "Creative/Marketing",
+      "valuations": {
+        "claude_opus45_agents": 55000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "geotechnical-investigation-report",
+      "name": "Geotechnical Investigation Report",
+      "sector": "Engineering/Construction",
+      "valuations": {
+        "claude_opus45_agents": 42500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "influencer-marketing-contract",
+      "name": "Influencer Marketing Contract",
+      "sector": "Legal/Creative",
+      "valuations": {
+        "claude_opus45_agents": 27500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "landscape-architecture-plan",
+      "name": "Landscape Architecture Plan",
+      "sector": "Architecture",
+      "valuations": {
+        "claude_opus45_agents": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "food-safety-plan-haccp",
+      "name": "Food Safety Plan (HACCP)",
+      "sector": "Regulatory/Consulting",
+      "valuations": {
+        "claude_opus45_agents": 42500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "acoustic-engineering-report",
+      "name": "Acoustic Engineering Report",
+      "sector": "Engineering",
+      "valuations": {
+        "claude_opus45_agents": 42500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "sell-side-m-a-information-memorandum-data-room-pack",
+      "name": "Sell-Side M&A Information Memorandum & Data Room Pack",
+      "sector": "Financial Services",
+      "valuations": {
+        "chatgpt51_codex": 3500000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "ipo-prospectus-s-1-drafting-readiness",
+      "name": "IPO Prospectus (S-1) Drafting & Readiness",
+      "sector": "Legal/Financial",
+      "valuations": {
+        "chatgpt51_codex": 2250000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "spac-s-4-de-spac-transaction-materials",
+      "name": "SPAC S-4 / De-SPAC Transaction Materials",
+      "sector": "Legal/Financial",
+      "valuations": {
+        "chatgpt51_codex": 2100000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "buy-side-quality-of-earnings-commercial-dd-large-deal",
+      "name": "Buy-Side Quality of Earnings & Commercial DD (Large Deal)",
+      "sector": "Financial Services",
+      "valuations": {
+        "chatgpt51_codex": 1600000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "fda-new-drug-application-nda-submission-dossier",
+      "name": "FDA New Drug Application (NDA) Submission Dossier",
+      "sector": "Medical/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 1450000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "bank-stress-test-package-ccar-dfast",
+      "name": "Bank Stress Test Package (CCAR/DFAST)",
+      "sector": "Financial/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 1150000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "lng-petrochemical-feed-package",
+      "name": "LNG / Petrochemical FEED Package",
+      "sector": "Engineering",
+      "valuations": {
+        "chatgpt51_codex": 1050000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "sap-erp-global-rollout-blueprint-build",
+      "name": "SAP/ERP Global Rollout Blueprint & Build",
+      "sector": "Technology/Consulting",
+      "valuations": {
+        "chatgpt51_codex": 975000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "power-purchase-agreement-utility-scale-financing-case",
+      "name": "Power Purchase Agreement (Utility-Scale) & Financing Case",
+      "sector": "Energy/Financial",
+      "valuations": {
+        "chatgpt51_codex": 900000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "project-finance-model-lenders-technical-advisor-report",
+      "name": "Project Finance Model & Lenders’ Technical Advisor Report",
+      "sector": "Financial/Engineering",
+      "valuations": {
+        "chatgpt51_codex": 850000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "enterprise-zero-trust-security-architecture",
+      "name": "Enterprise Zero-Trust Security Architecture",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 825000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "national-transportation-master-plan-urban-state",
+      "name": "National Transportation Master Plan (Urban/State)",
+      "sector": "Engineering/Architecture",
+      "valuations": {
+        "chatgpt51_codex": 750000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "it-infrastructure-outsourcing-rfp-evaluation",
+      "name": "IT Infrastructure Outsourcing RFP & Evaluation",
+      "sector": "Technology/Consulting",
+      "valuations": {
+        "chatgpt51_codex": 675000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "enterprise-data-platform-design-build-lake-warehouse",
+      "name": "Enterprise Data Platform Design & Build (Lake/Warehouse)",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 675000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "enterprise-target-operating-model-global",
+      "name": "Enterprise Target Operating Model (Global)",
+      "sector": "Management Consulting",
+      "valuations": {
+        "chatgpt51_codex": 625000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "consent-decree-compliance-remediation-plan-regulatory",
+      "name": "Consent Decree Compliance Remediation Plan (Regulatory)",
+      "sector": "Legal/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 625000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "airport-terminal-expansion-design-development-set",
+      "name": "Airport Terminal Expansion Design Development Set",
+      "sector": "Architecture/Engineering",
+      "valuations": {
+        "chatgpt51_codex": 600000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "utilities-rate-case-filing-expert-testimony",
+      "name": "Utilities Rate Case Filing & Expert Testimony",
+      "sector": "Legal/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 590000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "cybersecurity-incident-response-forensic-report-major-breach",
+      "name": "Cybersecurity Incident Response & Forensic Report (Major Breach)",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 550000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "privacy-program-ccpa-gdpr-readiness-package",
+      "name": "Privacy Program (CCPA/GDPR) Readiness Package",
+      "sector": "Legal/Technology",
+      "valuations": {
+        "chatgpt51_codex": 450000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "master-brand-repositioning-visual-identity-system",
+      "name": "Master Brand Repositioning & Visual Identity System",
+      "sector": "Creative/Marketing",
+      "valuations": {
+        "chatgpt51_codex": 415000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "large-cap-transfer-pricing-study-documentation",
+      "name": "Large-Cap Transfer Pricing Study & Documentation",
+      "sector": "Tax/Financial",
+      "valuations": {
+        "chatgpt51_codex": 415000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "soc-2-type-ii-readiness-audit-package-enterprise",
+      "name": "SOC 2 Type II Readiness & Audit Package (Enterprise)",
+      "sector": "Technology/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 410000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "fda-510-k-premarket-notification",
+      "name": "FDA 510(k) Premarket Notification",
+      "sector": "Medical/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 375000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "enterprise-data-privacy-impact-assessment-suite",
+      "name": "Enterprise Data Privacy Impact Assessment Suite",
+      "sector": "Legal/Tech",
+      "valuations": {
+        "chatgpt51_codex": 360000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "highway-bridge-detailed-design-package",
+      "name": "Highway/Bridge Detailed Design Package",
+      "sector": "Engineering",
+      "valuations": {
+        "chatgpt51_codex": 360000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "loan-tape-validation-cecl-modeling",
+      "name": "Loan Tape Validation & CECL Modeling",
+      "sector": "Financial",
+      "valuations": {
+        "chatgpt51_codex": 345000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "cloud-migration-strategy-business-case",
+      "name": "Cloud Migration Strategy & Business Case",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 335000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "corporate-carve-out-separation-playbook",
+      "name": "Corporate Carve-Out Separation Playbook",
+      "sector": "Consulting/Financial",
+      "valuations": {
+        "chatgpt51_codex": 330000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "smart-factory-iiot-roadmap",
+      "name": "Smart Factory / IIoT Roadmap",
+      "sector": "Technology/Engineering",
+      "valuations": {
+        "chatgpt51_codex": 300000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "rwe-heor-value-dossier-payer-submission",
+      "name": "RWE/HEOR Value Dossier (Payer Submission)",
+      "sector": "Medical/Pharma",
+      "valuations": {
+        "chatgpt51_codex": 285000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "enterprise-pmo-setup-governance-toolkit",
+      "name": "Enterprise PMO Setup & Governance Toolkit",
+      "sector": "Management Consulting",
+      "valuations": {
+        "chatgpt51_codex": 285000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "airport-noise-environmental-assessment",
+      "name": "Airport Noise & Environmental Assessment",
+      "sector": "Environmental",
+      "valuations": {
+        "chatgpt51_codex": 280000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "it-managed-services-transition-plan",
+      "name": "IT Managed Services Transition Plan",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 270000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "digital-product-ux-ui-system-enterprise-app",
+      "name": "Digital Product UX/UI System (Enterprise App)",
+      "sector": "Technology/Creative",
+      "valuations": {
+        "chatgpt51_codex": 270000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "pci-dss-compliance-remediation-plan",
+      "name": "PCI DSS Compliance Remediation Plan",
+      "sector": "Technology/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 240000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "hospital-ehr-optimization-order-set-build",
+      "name": "Hospital EHR Optimization & Order Set Build",
+      "sector": "Healthcare IT",
+      "valuations": {
+        "chatgpt51_codex": 240000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "smart-city-iot-pilot-design",
+      "name": "Smart City IoT Pilot Design",
+      "sector": "Technology/Engineering",
+      "valuations": {
+        "chatgpt51_codex": 225000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "litigation-ediscovery-plan-tar-protocol",
+      "name": "Litigation eDiscovery Plan & TAR Protocol",
+      "sector": "Legal/Tech",
+      "valuations": {
+        "chatgpt51_codex": 225000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "ransomware-readiness-assessment",
+      "name": "Ransomware Readiness Assessment",
+      "sector": "Cybersecurity",
+      "valuations": {
+        "chatgpt51_codex": 210000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "mechanical-electrical-plumbing-mep-construction-documents-mid-rise",
+      "name": "Mechanical/Electrical/Plumbing (MEP) Construction Documents (Mid-Rise)",
+      "sector": "Engineering/Architecture",
+      "valuations": {
+        "chatgpt51_codex": 210000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "hr-transformation-playbook",
+      "name": "HR Transformation Playbook",
+      "sector": "Management Consulting",
+      "valuations": {
+        "chatgpt51_codex": 195000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "digital-marketing-performance-audit",
+      "name": "Digital Marketing Performance Audit",
+      "sector": "Marketing",
+      "valuations": {
+        "chatgpt51_codex": 180000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "vendor-selection-rfp-saas-erp-mid-market",
+      "name": "Vendor Selection RFP (SaaS/ERP mid-market)",
+      "sector": "Consulting/Tech",
+      "valuations": {
+        "chatgpt51_codex": 175000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "programmatic-media-plan-national",
+      "name": "Programmatic Media Plan (National)",
+      "sector": "Marketing",
+      "valuations": {
+        "chatgpt51_codex": 165000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "corporate-policies-suite-infosec-hr-finance",
+      "name": "Corporate Policies Suite (InfoSec/HR/Finance)",
+      "sector": "Legal/Compliance",
+      "valuations": {
+        "chatgpt51_codex": 165000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "product-requirements-document-mvp-scope",
+      "name": "Product Requirements Document & MVP Scope",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 150000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "valuation-appraisal-commercial-real-estate-portfolio",
+      "name": "Valuation/Appraisal (Commercial Real Estate Portfolio)",
+      "sector": "Real Estate",
+      "valuations": {
+        "chatgpt51_codex": 150000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "mechanical-product-design-dfm-package",
+      "name": "Mechanical Product Design DFM Package",
+      "sector": "Engineering",
+      "valuations": {
+        "chatgpt51_codex": 150000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "ce-mark-technical-file-medical-device",
+      "name": "CE Mark Technical File (Medical Device)",
+      "sector": "Medical/Regulatory",
+      "valuations": {
+        "chatgpt51_codex": 150000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "crm-implementation-blueprint-mid-market",
+      "name": "CRM Implementation Blueprint (Mid-Market)",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 135000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "brand-campaign-creative-concepting",
+      "name": "Brand Campaign Creative Concepting",
+      "sector": "Marketing/Creative",
+      "valuations": {
+        "chatgpt51_codex": 127500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "digital-twin-proof-of-concept",
+      "name": "Digital Twin Proof-of-Concept",
+      "sector": "Engineering/Tech",
+      "valuations": {
+        "chatgpt51_codex": 127500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "grant-proposal-federal-r-d-large",
+      "name": "Grant Proposal (Federal R&D Large)",
+      "sector": "Scientific/Research",
+      "valuations": {
+        "chatgpt51_codex": 120000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "training-curriculum-elearning-suite-enterprise",
+      "name": "Training Curriculum & eLearning Suite (Enterprise)",
+      "sector": "Consulting/EdTech",
+      "valuations": {
+        "chatgpt51_codex": 120000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "feasibility-study-mining-oil-gas-prospect",
+      "name": "Feasibility Study (Mining/Oil & Gas Prospect)",
+      "sector": "Engineering",
+      "valuations": {
+        "chatgpt51_codex": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "data-migration-plan-legacy-to-cloud",
+      "name": "Data Migration Plan (Legacy to Cloud)",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 112500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "website-redesign-corporate",
+      "name": "Website Redesign (Corporate)",
+      "sector": "Marketing/Tech",
+      "valuations": {
+        "chatgpt51_codex": 105000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "social-media-content-governance-playbook",
+      "name": "Social Media Content & Governance Playbook",
+      "sector": "Marketing",
+      "valuations": {
+        "chatgpt51_codex": 105000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "rfp-response-proposal-large-gov-contract",
+      "name": "RFP Response / Proposal (Large Gov Contract)",
+      "sector": "Consulting/Tech",
+      "valuations": {
+        "chatgpt51_codex": 97500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "osha-process-safety-management-program",
+      "name": "OSHA Process Safety Management Program",
+      "sector": "Environmental/Safety",
+      "valuations": {
+        "chatgpt51_codex": 90000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "enterprise-architecture-current-future-state-maps",
+      "name": "Enterprise Architecture Current/Future State Maps",
+      "sector": "Technology",
+      "valuations": {
+        "chatgpt51_codex": 90000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "market-sizing-entry-study-single-country",
+      "name": "Market Sizing & Entry Study (Single Country)",
+      "sector": "Management Consulting",
+      "valuations": {
+        "chatgpt51_codex": 82500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "trademark-application-set-us-3-intl",
+      "name": "Trademark Application Set (US + 3 intl)",
+      "sector": "Legal/IP",
+      "valuations": {
+        "chatgpt51_codex": 75000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "annual-report-10-k-drafting-support",
+      "name": "Annual Report / 10-K Drafting Support",
+      "sector": "Legal/Financial",
+      "valuations": {
+        "chatgpt51_codex": 75000
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "pricing-packaging-study",
+      "name": "Pricing & Packaging Study",
+      "sector": "Consulting/Marketing",
+      "valuations": {
+        "chatgpt51_codex": 67500
+      },
+      "variance_ratio": null
+    },
+    {
+      "id": "content-localization-package-multilingual",
+      "name": "Content Localization Package (Multilingual)",
+      "sector": "Marketing/Localization",
+      "valuations": {
+        "chatgpt51_codex": 60000
+      },
+      "variance_ratio": null
     }
   ],
   "metadata": {
     "generated": "2025-11-28",
-    "total_artifacts": 350,
-    "total_sectors": 34,
-    "total_models": 10,
+    "total_artifacts": 470,
+    "total_sectors": 75,
+    "total_models": 12,
     "sectors": [
       "Agriculture",
       "Architecture",
+      "Architecture/Construction",
+      "Architecture/Engineering",
+      "Architecture/Medical",
+      "Consulting/Corporate",
+      "Consulting/EdTech",
+      "Consulting/Financial",
+      "Consulting/Marketing",
+      "Consulting/Procurement",
+      "Consulting/Tech",
+      "Creative",
       "Creative Services",
+      "Creative/Consulting",
       "Creative/Marketing",
+      "Cybersecurity",
       "Energy",
+      "Energy/Financial",
       "Engineering",
+      "Engineering/Architecture",
+      "Engineering/Construction",
+      "Engineering/Tech",
       "Environmental",
       "Environmental/Engineering",
+      "Environmental/Safety",
+      "Financial",
       "Financial Services",
+      "Financial/Engineering",
       "Financial/Legal",
+      "Financial/Regulatory",
       "Government",
       "HR Consulting",
+      "HR/Consulting",
       "Healthcare",
+      "Healthcare IT",
       "Legal",
       "Legal Services",
       "Legal/Compliance",
+      "Legal/Consulting",
+      "Legal/Creative",
       "Legal/Financial",
+      "Legal/HR",
+      "Legal/IP",
+      "Legal/Regulatory",
+      "Legal/Tech",
       "Legal/Technology",
       "Management Consulting",
       "Manufacturing",
       "Marketing",
+      "Marketing/Creative",
+      "Marketing/Localization",
+      "Marketing/Tech",
       "Media/Entertainment",
       "Medical/Pharma",
       "Medical/Pharmaceutical",
+      "Medical/Regulatory",
       "Operations/Consulting",
       "Professional Services",
       "Real Estate",
+      "Real Estate/Legal",
+      "Regulatory/Consulting",
+      "Regulatory/Manufacturing",
       "Retail/Consumer",
       "Scientific Research and R&D",
+      "Scientific/Research",
+      "Tax/Financial",
       "Tax/International",
       "Technology",
       "Technology Services",
       "Technology/Compliance",
+      "Technology/Consulting",
+      "Technology/Creative",
+      "Technology/Engineering",
+      "Technology/Regulatory",
       "Telecommunications"
     ],
     "models": [
       "chatgpt5",
       "chatgpt51",
+      "chatgpt51_codex",
+      "claude_opus45_agents",
       "claude_opus45_cli",
       "claude_sonnet45",
       "gemini",

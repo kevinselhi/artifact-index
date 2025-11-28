@@ -62,9 +62,10 @@ while ((match = tableRegex.exec(reportContent)) !== null) {
   let value = 0;
 
   // Handle different value formats
-  if (valueStr.includes('-')) {
-    // Range format: "$50M - $120M+"
-    const values = valueStr.replace(/\$/g, '').replace(/\+/g, '').split('-').map(s => s.trim());
+  // Support both regular hyphen (-) and em-dash (–)
+  if (valueStr.includes('-') || valueStr.includes('–')) {
+    // Range format: "$50M - $120M+" or "$2.5M–$4.5M"
+    const values = valueStr.replace(/\$/g, '').replace(/\+/g, '').split(/[-–]/).map(s => s.trim());
     const low = parseValue(values[0]);
     const high = parseValue(values[1]);
     value = Math.round((low + high) / 2);

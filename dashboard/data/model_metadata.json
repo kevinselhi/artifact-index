@@ -1,9 +1,9 @@
 {
   "metadata": {
     "generated": "2025-11-27",
-    "total_artifacts": 211,
-    "total_sectors": 28,
-    "total_models": 10,
+    "total_artifacts": 470,
+    "total_sectors": 75,
+    "total_models": 12,
     "note": "Dashboard uses inline data; this file provides reference metadata"
   },
   "models": {
@@ -136,6 +136,40 @@
       "coverageScore": 0,
       "uniquenessScore": 21,
       "deviationScore": 106
+    },
+    "claude_opus45_agents": {
+      "name": "Claude 4.5 Opus with Agents",
+      "color": "#8B5CF6",
+      "methodology": "Multi-agent methodology with web search verification",
+      "valuation_approach": "Transaction-based composite scoring",
+      "artifact_count": 100,
+      "top_artifact": "Biologics License Application (BLA)",
+      "top_value": 82500000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false,
+      "topArtifact": "Biologics License Application (BLA)",
+      "topValue": 82500000,
+      "coverageScore": 0,
+      "uniquenessScore": 29,
+      "deviationScore": 73
+    },
+    "chatgpt51_codex": {
+      "name": "ChatGPT 5-1 Codex Max Thinking",
+      "color": "#0EA5E9",
+      "methodology": "65+ 2020 sources with frequency-weighted ranking",
+      "valuation_approach": "Midpoint billed value per instance",
+      "artifact_count": 100,
+      "top_artifact": "Sell-Side M&A Information Memorandum & Data Room Pack",
+      "top_value": 3500000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false,
+      "topArtifact": "Sell-Side M&A Information Memorandum & Data Room Pack",
+      "topValue": 3500000,
+      "coverageScore": 0,
+      "uniquenessScore": 14,
+      "deviationScore": 57
     }
   },
   "comparison_insights": {
