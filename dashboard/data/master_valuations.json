@@ -458,7 +458,7 @@
         "perplexity": 300000,
         "gemini30": null
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "hospital_architecture",
@@ -474,7 +474,7 @@
         "perplexity": 8000000,
         "gemini30": null
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "annual_audit",
@@ -684,7 +684,7 @@
         "perplexity": 1125000,
         "gemini30": null
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "tax_opinion",
@@ -3429,7 +3429,7 @@
       "valuations": {
         "claude_opus45_cli": 3150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-corporate-due-diligence-report",
@@ -3438,7 +3438,7 @@
       "valuations": {
         "claude_opus45_cli": 1250000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "municipal-bond-offering-package",
@@ -3457,7 +3457,7 @@
       "valuations": {
         "claude_opus45_cli": 1250000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "s-p-500-annual-audit",
@@ -3466,7 +3466,7 @@
       "valuations": {
         "claude_opus45_cli": 44000000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "complex-sec-registration-statement",
@@ -3495,7 +3495,7 @@
       "valuations": {
         "claude_opus45_cli": 300000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "corporate-governance-advisory-package",
@@ -3504,7 +3504,7 @@
       "valuations": {
         "claude_opus45_cli": 162500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "insurance-reserve-analysis",
@@ -3513,7 +3513,7 @@
       "valuations": {
         "claude_opus45_cli": 125000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "penetration-testing-engagement",
@@ -3532,7 +3532,7 @@
       "valuations": {
         "claude_opus45_cli": 65000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "corporate-transaction-legal-package",
@@ -3541,7 +3541,7 @@
       "valuations": {
         "claude_opus45_cli": 325000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "complex-patent-application-portfolio",
@@ -3550,7 +3550,7 @@
       "valuations": {
         "claude_opus45_cli": 125000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "integrated-marketing-campaign",
@@ -3559,7 +3559,7 @@
       "valuations": {
         "claude_opus45_cli": 95000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "intellectual-property-opinion-letter",
@@ -3568,7 +3568,7 @@
       "valuations": {
         "claude_opus45_cli": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "due-diligence-report-mid-market",
@@ -3577,7 +3577,7 @@
       "valuations": {
         "claude_opus45_cli": 137500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "trademark-portfolio-strategy",
@@ -3607,7 +3607,7 @@
       "valuations": {
         "claude_opus45_cli": 162500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "employee-benefits-valuation",
@@ -3636,7 +3636,7 @@
       "valuations": {
         "claude_opus45_cli": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "commercial-lease-agreement-package",
@@ -3655,7 +3655,7 @@
       "valuations": {
         "claude_opus45_cli": 100000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "sales-strategy-consulting",
@@ -3664,7 +3664,7 @@
       "valuations": {
         "claude_opus45_cli": 137500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "investor-relations-package",
@@ -3673,7 +3673,7 @@
       "valuations": {
         "claude_opus45_cli": 100000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "commercial-insurance-placement",
@@ -3682,7 +3682,7 @@
       "valuations": {
         "claude_opus45_cli": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "litigation-discovery-package",
@@ -3691,7 +3691,7 @@
       "valuations": {
         "claude_opus45_cli": 125000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "employment-law-compliance-review",
@@ -3700,7 +3700,7 @@
       "valuations": {
         "claude_opus45_cli": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "safety-assessment-report",
@@ -3709,7 +3709,7 @@
       "valuations": {
         "claude_opus45_cli": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "tax-return-complex-corporate",
@@ -3718,7 +3718,7 @@
       "valuations": {
         "claude_opus45_cli": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "single-patent-application",
@@ -3727,7 +3727,7 @@
       "valuations": {
         "claude_opus45_cli": 32500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "employment-agreement-package",
@@ -3746,7 +3746,7 @@
       "valuations": {
         "claude_opus45_cli": 30000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "business-plan-pitch-deck",
@@ -3755,7 +3755,7 @@
       "valuations": {
         "claude_opus45_cli": 30000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "trademark-registration",
@@ -3784,7 +3784,7 @@
       "valuations": {
         "claude_opus45_cli": 30000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "seo-sem-strategy",
@@ -3793,7 +3793,7 @@
       "valuations": {
         "claude_opus45_cli": 20000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "basic-website-audit",
@@ -3802,7 +3802,7 @@
       "valuations": {
         "claude_opus45_cli": 6500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "m-a-buy-side-advisory-mandate-mega-deal",
@@ -3811,7 +3811,7 @@
       "valuations": {
         "you_ari": 52500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "ipo-underwriting-syndicate-book-large-cap",
@@ -3820,7 +3820,7 @@
       "valuations": {
         "you_ari": 42500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "corporate-restructuring-advisory-large-cap",
@@ -3829,7 +3829,7 @@
       "valuations": {
         "you_ari": 27500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "private-equity-due-diligence-report-large-cap",
@@ -3838,7 +3838,7 @@
       "valuations": {
         "you_ari": 3000000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "antitrust-competition-analysis-mega-deal",
@@ -3857,7 +3857,7 @@
       "valuations": {
         "you_ari": 3000000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "m-a-due-diligence-report",
@@ -3876,7 +3876,7 @@
       "valuations": {
         "you_ari": 950000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-architectural-design-construction-docs",
@@ -3885,7 +3885,7 @@
       "valuations": {
         "you_ari": 725000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "global-brand-strategy-positioning-platform",
@@ -3894,7 +3894,7 @@
       "valuations": {
         "you_ari": 625000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "it-systems-integration-blueprint-enterprise",
@@ -3913,7 +3913,7 @@
       "valuations": {
         "you_ari": 500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-litigation-expert-report",
@@ -3932,7 +3932,7 @@
       "valuations": {
         "you_ari": 425000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "corporate-governance-compliance-program",
@@ -3951,7 +3951,7 @@
       "valuations": {
         "you_ari": 350000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "trademark-portfolio-management-report",
@@ -3960,7 +3960,7 @@
       "valuations": {
         "you_ari": 300000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-content-marketing-campaign-plan",
@@ -3969,7 +3969,7 @@
       "valuations": {
         "you_ari": 300000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "it-infrastructure-security-audit-enterprise",
@@ -3978,7 +3978,7 @@
       "valuations": {
         "you_ari": 300000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "clinical-study-statistical-analysis-plan",
@@ -3997,7 +3997,7 @@
       "valuations": {
         "you_ari": 240000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-employee-compensation-benchmarking-study",
@@ -4006,7 +4006,7 @@
       "valuations": {
         "you_ari": 240000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-regulatory-impact-assessment",
@@ -4015,7 +4015,7 @@
       "valuations": {
         "you_ari": 240000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-utility-rate-case-testimony-analysis",
@@ -4024,7 +4024,7 @@
       "valuations": {
         "you_ari": 212500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-digital-experience-design-system",
@@ -4043,7 +4043,7 @@
       "valuations": {
         "you_ari": 212500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-crisis-communications-plan",
@@ -4052,7 +4052,7 @@
       "valuations": {
         "you_ari": 212500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "large-scale-data-privacy-compliance-assessment",
@@ -4071,7 +4071,7 @@
       "valuations": {
         "you_ari": 180000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-construction-claims-analysis-report",
@@ -4080,7 +4080,7 @@
       "valuations": {
         "you_ari": 180000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-restructuring-feasibility-study",
@@ -4089,7 +4089,7 @@
       "valuations": {
         "you_ari": 180000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-environmental-compliance-audit",
@@ -4098,7 +4098,7 @@
       "valuations": {
         "you_ari": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-it-disaster-recovery-plan",
@@ -4107,7 +4107,7 @@
       "valuations": {
         "you_ari": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-training-program-design",
@@ -4116,7 +4116,7 @@
       "valuations": {
         "you_ari": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-real-estate-transaction-due-diligence-report",
@@ -4125,7 +4125,7 @@
       "valuations": {
         "you_ari": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-scientific-grant-application-package",
@@ -4134,7 +4134,7 @@
       "valuations": {
         "you_ari": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-product-regulatory-submission-fda-ema",
@@ -4143,7 +4143,7 @@
       "valuations": {
         "you_ari": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-construction-cost-estimation-report",
@@ -4152,7 +4152,7 @@
       "valuations": {
         "you_ari": 120000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-intellectual-property-ip-litigation-brief",
@@ -4161,7 +4161,7 @@
       "valuations": {
         "you_ari": 120000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-scientific-white-paper",
@@ -4170,7 +4170,7 @@
       "valuations": {
         "you_ari": 120000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-environmental-site-assessment-phase-ii",
@@ -4189,7 +4189,7 @@
       "valuations": {
         "you_ari": 92500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-construction-schedule-delay-analysis",
@@ -4198,7 +4198,7 @@
       "valuations": {
         "you_ari": 92500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-digital-marketing-analytics-dashboard",
@@ -4207,7 +4207,7 @@
       "valuations": {
         "you_ari": 92500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-scientific-research-data-management-plan",
@@ -4216,7 +4216,7 @@
       "valuations": {
         "you_ari": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-real-estate-investment-memorandum",
@@ -4225,7 +4225,7 @@
       "valuations": {
         "you_ari": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-environmental-permit-application-package",
@@ -4234,7 +4234,7 @@
       "valuations": {
         "you_ari": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-internal-audit-report",
@@ -4243,7 +4243,7 @@
       "valuations": {
         "you_ari": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-healthcare-quality-improvement-plan",
@@ -4252,7 +4252,7 @@
       "valuations": {
         "you_ari": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-it-policy-governance-framework",
@@ -4261,7 +4261,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-scientific-research-literature-review",
@@ -4270,7 +4270,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-real-estate-market-analysis-report",
@@ -4279,7 +4279,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-environmental-monitoring-testing-report",
@@ -4288,7 +4288,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-board-presentation-deck",
@@ -4297,7 +4297,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-construction-bid-package",
@@ -4306,7 +4306,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-digital-product-prototype",
@@ -4315,7 +4315,7 @@
       "valuations": {
         "you_ari": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-scientific-research-poster-presentation",
@@ -4324,7 +4324,7 @@
       "valuations": {
         "you_ari": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-real-estate-lease-abstract-analysis",
@@ -4333,7 +4333,7 @@
       "valuations": {
         "you_ari": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-policy-manual",
@@ -4342,7 +4342,7 @@
       "valuations": {
         "you_ari": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-healthcare-patient-education-program",
@@ -4351,7 +4351,7 @@
       "valuations": {
         "you_ari": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-construction-quality-assurance-plan",
@@ -4360,7 +4360,7 @@
       "valuations": {
         "you_ari": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-digital-accessibility-audit",
@@ -4369,7 +4369,7 @@
       "valuations": {
         "you_ari": 50000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-scientific-research-data-visualization",
@@ -4378,7 +4378,7 @@
       "valuations": {
         "you_ari": 37500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-real-estate-title-report",
@@ -4387,7 +4387,7 @@
       "valuations": {
         "you_ari": 37500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-environmental-risk-assessment",
@@ -4396,7 +4396,7 @@
       "valuations": {
         "you_ari": 37500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-corporate-change-management-toolkit",
@@ -4405,7 +4405,7 @@
       "valuations": {
         "you_ari": 37500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-healthcare-outcomes-analysis-report",
@@ -4414,7 +4414,7 @@
       "valuations": {
         "you_ari": 37500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-construction-punch-list-closeout-package",
@@ -4423,7 +4423,7 @@
       "valuations": {
         "you_ari": 25000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "major-digital-content-audit",
@@ -4432,7 +4432,7 @@
       "valuations": {
         "you_ari": 25000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "grant-prospect-research-report",
@@ -4441,7 +4441,7 @@
       "valuations": {
         "you_ari": 6250
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "m-a-purchase-agreement",
@@ -4450,7 +4450,7 @@
       "valuations": {
         "claude_opus45_agents": 12750000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "restructuring-plan-plan-of-reorganization",
@@ -4469,7 +4469,7 @@
       "valuations": {
         "claude_opus45_agents": 3000000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "debt-financing-term-sheet-credit-agreement",
@@ -4478,7 +4478,7 @@
       "valuations": {
         "claude_opus45_agents": 2650000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "vaccine-manufacturing-protocol",
@@ -4487,7 +4487,7 @@
       "valuations": {
         "claude_opus45_agents": 27500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "software-architecture-document",
@@ -4496,7 +4496,7 @@
       "valuations": {
         "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "real-estate-purchase-sale-agreement-commercial",
@@ -4505,7 +4505,7 @@
       "valuations": {
         "claude_opus45_agents": 162500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "form-10-k-annual-report",
@@ -4514,7 +4514,7 @@
       "valuations": {
         "claude_opus45_agents": 1750000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "construction-contract-major-project",
@@ -4523,7 +4523,7 @@
       "valuations": {
         "claude_opus45_agents": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "insurance-policy-d-o-cyber",
@@ -4532,7 +4532,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "regulatory-response-consent-decree",
@@ -4541,7 +4541,7 @@
       "valuations": {
         "claude_opus45_agents": 5250000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "pharmaceutical-cmc-dossier",
@@ -4550,7 +4550,7 @@
       "valuations": {
         "claude_opus45_agents": 11000000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "building-information-model-bim",
@@ -4559,7 +4559,7 @@
       "valuations": {
         "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "class-action-settlement-agreement",
@@ -4578,7 +4578,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "patent-prosecution-file",
@@ -4587,7 +4587,7 @@
       "valuations": {
         "claude_opus45_agents": 60000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "pharmaceutical-label-package-insert",
@@ -4596,7 +4596,7 @@
       "valuations": {
         "claude_opus45_agents": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "investment-management-agreement",
@@ -4605,7 +4605,7 @@
       "valuations": {
         "claude_opus45_agents": 175000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "compliance-program-documentation",
@@ -4614,7 +4614,7 @@
       "valuations": {
         "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "financial-model-m-a-lbo",
@@ -4633,7 +4633,7 @@
       "valuations": {
         "claude_opus45_agents": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "technical-specifications-engineering",
@@ -4642,7 +4642,7 @@
       "valuations": {
         "claude_opus45_agents": 137500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "construction-drawing-set",
@@ -4651,7 +4651,7 @@
       "valuations": {
         "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "shareholder-activism-response",
@@ -4660,7 +4660,7 @@
       "valuations": {
         "claude_opus45_agents": 2750000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "marketing-authorization-application-eu",
@@ -4669,7 +4669,7 @@
       "valuations": {
         "claude_opus45_agents": 27500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "appraisal-report-real-estate",
@@ -4678,7 +4678,7 @@
       "valuations": {
         "claude_opus45_agents": 27500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "safety-data-sheet-sds",
@@ -4687,7 +4687,7 @@
       "valuations": {
         "claude_opus45_agents": 5500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "esg-sustainability-report",
@@ -4707,7 +4707,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "healthcare-facility-design-document",
@@ -4716,7 +4716,7 @@
       "valuations": {
         "claude_opus45_agents": 2750000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "product-liability-defense-brief",
@@ -4725,7 +4725,7 @@
       "valuations": {
         "claude_opus45_agents": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "it-infrastructure-assessment",
@@ -4734,7 +4734,7 @@
       "valuations": {
         "claude_opus45_agents": 175000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "competitive-intelligence-report",
@@ -4743,7 +4743,7 @@
       "valuations": {
         "claude_opus45_agents": 275000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "union-collective-bargaining-agreement",
@@ -4752,7 +4752,7 @@
       "valuations": {
         "claude_opus45_agents": 300000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "software-requirements-specification",
@@ -4761,7 +4761,7 @@
       "valuations": {
         "claude_opus45_agents": 87500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "zoning-application-variance-request",
@@ -4770,7 +4770,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "clinical-operations-manual",
@@ -4779,7 +4779,7 @@
       "valuations": {
         "claude_opus45_agents": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "advertising-campaign-creative-brief",
@@ -4788,7 +4788,7 @@
       "valuations": {
         "claude_opus45_agents": 55000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "patent-claim-chart",
@@ -4797,7 +4797,7 @@
       "valuations": {
         "claude_opus45_agents": 42500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "derivatives-swap-documentation",
@@ -4806,7 +4806,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "whistleblower-investigation-report",
@@ -4815,7 +4815,7 @@
       "valuations": {
         "claude_opus45_agents": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "sourcing-strategy-document",
@@ -4824,7 +4824,7 @@
       "valuations": {
         "claude_opus45_agents": 175000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "network-architecture-diagram",
@@ -4833,7 +4833,7 @@
       "valuations": {
         "claude_opus45_agents": 55000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "training-curriculum-corporate",
@@ -4842,7 +4842,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "fire-protection-engineering-plan",
@@ -4851,7 +4851,7 @@
       "valuations": {
         "claude_opus45_agents": 82500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "media-plan-buy-document",
@@ -4860,7 +4860,7 @@
       "valuations": {
         "claude_opus45_agents": 55000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "geotechnical-investigation-report",
@@ -4869,7 +4869,7 @@
       "valuations": {
         "claude_opus45_agents": 42500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "influencer-marketing-contract",
@@ -4878,7 +4878,7 @@
       "valuations": {
         "claude_opus45_agents": 27500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "landscape-architecture-plan",
@@ -4887,7 +4887,7 @@
       "valuations": {
         "claude_opus45_agents": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "food-safety-plan-haccp",
@@ -4896,7 +4896,7 @@
       "valuations": {
         "claude_opus45_agents": 42500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "acoustic-engineering-report",
@@ -4905,7 +4905,7 @@
       "valuations": {
         "claude_opus45_agents": 42500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "sell-side-m-a-information-memorandum-data-room-pack",
@@ -4914,7 +4914,7 @@
       "valuations": {
         "chatgpt51_codex": 3500000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "spac-s-4-de-spac-transaction-materials",
@@ -4923,7 +4923,7 @@
       "valuations": {
         "chatgpt51_codex": 2100000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "buy-side-quality-of-earnings-commercial-dd-large-deal",
@@ -4932,7 +4932,7 @@
       "valuations": {
         "chatgpt51_codex": 1600000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "bank-stress-test-package-ccar-dfast",
@@ -4941,7 +4941,7 @@
       "valuations": {
         "chatgpt51_codex": 1150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "lng-petrochemical-feed-package",
@@ -4950,7 +4950,7 @@
       "valuations": {
         "chatgpt51_codex": 1050000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "sap-erp-global-rollout-blueprint-build",
@@ -4959,7 +4959,7 @@
       "valuations": {
         "chatgpt51_codex": 975000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "power-purchase-agreement-utility-scale-financing-case",
@@ -4968,7 +4968,7 @@
       "valuations": {
         "chatgpt51_codex": 900000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "project-finance-model-lenders-technical-advisor-report",
@@ -4977,7 +4977,7 @@
       "valuations": {
         "chatgpt51_codex": 850000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "national-transportation-master-plan-urban-state",
@@ -4986,7 +4986,7 @@
       "valuations": {
         "chatgpt51_codex": 750000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "it-infrastructure-outsourcing-rfp-evaluation",
@@ -4995,7 +4995,7 @@
       "valuations": {
         "chatgpt51_codex": 675000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "enterprise-data-platform-design-build-lake-warehouse",
@@ -5004,7 +5004,7 @@
       "valuations": {
         "chatgpt51_codex": 675000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "enterprise-target-operating-model-global",
@@ -5013,7 +5013,7 @@
       "valuations": {
         "chatgpt51_codex": 625000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "consent-decree-compliance-remediation-plan-regulatory",
@@ -5022,7 +5022,7 @@
       "valuations": {
         "chatgpt51_codex": 625000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "airport-terminal-expansion-design-development-set",
@@ -5031,7 +5031,7 @@
       "valuations": {
         "chatgpt51_codex": 600000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "utilities-rate-case-filing-expert-testimony",
@@ -5040,7 +5040,7 @@
       "valuations": {
         "chatgpt51_codex": 590000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "cybersecurity-incident-response-forensic-report-major-breach",
@@ -5049,7 +5049,7 @@
       "valuations": {
         "chatgpt51_codex": 550000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "privacy-program-ccpa-gdpr-readiness-package",
@@ -5058,7 +5058,7 @@
       "valuations": {
         "chatgpt51_codex": 450000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "enterprise-data-privacy-impact-assessment-suite",
@@ -5067,7 +5067,7 @@
       "valuations": {
         "chatgpt51_codex": 360000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "loan-tape-validation-cecl-modeling",
@@ -5076,7 +5076,7 @@
       "valuations": {
         "chatgpt51_codex": 345000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "corporate-carve-out-separation-playbook",
@@ -5085,7 +5085,7 @@
       "valuations": {
         "chatgpt51_codex": 330000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "rwe-heor-value-dossier-payer-submission",
@@ -5094,7 +5094,7 @@
       "valuations": {
         "chatgpt51_codex": 285000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "enterprise-pmo-setup-governance-toolkit",
@@ -5103,7 +5103,7 @@
       "valuations": {
         "chatgpt51_codex": 285000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "airport-noise-environmental-assessment",
@@ -5112,7 +5112,7 @@
       "valuations": {
         "chatgpt51_codex": 280000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "it-managed-services-transition-plan",
@@ -5121,7 +5121,7 @@
       "valuations": {
         "chatgpt51_codex": 270000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "digital-product-ux-ui-system-enterprise-app",
@@ -5130,7 +5130,7 @@
       "valuations": {
         "chatgpt51_codex": 270000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "pci-dss-compliance-remediation-plan",
@@ -5139,7 +5139,7 @@
       "valuations": {
         "chatgpt51_codex": 240000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "hospital-ehr-optimization-order-set-build",
@@ -5148,7 +5148,7 @@
       "valuations": {
         "chatgpt51_codex": 240000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "litigation-ediscovery-plan-tar-protocol",
@@ -5157,7 +5157,7 @@
       "valuations": {
         "chatgpt51_codex": 225000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "mechanical-electrical-plumbing-mep-construction-documents-mid-rise",
@@ -5166,7 +5166,7 @@
       "valuations": {
         "chatgpt51_codex": 210000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "hr-transformation-playbook",
@@ -5175,7 +5175,7 @@
       "valuations": {
         "chatgpt51_codex": 195000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "digital-marketing-performance-audit",
@@ -5184,7 +5184,7 @@
       "valuations": {
         "chatgpt51_codex": 180000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "vendor-selection-rfp-saas-erp-mid-market",
@@ -5193,7 +5193,7 @@
       "valuations": {
         "chatgpt51_codex": 175000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "programmatic-media-plan-national",
@@ -5202,7 +5202,7 @@
       "valuations": {
         "chatgpt51_codex": 165000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "corporate-policies-suite-infosec-hr-finance",
@@ -5211,7 +5211,7 @@
       "valuations": {
         "chatgpt51_codex": 165000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "product-requirements-document-mvp-scope",
@@ -5220,7 +5220,7 @@
       "valuations": {
         "chatgpt51_codex": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "valuation-appraisal-commercial-real-estate-portfolio",
@@ -5229,7 +5229,7 @@
       "valuations": {
         "chatgpt51_codex": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "mechanical-product-design-dfm-package",
@@ -5238,7 +5238,7 @@
       "valuations": {
         "chatgpt51_codex": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "ce-mark-technical-file-medical-device",
@@ -5247,7 +5247,7 @@
       "valuations": {
         "chatgpt51_codex": 150000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "crm-implementation-blueprint-mid-market",
@@ -5256,7 +5256,7 @@
       "valuations": {
         "chatgpt51_codex": 135000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "brand-campaign-creative-concepting",
@@ -5265,7 +5265,7 @@
       "valuations": {
         "chatgpt51_codex": 127500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "grant-proposal-federal-r-d-large",
@@ -5274,7 +5274,7 @@
       "valuations": {
         "chatgpt51_codex": 120000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "training-curriculum-elearning-suite-enterprise",
@@ -5283,7 +5283,7 @@
       "valuations": {
         "chatgpt51_codex": 120000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "feasibility-study-mining-oil-gas-prospect",
@@ -5292,7 +5292,7 @@
       "valuations": {
         "chatgpt51_codex": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "data-migration-plan-legacy-to-cloud",
@@ -5301,7 +5301,7 @@
       "valuations": {
         "chatgpt51_codex": 112500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "website-redesign-corporate",
@@ -5310,7 +5310,7 @@
       "valuations": {
         "chatgpt51_codex": 105000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "social-media-content-governance-playbook",
@@ -5319,7 +5319,7 @@
       "valuations": {
         "chatgpt51_codex": 105000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "rfp-response-proposal-large-gov-contract",
@@ -5328,7 +5328,7 @@
       "valuations": {
         "chatgpt51_codex": 97500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "osha-process-safety-management-program",
@@ -5337,7 +5337,7 @@
       "valuations": {
         "chatgpt51_codex": 90000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "enterprise-architecture-current-future-state-maps",
@@ -5346,7 +5346,7 @@
       "valuations": {
         "chatgpt51_codex": 90000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "market-sizing-entry-study-single-country",
@@ -5355,7 +5355,7 @@
       "valuations": {
         "chatgpt51_codex": 82500
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "trademark-application-set-us-3-intl",
@@ -5364,7 +5364,7 @@
       "valuations": {
         "chatgpt51_codex": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "annual-report-10-k-drafting-support",
@@ -5373,7 +5373,7 @@
       "valuations": {
         "chatgpt51_codex": 75000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     },
     {
       "id": "content-localization-package-multilingual",
@@ -5382,7 +5382,7 @@
       "valuations": {
         "chatgpt51_codex": 60000
       },
-      "variance_ratio": null
+      "variance_ratio": 1.0
     }
   ],
   "metadata": {
