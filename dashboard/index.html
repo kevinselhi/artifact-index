@@ -7539,7 +7539,7 @@
 
             // Calculate automation metrics for each industry
             const rawIndustries = Object.entries(industryData)
-                .filter(([sector, data]) => data.artifacts.length >= 2)
+                .filter(([sector, data]) => data.artifacts.length >= 1)
                 .map(([sector, data]) => {
                     const avgVariance = data.totalVariance / data.artifacts.length;
                     const avgModelCount = data.modelCounts.reduce((a, b) => a + b, 0) / data.modelCounts.length;
@@ -7880,7 +7880,7 @@
             }
 
             window.allDetailedIndustries = Object.entries(industryData)
-                .filter(([sector, data]) => data.artifacts.length >= 2)
+                .filter(([sector, data]) => data.artifacts.length >= 1)
                 .map(([sector, data]) => {
                     const avgVariance = data.totalVariance / data.artifacts.length;
                     const avgModelCount = data.modelCounts.reduce((a, b) => a + b, 0) / data.modelCounts.length;
