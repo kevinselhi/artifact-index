@@ -9240,6 +9240,22 @@
             currentIndustryFilter = industry;
             updateArtifactDropdown();
 
+            // Clear any selected artifact and show consensus view
+            const artifactSelect = document.getElementById('artifactSelect');
+            if (artifactSelect) {
+                artifactSelect.value = '';
+                // Trigger change event to reset the view
+                const consensusView = document.getElementById('consensusDefaultView');
+                const detailView = document.getElementById('artifactDetailView');
+                const clearBtn = document.getElementById('clearArtifactBtn');
+                const newsPanel = document.getElementById('newsPanel');
+
+                if (consensusView) consensusView.style.display = 'block';
+                if (detailView) detailView.style.display = 'none';
+                if (clearBtn) clearBtn.style.display = 'none';
+                if (newsPanel) newsPanel.style.display = 'none';
+            }
+
             // Show/hide industry overview panel
             const panel = document.getElementById('industryOverviewPanel');
             const reportsPanel = document.getElementById('industryReportsPanel');
