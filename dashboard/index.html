@@ -815,7 +815,7 @@
                     <div class="stat-label">Industries Reviewed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">$293.3B</div>
+                    <div class="stat-value" id="totalAISavings">--</div>
                     <div class="stat-label">Potential AI Savings</div>
                 </div>
             </div>
@@ -5343,6 +5343,10 @@
             const totalMarketValue = allIndustries.reduce((sum, i) => sum + i.totalValue, 0);
             const totalSavings = allIndustries.reduce((sum, i) => sum + i.estimatedSavings.high, 0);
             const totalReady = allIndustries.filter(i => i.readinessScore >= 50).length;
+
+            // Update Overview tab stat to match
+            const savingsStatEl = document.getElementById('totalAISavings');
+            if (savingsStatEl) savingsStatEl.textContent = formatCurrency(totalSavings);
 
             cardsHTML += `
                 <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, rgba(129,178,154,0.15) 0%, rgba(66,133,244,0.15) 100%); border-radius: 8px; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 15px;">
