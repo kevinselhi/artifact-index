@@ -6473,18 +6473,131 @@
             return variance * avgValue;
         }
 
-        // Get unique industries from artifacts
+        // Sector to Industry consolidation mapping
+        // Maps 65+ granular sectors to ~24 core industries
+        const sectorToIndustry = {
+            // Medical/Pharma
+            'Medical/Pharma': 'Medical/Pharma',
+            'Medical/Regulatory': 'Medical/Pharma',
+
+            // Financial Services
+            'Financial Services': 'Financial Services',
+            'Financial': 'Financial Services',
+            'Financial/Engineering': 'Financial Services',
+            'Financial/Legal': 'Financial Services',
+            'Financial/Regulatory': 'Financial Services',
+            'Tax/International': 'Financial Services',
+
+            // Technology
+            'Technology': 'Technology',
+            'Technology Services': 'Technology',
+            'Technology/Consulting': 'Technology',
+            'Technology/Compliance': 'Technology',
+            'Technology/Creative': 'Technology',
+            'Technology/Regulatory': 'Technology',
+
+            // Legal
+            'Legal': 'Legal',
+            'Legal Services': 'Legal',
+            'Legal/Compliance': 'Legal',
+            'Legal/Financial': 'Legal',
+            'Legal/Regulatory': 'Legal',
+            'Legal/Tech': 'Legal',
+            'Legal/Technology': 'Legal',
+            'Legal/Consulting': 'Legal',
+            'Legal/Creative': 'Legal',
+            'Legal/HR': 'Legal',
+            'Legal/IP': 'Legal',
+
+            // Management Consulting
+            'Management Consulting': 'Management Consulting',
+            'Consulting/Corporate': 'Management Consulting',
+            'Consulting/EdTech': 'Management Consulting',
+            'Consulting/Financial': 'Management Consulting',
+            'Consulting/Procurement': 'Management Consulting',
+            'Consulting/Tech': 'Management Consulting',
+            'Operations/Consulting': 'Management Consulting',
+
+            // Engineering
+            'Engineering': 'Engineering',
+            'Engineering/Architecture': 'Engineering',
+            'Engineering/Construction': 'Engineering',
+
+            // Real Estate
+            'Real Estate': 'Real Estate',
+            'Real Estate/Legal': 'Real Estate',
+
+            // Creative/Marketing
+            'Creative/Marketing': 'Creative/Marketing',
+            'Creative Services': 'Creative/Marketing',
+            'Creative': 'Creative/Marketing',
+            'Creative/Consulting': 'Creative/Marketing',
+            'Marketing': 'Creative/Marketing',
+            'Marketing/Creative': 'Creative/Marketing',
+            'Marketing/Localization': 'Creative/Marketing',
+            'Marketing/Tech': 'Creative/Marketing',
+
+            // Environmental
+            'Environmental': 'Environmental',
+            'Environmental/Engineering': 'Environmental',
+            'Environmental/Safety': 'Environmental',
+
+            // Healthcare
+            'Healthcare': 'Healthcare',
+            'Healthcare IT': 'Healthcare',
+
+            // Energy
+            'Energy': 'Energy',
+            'Energy/Financial': 'Energy',
+
+            // Architecture
+            'Architecture': 'Architecture',
+            'Architecture/Construction': 'Architecture',
+            'Architecture/Engineering': 'Architecture',
+            'Architecture/Medical': 'Architecture',
+
+            // HR
+            'HR Consulting': 'HR',
+            'HR/Consulting': 'HR',
+
+            // Scientific Research
+            'Scientific Research and R&D': 'Scientific Research',
+            'Scientific/Research': 'Scientific Research',
+
+            // Other core industries (1:1 mapping)
+            'Government': 'Government',
+            'Manufacturing': 'Manufacturing',
+            'Telecommunications': 'Telecommunications',
+            'Retail/Consumer': 'Retail/Consumer',
+            'Media/Entertainment': 'Media/Entertainment',
+            'Agriculture': 'Agriculture',
+            'Professional Services': 'Professional Services',
+            'Regulatory/Consulting': 'Regulatory',
+            'Regulatory/Manufacturing': 'Regulatory'
+        };
+
+        // Normalize a sector to its parent industry
+        function normalizeIndustry(sector) {
+            return sectorToIndustry[sector] || sector;
+        }
+
+        // Get unique consolidated industries from artifacts
         function getUniqueIndustries() {
-            const industries = [...new Set(artifacts.map(a => a.sector))].sort();
+            const industries = [...new Set(artifacts.map(a => normalizeIndustry(a.sector)))].sort();
             return industries;
         }
 
-        // Populate industry filter dropdown
+        // Check if artifact belongs to a normalized industry
+        function artifactMatchesIndustry(artifact, industry) {
+            return normalizeIndustry(artifact.sector) === industry;
+        }
+
+        // Populate industry filter dropdown with consolidated industries
         function populateIndustryFilter() {
             const industrySelect = document.getElementById('industryFilter');
             const industries = getUniqueIndustries();
             industries.forEach(industry => {
-                const count = artifacts.filter(a => a.sector === industry).length;
+                const count = artifacts.filter(a => artifactMatchesIndustry(a, industry)).length;
                 industrySelect.innerHTML += `<option value="${industry}">${industry} (${count})</option>`;
             });
         }
@@ -6551,10 +6664,10 @@
                 return 'lower';
             }
 
-            // Filter by industry
+            // Filter by industry (using normalized industry matching)
             let filtered = currentIndustryFilter === 'all'
                 ? [...artifacts]
-                : artifacts.filter(a => a.sector === currentIndustryFilter);
+                : artifacts.filter(a => artifactMatchesIndustry(a, currentIndustryFilter));
 
             // Filter by confidence
             if (currentConfidenceFilter !== 'all') {
@@ -6715,7 +6828,7 @@
 
         // Render industry overview panel
         function renderIndustryOverview(industry) {
-            const industryArtifacts = artifacts.filter(a => a.sector === industry);
+            const industryArtifacts = artifacts.filter(a => artifactMatchesIndustry(a, industry));
             const avgModelCount = industryArtifacts.reduce((sum, a) => {
                 return sum + Object.values(a.valuations).filter(v => v !== null).length;
             }, 0) / industryArtifacts.length;
@@ -6974,10 +7087,10 @@
                 descEl.textContent = `These ${industry} artifacts show the highest agreement across multiple AI models, indicating reliable valuation benchmarks for this sector.`;
             }
 
-            // Get artifacts, optionally filtered by industry
+            // Get artifacts, optionally filtered by industry (using normalized matching)
             const sourceArtifacts = industry === 'all'
                 ? artifacts
-                : artifacts.filter(a => a.sector === industry);
+                : artifacts.filter(a => artifactMatchesIndustry(a, industry));
 
             // Get artifacts with multiple models, sorted by model count (desc) then variance (asc)
             const consensusArtifacts = sourceArtifacts
