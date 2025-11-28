@@ -1047,33 +1047,8 @@
                     Select a model to view its highest-valued artifacts with cross-model comparison bars.
                 </p>
 
-                <!-- Model Selector Buttons -->
-                <div id="top25ModelSelector" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
-                    <button class="model-select-btn active" data-model="chatgpt5" onclick="switchTop25Model('chatgpt5')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #FF6B6B; background: #FF6B6B; color: #1a1a2e; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        ChatGPT 5
-                    </button>
-                    <button class="model-select-btn" data-model="chatgpt51" onclick="switchTop25Model('chatgpt51')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #10A37F; background: transparent; color: #10A37F; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        ChatGPT 5-1
-                    </button>
-                    <button class="model-select-btn" data-model="o3pro" onclick="switchTop25Model('o3pro')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #9B5DE5; background: transparent; color: #9B5DE5; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        o3pro
-                    </button>
-                    <button class="model-select-btn" data-model="perplexity" onclick="switchTop25Model('perplexity')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #F9844A; background: transparent; color: #F9844A; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        Perplexity
-                    </button>
-                    <button class="model-select-btn" data-model="claude_sonnet45" onclick="switchTop25Model('claude_sonnet45')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #E07A5F; background: transparent; color: #E07A5F; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        Claude Sonnet 4.5
-                    </button>
-                    <button class="model-select-btn" data-model="opus45" onclick="switchTop25Model('opus45')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #81B29A; background: transparent; color: #81B29A; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        Claude Opus 4.5
-                    </button>
-                    <button class="model-select-btn" data-model="gemini" onclick="switchTop25Model('gemini')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #4285F4; background: transparent; color: #4285F4; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        Gemini 2.5 Pro
-                    </button>
-                    <button class="model-select-btn" data-model="gemini30" onclick="switchTop25Model('gemini30')" style="padding: 8px 16px; border-radius: 20px; border: 2px solid #00BFA5; background: transparent; color: #00BFA5; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                        Gemini 3.0 Pro
-                    </button>
-                </div>
+                <!-- Model Selector Buttons (dynamically generated) -->
+                <div id="top25ModelSelector" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;"></div>
 
                 <!-- Selected Model Info -->
                 <div id="top25ModelInfo" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding: 15px; background: rgba(255,107,107,0.1); border-radius: 8px; border-left: 4px solid #FF6B6B;">
@@ -1099,21 +1074,8 @@
                     </table>
                 </div>
 
-                <!-- Legend -->
-                <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                    <strong style="color: var(--text-secondary); font-size: 0.85em;">Value Bar Legend:</strong>
-                    <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;">
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #FF6B6B; border-radius: 2px;"></span> ChatGPT 5</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #10A37F; border-radius: 2px;"></span> ChatGPT 5-1</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #9B5DE5; border-radius: 2px;"></span> o3pro</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #F9844A; border-radius: 2px;"></span> Perplexity</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #E07A5F; border-radius: 2px;"></span> Claude Sonnet 4.5</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #81B29A; border-radius: 2px;"></span> Claude Opus 4.5</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #4285F4; border-radius: 2px;"></span> Gemini 2.5 Pro</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em;"><span style="width: 12px; height: 12px; background: #00BFA5; border-radius: 2px;"></span> Gemini 3.0 Pro</span>
-                        <span style="display: flex; align-items: center; gap: 5px; font-size: 0.8em; color: #888;"><span style="width: 12px; height: 12px; background: #333; border-radius: 2px;"></span> No data</span>
-                    </div>
-                </div>
+                <!-- Legend (dynamically generated) -->
+                <div id="top25ModelLegend" style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px;"></div>
             </div>
         </div>
 
@@ -5942,6 +5904,59 @@
         let currentTop25Model = 'chatgpt5';
         let currentTopCount = 25;
 
+        // Generate model selector buttons dynamically from modelColors
+        function generateModelSelectorButtons() {
+            const container = document.getElementById('top25ModelSelector');
+            if (!container) return;
+
+            container.innerHTML = '';
+            const modelKeys = Object.keys(modelColors);
+
+            modelKeys.forEach(modelKey => {
+                const color = modelColors[modelKey];
+                const name = modelNames[modelKey];
+                const isFirst = modelKey === modelKeys[0];
+
+                const button = document.createElement('button');
+                button.className = 'model-select-btn' + (isFirst ? ' active' : '');
+                button.dataset.model = modelKey;
+                button.onclick = () => switchTop25Model(modelKey);
+                button.style.cssText = `padding: 8px 16px; border-radius: 20px; border: 2px solid ${color}; background: ${isFirst ? color : 'transparent'}; color: ${isFirst ? '#1a1a2e' : color}; font-weight: 600; cursor: pointer; transition: all 0.2s;`;
+                button.textContent = name;
+
+                container.appendChild(button);
+            });
+        }
+
+        // Generate model legend dynamically from modelColors
+        function generateModelLegend() {
+            const container = document.getElementById('top25ModelLegend');
+            if (!container) return;
+
+            container.innerHTML = '<strong style="color: var(--text-secondary); font-size: 0.85em;">Value Bar Legend:</strong>';
+            const legendItems = document.createElement('div');
+            legendItems.style.cssText = 'display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px;';
+
+            Object.keys(modelColors).forEach(modelKey => {
+                const color = modelColors[modelKey];
+                const name = modelNames[modelKey];
+
+                const item = document.createElement('span');
+                item.style.cssText = 'display: flex; align-items: center; gap: 5px; font-size: 0.8em;';
+                item.innerHTML = `<span style="width: 12px; height: 12px; background: ${color}; border-radius: 2px;"></span> ${name}`;
+
+                legendItems.appendChild(item);
+            });
+
+            // Add "No data" legend item
+            const noDataItem = document.createElement('span');
+            noDataItem.style.cssText = 'display: flex; align-items: center; gap: 5px; font-size: 0.8em; color: #888;';
+            noDataItem.innerHTML = '<span style="width: 12px; height: 12px; background: #333; border-radius: 2px;"></span> No data';
+            legendItems.appendChild(noDataItem);
+
+            container.appendChild(legendItems);
+        }
+
         // Get top N artifacts for a specific model
         function getTopNForModel(modelKey, count) {
             return artifacts
@@ -6099,6 +6114,11 @@
 
         // Initialize Top 25 table on page load
         function initTop25Table() {
+            // Generate UI components dynamically from modelColors/modelNames
+            generateModelSelectorButtons();
+            generateModelLegend();
+
+            // Initialize with first model
             switchTop25Model('chatgpt5');
         }
 
