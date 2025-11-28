@@ -4,9 +4,9 @@ on:
   workflow_dispatch:  # Manual trigger
     inputs:
       batch_size:
-        description: 'Number of artifacts to fetch (default: all 227)'
+        description: 'Number of artifacts to fetch (default: all 421)'
         required: false
-        default: '227'
+        default: '421'
       results_per_artifact:
         description: 'Number of search results per artifact'
         required: false
@@ -30,7 +30,7 @@ jobs:
         continue-on-error: true
         env:
           YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
-          MAX_ARTIFACTS: ${{ github.event.inputs.batch_size || '227' }}
+          MAX_ARTIFACTS: ${{ github.event.inputs.batch_size || '421' }}
           RESULTS_PER_ARTIFACT: ${{ github.event.inputs.results_per_artifact || '3' }}
         run: |
           echo "Starting batch fetch..."

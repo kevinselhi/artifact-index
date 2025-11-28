@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Batch fetch You.com search results for all 227 artifacts
+ * Batch fetch You.com search results for all 421 artifacts
  * Results are stored in dashboard/data/you-search-results.json
  */
 
