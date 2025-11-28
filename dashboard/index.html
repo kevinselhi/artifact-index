@@ -21,20 +21,20 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="AI Opportunity Index">
-    <meta name="description" content="An interactive report on how 10 frontier models (including Gemini 3.0, Claude 4.5 Opus, ChatGPT 5.1, and You.com ARI) assess the work that can be automated by AI agents.">
+    <meta name="description" content="An interactive report on how 12 frontier models (including Gemini 3.0, Claude 4.5 Opus with Agents, ChatGPT 5.1 Codex, and You.com ARI) assess the work that can be automated by AI agents.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kevinselhi.github.io/artifact-index/dashboard/">
     <meta property="og:title" content="AI Opportunity Index">
-    <meta property="og:description" content="An interactive report on how 10 frontier models (including Gemini 3.0, Claude 4.5 Opus, ChatGPT 5.1, and You.com ARI) assess the work that can be automated by AI agents.">
+    <meta property="og:description" content="An interactive report on how 12 frontier models (including Gemini 3.0, Claude 4.5 Opus with Agents, ChatGPT 5.1 Codex, and You.com ARI) assess the work that can be automated by AI agents.">
     <meta property="og:image" content="https://kevinselhi.github.io/artifact-index/dashboard/favicon.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://kevinselhi.github.io/artifact-index/dashboard/">
     <meta property="twitter:title" content="AI Opportunity Index">
-    <meta property="twitter:description" content="An interactive report on how 10 frontier models (including Gemini 3.0, Claude 4.5 Opus, ChatGPT 5.1, and You.com ARI) assess the work that can be automated by AI agents.">
+    <meta property="twitter:description" content="An interactive report on how 12 frontier models (including Gemini 3.0, Claude 4.5 Opus with Agents, ChatGPT 5.1 Codex, and You.com ARI) assess the work that can be automated by AI agents.">
     <meta property="twitter:image" content="https://kevinselhi.github.io/artifact-index/dashboard/favicon.png">
 
     <!-- WhatsApp / iMessage -->
@@ -52,10 +52,12 @@
             --gemini: #4285F4;
             --opus45: #81B29A;
             --chatgpt51: #10A37F;
+            --chatgpt51-codex: #0EA5E9;
             --chatgpt5: #FF6B6B;
             --o3pro: #9B5DE5;
             --perplexity: #F9844A;
             --gemini30: #00BFA5;
+            --claude-opus45-agents: #8B5CF6;
             --claude-opus45-cli: #34d399;
             --you-ari: #f59e0b;
             --bg-dark: #1a1a2e;
@@ -1284,26 +1286,30 @@
         const modelColors = {
             chatgpt5: '#FF6B6B',
             chatgpt51: '#10A37F',
+            chatgpt51_codex: '#0EA5E9',
             o3pro: '#9B5DE5',
             perplexity: '#F9844A',
             claude_sonnet45: '#E07A5F',
             opus45: '#81B29A',
+            claude_opus45_agents: '#8B5CF6',
+            claude_opus45_cli: '#34d399',
             gemini: '#4285F4',
             gemini30: '#00BFA5',
-            claude_opus45_cli: '#34d399',
             you_ari: '#f59e0b'
         };
 
         const modelNames = {
             chatgpt5: 'ChatGPT 5',
             chatgpt51: 'ChatGPT 5-1',
+            chatgpt51_codex: 'ChatGPT 5-1 Codex',
             o3pro: 'o3pro',
             perplexity: 'Perplexity',
             claude_sonnet45: 'Claude Sonnet 4.5',
             opus45: 'Claude Opus 4.5',
+            claude_opus45_agents: 'Claude 4.5 Opus Agents',
+            claude_opus45_cli: 'Claude 4.5 Opus CLI',
             gemini: 'Gemini 2.5 Pro',
             gemini30: 'Gemini 3.0 Pro',
-            claude_opus45_cli: 'Claude 4.5 Opus CLI',
             you_ari: 'You.com ARI'
         };
 
