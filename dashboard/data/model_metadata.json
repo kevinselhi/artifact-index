@@ -1,10 +1,13 @@
 {
   "metadata": {
     "generated": "2025-11-27",
-    "total_artifacts": 470,
+    "total_artifacts": 451,
+    "artifacts_before_consolidation": 470,
+    "duplicates_merged": 19,
+    "consolidation_date": "2025-11-27",
     "total_sectors": 75,
     "total_models": 12,
-    "note": "Dashboard uses inline data; this file provides reference metadata"
+    "note": "Dashboard uses inline data; this file provides reference metadata. Artifact count reduced from 470 to 451 after consolidating 19 duplicates across 12 high-confidence groups."
   },
   "models": {
     "claude_sonnet45": {
