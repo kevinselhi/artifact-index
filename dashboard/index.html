@@ -5140,8 +5140,8 @@
                     const totalMarketSize = data.totalMarketSize || 0;
 
                     // Estimated savings (30-50% of market size based on readiness)
-                    const savingsRate = readinessScore >= 70 ? 0.50 :
-                                       readinessScore >= 50 ? 0.40 :
+                    const savingsRate = readinessScore >= 60 ? 0.50 :
+                                       readinessScore >= 40 ? 0.40 :
                                        readinessScore >= 30 ? 0.35 : 0.30;
                     const estimatedSavings = {
                         low: totalMarketSize * 0.30,
@@ -5268,10 +5268,10 @@
 
             detailedIndustries.forEach(ind => {
                 const color = industryColors[ind.sector] || '#888888';
-                const readinessColor = ind.readinessScore >= 70 ? '#81B29A' :
-                                       ind.readinessScore >= 50 ? '#F9844A' : '#FF6B6B';
-                const readinessLabel = ind.readinessScore >= 70 ? 'High' :
-                                       ind.readinessScore >= 50 ? 'Medium' : 'Low';
+                const readinessColor = ind.readinessScore >= 60 ? '#81B29A' :
+                                       ind.readinessScore >= 40 ? '#F9844A' : '#FF6B6B';
+                const readinessLabel = ind.readinessScore >= 60 ? 'High' :
+                                       ind.readinessScore >= 40 ? 'Medium' : 'Low';
 
                 cardsHTML += `
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; border-left: 4px solid ${color};">
