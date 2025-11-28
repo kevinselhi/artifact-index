@@ -2345,22 +2345,6 @@
       "variance_ratio": 12
     },
     {
-      "id": "securities_class_action",
-      "name": "Securities Class Action Defense",
-      "sector": "Legal/Financial",
-      "valuations": {
-        "claude_sonnet45": 5000000,
-        "gemini": 25000000,
-        "opus45": 12000000,
-        "chatgpt51": 15000000,
-        "chatgpt5": 4000000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": 2000000
-      },
-      "variance_ratio": 12.5
-    },
-    {
       "id": "ip_portfolio_valuation",
       "name": "IP Portfolio Valuation",
       "sector": "Legal/Financial",
@@ -4988,7 +4972,7 @@
     },
     {
       "id": "project-finance-model-lenders-technical-advisor-report",
-      "name": "Project Finance Model & Lenders’ Technical Advisor Report",
+      "name": "Project Finance Model & Lenders\u2019 Technical Advisor Report",
       "sector": "Financial/Engineering",
       "valuations": {
         "chatgpt51_codex": 850000
@@ -5409,6 +5393,6 @@
     "consolidation_date": "2025-11-28",
     "total_sectors": 75,
     "total_models": 12,
-    "note": "Artifact count reduced from 470 to 421 after consolidating 49 duplicates across three phases: 12 initial groups (470→451), 15 agent-identified groups (451→432), and 6 single-model scale modifier groups (432→421)."
+    "note": "Artifact count reduced from 470 to 421 after consolidating 49 duplicates across three phases: 12 initial groups (470\u2192451), 15 agent-identified groups (451\u2192432), and 6 single-model scale modifier groups (432\u2192421)."
   }
 }
