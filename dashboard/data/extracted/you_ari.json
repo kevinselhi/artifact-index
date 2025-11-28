@@ -1,217 +1,807 @@
 {
   "model_key": "you_ari",
   "model_name": "You.com ARI",
-  "methodology": "Triangulated research from multiple sources - Professional service firm reports, industry analyst research, regulatory filings, and market research specific to 2020",
+  "methodology": "Triangulated research from multiple sources",
   "artifacts": [
     {
       "name": "M&A Sell-Side Advisory Mandate (Mega-Deal)",
       "value": 70000000,
       "sector": "Financial Services",
-      "matched_id": "ma_advisory_large",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "M&A Buy-Side Advisory Mandate (Mega-Deal)",
       "value": 52500000,
       "sector": "Financial Services",
-      "matched_id": "ma_advisory_large",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "IPO Underwriting Syndicate Book (Large Cap)",
       "value": 42500000,
       "sector": "Financial Services",
-      "matched_id": "ipo_s1_registration",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Corporate Restructuring Advisory (Large Cap)",
       "value": 27500000,
-      "sector": "Legal/Financial",
-      "matched_id": "bankruptcy_restructuring",
-      "confidence": "high"
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Bankruptcy Plan of Reorganization (Chapter 11)",
       "value": 16000000,
-      "sector": "Legal/Financial",
-      "matched_id": "bankruptcy_restructuring",
-      "confidence": "high"
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Fairness Opinion (Mega-Deal)",
       "value": 5500000,
       "sector": "Financial Services",
+      "confidence": "high",
       "matched_id": "fairness_opinion",
-      "confidence": "high"
+      "match_score": 1
     },
     {
       "name": "Private Equity Due Diligence Report (Large Cap)",
       "value": 3000000,
       "sector": "Financial Services",
-      "matched_id": "due_diligence_large",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Clinical Trial Protocol (Phase III, Global)",
       "value": 3000000,
       "sector": "Medical/Pharma",
-      "matched_id": "clinical_trial_phase3",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Antitrust/Competition Analysis (Mega-Deal)",
       "value": 3000000,
       "sector": "Legal Services",
-      "matched_id": "antitrust_analysis",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Investment Banking Pitch Book (Mega-Deal)",
       "value": 3000000,
       "sector": "Financial Services",
-      "matched_id": "investment_banking_pitchbook",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Enterprise Digital Transformation Roadmap",
       "value": 3250000,
       "sector": "Management Consulting",
-      "matched_id": "digital_transformation",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "New Drug Application (NDA) Dossier",
       "value": 2500000,
       "sector": "Medical/Pharma",
+      "confidence": "high",
       "matched_id": "nda_bla_application",
-      "confidence": "high"
+      "match_score": 0.71
     },
     {
       "name": "Biologics License Application (BLA) Dossier",
       "value": 2500000,
       "sector": "Medical/Pharma",
-      "matched_id": "bla_submission",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": "bla_application",
+      "match_score": 0.78
     },
     {
       "name": "Premarket Approval (PMA) Submission",
       "value": 1750000,
       "sector": "Medical/Pharma",
-      "matched_id": "pma_submission",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Phase III Clinical Trial Protocol & Execution",
       "value": 1500000,
       "sector": "Medical/Pharma",
-      "matched_id": "clinical_trial_phase3",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "M&A Due Diligence Report",
       "value": 1250000,
       "sector": "Financial Services",
-      "matched_id": "due_diligence_large",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Enterprise Cloud Migration Blueprint",
       "value": 1375000,
       "sector": "Technology",
+      "confidence": "high",
       "matched_id": "cloud_migration",
-      "confidence": "high"
+      "match_score": 0.72
     },
     {
       "name": "Major Transportation Corridor Design Package",
       "value": 950000,
       "sector": "Engineering",
-      "matched_id": "infrastructure_design",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Regulatory Compliance Assessment (Banking/Healthcare)",
       "value": 800000,
       "sector": "Technology",
-      "matched_id": "regulatory_compliance_assessment",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": "compliance_regulatory",
+      "match_score": 0.75
     },
     {
       "name": "Large-Scale Architectural Design & Construction Docs",
       "value": 725000,
       "sector": "Architecture",
-      "matched_id": "architectural_design",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Global Brand Strategy & Positioning Platform",
       "value": 625000,
-      "sector": "Creative Services",
-      "matched_id": "brand_strategy",
-      "confidence": "high"
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Enterprise Cybersecurity Assessment & Remediation Plan",
       "value": 625000,
       "sector": "Technology",
-      "matched_id": "cybersecurity_assessment",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Large-Scale Environmental Impact Statement (EIS)",
       "value": 625000,
-      "sector": "Environmental",
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
       "matched_id": "environmental_impact_statement",
-      "confidence": "high"
+      "match_score": 0.71
     },
     {
       "name": "IT Systems Integration Blueprint (Enterprise)",
       "value": 550000,
       "sector": "Technology",
-      "matched_id": "it_systems_integration",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Urban Master Plan (Major City)",
       "value": 550000,
       "sector": "Architecture",
-      "matched_id": "urban_master_plan",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": "airport_master_plan",
+      "match_score": 0.68
     },
     {
       "name": "Corporate Tax Structuring Report (Multinational)",
       "value": 500000,
       "sector": "Financial Services",
-      "matched_id": "tax_opinion",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Patent Portfolio Valuation Report",
       "value": 450000,
       "sector": "Legal Services",
-      "matched_id": "patent_portfolio_valuation",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": "actuarial_valuation",
+      "match_score": 0.64
     },
     {
       "name": "Large-Scale Litigation Expert Report",
       "value": 425000,
       "sector": "Legal Services",
-      "matched_id": "expert_witness_report",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Enterprise Data Analytics & AI Implementation Plan",
       "value": 425000,
       "sector": "Technology",
-      "matched_id": "ai_ml_implementation",
-      "confidence": "high"
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Major Infrastructure Feasibility Study",
       "value": 425000,
       "sector": "Engineering",
-      "matched_id": "infrastructure_feasibility_study",
-      "confidence": "medium"
+      "confidence": "high",
+      "matched_id": "real_estate_feasibility",
+      "match_score": 0.61
+    },
+    {
+      "name": "Corporate Governance & Compliance Program",
+      "value": 350000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Global Supply Chain Optimization Blueprint",
+      "value": 350000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Market Entry Strategy",
+      "value": 350000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": "market_entry_strategy",
+      "match_score": 0.64
+    },
+    {
+      "name": "Trademark Portfolio Management Report",
+      "value": 300000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Clinical Data Management Plan (Phase III)",
+      "value": 300000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "clinical_data_management",
+      "match_score": 0.81
+    },
+    {
+      "name": "Real Estate Development Feasibility Study (Urban)",
+      "value": 300000,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": "real_estate_feasibility",
+      "match_score": 0.71
+    },
+    {
+      "name": "Major Construction Project Management Plan",
+      "value": 300000,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": "construction_management",
+      "match_score": 0.67
+    },
+    {
+      "name": "Large-Scale Content Marketing Campaign Plan",
+      "value": 300000,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "IT Infrastructure Security Audit (Enterprise)",
+      "value": 300000,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Environmental Remediation Plan",
+      "value": 300000,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": "environmental_remediation",
+      "match_score": 0.71
+    },
+    {
+      "name": "Clinical Study Statistical Analysis Plan",
+      "value": 240000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Product Launch Go-to-Market Strategy",
+      "value": 240000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Employee Compensation Benchmarking Study",
+      "value": 240000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Portfolio Valuation",
+      "value": 240000,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Regulatory Impact Assessment",
+      "value": 240000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Utility Rate Case Testimony & Analysis",
+      "value": 212500,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Digital Experience Design System",
+      "value": 212500,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Sustainability/ESG Report",
+      "value": 212500,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": "sustainability_esg",
+      "match_score": 0.87
+    },
+    {
+      "name": "Large-Scale Scientific Research Protocol",
+      "value": 212500,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Crisis Communications Plan",
+      "value": 212500,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Data Privacy Compliance Assessment",
+      "value": 180000,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Healthcare IT Implementation Plan",
+      "value": 180000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Construction Claims Analysis Report",
+      "value": 180000,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Market Research Study",
+      "value": 180000,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": "market_research",
+      "match_score": 0.64
+    },
+    {
+      "name": "Major Corporate Restructuring Feasibility Study",
+      "value": 180000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Environmental Compliance Audit",
+      "value": 150000,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major IT Disaster Recovery Plan",
+      "value": 150000,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Training Program Design",
+      "value": 150000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Transaction Due Diligence Report",
+      "value": 150000,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Scientific Grant Application Package",
+      "value": 150000,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Product Regulatory Submission (FDA/EMA)",
+      "value": 150000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Social Responsibility (CSR) Report",
+      "value": 120000,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Construction Cost Estimation Report",
+      "value": 120000,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Intellectual Property (IP) Litigation Brief",
+      "value": 120000,
+      "sector": "Legal Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Scientific White Paper",
+      "value": 120000,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Appraisal (Commercial)",
+      "value": 120000,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Environmental Site Assessment (Phase II)",
+      "value": 120000,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Risk Assessment Report",
+      "value": 92500,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Healthcare Market Access Dossier",
+      "value": 92500,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Construction Schedule/Delay Analysis",
+      "value": 92500,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Digital Marketing Analytics Dashboard",
+      "value": 92500,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Scientific Research Data Management Plan",
+      "value": 75000,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Investment Memorandum",
+      "value": 75000,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Environmental Permit Application Package",
+      "value": 75000,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Internal Audit Report",
+      "value": 75000,
+      "sector": "Financial Services",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Healthcare Quality Improvement Plan",
+      "value": 75000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Construction Safety Management Plan",
+      "value": 75000,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": "construction_management",
+      "match_score": 0.68
+    },
+    {
+      "name": "Major Corporate IT Policy & Governance Framework",
+      "value": 62500,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Scientific Research Literature Review",
+      "value": 62500,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Market Analysis Report",
+      "value": 62500,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Environmental Monitoring & Testing Report",
+      "value": 62500,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Board Presentation Deck",
+      "value": 62500,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Healthcare Regulatory Compliance Audit",
+      "value": 62500,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": "compliance_regulatory",
+      "match_score": 0.61
+    },
+    {
+      "name": "Major Construction Bid Package",
+      "value": 62500,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Digital Product Prototype",
+      "value": 62500,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Scientific Research Poster/Presentation",
+      "value": 50000,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Lease Abstract & Analysis",
+      "value": 50000,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Environmental Remediation Cost Estimate",
+      "value": 50000,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": "environmental_remediation",
+      "match_score": 0.6
+    },
+    {
+      "name": "Major Corporate Policy Manual",
+      "value": 50000,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Healthcare Patient Education Program",
+      "value": 50000,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Construction Quality Assurance Plan",
+      "value": 50000,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Digital Accessibility Audit",
+      "value": 50000,
+      "sector": "Technology",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Scientific Research Data Visualization",
+      "value": 37500,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Real Estate Title Report",
+      "value": 37500,
+      "sector": "Real Estate",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Environmental Risk Assessment",
+      "value": 37500,
+      "sector": "Environmental/Engineering",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Corporate Change Management Toolkit",
+      "value": 37500,
+      "sector": "Management Consulting",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Healthcare Outcomes Analysis Report",
+      "value": 37500,
+      "sector": "Medical/Pharma",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Construction Punch List/Closeout Package",
+      "value": 25000,
+      "sector": "Architecture",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Major Digital Content Audit",
+      "value": 25000,
+      "sector": "Creative/Marketing",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Grant Prospect Research Report",
+      "value": 6250,
+      "sector": "Scientific Research and R&D",
+      "confidence": "high",
+      "matched_id": null,
+      "match_score": 0
     }
   ]
 }

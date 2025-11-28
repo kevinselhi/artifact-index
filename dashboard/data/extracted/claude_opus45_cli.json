@@ -1,217 +1,807 @@
 {
   "model_key": "claude_opus45_cli",
-  "model_name": "Claude 4.5 Opus (CLI with Extended Thinking)",
-  "methodology": "Extended Thinking with Web Search via CLI - Multi-layered research across authoritative industry sources with cross-referencing and 2020-specific market conditions",
+  "model_name": "Anthropic Claude 4.5 Opus with Extended Thinking and Web Search via Claude Code in CLI",
+  "methodology": "Extracted from report table",
   "artifacts": [
     {
       "name": "Mega-Deal M&A Advisory Package",
       "value": 85000000,
       "sector": "Financial Services",
-      "matched_id": "ma_advisory_large",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Phase III Clinical Trial Protocol & Execution",
       "value": 36500000,
-      "sector": "Medical/Pharma",
-      "matched_id": "clinical_trial_phase3",
-      "confidence": "high"
+      "sector": "Medical/Pharmaceutical",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Large-Scale ERP Implementation",
       "value": 7500000,
-      "sector": "Technology",
+      "sector": "Technology Services",
+      "confidence": "medium",
       "matched_id": "erp_implementation",
-      "confidence": "high"
+      "match_score": 0.63
     },
     {
       "name": "IPO Prospectus & Securities Offering Package",
       "value": 10000000,
       "sector": "Financial Services",
-      "matched_id": "ipo_s1_registration",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Complex Restructuring/Chapter 11 Advisory",
       "value": 27500000,
-      "sector": "Legal/Financial",
-      "matched_id": "bankruptcy_restructuring",
-      "confidence": "high"
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "New Drug Application (NDA) Package",
       "value": 4000000,
-      "sector": "Medical/Pharma",
+      "sector": "Medical/Pharmaceutical",
+      "confidence": "medium",
       "matched_id": "nda_bla_application",
-      "confidence": "high"
+      "match_score": 0.71
     },
     {
       "name": "Enterprise Strategy Consulting Engagement",
       "value": 3250000,
       "sector": "Management Consulting",
-      "matched_id": "strategy_consulting",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Major Environmental Impact Statement",
       "value": 43000000,
       "sector": "Environmental",
+      "confidence": "medium",
       "matched_id": "environmental_impact_statement",
-      "confidence": "high"
+      "match_score": 0.83
     },
     {
       "name": "Patent Litigation Complete Case Package",
       "value": 3150000,
       "sector": "Legal Services",
-      "matched_id": "patent_litigation",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Large Corporate Due Diligence Report",
       "value": 1250000,
       "sector": "Financial Services",
-      "matched_id": "due_diligence_large",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "PMA (Premarket Approval) Submission Package",
       "value": 1250000,
-      "sector": "Medical/Pharma",
-      "matched_id": "pma_submission",
-      "confidence": "high"
+      "sector": "Medical/Pharmaceutical",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Complex M&A Advisory (Mid-Market)",
       "value": 2000000,
       "sector": "Financial Services",
-      "matched_id": "ma_advisory_midmarket",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": "ma_advisory_large",
+      "match_score": 0.65
     },
     {
       "name": "Municipal Bond Offering Package",
       "value": 1250000,
       "sector": "Financial Services",
-      "matched_id": "municipal_bond",
-      "confidence": "medium"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Enterprise Cloud Migration Project",
       "value": 425000,
-      "sector": "Technology",
+      "sector": "Technology Services",
+      "confidence": "medium",
       "matched_id": "cloud_migration",
-      "confidence": "high"
+      "match_score": 0.76
     },
     {
       "name": "Fairness Opinion",
       "value": 1100000,
       "sector": "Financial Services",
+      "confidence": "medium",
       "matched_id": "fairness_opinion",
-      "confidence": "high"
+      "match_score": 1
     },
     {
       "name": "Digital Transformation Strategy",
       "value": 1250000,
       "sector": "Management Consulting",
+      "confidence": "medium",
       "matched_id": "digital_transformation",
-      "confidence": "high"
+      "match_score": 1
     },
     {
       "name": "AI/ML Enterprise Implementation",
       "value": 1250000,
-      "sector": "Technology",
-      "matched_id": "ai_ml_implementation",
-      "confidence": "medium"
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "510(k) Medical Device Submission",
       "value": 300000,
-      "sector": "Medical/Pharma",
-      "matched_id": "510k_submission",
-      "confidence": "high"
+      "sector": "Medical/Pharmaceutical",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Complex Merger Proxy Statement",
       "value": 650000,
       "sector": "Legal Services",
-      "matched_id": "merger_proxy_statement",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": "spac_merger_proxy",
+      "match_score": 0.8
     },
     {
       "name": "S&P 500 Annual Audit",
       "value": 44000000,
       "sector": "Financial Services",
-      "matched_id": "annual_audit_sp500",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Phase II Clinical Trial Protocol",
       "value": 16500000,
-      "sector": "Medical/Pharma",
+      "sector": "Medical/Pharmaceutical",
+      "confidence": "medium",
       "matched_id": "clinical_trial_phase2",
-      "confidence": "high"
+      "match_score": 0.72
     },
     {
       "name": "Large Infrastructure Engineering Design",
       "value": 3000000,
       "sector": "Engineering",
-      "matched_id": "infrastructure_design",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": "infrastructure_engineering",
+      "match_score": 0.67
     },
     {
       "name": "Operations Transformation Project",
       "value": 1000000,
       "sector": "Management Consulting",
-      "matched_id": "operations_transformation",
-      "confidence": "medium"
+      "confidence": "medium",
+      "matched_id": "devops_transformation",
+      "match_score": 0.67
     },
     {
       "name": "Comprehensive Tax Opinion Package",
       "value": 600000,
       "sector": "Financial Services",
-      "matched_id": "tax_opinion",
-      "confidence": "high"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Quality of Earnings Report (Large Deal)",
       "value": 100000,
       "sector": "Financial Services",
+      "confidence": "medium",
       "matched_id": "quality_of_earnings",
-      "confidence": "high"
+      "match_score": 1
     },
     {
       "name": "Phase I Clinical Trial Protocol",
       "value": 6000000,
-      "sector": "Medical/Pharma",
+      "sector": "Medical/Pharmaceutical",
+      "confidence": "medium",
       "matched_id": "clinical_trial_phase1",
-      "confidence": "high"
-    },
-    {
-      "name": "Enterprise Cybersecurity Assessment",
-      "value": 100000,
-      "sector": "Technology",
-      "matched_id": "cybersecurity_assessment",
-      "confidence": "high"
+      "match_score": 0.71
     },
     {
       "name": "Commercial Real Estate Valuation (Large Portfolio)",
       "value": 300000,
       "sector": "Real Estate",
-      "matched_id": "commercial_real_estate_valuation",
-      "confidence": "medium"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
-      "name": "SOC 2 Type II Audit & Report",
-      "value": 85000,
-      "sector": "Technology",
-      "matched_id": "soc2_audit",
-      "confidence": "high"
+      "name": "Enterprise Cybersecurity Assessment",
+      "value": 100000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "cybersecurity_assessment",
+      "match_score": 0.69
+    },
+    {
+      "name": "Complex SEC Registration Statement",
+      "value": 650000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Bridge/Highway Design Package",
+      "value": 2750000,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "IT Due Diligence/Technical Assessment",
+      "value": 150000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     },
     {
       "name": "Brand Strategy & Repositioning",
       "value": 300000,
       "sector": "Creative Services",
-      "matched_id": "brand_strategy",
-      "confidence": "medium"
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Private Placement Memorandum (Hedge Fund)",
+      "value": 62500,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": "private_placement_memo",
+      "match_score": 1
+    },
+    {
+      "name": "Actuarial Pension Valuation Report",
+      "value": 125000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": "actuarial_valuation",
+      "match_score": 0.76
+    },
+    {
+      "name": "Supply Chain Optimization Study",
+      "value": 300000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "supply_chain_optimization",
+      "match_score": 0.81
+    },
+    {
+      "name": "Data Analytics Strategy Implementation",
+      "value": 300000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Commercial Architectural Design Package",
+      "value": 600000,
+      "sector": "Architecture",
+      "confidence": "medium",
+      "matched_id": "architectural_design",
+      "match_score": 0.79
+    },
+    {
+      "name": "SOC 2 Type II Audit & Report",
+      "value": 85000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Large-Scale Market Research Study",
+      "value": 100000,
+      "sector": "Marketing Services",
+      "confidence": "medium",
+      "matched_id": "market_research",
+      "match_score": 0.64
+    },
+    {
+      "name": "Executive Compensation Study",
+      "value": 125000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "executive_compensation",
+      "match_score": 1
+    },
+    {
+      "name": "Environmental Assessment (EA)",
+      "value": 275000,
+      "sector": "Environmental",
+      "confidence": "medium",
+      "matched_id": "environmental_impact_statement",
+      "match_score": 0.67
+    },
+    {
+      "name": "Corporate Governance Advisory Package",
+      "value": 162500,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Insurance Reserve Analysis",
+      "value": 125000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Business Continuity/DR Plan",
+      "value": 87500,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "business_continuity",
+      "match_score": 0.77
+    },
+    {
+      "name": "ISO 9001 Certification Package",
+      "value": 60000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "leed_certification",
+      "match_score": 0.73
+    },
+    {
+      "name": "Penetration Testing Engagement",
+      "value": 62500,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Expert Witness Report & Testimony",
+      "value": 87500,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": "litigation_expert",
+      "match_score": 0.6
+    },
+    {
+      "name": "Transfer Pricing Study",
+      "value": 187500,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": "transfer_pricing",
+      "match_score": 1
+    },
+    {
+      "name": "Construction Management Deliverables",
+      "value": 600000,
+      "sector": "Construction",
+      "confidence": "medium",
+      "matched_id": "construction_management",
+      "match_score": 0.72
+    },
+    {
+      "name": "LEED Certification Package",
+      "value": 100000,
+      "sector": "Architecture",
+      "confidence": "medium",
+      "matched_id": "leed_certification",
+      "match_score": 1
+    },
+    {
+      "name": "HR Compensation Benchmark Study",
+      "value": 65000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Corporate Transaction Legal Package",
+      "value": 325000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Complex Patent Application Portfolio",
+      "value": 125000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Integrated Marketing Campaign",
+      "value": 95000,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Regulatory Compliance Audit",
+      "value": 125000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": "compliance_regulatory",
+      "match_score": 1
+    },
+    {
+      "name": "Real Estate Development Feasibility Study",
+      "value": 100000,
+      "sector": "Real Estate",
+      "confidence": "medium",
+      "matched_id": "real_estate_feasibility",
+      "match_score": 0.71
+    },
+    {
+      "name": "Financial Model/Valuation Model",
+      "value": 62500,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Change Management Program",
+      "value": 300000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "change_management",
+      "match_score": 1
+    },
+    {
+      "name": "Sustainability/ESG Report",
+      "value": 125000,
+      "sector": "Environmental",
+      "confidence": "medium",
+      "matched_id": "sustainability_esg",
+      "match_score": 0.74
+    },
+    {
+      "name": "Custom Software Development Project",
+      "value": 300000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "custom_software",
+      "match_score": 0.77
+    },
+    {
+      "name": "Government Contract Proposal (Large)",
+      "value": 300000,
+      "sector": "Professional Services",
+      "confidence": "medium",
+      "matched_id": "government_contract",
+      "match_score": 1
+    },
+    {
+      "name": "Healthcare IT Implementation",
+      "value": 600000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "blockchain_implementation",
+      "match_score": 0.64
+    },
+    {
+      "name": "Intellectual Property Opinion Letter",
+      "value": 50000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Due Diligence Report (Mid-Market)",
+      "value": 137500,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Trademark Portfolio Strategy",
+      "value": 62500,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "UX/Product Design Package",
+      "value": 125000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "bridge_design",
+      "match_score": 0.62
+    },
+    {
+      "name": "Risk Assessment Report",
+      "value": 100000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Medical Device Design Package",
+      "value": 300000,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": "bridge_design",
+      "match_score": 0.62
+    },
+    {
+      "name": "Process Improvement Study",
+      "value": 162500,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Employee Benefits Valuation",
+      "value": 62500,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "PR Crisis Management Package",
+      "value": 125000,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Technical White Paper/Research Report",
+      "value": 62500,
+      "sector": "Professional Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Commercial Lease Agreement Package",
+      "value": 50000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Website Development Project",
+      "value": 125000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "leadership_development",
+      "match_score": 0.6
+    },
+    {
+      "name": "Training Program Development",
+      "value": 100000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Sales Strategy Consulting",
+      "value": 137500,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "M&A Integration Planning",
+      "value": 200000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "merger_integration",
+      "match_score": 0.64
+    },
+    {
+      "name": "Annual Report Design & Production",
+      "value": 100000,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Investor Relations Package",
+      "value": 100000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Commercial Insurance Placement",
+      "value": 62500,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Litigation Discovery Package",
+      "value": 125000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Employment Law Compliance Review",
+      "value": 50000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Mobile App Development",
+      "value": 125000,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": "mobile_app_development",
+      "match_score": 0.67
+    },
+    {
+      "name": "Content Marketing Strategy",
+      "value": 50000,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": "content_marketing_strategy",
+      "match_score": 1
+    },
+    {
+      "name": "Safety Assessment Report",
+      "value": 62500,
+      "sector": "Engineering",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Vendor Management Program",
+      "value": 100000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "change_management",
+      "match_score": 0.76
+    },
+    {
+      "name": "Customer Experience Strategy",
+      "value": 100000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": "customer_experience",
+      "match_score": 0.71
+    },
+    {
+      "name": "Tax Return (Complex Corporate)",
+      "value": 62500,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Real Estate Appraisal (Commercial)",
+      "value": 7000,
+      "sector": "Real Estate",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Single Patent Application",
+      "value": 32500,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Employment Agreement Package",
+      "value": 20000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Nonprofit Grant Application",
+      "value": 30000,
+      "sector": "Professional Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Business Plan/Pitch Deck",
+      "value": 30000,
+      "sector": "Management Consulting",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Social Media Strategy",
+      "value": 32500,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Trademark Registration",
+      "value": 6000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Master Services Agreement",
+      "value": 6000,
+      "sector": "Legal Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Small Business Audit",
+      "value": 30000,
+      "sector": "Financial Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "SEO/SEM Strategy",
+      "value": 20000,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Press Release & Media Kit",
+      "value": 10000,
+      "sector": "Creative Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
+    },
+    {
+      "name": "Basic Website Audit",
+      "value": 6500,
+      "sector": "Technology Services",
+      "confidence": "medium",
+      "matched_id": null,
+      "match_score": 0
     }
   ]
 }

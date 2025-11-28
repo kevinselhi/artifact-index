@@ -114,11 +114,11 @@
       "transparency": "High",
       "has_confidence": false,
       "has_automation_scores": false,
-      "topArtifact": "Large-Cap M&A Advisory",
+      "topArtifact": "Mega-Deal M&A Advisory Package",
       "topValue": 85000000,
       "coverageScore": 0,
-      "uniquenessScore": 71,
-      "deviationScore": 242
+      "uniquenessScore": 38,
+      "deviationScore": 141
     },
     "you_ari": {
       "name": "You.com ARI",
@@ -131,11 +131,11 @@
       "transparency": "High",
       "has_confidence": false,
       "has_automation_scores": false,
-      "topArtifact": "Large-Cap M&A Advisory",
-      "topValue": 52500000,
+      "topArtifact": "M&A Sell-Side Advisory Mandate (Mega-Deal)",
+      "topValue": 70000000,
       "coverageScore": 0,
-      "uniquenessScore": 82,
-      "deviationScore": 95
+      "uniquenessScore": 21,
+      "deviationScore": 106
     }
   },
   "comparison_insights": {

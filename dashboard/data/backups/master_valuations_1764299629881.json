@@ -49,10 +49,10 @@
         "o3pro": 2200000,
         "perplexity": 15000000,
         "gemini30": null,
-        "claude_opus45_cli": 2000000,
+        "claude_opus45_cli": 85000000,
         "you_ari": 52500000
       },
-      "variance_ratio": 105
+      "variance_ratio": 170
     },
     {
       "id": "erp_implementation",
@@ -278,8 +278,7 @@
         "chatgpt5": 300000,
         "o3pro": 200000,
         "perplexity": null,
-        "gemini30": 125000,
-        "claude_opus45_cli": 300000
+        "gemini30": 125000
       },
       "variance_ratio": 11
     },
@@ -296,10 +295,9 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 425000,
-        "you_ari": 425000,
-        "claude_opus45_cli": 87500
+        "you_ari": 425000
       },
-      "variance_ratio": 34.29
+      "variance_ratio": 7.06
     },
     {
       "id": "environmental_impact_statement",
@@ -314,7 +312,7 @@
         "o3pro": null,
         "perplexity": 550000,
         "gemini30": 125000,
-        "claude_opus45_cli": 275000,
+        "claude_opus45_cli": 43000000,
         "you_ari": 625000
       },
       "variance_ratio": 344
@@ -331,10 +329,9 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 212500,
-        "claude_opus45_cli": 187500
+        "gemini30": 212500
       },
-      "variance_ratio": 1.73
+      "variance_ratio": 1.53
     },
     {
       "id": "executive_compensation",
@@ -348,8 +345,7 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 125000,
-        "claude_opus45_cli": 125000
+        "gemini30": 125000
       },
       "variance_ratio": 1.4
     },
@@ -515,10 +511,9 @@
         "chatgpt5": 500000,
         "o3pro": null,
         "perplexity": 2750000,
-        "gemini30": null,
-        "claude_opus45_cli": 300000
+        "gemini30": null
       },
-      "variance_ratio": 21.67
+      "variance_ratio": 18.57
     },
     {
       "id": "market_entry_strategy",
@@ -533,8 +528,7 @@
         "o3pro": 1300000,
         "perplexity": null,
         "gemini30": null,
-        "claude_opus45_cli": 3250000,
-        "you_ari": 350000
+        "claude_opus45_cli": 3250000
       },
       "variance_ratio": 13
     },
@@ -582,10 +576,9 @@
         "chatgpt5": 280000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 100000
+        "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 2.86
     },
     {
       "id": "sustainability_esg",
@@ -599,11 +592,9 @@
         "chatgpt5": 200000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 125000,
-        "you_ari": 212500
+        "gemini30": null
       },
-      "variance_ratio": 6.4
+      "variance_ratio": 4.57
     },
     {
       "id": "patent_litigation",
@@ -635,10 +626,9 @@
         "o3pro": null,
         "perplexity": 425000,
         "gemini30": null,
-        "claude_opus45_cli": 100000,
-        "you_ari": 300000
+        "claude_opus45_cli": 300000
       },
-      "variance_ratio": 4.25
+      "variance_ratio": 2.13
     },
     {
       "id": "transportation_corridor",
@@ -687,8 +677,7 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "you_ari": 725000,
-        "claude_opus45_cli": 600000
+        "you_ari": 725000
       },
       "variance_ratio": 3.85
     },
@@ -737,10 +726,9 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "you_ari": 62500,
-        "claude_opus45_cli": 125000
+        "you_ari": 800000
       },
-      "variance_ratio": 16
+      "variance_ratio": 1.25
     },
     {
       "id": "market_research",
@@ -754,9 +742,7 @@
         "chatgpt5": 80000,
         "o3pro": 180000,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 100000,
-        "you_ari": 180000
+        "gemini30": null
       },
       "variance_ratio": 4.06
     },
@@ -790,10 +776,9 @@
         "chatgpt5": 1300000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 600000
+        "gemini30": null
       },
-      "variance_ratio": 2.17
+      "variance_ratio": 1.3
     },
     {
       "id": "business_continuity",
@@ -807,10 +792,9 @@
         "chatgpt5": 100000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 87500
+        "gemini30": null
       },
-      "variance_ratio": 2.29
+      "variance_ratio": 2
     },
     {
       "id": "strategic_planning",
@@ -936,10 +920,9 @@
         "chatgpt5": 150000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 62500
+        "gemini30": null
       },
-      "variance_ratio": 9.6
+      "variance_ratio": 4
     },
     {
       "id": "credit_rating_analysis",
@@ -1097,8 +1080,7 @@
         "chatgpt5": 650000,
         "o3pro": 1000000,
         "perplexity": 1200000,
-        "gemini30": 350000,
-        "claude_opus45_cli": 1000000
+        "gemini30": 350000
       },
       "variance_ratio": 8.57
     },
@@ -1194,10 +1176,9 @@
         "chatgpt5": 250000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 125000
+        "gemini30": null
       },
-      "variance_ratio": 9.6
+      "variance_ratio": 4.8
     },
     {
       "id": "pma_application",
@@ -1357,10 +1338,9 @@
         "chatgpt5": 4000000,
         "o3pro": null,
         "perplexity": 8000000,
-        "gemini30": 2000000,
-        "claude_opus45_cli": 300000
+        "gemini30": 2000000
       },
-      "variance_ratio": 83.33
+      "variance_ratio": 12.5
     },
     {
       "id": "water_treatment_plant",
@@ -1502,11 +1482,9 @@
         "chatgpt5": 180000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 600000,
-        "you_ari": 75000
+        "gemini30": null
       },
-      "variance_ratio": 10.67
+      "variance_ratio": 4.44
     },
     {
       "id": "total_rewards_strategy",
@@ -1568,10 +1546,9 @@
         "chatgpt5": 175000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 125000
+        "gemini30": null
       },
-      "variance_ratio": 5.6
+      "variance_ratio": 4
     },
     {
       "id": "employee_engagement",
@@ -1665,10 +1642,9 @@
         "chatgpt5": 80000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 50000
+        "gemini30": null
       },
-      "variance_ratio": 8
+      "variance_ratio": 5
     },
     {
       "id": "lean_transformation",
@@ -1874,10 +1850,9 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "you_ari": 50000
+        "gemini30": null
       },
-      "variance_ratio": 40
+      "variance_ratio": 4
     },
     {
       "id": "leed_certification",
@@ -1891,10 +1866,9 @@
         "chatgpt5": 120000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 100000
+        "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 4.17
     },
     {
       "id": "climate_risk_assessment",
@@ -1924,11 +1898,9 @@
         "chatgpt5": 175000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 125000,
-        "you_ari": 450000
+        "gemini30": null
       },
-      "variance_ratio": 4.8
+      "variance_ratio": 3.43
     },
     {
       "id": "insurance_program_design",
@@ -1990,8 +1962,7 @@
         "chatgpt5": 250000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 300000
+        "gemini30": null
       },
       "variance_ratio": 4
     },
@@ -2153,10 +2124,9 @@
         "chatgpt5": 800000,
         "o3pro": 1500000,
         "perplexity": null,
-        "gemini30": null,
-        "claude_opus45_cli": 200000
+        "gemini30": null
       },
-      "variance_ratio": 20
+      "variance_ratio": 5
     },
     {
       "id": "carve_out_analysis",
@@ -2538,10 +2508,9 @@
         "chatgpt5": 1500000,
         "o3pro": null,
         "perplexity": 3500000,
-        "gemini30": 600000,
-        "you_ari": 300000
+        "gemini30": 600000
       },
-      "variance_ratio": 26.67
+      "variance_ratio": 13.33
     },
     {
       "id": "hedge_fund_setup",
@@ -2877,10 +2846,9 @@
         "chatgpt5": 850000,
         "o3pro": 1300000,
         "perplexity": 1700000,
-        "gemini30": 450000,
-        "claude_opus45_cli": 100000
+        "gemini30": 450000
       },
-      "variance_ratio": 45
+      "variance_ratio": 10
     },
     {
       "id": "nuclear_decommissioning",
@@ -2910,10 +2878,9 @@
         "chatgpt5": 3200000,
         "o3pro": null,
         "perplexity": 7000000,
-        "gemini30": 1800000,
-        "you_ari": 550000
+        "gemini30": 1800000
       },
-      "variance_ratio": 36.36
+      "variance_ratio": 11.11
     },
     {
       "id": "seaport_expansion",
@@ -3458,1268 +3425,16 @@
         "gemini30": 600000
       },
       "variance_ratio": 10
-    },
-    {
-      "id": "mega-deal-m-a-advisory-package",
-      "name": "Mega-Deal M&A Advisory Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 85000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "phase-iii-clinical-trial-protocol-execution",
-      "name": "Phase III Clinical Trial Protocol & Execution",
-      "sector": "Medical/Pharmaceutical",
-      "valuations": {
-        "claude_opus45_cli": 36500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "ipo-prospectus-securities-offering-package",
-      "name": "IPO Prospectus & Securities Offering Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 10000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "complex-restructuring-chapter-11-advisory",
-      "name": "Complex Restructuring/Chapter 11 Advisory",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 27500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "enterprise-strategy-consulting-engagement",
-      "name": "Enterprise Strategy Consulting Engagement",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 3250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "patent-litigation-complete-case-package",
-      "name": "Patent Litigation Complete Case Package",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 3150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-corporate-due-diligence-report",
-      "name": "Large Corporate Due Diligence Report",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 1250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "pma-premarket-approval-submission-package",
-      "name": "PMA (Premarket Approval) Submission Package",
-      "sector": "Medical/Pharmaceutical",
-      "valuations": {
-        "claude_opus45_cli": 1250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "municipal-bond-offering-package",
-      "name": "Municipal Bond Offering Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 1250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "ai-ml-enterprise-implementation",
-      "name": "AI/ML Enterprise Implementation",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 1250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "510-k-medical-device-submission",
-      "name": "510(k) Medical Device Submission",
-      "sector": "Medical/Pharmaceutical",
-      "valuations": {
-        "claude_opus45_cli": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "s-p-500-annual-audit",
-      "name": "S&P 500 Annual Audit",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 44000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "comprehensive-tax-opinion-package",
-      "name": "Comprehensive Tax Opinion Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 600000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "commercial-real-estate-valuation-large-portfolio",
-      "name": "Commercial Real Estate Valuation (Large Portfolio)",
-      "sector": "Real Estate",
-      "valuations": {
-        "claude_opus45_cli": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "complex-sec-registration-statement",
-      "name": "Complex SEC Registration Statement",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 650000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "bridge-highway-design-package",
-      "name": "Bridge/Highway Design Package",
-      "sector": "Engineering",
-      "valuations": {
-        "claude_opus45_cli": 2750000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "it-due-diligence-technical-assessment",
-      "name": "IT Due Diligence/Technical Assessment",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "brand-strategy-repositioning",
-      "name": "Brand Strategy & Repositioning",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "data-analytics-strategy-implementation",
-      "name": "Data Analytics Strategy Implementation",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "soc-2-type-ii-audit-report",
-      "name": "SOC 2 Type II Audit & Report",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 85000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "corporate-governance-advisory-package",
-      "name": "Corporate Governance Advisory Package",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 162500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "insurance-reserve-analysis",
-      "name": "Insurance Reserve Analysis",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 125000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "penetration-testing-engagement",
-      "name": "Penetration Testing Engagement",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "hr-compensation-benchmark-study",
-      "name": "HR Compensation Benchmark Study",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 65000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "corporate-transaction-legal-package",
-      "name": "Corporate Transaction Legal Package",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 325000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "complex-patent-application-portfolio",
-      "name": "Complex Patent Application Portfolio",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 125000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "integrated-marketing-campaign",
-      "name": "Integrated Marketing Campaign",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 95000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "financial-model-valuation-model",
-      "name": "Financial Model/Valuation Model",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "intellectual-property-opinion-letter",
-      "name": "Intellectual Property Opinion Letter",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "due-diligence-report-mid-market",
-      "name": "Due Diligence Report (Mid-Market)",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 137500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "trademark-portfolio-strategy",
-      "name": "Trademark Portfolio Strategy",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "risk-assessment-report",
-      "name": "Risk Assessment Report",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 100000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "process-improvement-study",
-      "name": "Process Improvement Study",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 162500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "employee-benefits-valuation",
-      "name": "Employee Benefits Valuation",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "pr-crisis-management-package",
-      "name": "PR Crisis Management Package",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 125000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "technical-white-paper-research-report",
-      "name": "Technical White Paper/Research Report",
-      "sector": "Professional Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "commercial-lease-agreement-package",
-      "name": "Commercial Lease Agreement Package",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "training-program-development",
-      "name": "Training Program Development",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 100000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "sales-strategy-consulting",
-      "name": "Sales Strategy Consulting",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 137500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "annual-report-design-production",
-      "name": "Annual Report Design & Production",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 100000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "investor-relations-package",
-      "name": "Investor Relations Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 100000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "commercial-insurance-placement",
-      "name": "Commercial Insurance Placement",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "litigation-discovery-package",
-      "name": "Litigation Discovery Package",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 125000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "employment-law-compliance-review",
-      "name": "Employment Law Compliance Review",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "safety-assessment-report",
-      "name": "Safety Assessment Report",
-      "sector": "Engineering",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "tax-return-complex-corporate",
-      "name": "Tax Return (Complex Corporate)",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "real-estate-appraisal-commercial",
-      "name": "Real Estate Appraisal (Commercial)",
-      "sector": "Real Estate",
-      "valuations": {
-        "claude_opus45_cli": 7000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "single-patent-application",
-      "name": "Single Patent Application",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 32500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "employment-agreement-package",
-      "name": "Employment Agreement Package",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 20000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "nonprofit-grant-application",
-      "name": "Nonprofit Grant Application",
-      "sector": "Professional Services",
-      "valuations": {
-        "claude_opus45_cli": 30000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "business-plan-pitch-deck",
-      "name": "Business Plan/Pitch Deck",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 30000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "social-media-strategy",
-      "name": "Social Media Strategy",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 32500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "trademark-registration",
-      "name": "Trademark Registration",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 6000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "master-services-agreement",
-      "name": "Master Services Agreement",
-      "sector": "Legal Services",
-      "valuations": {
-        "claude_opus45_cli": 6000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "small-business-audit",
-      "name": "Small Business Audit",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 30000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "seo-sem-strategy",
-      "name": "SEO/SEM Strategy",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 20000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "press-release-media-kit",
-      "name": "Press Release & Media Kit",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 10000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "basic-website-audit",
-      "name": "Basic Website Audit",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 6500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "m-a-sell-side-advisory-mandate-mega-deal",
-      "name": "M&A Sell-Side Advisory Mandate (Mega-Deal)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 70000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "m-a-buy-side-advisory-mandate-mega-deal",
-      "name": "M&A Buy-Side Advisory Mandate (Mega-Deal)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 52500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "ipo-underwriting-syndicate-book-large-cap",
-      "name": "IPO Underwriting Syndicate Book (Large Cap)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 42500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "corporate-restructuring-advisory-large-cap",
-      "name": "Corporate Restructuring Advisory (Large Cap)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 27500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "bankruptcy-plan-of-reorganization-chapter-11",
-      "name": "Bankruptcy Plan of Reorganization (Chapter 11)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 16000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "private-equity-due-diligence-report-large-cap",
-      "name": "Private Equity Due Diligence Report (Large Cap)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 3000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "clinical-trial-protocol-phase-iii-global",
-      "name": "Clinical Trial Protocol (Phase III, Global)",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 3000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "antitrust-competition-analysis-mega-deal",
-      "name": "Antitrust/Competition Analysis (Mega-Deal)",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 3000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "investment-banking-pitch-book-mega-deal",
-      "name": "Investment Banking Pitch Book (Mega-Deal)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 3000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "enterprise-digital-transformation-roadmap",
-      "name": "Enterprise Digital Transformation Roadmap",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 3250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "premarket-approval-pma-submission",
-      "name": "Premarket Approval (PMA) Submission",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 1750000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "phase-iii-clinical-trial-protocol-execution-1",
-      "name": "Phase III Clinical Trial Protocol & Execution",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 1500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "m-a-due-diligence-report",
-      "name": "M&A Due Diligence Report",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 1250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-transportation-corridor-design-package",
-      "name": "Major Transportation Corridor Design Package",
-      "sector": "Engineering",
-      "valuations": {
-        "you_ari": 950000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-architectural-design-construction-docs",
-      "name": "Large-Scale Architectural Design & Construction Docs",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 725000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "global-brand-strategy-positioning-platform",
-      "name": "Global Brand Strategy & Positioning Platform",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 625000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "enterprise-cybersecurity-assessment-remediation-plan",
-      "name": "Enterprise Cybersecurity Assessment & Remediation Plan",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 625000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "it-systems-integration-blueprint-enterprise",
-      "name": "IT Systems Integration Blueprint (Enterprise)",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 550000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "corporate-tax-structuring-report-multinational",
-      "name": "Corporate Tax Structuring Report (Multinational)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-litigation-expert-report",
-      "name": "Large-Scale Litigation Expert Report",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 425000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "enterprise-data-analytics-ai-implementation-plan",
-      "name": "Enterprise Data Analytics & AI Implementation Plan",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 425000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "corporate-governance-compliance-program",
-      "name": "Corporate Governance & Compliance Program",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 350000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "global-supply-chain-optimization-blueprint",
-      "name": "Global Supply Chain Optimization Blueprint",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 350000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "trademark-portfolio-management-report",
-      "name": "Trademark Portfolio Management Report",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-content-marketing-campaign-plan",
-      "name": "Large-Scale Content Marketing Campaign Plan",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "it-infrastructure-security-audit-enterprise",
-      "name": "IT Infrastructure Security Audit (Enterprise)",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 300000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "clinical-study-statistical-analysis-plan",
-      "name": "Clinical Study Statistical Analysis Plan",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 240000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-product-launch-go-to-market-strategy",
-      "name": "Major Product Launch Go-to-Market Strategy",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 240000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-employee-compensation-benchmarking-study",
-      "name": "Large-Scale Employee Compensation Benchmarking Study",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 240000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-portfolio-valuation",
-      "name": "Major Real Estate Portfolio Valuation",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 240000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-regulatory-impact-assessment",
-      "name": "Large-Scale Regulatory Impact Assessment",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 240000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-utility-rate-case-testimony-analysis",
-      "name": "Major Utility Rate Case Testimony & Analysis",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 212500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-digital-experience-design-system",
-      "name": "Large-Scale Digital Experience Design System",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 212500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-scientific-research-protocol",
-      "name": "Large-Scale Scientific Research Protocol",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 212500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-crisis-communications-plan",
-      "name": "Major Corporate Crisis Communications Plan",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 212500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-scale-data-privacy-compliance-assessment",
-      "name": "Large-Scale Data Privacy Compliance Assessment",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 180000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-healthcare-it-implementation-plan",
-      "name": "Major Healthcare IT Implementation Plan",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 180000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-construction-claims-analysis-report",
-      "name": "Major Construction Claims Analysis Report",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 180000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-restructuring-feasibility-study",
-      "name": "Major Corporate Restructuring Feasibility Study",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 180000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-environmental-compliance-audit",
-      "name": "Major Environmental Compliance Audit",
-      "sector": "Environmental/Engineering",
-      "valuations": {
-        "you_ari": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-it-disaster-recovery-plan",
-      "name": "Major IT Disaster Recovery Plan",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-training-program-design",
-      "name": "Major Corporate Training Program Design",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-transaction-due-diligence-report",
-      "name": "Major Real Estate Transaction Due Diligence Report",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-scientific-grant-application-package",
-      "name": "Major Scientific Grant Application Package",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-product-regulatory-submission-fda-ema",
-      "name": "Major Product Regulatory Submission (FDA/EMA)",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-social-responsibility-csr-report",
-      "name": "Major Corporate Social Responsibility (CSR) Report",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-construction-cost-estimation-report",
-      "name": "Major Construction Cost Estimation Report",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-intellectual-property-ip-litigation-brief",
-      "name": "Major Intellectual Property (IP) Litigation Brief",
-      "sector": "Legal Services",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-scientific-white-paper",
-      "name": "Major Scientific White Paper",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-appraisal-commercial",
-      "name": "Major Real Estate Appraisal (Commercial)",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-environmental-site-assessment-phase-ii",
-      "name": "Major Environmental Site Assessment (Phase II)",
-      "sector": "Environmental/Engineering",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-risk-assessment-report",
-      "name": "Major Corporate Risk Assessment Report",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 92500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-healthcare-market-access-dossier",
-      "name": "Major Healthcare Market Access Dossier",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 92500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-construction-schedule-delay-analysis",
-      "name": "Major Construction Schedule/Delay Analysis",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 92500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-digital-marketing-analytics-dashboard",
-      "name": "Major Digital Marketing Analytics Dashboard",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 92500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-scientific-research-data-management-plan",
-      "name": "Major Scientific Research Data Management Plan",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 75000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-investment-memorandum",
-      "name": "Major Real Estate Investment Memorandum",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 75000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-environmental-permit-application-package",
-      "name": "Major Environmental Permit Application Package",
-      "sector": "Environmental/Engineering",
-      "valuations": {
-        "you_ari": 75000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-internal-audit-report",
-      "name": "Major Corporate Internal Audit Report",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 75000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-healthcare-quality-improvement-plan",
-      "name": "Major Healthcare Quality Improvement Plan",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 75000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-it-policy-governance-framework",
-      "name": "Major Corporate IT Policy & Governance Framework",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-scientific-research-literature-review",
-      "name": "Major Scientific Research Literature Review",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-market-analysis-report",
-      "name": "Major Real Estate Market Analysis Report",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-environmental-monitoring-testing-report",
-      "name": "Major Environmental Monitoring & Testing Report",
-      "sector": "Environmental/Engineering",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-board-presentation-deck",
-      "name": "Major Corporate Board Presentation Deck",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-construction-bid-package",
-      "name": "Major Construction Bid Package",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-digital-product-prototype",
-      "name": "Major Digital Product Prototype",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 62500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-scientific-research-poster-presentation",
-      "name": "Major Scientific Research Poster/Presentation",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-lease-abstract-analysis",
-      "name": "Major Real Estate Lease Abstract & Analysis",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-policy-manual",
-      "name": "Major Corporate Policy Manual",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-healthcare-patient-education-program",
-      "name": "Major Healthcare Patient Education Program",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-construction-quality-assurance-plan",
-      "name": "Major Construction Quality Assurance Plan",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-digital-accessibility-audit",
-      "name": "Major Digital Accessibility Audit",
-      "sector": "Technology",
-      "valuations": {
-        "you_ari": 50000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-scientific-research-data-visualization",
-      "name": "Major Scientific Research Data Visualization",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 37500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-title-report",
-      "name": "Major Real Estate Title Report",
-      "sector": "Real Estate",
-      "valuations": {
-        "you_ari": 37500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-environmental-risk-assessment",
-      "name": "Major Environmental Risk Assessment",
-      "sector": "Environmental/Engineering",
-      "valuations": {
-        "you_ari": 37500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-corporate-change-management-toolkit",
-      "name": "Major Corporate Change Management Toolkit",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 37500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-healthcare-outcomes-analysis-report",
-      "name": "Major Healthcare Outcomes Analysis Report",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 37500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-construction-punch-list-closeout-package",
-      "name": "Major Construction Punch List/Closeout Package",
-      "sector": "Architecture",
-      "valuations": {
-        "you_ari": 25000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-digital-content-audit",
-      "name": "Major Digital Content Audit",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 25000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "grant-prospect-research-report",
-      "name": "Grant Prospect Research Report",
-      "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 6250
-      },
-      "variance_ratio": null
     }
   ],
   "metadata": {
     "generated": "2025-11-28",
-    "total_artifacts": 350,
-    "total_sectors": 34,
+    "total_artifacts": 211,
+    "total_sectors": 28,
     "total_models": 10,
     "sectors": [
       "Agriculture",
       "Architecture",
-      "Creative Services",
       "Creative/Marketing",
       "Energy",
       "Engineering",
@@ -4731,7 +3446,6 @@
       "HR Consulting",
       "Healthcare",
       "Legal",
-      "Legal Services",
       "Legal/Compliance",
       "Legal/Financial",
       "Legal/Technology",
@@ -4740,15 +3454,11 @@
       "Marketing",
       "Media/Entertainment",
       "Medical/Pharma",
-      "Medical/Pharmaceutical",
       "Operations/Consulting",
-      "Professional Services",
       "Real Estate",
       "Retail/Consumer",
-      "Scientific Research and R&D",
       "Tax/International",
       "Technology",
-      "Technology Services",
       "Technology/Compliance",
       "Telecommunications"
     ],

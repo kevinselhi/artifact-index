@@ -86,14 +86,37 @@ for (const extracted of extractedData.artifacts) {
       unmatchedCount++;
     }
   } else {
-    unmatchedCount++;
+    // Add as new artifact
+    const newId = extracted.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    // Check if ID already exists, append number if needed
+    let finalId = newId;
+    let counter = 1;
+    while (masterData.artifacts.find(a => a.id === finalId)) {
+      finalId = `${newId}-${counter}`;
+      counter++;
+    }
+
+    const newArtifact = {
+      id: finalId,
+      name: extracted.name,
+      sector: extracted.sector || 'Professional Services',
+      valuations: {
+        [modelKey]: extracted.value
+      },
+      variance_ratio: null
+    };
+
+    masterData.artifacts.push(newArtifact);
+    newArtifactsCount++;
   }
 }
 
 console.log(`  ✓ Matched and updated: ${matchedCount} artifacts`);
-if (unmatchedCount > 0) {
-  console.log(`  ! Unmatched artifacts: ${unmatchedCount} (these won't appear in dashboard)`);
-}
+console.log(`  ✓ Added new artifacts: ${newArtifactsCount} artifacts`);
 console.log('');
 
 // Recalculate variance ratios
@@ -219,7 +242,9 @@ console.log('='.repeat(70));
 console.log('MERGE COMPLETE!');
 console.log('='.repeat(70));
 console.log(`Model: ${extractedData.model_name || modelKey}`);
-console.log(`Artifacts updated: ${matchedCount}`);
+console.log(`Artifacts matched and updated: ${matchedCount}`);
+console.log(`New artifacts added: ${newArtifactsCount}`);
+console.log(`Total artifacts processed: ${matchedCount + newArtifactsCount}`);
 console.log(`Coverage: ${coverageScore}%`);
 console.log(`Uniqueness: ${uniquenessScore}%`);
 console.log(`Deviation: ${deviationScore}%`);
@@ -230,24 +255,3 @@ console.log('  2. Test dashboard: open dashboard/index.html');
 console.log('  3. Commit changes: git add . && git commit -m "Add [model] valuations"');
 console.log('  4. Deploy: git push origin main');
 console.log('');
-
-// Show unmatched artifacts if any
-if (unmatchedCount > 0) {
-  console.log('⚠ UNMATCHED ARTIFACTS (not added to dashboard):');
-  console.log('─'.repeat(70));
-  extractedData.artifacts
-    .filter(a => !a.matched_id)
-    .slice(0, 10)
-    .forEach(a => {
-      console.log(`  - ${a.name} ($${(a.value / 1000000).toFixed(1)}M)`);
-    });
-  if (unmatchedCount > 10) {
-    console.log(`  ... and ${unmatchedCount - 10} more`);
-  }
-  console.log('');
-  console.log('To add these artifacts:');
-  console.log('  1. Manually match them to existing artifacts in extracted JSON');
-  console.log('  2. Or add new artifact entries to master_valuations.json');
-  console.log('  3. Re-run this merge script');
-  console.log('');
-}
