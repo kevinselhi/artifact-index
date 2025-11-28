@@ -1336,112 +1336,164 @@
         // Global constant for maximum model count (used for scaling calculations)
         const MAX_MODELS = Object.keys(modelColors).length; // Currently 12
 
-        // Industry colors (global for use across functions)
+        // Industry colors - exactly 24 canonical industries
+        // Canonical 24: Agriculture, Architecture, Creative/Marketing, Energy, Engineering,
+        // Environmental, Financial Services, Government, Healthcare, HR Consulting, Legal,
+        // Legal/Compliance, Management Consulting, Manufacturing, Media/Entertainment,
+        // Medical/Pharma, Operations, Professional Services, Real Estate, Retail/Consumer,
+        // Scientific Research, Tax, Technology, Telecommunications
         const industryColors = {
-            // Core sectors
-            'Medical/Pharma': '#E07A5F',
-            'Financial Services': '#4285F4',
-            'Technology': '#81B29A',
-            'Management Consulting': '#9B5DE5',
-            'Engineering': '#FF6B6B',
-            'Real Estate': '#F9844A',
-            'Healthcare': '#E91E63',
-            'Energy': '#FF9800',
-            'Government': '#3F51B5',
-            'Media/Entertainment': '#9C27B0',
-            'Telecommunications': '#00BCD4',
-            'Retail/Consumer': '#8BC34A',
-            'Manufacturing': '#795548',
             'Agriculture': '#4CAF50',
-
-            // Legal sectors
-            'Legal': '#26A69A',
-            'Legal Services': '#26A69A',
-            'Legal/Compliance': '#6BCB77',
-            'Legal/Financial': '#10A37F',
-            'Legal/Regulatory': '#2E7D32',
-            'Legal/Tech': '#00897B',
-            'Legal/Technology': '#00897B',
-            'Legal/Consulting': '#26A69A',
-            'Legal/Creative': '#26A69A',
-            'Legal/HR': '#26A69A',
-            'Legal/IP': '#26A69A',
-
-            // Creative & Marketing sectors
-            'Creative/Marketing': '#FF7043',
-            'Creative Services': '#FF5722',
-            'Creative': '#FF5722',
-            'Creative/Consulting': '#FF7043',
-            'Marketing': '#E64A19',
-            'Marketing/Creative': '#E64A19',
-            'Marketing/Localization': '#E64A19',
-            'Marketing/Tech': '#E64A19',
-
-            // Technology sectors
-            'Technology Services': '#81B29A',
-            'Technology/Consulting': '#4DB6AC',
-            'Technology/Compliance': '#4DB6AC',
-            'Technology/Creative': '#4DB6AC',
-            'Technology/Regulatory': '#4DB6AC',
-
-            // Architecture & Construction
             'Architecture': '#8D6E63',
-            'Architecture/Construction': '#8D6E63',
-            'Architecture/Engineering': '#8D6E63',
-            'Architecture/Medical': '#8D6E63',
-
-            // Engineering sectors
-            'Engineering/Architecture': '#FF6B6B',
-            'Engineering/Construction': '#FF6B6B',
-
-            // Environmental sectors
+            'Creative/Marketing': '#FF7043',
+            'Energy': '#FF9800',
+            'Engineering': '#FF6B6B',
             'Environmental': '#00BFA5',
-            'Environmental/Engineering': '#00BFA5',
-            'Environmental/Safety': '#00BFA5',
-
-            // Financial sectors
-            'Financial': '#4285F4',
-            'Financial/Engineering': '#4285F4',
-            'Financial/Legal': '#4285F4',
-            'Financial/Regulatory': '#4285F4',
-
-            // Consulting sectors
-            'Operations/Consulting': '#FFD93D',
-            'Consulting/Corporate': '#9B5DE5',
-            'Consulting/EdTech': '#9B5DE5',
-            'Consulting/Financial': '#9B5DE5',
-            'Consulting/Procurement': '#9B5DE5',
-            'Consulting/Tech': '#9B5DE5',
-
-            // HR sectors
+            'Financial Services': '#4285F4',
+            'Government': '#3F51B5',
+            'Healthcare': '#E91E63',
             'HR Consulting': '#7E57C2',
-            'HR/Consulting': '#7E57C2',
-
-            // Medical sectors
-            'Medical/Regulatory': '#E07A5F',
-            'Healthcare IT': '#E91E63',
-
-            // Scientific & Research
+            'Legal': '#26A69A',
+            'Legal/Compliance': '#6BCB77',
+            'Management Consulting': '#9B5DE5',
+            'Manufacturing': '#795548',
+            'Media/Entertainment': '#9C27B0',
+            'Medical/Pharma': '#E07A5F',
+            'Operations': '#FFD93D',
+            'Professional Services': '#90A4AE',
+            'Real Estate': '#F9844A',
+            'Retail/Consumer': '#8BC34A',
             'Scientific Research': '#5C6BC0',
-            'Scientific Research and R&D': '#5C6BC0',
-            'Scientific/Research': '#5C6BC0',
-
-            // Real Estate sectors
-            'Real Estate/Legal': '#F9844A',
-
-            // Energy sectors
-            'Energy/Financial': '#FF9800',
-
-            // Regulatory sectors
-            'Regulatory/Consulting': '#43A047',
-            'Regulatory/Manufacturing': '#43A047',
-
-            // Tax sectors
-            'Tax/International': '#7986CB',
-
-            // Other
-            'Professional Services': '#90A4AE'
+            'Tax': '#7986CB',
+            'Technology': '#81B29A',
+            'Telecommunications': '#00BCD4'
         };
+
+        // Sector to Industry consolidation mapping (defined early for use in Overview charts)
+        // Maps 65+ granular sectors to exactly 24 core industries
+        const sectorToIndustry = {
+            // Medical/Pharma
+            'Medical/Pharma': 'Medical/Pharma',
+            'Medical/Regulatory': 'Medical/Pharma',
+
+            // Financial Services
+            'Financial Services': 'Financial Services',
+            'Financial': 'Financial Services',
+            'Financial/Engineering': 'Financial Services',
+            'Financial/Regulatory': 'Financial Services',
+
+            // Tax (separate from Financial Services)
+            'Tax/International': 'Tax',
+            'Tax': 'Tax',
+
+            // Technology
+            'Technology': 'Technology',
+            'Technology Services': 'Technology',
+            'Technology/Consulting': 'Technology',
+            'Technology/Compliance': 'Technology',
+            'Technology/Creative': 'Technology',
+            'Technology/Regulatory': 'Technology',
+
+            // Legal (core legal services)
+            'Legal': 'Legal',
+            'Legal Services': 'Legal',
+            'Legal/Financial': 'Legal',
+            'Legal/Regulatory': 'Legal',
+            'Legal/Tech': 'Legal',
+            'Legal/Technology': 'Legal',
+            'Legal/Consulting': 'Legal',
+            'Legal/Creative': 'Legal',
+            'Legal/HR': 'Legal',
+            'Legal/IP': 'Legal',
+            'Financial/Legal': 'Legal',
+
+            // Legal/Compliance (separate from Legal)
+            'Legal/Compliance': 'Legal/Compliance',
+            'Compliance': 'Legal/Compliance',
+            'Regulatory/Consulting': 'Legal/Compliance',
+            'Regulatory/Manufacturing': 'Legal/Compliance',
+
+            // Management Consulting
+            'Management Consulting': 'Management Consulting',
+            'Consulting/Corporate': 'Management Consulting',
+            'Consulting/EdTech': 'Management Consulting',
+            'Consulting/Financial': 'Management Consulting',
+            'Consulting/Procurement': 'Management Consulting',
+            'Consulting/Tech': 'Management Consulting',
+
+            // Operations (separate from Management Consulting)
+            'Operations/Consulting': 'Operations',
+            'Operations': 'Operations',
+
+            // Engineering
+            'Engineering': 'Engineering',
+            'Engineering/Architecture': 'Engineering',
+            'Engineering/Construction': 'Engineering',
+
+            // Real Estate
+            'Real Estate': 'Real Estate',
+            'Real Estate/Legal': 'Real Estate',
+
+            // Creative/Marketing
+            'Creative/Marketing': 'Creative/Marketing',
+            'Creative Services': 'Creative/Marketing',
+            'Creative': 'Creative/Marketing',
+            'Creative/Consulting': 'Creative/Marketing',
+            'Marketing': 'Creative/Marketing',
+            'Marketing/Creative': 'Creative/Marketing',
+            'Marketing/Localization': 'Creative/Marketing',
+            'Marketing/Tech': 'Creative/Marketing',
+
+            // Environmental
+            'Environmental': 'Environmental',
+            'Environmental/Engineering': 'Environmental',
+            'Environmental/Safety': 'Environmental',
+
+            // Healthcare
+            'Healthcare': 'Healthcare',
+            'Healthcare IT': 'Healthcare',
+
+            // Energy
+            'Energy': 'Energy',
+            'Energy/Financial': 'Energy',
+
+            // Architecture
+            'Architecture': 'Architecture',
+            'Architecture/Construction': 'Architecture',
+            'Architecture/Engineering': 'Architecture',
+            'Architecture/Medical': 'Architecture',
+
+            // HR Consulting
+            'HR Consulting': 'HR Consulting',
+            'HR/Consulting': 'HR Consulting',
+            'HR': 'HR Consulting',
+
+            // Scientific Research
+            'Scientific Research': 'Scientific Research',
+            'Scientific Research and R&D': 'Scientific Research',
+            'Scientific/Research': 'Scientific Research',
+
+            // Core industries (1:1 mapping)
+            'Government': 'Government',
+            'Manufacturing': 'Manufacturing',
+            'Telecommunications': 'Telecommunications',
+            'Retail/Consumer': 'Retail/Consumer',
+            'Media/Entertainment': 'Media/Entertainment',
+            'Agriculture': 'Agriculture',
+            'Professional Services': 'Professional Services'
+        };
+
+        // Normalize a sector to its parent industry
+        function normalizeIndustry(sector) {
+            return sectorToIndustry[sector] || sector;
+        }
+
+        // Get color for an industry (uses normalized name)
+        function getIndustryColor(sector) {
+            const normalizedIndustry = normalizeIndustry(sector);
+            return industryColors[normalizedIndustry] || '#888888';
+        }
+
         // Artifacts loaded from JSON via init()
         let artifacts = [];
         let dataLoaded = false;
@@ -1580,6 +1632,18 @@
             }
         }
 
+        // Map canonical industry names to industry-reports.json sector keys
+        // Most match 1:1, but some canonical names need to map to different JSON keys
+        const industryToJsonKey = {
+            'Operations': 'Operations/Consulting',
+            'Tax': 'Tax/International'
+        };
+
+        // Get the JSON key for an industry (handles canonical → JSON mapping)
+        function getIndustryJsonKey(industry) {
+            return industryToJsonKey[industry] || industry;
+        }
+
         async function loadIndustryReports(sector) {
             const reportsPanel = document.getElementById('industryReportsPanel');
             const reportsContent = document.getElementById('industryReportsContent');
@@ -1593,12 +1657,15 @@
             // Load the data
             const data = await loadIndustryReportsData();
 
-            if (!data || !data.sectors || !data.sectors[sector]) {
+            // Map canonical industry name to JSON key
+            const jsonKey = getIndustryJsonKey(sector);
+
+            if (!data || !data.sectors || !data.sectors[jsonKey]) {
                 reportsContent.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 20px;">No industry reports available for this sector.</p>';
                 return;
             }
 
-            const report = data.sectors[sector];
+            const report = data.sectors[jsonKey];
             const categories = report.categories || {};
 
             // Build categorized report display
@@ -4895,10 +4962,11 @@
             };
 
             // Calculate industry-level data for automation analysis
+            // Use normalized industry names to consolidate granular sectors
             const industryData = {};
 
             artifacts.forEach(a => {
-                const sector = a.sector;
+                const sector = normalizeIndustry(a.sector);
                 if (!industryData[sector]) {
                     industryData[sector] = {
                         artifacts: [],
@@ -5064,8 +5132,8 @@
                             y: i.artifactCount,
                             r: marketToBubbleSize(i.marketSize)
                         }],
-                        backgroundColor: (industryColors[i.sector] || '#888888') + '99',
-                        borderColor: industryColors[i.sector] || '#888888',
+                        backgroundColor: getIndustryColor(i.sector) + '99',
+                        borderColor: getIndustryColor(i.sector),
                         borderWidth: isMobile ? 1 : 2
                     }))
                 },
@@ -5381,7 +5449,7 @@
                 return `
                 <tr>
                     <td>
-                        <strong style="color: ${industryColors[i.sector] || '#888'};">
+                        <strong style="color: ${getIndustryColor(i.sector)};">
                             ${i.sector}
                         </strong>
                     </td>
@@ -5444,7 +5512,7 @@
             let cardsHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 15px;">';
 
             detailedIndustries.forEach(ind => {
-                const color = industryColors[ind.sector] || '#888888';
+                const color = getIndustryColor(ind.sector);
                 const readinessColor = ind.readinessScore >= 60 ? '#81B29A' :
                                        ind.readinessScore >= 40 ? '#F9844A' : '#FF6B6B';
                 const readinessLabel = ind.readinessScore >= 60 ? 'High' :
@@ -5807,8 +5875,8 @@
                     datasets: [{
                         label: 'Avg. Artifact Value',
                         data: sectorAvgs.map(s => s.avgValue),
-                        backgroundColor: sectorAvgs.map(s => industryColors[s.sector] || '#4285F4'),
-                        borderColor: sectorAvgs.map(s => industryColors[s.sector] || '#4285F4'),
+                        backgroundColor: sectorAvgs.map(s => getIndustryColor(s.sector)),
+                        borderColor: sectorAvgs.map(s => getIndustryColor(s.sector)),
                         borderWidth: 1
                     }]
                 },
@@ -6474,114 +6542,6 @@
             return variance * avgValue;
         }
 
-        // Sector to Industry consolidation mapping
-        // Maps 65+ granular sectors to ~24 core industries
-        const sectorToIndustry = {
-            // Medical/Pharma
-            'Medical/Pharma': 'Medical/Pharma',
-            'Medical/Regulatory': 'Medical/Pharma',
-
-            // Financial Services
-            'Financial Services': 'Financial Services',
-            'Financial': 'Financial Services',
-            'Financial/Engineering': 'Financial Services',
-            'Financial/Legal': 'Financial Services',
-            'Financial/Regulatory': 'Financial Services',
-            'Tax/International': 'Financial Services',
-
-            // Technology
-            'Technology': 'Technology',
-            'Technology Services': 'Technology',
-            'Technology/Consulting': 'Technology',
-            'Technology/Compliance': 'Technology',
-            'Technology/Creative': 'Technology',
-            'Technology/Regulatory': 'Technology',
-
-            // Legal
-            'Legal': 'Legal',
-            'Legal Services': 'Legal',
-            'Legal/Compliance': 'Legal',
-            'Legal/Financial': 'Legal',
-            'Legal/Regulatory': 'Legal',
-            'Legal/Tech': 'Legal',
-            'Legal/Technology': 'Legal',
-            'Legal/Consulting': 'Legal',
-            'Legal/Creative': 'Legal',
-            'Legal/HR': 'Legal',
-            'Legal/IP': 'Legal',
-
-            // Management Consulting
-            'Management Consulting': 'Management Consulting',
-            'Consulting/Corporate': 'Management Consulting',
-            'Consulting/EdTech': 'Management Consulting',
-            'Consulting/Financial': 'Management Consulting',
-            'Consulting/Procurement': 'Management Consulting',
-            'Consulting/Tech': 'Management Consulting',
-            'Operations/Consulting': 'Management Consulting',
-
-            // Engineering
-            'Engineering': 'Engineering',
-            'Engineering/Architecture': 'Engineering',
-            'Engineering/Construction': 'Engineering',
-
-            // Real Estate
-            'Real Estate': 'Real Estate',
-            'Real Estate/Legal': 'Real Estate',
-
-            // Creative/Marketing
-            'Creative/Marketing': 'Creative/Marketing',
-            'Creative Services': 'Creative/Marketing',
-            'Creative': 'Creative/Marketing',
-            'Creative/Consulting': 'Creative/Marketing',
-            'Marketing': 'Creative/Marketing',
-            'Marketing/Creative': 'Creative/Marketing',
-            'Marketing/Localization': 'Creative/Marketing',
-            'Marketing/Tech': 'Creative/Marketing',
-
-            // Environmental
-            'Environmental': 'Environmental',
-            'Environmental/Engineering': 'Environmental',
-            'Environmental/Safety': 'Environmental',
-
-            // Healthcare
-            'Healthcare': 'Healthcare',
-            'Healthcare IT': 'Healthcare',
-
-            // Energy
-            'Energy': 'Energy',
-            'Energy/Financial': 'Energy',
-
-            // Architecture
-            'Architecture': 'Architecture',
-            'Architecture/Construction': 'Architecture',
-            'Architecture/Engineering': 'Architecture',
-            'Architecture/Medical': 'Architecture',
-
-            // HR (maps to 'HR Consulting' to match industry-reports.json)
-            'HR Consulting': 'HR Consulting',
-            'HR/Consulting': 'HR Consulting',
-
-            // Scientific Research
-            'Scientific Research and R&D': 'Scientific Research',
-            'Scientific/Research': 'Scientific Research',
-
-            // Other core industries (1:1 mapping)
-            'Government': 'Government',
-            'Manufacturing': 'Manufacturing',
-            'Telecommunications': 'Telecommunications',
-            'Retail/Consumer': 'Retail/Consumer',
-            'Media/Entertainment': 'Media/Entertainment',
-            'Agriculture': 'Agriculture',
-            'Professional Services': 'Professional Services',
-            'Regulatory/Consulting': 'Regulatory',
-            'Regulatory/Manufacturing': 'Regulatory'
-        };
-
-        // Normalize a sector to its parent industry
-        function normalizeIndustry(sector) {
-            return sectorToIndustry[sector] || sector;
-        }
-
         // Get unique consolidated industries from artifacts
         function getUniqueIndustries() {
             const industries = [...new Set(artifacts.map(a => normalizeIndustry(a.sector)))].sort();
@@ -6805,27 +6765,32 @@
         // US Annual Market Spend by Industry (2024, in billions USD)
         // Sources: Grand View Research, Mordor Intelligence, Statista, Precedence Research,
         // MarketsandMarkets, Verified Market Research, IBISWorld (2024 reports)
+        // Exactly 24 canonical industries
         const industryMarketData = {
-            'Medical/Pharma': { spend: 29000000000, source: 'Healthcare consulting services (MarketsandMarkets 2024)' },
-            'Financial Services': { spend: 150000000000, source: 'Financial advisory & consulting (Big Four + independent, Statista 2024)' },
-            'Technology': { spend: 115000000000, source: 'IT/Software consulting North America (Precedence Research 2024)' },
-            'Management Consulting': { spend: 85000000000, source: 'US management consulting services (Mordor Intelligence 2024)' },
-            'Legal': { spend: 350000000000, source: 'US legal services market (Grand View Research 2024)' },
-            'Legal/Financial': { spend: 200000000000, source: 'Combined legal & financial advisory services' },
-            'Financial/Legal': { spend: 200000000000, source: 'Combined financial & legal advisory services' },
-            'Engineering': { spend: 163000000000, source: 'US engineering services (Verified Market Research 2024)' },
-            'Technology/Compliance': { spend: 95000000000, source: 'IT compliance & GRC consulting (Gartner estimates)' },
-            'Operations/Consulting': { spend: 70000000000, source: 'Operations management consulting (IBISWorld 2024)' },
-            'Environmental/Engineering': { spend: 45000000000, source: 'Environmental consulting services (Grand View Research 2024)' },
-            'Tax/International': { spend: 40000000000, source: 'Tax advisory services US (Straits Research 2024)' },
-            'HR Consulting': { spend: 37000000000, source: 'US HR consulting market (Mordor Intelligence 2024)' },
+            'Agriculture': { spend: 12000000000, source: 'US agricultural consulting & services (IBISWorld 2024)' },
             'Architecture': { spend: 45000000000, source: 'US architectural services (IBISWorld 2024)' },
             'Creative/Marketing': { spend: 81000000000, source: 'US advertising agencies (IBISWorld 2024)' },
-            'Environmental': { spend: 35000000000, source: 'Environmental consulting (Precedence Research 2024)' },
+            'Energy': { spend: 28000000000, source: 'US energy consulting services (Mordor Intelligence 2024)' },
+            'Engineering': { spend: 163000000000, source: 'US engineering services (Verified Market Research 2024)' },
+            'Environmental': { spend: 45000000000, source: 'Environmental consulting services (Grand View Research 2024)' },
+            'Financial Services': { spend: 150000000000, source: 'Financial advisory & consulting (Big Four + independent, Statista 2024)' },
+            'Government': { spend: 65000000000, source: 'US government consulting services (Deltek 2024)' },
+            'Healthcare': { spend: 32000000000, source: 'US healthcare consulting (Grand View Research 2024)' },
+            'HR Consulting': { spend: 37000000000, source: 'US HR consulting market (Mordor Intelligence 2024)' },
+            'Legal': { spend: 350000000000, source: 'US legal services market (Grand View Research 2024)' },
+            'Legal/Compliance': { spend: 120000000000, source: 'Legal compliance & regulatory services (IBISWorld 2024)' },
+            'Management Consulting': { spend: 85000000000, source: 'US management consulting services (Mordor Intelligence 2024)' },
+            'Manufacturing': { spend: 18000000000, source: 'US manufacturing consulting (IBISWorld 2024)' },
+            'Media/Entertainment': { spend: 22000000000, source: 'US media consulting services (Statista 2024)' },
+            'Medical/Pharma': { spend: 29000000000, source: 'Healthcare consulting services (MarketsandMarkets 2024)' },
+            'Operations': { spend: 70000000000, source: 'Operations management consulting (IBISWorld 2024)' },
+            'Professional Services': { spend: 95000000000, source: 'US professional services (Statista 2024)' },
             'Real Estate': { spend: 27000000000, source: 'Real estate advisory services (Business Research Insights 2024)' },
-            'Legal/Compliance': { spend: 120000000000, source: 'Legal compliance & regulatory services' },
-            'Marketing': { spend: 81000000000, source: 'US marketing services (Mordor Intelligence 2024)' },
-            'Scientific Research': { spend: 85000000000, source: 'US R&D services market (Statista 2024)' }
+            'Retail/Consumer': { spend: 15000000000, source: 'US retail consulting services (IBISWorld 2024)' },
+            'Scientific Research': { spend: 85000000000, source: 'US R&D services market (Statista 2024)' },
+            'Tax': { spend: 40000000000, source: 'Tax advisory services US (Straits Research 2024)' },
+            'Technology': { spend: 115000000000, source: 'IT/Software consulting North America (Precedence Research 2024)' },
+            'Telecommunications': { spend: 19000000000, source: 'US telecom consulting services (IBISWorld 2024)' }
         };
 
         // Render industry overview panel
@@ -7026,7 +6991,7 @@
 
                 details.innerHTML = `
                     <div style="margin-bottom: 15px;">
-                        <strong>Sector:</strong> <a href="#" onclick="navigateToIndustry('${artifact.sector}'); return false;" style="color: ${industryColors[artifact.sector] || '#4285F4'}; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; cursor: pointer;" title="View all ${artifact.sector} artifacts">${artifact.sector}</a>
+                        <strong>Industry:</strong> <a href="#" onclick="navigateToIndustry('${normalizeIndustry(artifact.sector)}'); return false;" style="color: ${getIndustryColor(artifact.sector)}; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; cursor: pointer;" title="View all ${normalizeIndustry(artifact.sector)} artifacts">${normalizeIndustry(artifact.sector)}</a>
                     </div>
                     <div style="margin-bottom: 15px;">
                         <strong>Variance Ratio:</strong>
