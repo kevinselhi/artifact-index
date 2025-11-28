@@ -4689,7 +4689,7 @@
             // Maps hyphen-separated IDs (master_valuations.json) to underscore IDs (artifactMarketData)
             // This fixes the ID format mismatch that causes industries to show $0 market value
             const artifactIdMapping = {
-                // Legal Services - Critical mappings for zero-value fix
+                // Legal Services
                 'patent-litigation-complete-case-package': 'patent_litigation',
                 'complex-sec-registration-statement': 'securities_litigation',
                 'class-action-settlement-agreement': 'securities_class_action',
@@ -4699,22 +4699,115 @@
                 'intellectual-property-opinion-letter': 'ip_portfolio_valuation',
                 'trademark-portfolio-strategy': 'trademark_clearance',
                 'large-scale-litigation-expert-report': 'litigation_expert',
+                'commercial-lease-agreement-package': 'lease_audit',
+                'patent-claim-chart': 'patent_litigation',
+                'patent-prosecution-file': 'patent_litigation',
+                'trademark-application-set-us-3-intl': 'trademark_clearance',
+                'trademark-portfolio-management-report': 'trademark_clearance',
+                'trademark-registration': 'trademark_clearance',
 
-                // Financial Services - High priority mappings
+                // Financial Services & M&A
                 'ma_advisory_large': 'ma_advisory',
                 'financial-due-diligence-large-transaction': 'financial_due_diligence',
                 'complex-ipo-offering': 'ipo_s1_registration',
                 'bankruptcy_restructuring': 'bankruptcy_ch11',
                 'fairness_opinion': 'fairness_opinion',
+                'buy-side-quality-of-earnings-commercial-dd-large-deal': 'quality_of_earnings',
+                'debt-financing-term-sheet-credit-agreement': 'credit_rating_analysis',
+                'derivatives-swap-documentation': 'derivatives_documentation',
+                'due-diligence-report-mid-market': 'due_diligence_financial',
+                'financial-model-m-a-lbo': 'due_diligence_financial',
+                'insurance-policy-d-o-cyber': 'insurance_program_design',
+                'ipo-underwriting-syndicate-book-large-cap': 'ipo_s1_registration',
+                'large-corporate-due-diligence-report': 'due_diligence_financial',
+                'm-a-buy-side-advisory-mandate-mega-deal': 'ma_advisory_large',
+                'm-a-due-diligence-report': 'due_diligence_financial',
+                'mega-deal-m-a-advisory-package': 'ma_advisory_large',
+                'private-equity-due-diligence-report-large-cap': 'private_equity_fund_docs',
+                's-p-500-annual-audit': 'annual_audit',
+                'spac-ipo-documentation-package': 'spac_merger_proxy',
+                'spac-s-4-de-spac-transaction-materials': 'spac_merger_proxy',
+                'tax-return-complex-corporate': 'tax_opinion',
 
-                // Medical/Pharma - Existing matches work, adding common variations
+                // Medical/Pharma
                 'clinical_trial_phase3': 'clinical_trial_phase3',
                 'clinical_trial_phase2': 'clinical_trial_phase2',
                 'nda_bla_application': 'nda_application',
                 'medical_device_510k': 'medical_device_510k',
                 'pma_application': 'pma_application',
+                'ce-mark-technical-file-medical-device': 'medical_device_510k',
+                'clinical-operations-manual': 'clinical_trial_phase3',
+                'clinical-study-statistical-analysis-plan': 'clinical_study_report',
+                'major-healthcare-market-access-dossier': 'eua_dossier',
+                'major-product-regulatory-submission-fda-ema': 'pma_application',
+                'pharmaceutical-cmc-dossier': 'drug_master_file',
+                'pharmaceutical-label-package-insert': 'drug_safety_report',
+                'marketing-authorization-application-eu': 'pma_application',
 
-                // TODO: Add mappings for Real Estate, Creative/Marketing, and other zero-coverage sectors
+                // Real Estate
+                'appraisal-report-real-estate': 'property_appraisal',
+                'major-real-estate-investment-memorandum': 'real_estate_feasibility',
+                'major-real-estate-lease-abstract-analysis': 'lease_audit',
+                'major-real-estate-market-analysis-report': 'market_research',
+                'major-real-estate-title-report': 'real_estate_feasibility',
+                'major-real-estate-transaction-due-diligence-report': 'real_estate_feasibility',
+                'real-estate-purchase-sale-agreement-commercial': 'real_estate_feasibility',
+                'valuation-appraisal-commercial-real-estate-portfolio': 'property_appraisal',
+
+                // Creative/Marketing
+                'advertising-campaign-creative-brief': 'product_launch_campaign',
+                'brand-campaign-creative-concepting': 'brand_repositioning',
+                'brand-strategy-document': 'brand_identity_system',
+                'global-brand-strategy-positioning-platform': 'brand_identity_system',
+                'integrated-marketing-campaign': 'product_launch_campaign',
+                'large-scale-content-marketing-campaign-plan': 'content_marketing_strategy',
+                'media-plan-buy-document': 'product_launch_campaign',
+
+                // Technology
+                'ai-ml-enterprise-implementation': 'ai_ml_implementation',
+                'crm-implementation-blueprint-mid-market': 'saas_implementation',
+                'data-analytics-strategy-implementation': 'data_analytics_platform',
+                'data-migration-plan-legacy-to-cloud': 'cloud_migration',
+                'enterprise-architecture-current-future-state-maps': 'enterprise_architecture',
+                'enterprise-data-analytics-ai-implementation-plan': 'data_analytics_platform',
+                'enterprise-data-platform-design-build-lake-warehouse': 'data_warehouse',
+                'it-infrastructure-security-audit-enterprise': 'cybersecurity_assessment',
+                'it-systems-integration-blueprint-enterprise': 'enterprise_architecture',
+                'network-architecture-diagram': 'enterprise_architecture',
+                'penetration-testing-engagement': 'penetration_test',
+                'sap-erp-global-rollout-blueprint-build': 'erp_implementation',
+                'software-architecture-document': 'enterprise_architecture',
+                'software-requirements-specification': 'custom_software',
+
+                // Engineering & Construction
+                'bridge-highway-design-package': 'bridge_design',
+                'building-information-model-bim': 'architectural_design',
+                'construction-drawing-set': 'construction_management',
+                'large-scale-architectural-design-construction-docs': 'architectural_design',
+                'major-transportation-corridor-design-package': 'transportation_corridor',
+                'mechanical-electrical-plumbing-mep-construction-documents-mid-rise': 'construction_management',
+
+                // Management Consulting
+                'competitive-intelligence-report': 'market_research',
+                'enterprise-pmo-setup-governance-toolkit': 'enterprise_architecture',
+                'enterprise-target-operating-model-global': 'digital_transformation',
+                'global-supply-chain-optimization-blueprint': 'supply_chain_optimization',
+                'hr-compensation-benchmark-study': 'executive_compensation',
+                'hr-transformation-playbook': 'change_management',
+                'major-corporate-board-presentation-deck': 'market_research',
+                'major-corporate-change-management-toolkit': 'change_management',
+                'major-product-launch-go-to-market-strategy': 'product_launch_campaign',
+                'market-sizing-entry-study-single-country': 'market_entry_strategy',
+                'risk-assessment-report': 'risk_model_validation',
+
+                // Compliance & Regulatory
+                'consent-decree-compliance-remediation-plan-regulatory': 'compliance_regulatory',
+                'major-environmental-compliance-audit': 'compliance_regulatory',
+                'major-environmental-monitoring-testing-report': 'environmental_remediation',
+                'major-environmental-permit-application-package': 'environmental_remediation',
+                'major-environmental-risk-assessment': 'risk_model_validation',
+                'major-environmental-site-assessment-phase-ii': 'environmental_remediation',
+                'privacy-program-ccpa-gdpr-readiness-package': 'gdpr_compliance'
             };
 
             // Calculate industry-level data for automation analysis
