@@ -13,7 +13,7 @@ The You.com API may block requests from localhost but allows requests from GitHu
 3. Click **New repository secret**
 4. Set:
    - **Name:** `YOU_API_KEY`
-   - **Secret:** Your You.com API key (e.g., `ydc-sk-381ec4032cab99a5-gYFXaSSLFQL43U39SeTGPbkKD3MMq1B1-1efabc47`)
+   - **Secret:** Your You.com API key (starts with `ydc-sk-...`)
 5. Click **Add secret**
 
 ### 2. Commit and Push the Workflow

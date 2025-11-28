@@ -250,10 +250,22 @@ npm start            # Production HTTP (after build)
 - **Mobile Optimization**: Improved bubble chart rendering on mobile devices
 - **Industry Market Sizes**: Updated with 2024 research data from industry reports
 
+## Adding New AI Models
+
+Want to add valuations from a new AI model? See **[ADD_NEW_MODEL.md](ADD_NEW_MODEL.md)** for the complete workflow:
+
+1. Prompt the AI model with the research template
+2. Save the response to the repository
+3. Run automated extraction: `node extract-model-data.js [report] [model-key]`
+4. Update model metadata
+5. Merge into dashboard: `node merge-model-data.js [model-key]`
+
+The system uses Claude to automatically parse reports and extract structured valuation data.
+
 ## Contributing
 
 This is primarily a research archive, but contributions are welcome:
-- Additional AI model valuations
+- Additional AI model valuations (see ADD_NEW_MODEL.md)
 - Updated market data
 - Bug fixes to the dashboard
 

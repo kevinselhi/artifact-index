@@ -10,7 +10,7 @@ Use a local proxy server that routes requests from the browser to You.com API, a
 
 ### 1. Set Your API Key
 ```bash
-export YOU_API_KEY="ydc-sk-6328c79732b3d087-dkI9ryBUYn1gqne4FrD6okjESR1i8c0v-3cc2c76f__1SNQG8ETU8N2v5f4HwgDYJZN"
+export YOU_API_KEY="your-you-api-key-here"
 ```
 
 ### 2. Start the Proxy Server
@@ -24,7 +24,7 @@ You should see:
 You.com API Proxy Server
 ============================================================
 Running on: http://localhost:8081
-API Key: ydc-sk-632...YJZN
+API Key: ydc-sk-***...****
 ```
 
 ### 3. Open the Fetch Page
