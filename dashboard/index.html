@@ -961,6 +961,29 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Sort Controls -->
+                    <div style="margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #2d2d4a;">
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <span style="color: var(--text-secondary); font-size: 0.85em; font-weight: 500;">Sort by:</span>
+                            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                                <button class="comparison-sort-btn" data-sort="controversy" onclick="changeComparisonSort('controversy')" style="padding: 5px 12px; background: #3d3d5c; border: 1px solid #E07A5F; color: #fff; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 500; transition: all 0.2s;">
+                                    Controversy
+                                </button>
+                                <button class="comparison-sort-btn" data-sort="variance" onclick="changeComparisonSort('variance')" style="padding: 5px 12px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 500; transition: all 0.2s;">
+                                    Disagreement
+                                </button>
+                                <button class="comparison-sort-btn" data-sort="value" onclick="changeComparisonSort('value')" style="padding: 5px 12px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 500; transition: all 0.2s;">
+                                    Value
+                                </button>
+                                <button class="comparison-sort-btn" data-sort="consensus" onclick="changeComparisonSort('consensus')" style="padding: 5px 12px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 500; transition: all 0.2s;">
+                                    Consensus
+                                </button>
+                                <button class="comparison-sort-btn" data-sort="alpha" onclick="changeComparisonSort('alpha')" style="padding: 5px 12px; background: transparent; border: 1px solid #3d3d5c; color: #a0a0a0; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 500; transition: all 0.2s;">
+                                    A-Z
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="chart-container" style="height: 400px;">
                         <canvas id="comparisonChart"></canvas>
                     </div>
@@ -1369,6 +1392,9 @@
 
                 // Set artifacts from JSON
                 artifacts = valuationsData.artifacts;
+
+                // Apply default sort (Controversy Score)
+                sortComparisonArtifacts();
 
                 // Update artifact count display
                 document.getElementById('artifactCount').textContent = artifacts.length;
@@ -5398,6 +5424,7 @@
         // Comparison Chart Pagination State
         let comparisonChart = null;
         let comparisonPage = 0;
+        let comparisonSortMode = 'controversy'; // Default: controversy, value, variance, consensus, alpha
         const ARTIFACTS_PER_PAGE = 8;
         // Removed MAX_PAGES limit - now supports all 451 artifacts (57 pages)
 
@@ -5650,6 +5677,48 @@
 
         // Initialize comparison pagination button states
         function initComparisonPagination() {
+            updatePaginationButtons();
+        }
+
+        // Sort comparison view artifacts based on current sort mode
+        function sortComparisonArtifacts() {
+            switch (comparisonSortMode) {
+                case 'controversy':
+                    artifacts.sort((a, b) => calculateControversyScore(b) - calculateControversyScore(a));
+                    break;
+                case 'variance':
+                    artifacts.sort((a, b) => (b.variance_ratio || 0) - (a.variance_ratio || 0));
+                    break;
+                case 'value':
+                    artifacts.sort((a, b) => calculateAverageValue(b) - calculateAverageValue(a));
+                    break;
+                case 'consensus':
+                    artifacts.sort((a, b) => calculateConsensusScore(b) - calculateConsensusScore(a));
+                    break;
+                case 'alpha':
+                    artifacts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+            }
+            // Reset to first page when sort changes
+            comparisonPage = 0;
+        }
+
+        // Change comparison sort mode and update UI
+        function changeComparisonSort(mode) {
+            comparisonSortMode = mode;
+
+            // Update button styles
+            document.querySelectorAll('.comparison-sort-btn').forEach(btn => {
+                const isActive = btn.dataset.sort === mode;
+                btn.style.background = isActive ? '#3d3d5c' : 'transparent';
+                btn.style.borderColor = isActive ? '#E07A5F' : '#3d3d5c';
+                btn.style.color = isActive ? '#fff' : '#a0a0a0';
+            });
+
+            // Resort and refresh
+            sortComparisonArtifacts();
+            updateComparisonChart();
+            createComparisonPageDots();
             updatePaginationButtons();
         }
 
@@ -6212,6 +6281,13 @@
             const values = Object.values(artifact.valuations).filter(v => v !== null);
             if (values.length === 0) return 0;
             return values.reduce((sum, v) => sum + v, 0) / values.length;
+        }
+
+        // Calculate controversy score for an artifact (variance × average value)
+        function calculateControversyScore(artifact) {
+            const avgValue = calculateAverageValue(artifact);
+            const variance = artifact.variance_ratio || 1;
+            return variance * avgValue;
         }
 
         // Get unique industries from artifacts
