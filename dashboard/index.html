@@ -803,7 +803,7 @@
         <div id="overview" class="view">
             <div class="stats-grid" style="margin-bottom: 20px;">
                 <div class="stat-card">
-                    <div class="stat-value" id="modelCount">--</div>
+                    <div class="stat-value">12</div>
                     <div class="stat-label">Models Compared</div>
                 </div>
                 <div class="stat-card">
@@ -1405,21 +1405,15 @@
                 // Apply default sort (Controversy Score)
                 sortComparisonArtifacts();
 
-                // Update artifact count display
+                // Update artifact count display (only dynamic stat)
                 document.getElementById('artifactCount').textContent = artifacts.length;
 
-                // Update model count display
-                const modelCount = valuationsData.metadata?.total_models || Object.keys(modelColors).length;
-                document.getElementById('modelCount').textContent = modelCount;
-
                 console.log(`Loaded ${artifacts.length} artifacts from JSON`);
-                console.log(`${modelCount} models compared`);
                 dataLoaded = true;
                 return valuationsData;
             } catch (error) {
                 console.error('Error loading data:', error);
                 document.getElementById('artifactCount').textContent = 'Error';
-                document.getElementById('modelCount').textContent = 'Error';
                 throw error;
             }
         }
