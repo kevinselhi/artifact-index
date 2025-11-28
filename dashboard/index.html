@@ -1291,6 +1291,9 @@
             gemini30: 'Gemini 3.0 Pro'
         };
 
+        // Global constant for maximum model count (used for scaling calculations)
+        const MAX_MODELS = Object.keys(modelColors).length; // Currently 12
+
         // Industry colors (global for use across functions)
         const industryColors = {
             'Medical/Pharma': '#E07A5F',
@@ -4706,7 +4709,7 @@
                     const varianceScore = Math.max(0, 10 - (logVariance / maxLogVariance * 10));
 
                     // Model coverage factor (higher coverage = more reliable = higher feasibility)
-                    const coverageFactor = avgModelCount / 8;
+                    const coverageFactor = avgModelCount / MAX_MODELS;
 
                     // Combined raw score: variance (60%) + coverage (40%)
                     const rawFeasibilityScore = (varianceScore * 0.6) + (coverageFactor * 10 * 0.4);
@@ -5023,7 +5026,7 @@
 
                     // Automation Readiness Score (0-100)
                     const varianceScore = Math.max(0, 100 - (avgVariance * 5)); // Lower variance = higher score
-                    const coverageScore = (avgModelCount / 8) * 100;
+                    const coverageScore = (avgModelCount / MAX_MODELS) * 100;
                     const readinessScore = Math.round((varianceScore * 0.7) + (coverageScore * 0.3));
 
                     // Get top 3 automation candidates by market value (using research data)
@@ -6596,7 +6599,7 @@
                         <strong>Value Range:</strong> ${formatCurrency(minVal)} - ${formatCurrency(maxVal)}
                     </div>
                     <div style="margin-bottom: 15px;">
-                        <strong>Models with Data:</strong> ${values.length} / 8
+                        <strong>Models with Data:</strong> ${values.length} / ${MAX_MODELS}
                     </div>
                     ${summaryData ? `
                     <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -6979,9 +6982,9 @@
                     const meanMedianDiff = Math.abs((mean - median) / median * 100).toFixed(0);
 
                     if (meanMedianDiff > 15) {
-                        explanation = `${modelCount}/8 models, skewed distribution (${meanMedianDiff}% mean/median gap)`;
+                        explanation = `${modelCount}/${MAX_MODELS} models, skewed distribution (${meanMedianDiff}% mean/median gap)`;
                     } else {
-                        explanation = `${modelCount}/8 models, balanced distribution (${meanMedianDiff}% mean/median gap)`;
+                        explanation = `${modelCount}/${MAX_MODELS} models, balanced distribution (${meanMedianDiff}% mean/median gap)`;
                     }
                 } else if (a.id === 'infrastructure_engineering') explanation = 'IT vs Nuclear scope';
                 else if (a.id === 'nda_bla_application') explanation = 'Fee vs R&D cost';
