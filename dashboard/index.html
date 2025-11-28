@@ -4647,6 +4647,38 @@
 
         // Initialize Automation Opportunity Matrix visualization
         function initIndustryConsensus() {
+            // ==================== Artifact ID Mapping ====================
+            // Maps hyphen-separated IDs (master_valuations.json) to underscore IDs (artifactMarketData)
+            // This fixes the ID format mismatch that causes industries to show $0 market value
+            const artifactIdMapping = {
+                // Legal Services - Critical mappings for zero-value fix
+                'patent-litigation-complete-case-package': 'patent_litigation',
+                'complex-sec-registration-statement': 'securities_litigation',
+                'class-action-settlement-agreement': 'securities_class_action',
+                'antitrust-competition-analysis-mega-deal': 'antitrust_filing',
+                'employment-law-compliance-review': 'employment_litigation',
+                'complex-patent-application-portfolio': 'patent_portfolio',
+                'intellectual-property-opinion-letter': 'ip_portfolio_valuation',
+                'trademark-portfolio-strategy': 'trademark_clearance',
+                'large-scale-litigation-expert-report': 'litigation_expert',
+
+                // Financial Services - High priority mappings
+                'ma_advisory_large': 'ma_advisory',
+                'financial-due-diligence-large-transaction': 'financial_due_diligence',
+                'complex-ipo-offering': 'ipo_s1_registration',
+                'bankruptcy_restructuring': 'bankruptcy_ch11',
+                'fairness_opinion': 'fairness_opinion',
+
+                // Medical/Pharma - Existing matches work, adding common variations
+                'clinical_trial_phase3': 'clinical_trial_phase3',
+                'clinical_trial_phase2': 'clinical_trial_phase2',
+                'nda_bla_application': 'nda_application',
+                'medical_device_510k': 'medical_device_510k',
+                'pma_application': 'pma_application',
+
+                // TODO: Add mappings for Real Estate, Creative/Marketing, and other zero-coverage sectors
+            };
+
             // Calculate industry-level data for automation analysis
             const industryData = {};
 
@@ -4680,8 +4712,15 @@
                     });
                     industryData[sector].totalValue += avgVal;
 
-                    // Add market size from research data
-                    const marketData = artifactMarketData[a.id];
+                    // Add market size from research data (with ID mapping support)
+                    let marketData = artifactMarketData[a.id];
+
+                    // If not found, try mapped ID
+                    if (!marketData && artifactIdMapping && artifactIdMapping[a.id]) {
+                        const mappedId = artifactIdMapping[a.id];
+                        marketData = artifactMarketData[mappedId];
+                    }
+
                     if (marketData && marketData.totalMarketValue) {
                         const avgMarketValue = (marketData.totalMarketValue.low + marketData.totalMarketValue.high) / 2;
                         industryData[sector].totalMarketSize += avgMarketValue;
@@ -5005,38 +5044,7 @@
 
             // Option B: AI Disruption Readiness by Industry - Detailed Cards
             // Build detailed industry data with top 3 automation candidates (store globally for pagination)
-
-            // ==================== Artifact ID Mapping ====================
-            // Maps hyphen-separated IDs (master_valuations.json) to underscore IDs (artifactMarketData)
-            // This fixes the ID format mismatch that causes industries to show $0 market value
-            const artifactIdMapping = {
-                // Legal Services - Critical mappings for zero-value fix
-                'patent-litigation-complete-case-package': 'patent_litigation',
-                'complex-sec-registration-statement': 'securities_litigation',
-                'class-action-settlement-agreement': 'securities_class_action',
-                'antitrust-competition-analysis-mega-deal': 'antitrust_filing',
-                'employment-law-compliance-review': 'employment_litigation',
-                'complex-patent-application-portfolio': 'patent_portfolio',
-                'intellectual-property-opinion-letter': 'ip_portfolio_valuation',
-                'trademark-portfolio-strategy': 'trademark_clearance',
-                'large-scale-litigation-expert-report': 'litigation_expert',
-
-                // Financial Services - High priority mappings
-                'ma_advisory_large': 'ma_advisory',
-                'financial-due-diligence-large-transaction': 'financial_due_diligence',
-                'complex-ipo-offering': 'ipo_s1_registration',
-                'bankruptcy_restructuring': 'bankruptcy_ch11',
-                'fairness_opinion': 'fairness_opinion',
-
-                // Medical/Pharma - Existing matches work, adding common variations
-                'clinical_trial_phase3': 'clinical_trial_phase3',
-                'clinical_trial_phase2': 'clinical_trial_phase2',
-                'nda_bla_application': 'nda_application',
-                'medical_device_510k': 'medical_device_510k',
-                'pma_application': 'pma_application',
-
-                // TODO: Add mappings for Real Estate, Creative/Marketing, and other zero-coverage sectors
-            };
+            // Note: artifactIdMapping is defined at top of initIndustryConsensus() function
 
             // Helper to get market value for an artifact
             function getArtifactMarketValue(artifactId) {
