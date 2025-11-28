@@ -21,20 +21,20 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="AI Opportunity Index">
-    <meta name="description" content="An interactive report on how 8 frontier models (including Gemini 3.0, Claude 4.5 Opus, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
+    <meta name="description" content="An interactive report on how 10 frontier models (including Gemini 3.0, Claude 4.5 Opus, ChatGPT 5.1, and You.com ARI) assess the work that can be automated by AI agents.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kevinselhi.github.io/artifact-index/dashboard/">
     <meta property="og:title" content="AI Opportunity Index">
-    <meta property="og:description" content="An interactive report on how 8 frontier models (including Gemini 3.0, Claude 4.5 Opus, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
+    <meta property="og:description" content="An interactive report on how 10 frontier models (including Gemini 3.0, Claude 4.5 Opus, ChatGPT 5.1, and You.com ARI) assess the work that can be automated by AI agents.">
     <meta property="og:image" content="https://kevinselhi.github.io/artifact-index/dashboard/favicon.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://kevinselhi.github.io/artifact-index/dashboard/">
     <meta property="twitter:title" content="AI Opportunity Index">
-    <meta property="twitter:description" content="An interactive report on how 8 frontier models (including Gemini 3.0, Claude 4.5 Opus, and ChatGPT 5.1) assess the work that can be automated by AI agents.">
+    <meta property="twitter:description" content="An interactive report on how 10 frontier models (including Gemini 3.0, Claude 4.5 Opus, ChatGPT 5.1, and You.com ARI) assess the work that can be automated by AI agents.">
     <meta property="twitter:image" content="https://kevinselhi.github.io/artifact-index/dashboard/favicon.png">
 
     <!-- WhatsApp / iMessage -->
@@ -56,6 +56,8 @@
             --o3pro: #9B5DE5;
             --perplexity: #F9844A;
             --gemini30: #00BFA5;
+            --claude-opus45-cli: #34d399;
+            --you-ari: #f59e0b;
             --bg-dark: #1a1a2e;
             --bg-card: #16213e;
             --text-primary: #eaeaea;
@@ -783,7 +785,7 @@
         <div id="overview" class="view">
             <div class="stats-grid" style="margin-bottom: 20px;">
                 <div class="stat-card">
-                    <div class="stat-value">8</div>
+                    <div class="stat-value" id="modelCount">--</div>
                     <div class="stat-label">Models Compared</div>
                 </div>
                 <div class="stat-card">
@@ -1287,7 +1289,9 @@
             claude_sonnet45: '#E07A5F',
             opus45: '#81B29A',
             gemini: '#4285F4',
-            gemini30: '#00BFA5'
+            gemini30: '#00BFA5',
+            claude_opus45_cli: '#34d399',
+            you_ari: '#f59e0b'
         };
 
         const modelNames = {
@@ -1298,7 +1302,9 @@
             claude_sonnet45: 'Claude Sonnet 4.5',
             opus45: 'Claude Opus 4.5',
             gemini: 'Gemini 2.5 Pro',
-            gemini30: 'Gemini 3.0 Pro'
+            gemini30: 'Gemini 3.0 Pro',
+            claude_opus45_cli: 'Claude 4.5 Opus CLI',
+            you_ari: 'You.com ARI'
         };
 
         // Industry colors (global for use across functions)
@@ -1340,12 +1346,18 @@
                 // Update artifact count display
                 document.getElementById('artifactCount').textContent = artifacts.length;
 
+                // Update model count display
+                const modelCount = valuationsData.metadata?.total_models || Object.keys(modelColors).length;
+                document.getElementById('modelCount').textContent = modelCount;
+
                 console.log(`Loaded ${artifacts.length} artifacts from JSON`);
+                console.log(`${modelCount} models compared`);
                 dataLoaded = true;
                 return valuationsData;
             } catch (error) {
                 console.error('Error loading data:', error);
                 document.getElementById('artifactCount').textContent = 'Error';
+                document.getElementById('modelCount').textContent = 'Error';
                 throw error;
             }
         }
