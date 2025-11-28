@@ -34,68 +34,65 @@ fs.writeFileSync(backupPath, JSON.stringify(masterData, null, 2));
 console.log(`✓ Backup created: ${backupPath}`);
 console.log('');
 
-// Define consolidation groups (12 high-confidence merges)
+// Define consolidation groups (9 high-confidence duplicates identified via agent audit)
 const consolidations = [
   {
-    name: 'Mega-Deal M&A Sell-Side Advisory',
-    keep: 'mega-deal-m-a-advisory-package',
-    merge: ['m-a-sell-side-advisory-mandate-mega-deal'],
-    canonicalName: 'Mega-Deal M&A Advisory Package (Sell-Side)'
+    name: 'Real Estate Appraisal',
+    keep: 'property_appraisal',
+    merge: [
+      'commercial-real-estate-valuation-large-portfolio',
+      'real-estate-appraisal-commercial',
+      'major-real-estate-portfolio-valuation',
+      'major-real-estate-appraisal-commercial'
+    ],
+    canonicalName: 'Commercial Property Appraisal'
   },
   {
-    name: 'Phase III Clinical Trial',
-    keep: 'clinical_trial_phase3',
-    merge: ['phase-iii-clinical-trial-protocol-execution', 'phase-iii-clinical-trial-protocol-execution-1', 'clinical-trial-protocol-phase-iii-global']
+    name: 'Pricing Strategy',
+    keep: 'pricing_strategy',
+    merge: ['pricing-packaging-study'],
+    canonicalName: 'Pricing Strategy Analysis'
   },
   {
-    name: 'IPO S-1 Prospectus',
-    keep: 'ipo_s1_registration',
-    merge: ['ipo-prospectus-securities-offering-package', 'ipo-prospectus-s-1-drafting-readiness']
+    name: 'Transfer Pricing',
+    keep: 'transfer_pricing',
+    merge: ['large-cap-transfer-pricing-study-documentation']
   },
   {
-    name: 'PMA (Premarket Approval)',
-    keep: 'pma_application',
-    merge: ['pma-premarket-approval-submission-package', 'premarket-approval-pma-submission']
+    name: 'Financial Model',
+    keep: 'financial-model-m-a-lbo',
+    merge: ['financial-model-valuation-model'],
+    canonicalName: 'Financial Model (M&A/Valuation)'
   },
   {
-    name: '510(k) Medical Device',
-    keep: 'medical_device_510k',
-    merge: ['510-k-medical-device-submission', 'fda-510-k-premarket-notification']
+    name: 'Digital Transformation',
+    keep: 'digital_transformation',
+    merge: ['enterprise-digital-transformation-roadmap']
   },
   {
-    name: 'Chapter 11 Reorganization',
-    keep: 'bankruptcy_restructuring',
-    merge: ['complex-restructuring-chapter-11-advisory', 'bankruptcy-plan-of-reorganization-chapter-11']
+    name: 'API Strategy',
+    keep: 'api_strategy',
+    merge: ['api_strategy_design']
   },
   {
-    name: 'SOC 2 Type II Audit',
-    keep: 'soc2_audit',
-    merge: ['soc-2-type-ii-audit-report', 'soc-2-type-ii-readiness-audit-package-enterprise']
+    name: 'HIPAA Compliance',
+    keep: 'hipaa_compliance',
+    merge: ['hipaa_risk_assessment'],
+    canonicalName: 'HIPAA Compliance & Risk Assessment'
   },
   {
-    name: 'NDA (New Drug Application)',
-    keep: 'nda_bla_application',
-    merge: ['fda-new-drug-application-nda-submission-dossier']
+    name: 'Merger Integration',
+    keep: 'merger_integration',
+    merge: ['post_merger_integration']
   },
   {
-    name: 'Data Governance Framework',
-    keep: 'data_governance',
-    merge: ['data_governance_framework']
-  },
-  {
-    name: 'Identity & Access Management',
-    keep: 'identity_management',
-    merge: ['identity_access_management']
-  },
-  {
-    name: 'Highway/Bridge Design',
-    keep: 'bridge-highway-design-package',
-    merge: ['highway-bridge-detailed-design-package']
-  },
-  {
-    name: 'Hedge Fund Formation',
-    keep: 'hedge_fund_formation',
-    merge: ['hedge_fund_setup']
+    name: 'Brand Repositioning',
+    keep: 'brand_repositioning',
+    merge: [
+      'brand-strategy-repositioning',
+      'master-brand-repositioning-visual-identity-system'
+    ],
+    canonicalName: 'Global Brand Repositioning'
   }
 ];
 

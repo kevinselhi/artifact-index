@@ -1,70 +1,55 @@
 ARTIFACT CONSOLIDATION REPORT
 ================================================================================
 
-Date: 2025-11-28T05:05:24.788Z
-Original Count: 470
-Final Count: 451
-Reduction: 19 artifacts (4.0%)
+Date: 2025-11-28T09:48:01.879Z
+Original Count: 451
+Final Count: 438
+Reduction: 13 artifacts (2.9%)
 
 MERGED GROUPS:
 ================================================================================
 
-1. Mega-Deal M&A Sell-Side Advisory
-   Primary: mega-deal-m-a-advisory-package
+1. Real Estate Appraisal
+   Primary: property_appraisal
+   Merged: 4 duplicate(s)
+   Total Models: 6
+
+2. Pricing Strategy
+   Primary: pricing_strategy
+   Merged: 1 duplicate(s)
+   Total Models: 5
+
+3. Transfer Pricing
+   Primary: transfer_pricing
+   Merged: 1 duplicate(s)
+   Total Models: 5
+
+4. Financial Model
+   Primary: financial-model-m-a-lbo
    Merged: 1 duplicate(s)
    Total Models: 2
 
-2. Phase III Clinical Trial
-   Primary: clinical_trial_phase3
-   Merged: 3 duplicate(s)
-   Total Models: 9
-
-3. IPO S-1 Prospectus
-   Primary: ipo_s1_registration
-   Merged: 2 duplicate(s)
-   Total Models: 8
-
-4. PMA (Premarket Approval)
-   Primary: pma_application
-   Merged: 2 duplicate(s)
-   Total Models: 6
-
-5. 510(k) Medical Device
-   Primary: medical_device_510k
-   Merged: 2 duplicate(s)
-   Total Models: 7
-
-6. Chapter 11 Reorganization
-   Primary: bankruptcy_restructuring
-   Merged: 2 duplicate(s)
-   Total Models: 8
-
-7. SOC 2 Type II Audit
-   Primary: soc2_audit
-   Merged: 2 duplicate(s)
-   Total Models: 6
-
-8. NDA (New Drug Application)
-   Primary: nda_bla_application
+5. Digital Transformation
+   Primary: digital_transformation
    Merged: 1 duplicate(s)
-   Total Models: 7
+   Total Models: 10
 
-9. Data Governance Framework
-   Primary: data_governance
+6. API Strategy
+   Primary: api_strategy
+   Merged: 1 duplicate(s)
+   Total Models: 6
+
+7. HIPAA Compliance
+   Primary: hipaa_compliance
+   Merged: 1 duplicate(s)
+   Total Models: 6
+
+8. Merger Integration
+   Primary: merger_integration
    Merged: 1 duplicate(s)
    Total Models: 9
 
-10. Identity & Access Management
-   Primary: identity_management
-   Merged: 1 duplicate(s)
-   Total Models: 8
-
-11. Highway/Bridge Design
-   Primary: bridge-highway-design-package
-   Merged: 1 duplicate(s)
-   Total Models: 2
-
-12. Hedge Fund Formation
-   Primary: hedge_fund_formation
-   Merged: 1 duplicate(s)
+9. Brand Repositioning
+   Primary: brand_repositioning
+   Merged: 2 duplicate(s)
    Total Models: 8

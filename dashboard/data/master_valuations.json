@@ -353,9 +353,10 @@
         "perplexity": null,
         "gemini30": 212500,
         "claude_opus45_cli": 187500,
-        "claude_opus45_agents": 275000
+        "claude_opus45_agents": 275000,
+        "chatgpt51_codex": 415000
       },
-      "variance_ratio": 1.73
+      "variance_ratio": 2.21
     },
     {
       "id": "executive_compensation",
@@ -522,7 +523,8 @@
         "perplexity": 5500000,
         "gemini30": null,
         "claude_opus45_cli": 300000,
-        "you_ari": 625000
+        "you_ari": 625000,
+        "chatgpt51_codex": 415000
       },
       "variance_ratio": 36.67
     },
@@ -1097,11 +1099,11 @@
         "opus45": 350000,
         "chatgpt51": null,
         "chatgpt5": 180000,
-        "o3pro": null,
+        "o3pro": 450000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": 120000
       },
-      "variance_ratio": 3.33
+      "variance_ratio": 5
     },
     {
       "id": "devops_transformation",
@@ -1447,9 +1449,11 @@
         "chatgpt5": 40000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 300000,
+        "you_ari": 240000
       },
-      "variance_ratio": 3.75
+      "variance_ratio": 7.5
     },
     {
       "id": "zoning_analysis",
@@ -1794,7 +1798,7 @@
     },
     {
       "id": "hipaa_compliance",
-      "name": "HIPAA Compliance Assessment",
+      "name": "HIPAA Compliance & Risk Assessment",
       "sector": "Legal/Compliance",
       "valuations": {
         "claude_sonnet45": 150000,
@@ -1802,11 +1806,11 @@
         "opus45": 275000,
         "chatgpt51": null,
         "chatgpt5": 125000,
-        "o3pro": null,
+        "o3pro": 200000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": 50000
       },
-      "variance_ratio": 4
+      "variance_ratio": 10
     },
     {
       "id": "enterprise_risk_management",
@@ -2165,14 +2169,14 @@
         "claude_sonnet45": 1000000,
         "gemini": 4000000,
         "opus45": 2000000,
-        "chatgpt51": null,
+        "chatgpt51": 8000000,
         "chatgpt5": 800000,
         "o3pro": 1500000,
-        "perplexity": null,
-        "gemini30": null,
+        "perplexity": 5000000,
+        "gemini30": 1200000,
         "claude_opus45_cli": 200000
       },
-      "variance_ratio": 20
+      "variance_ratio": 40
     },
     {
       "id": "carve_out_analysis",
@@ -2218,9 +2222,10 @@
         "chatgpt5": 175000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "chatgpt51_codex": 67500
       },
-      "variance_ratio": 4
+      "variance_ratio": 10.37
     },
     {
       "id": "customer_journey_mapping",
@@ -2268,22 +2273,6 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 80000
-      },
-      "variance_ratio": 10
-    },
-    {
-      "id": "hipaa_risk_assessment",
-      "name": "HIPAA Risk Assessment",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "claude_sonnet45": 150000,
-        "gemini": 500000,
-        "opus45": 280000,
-        "chatgpt51": null,
-        "chatgpt5": 125000,
-        "o3pro": 200000,
-        "perplexity": null,
-        "gemini30": 50000
       },
       "variance_ratio": 10
     },
@@ -2351,22 +2340,6 @@
         "gemini30": 150000
       },
       "variance_ratio": 12
-    },
-    {
-      "id": "api_strategy_design",
-      "name": "Enterprise API Strategy",
-      "sector": "Technology",
-      "valuations": {
-        "claude_sonnet45": 300000,
-        "gemini": 1200000,
-        "opus45": 650000,
-        "chatgpt51": null,
-        "chatgpt5": 250000,
-        "o3pro": 450000,
-        "perplexity": null,
-        "gemini30": 120000
-      },
-      "variance_ratio": 10
     },
     {
       "id": "securities_class_action",
@@ -2790,22 +2763,6 @@
         "o3pro": null,
         "perplexity": 3000000,
         "gemini30": 800000
-      },
-      "variance_ratio": 10
-    },
-    {
-      "id": "post_merger_integration",
-      "name": "Post-Merger Integration",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_sonnet45": 3000000,
-        "gemini": 12000000,
-        "opus45": 6000000,
-        "chatgpt51": 8000000,
-        "chatgpt5": 2500000,
-        "o3pro": 4000000,
-        "perplexity": 5000000,
-        "gemini30": 1200000
       },
       "variance_ratio": 10
     },
@@ -3543,15 +3500,6 @@
       "variance_ratio": null
     },
     {
-      "id": "commercial-real-estate-valuation-large-portfolio",
-      "name": "Commercial Real Estate Valuation (Large Portfolio)",
-      "sector": "Real Estate",
-      "valuations": {
-        "claude_opus45_cli": 300000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "complex-sec-registration-statement",
       "name": "Complex SEC Registration Statement",
       "sector": "Legal Services",
@@ -3577,15 +3525,6 @@
       "sector": "Technology Services",
       "valuations": {
         "claude_opus45_cli": 150000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "brand-strategy-repositioning",
-      "name": "Brand Strategy & Repositioning",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 300000
       },
       "variance_ratio": null
     },
@@ -3659,15 +3598,6 @@
       "sector": "Creative Services",
       "valuations": {
         "claude_opus45_cli": 95000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "financial-model-valuation-model",
-      "name": "Financial Model/Valuation Model",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 62500
       },
       "variance_ratio": null
     },
@@ -3839,15 +3769,6 @@
       "variance_ratio": null
     },
     {
-      "id": "real-estate-appraisal-commercial",
-      "name": "Real Estate Appraisal (Commercial)",
-      "sector": "Real Estate",
-      "valuations": {
-        "claude_opus45_cli": 7000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "single-patent-application",
       "name": "Single Patent Application",
       "sector": "Legal Services",
@@ -4005,15 +3926,6 @@
       "variance_ratio": null
     },
     {
-      "id": "enterprise-digital-transformation-roadmap",
-      "name": "Enterprise Digital Transformation Roadmap",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 3250000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "m-a-due-diligence-report",
       "name": "M&A Due Diligence Report",
       "sector": "Financial Services",
@@ -4166,15 +4078,6 @@
       "id": "large-scale-employee-compensation-benchmarking-study",
       "name": "Large-Scale Employee Compensation Benchmarking Study",
       "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 240000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-portfolio-valuation",
-      "name": "Major Real Estate Portfolio Valuation",
-      "sector": "Real Estate",
       "valuations": {
         "you_ari": 240000
       },
@@ -4348,15 +4251,6 @@
       "id": "major-scientific-white-paper",
       "name": "Major Scientific White Paper",
       "sector": "Scientific Research and R&D",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "major-real-estate-appraisal-commercial",
-      "name": "Major Real Estate Appraisal (Commercial)",
-      "sector": "Real Estate",
       "valuations": {
         "you_ari": 120000
       },
@@ -4826,12 +4720,13 @@
     },
     {
       "id": "financial-model-m-a-lbo",
-      "name": "Financial Model (M&A/LBO)",
+      "name": "Financial Model (M&A/Valuation)",
       "sector": "Financial",
       "valuations": {
-        "claude_opus45_agents": 175000
+        "claude_opus45_agents": 175000,
+        "claude_opus45_cli": 62500
       },
-      "variance_ratio": null
+      "variance_ratio": 2.8
     },
     {
       "id": "brand-strategy-document",
@@ -5285,24 +5180,6 @@
       "variance_ratio": null
     },
     {
-      "id": "master-brand-repositioning-visual-identity-system",
-      "name": "Master Brand Repositioning & Visual Identity System",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "chatgpt51_codex": 415000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "large-cap-transfer-pricing-study-documentation",
-      "name": "Large-Cap Transfer Pricing Study & Documentation",
-      "sector": "Tax/Financial",
-      "valuations": {
-        "chatgpt51_codex": 415000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "enterprise-data-privacy-impact-assessment-suite",
       "name": "Enterprise Data Privacy Impact Assessment Suite",
       "sector": "Legal/Tech",
@@ -5659,15 +5536,6 @@
       "sector": "Legal/Financial",
       "valuations": {
         "chatgpt51_codex": 75000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "pricing-packaging-study",
-      "name": "Pricing & Packaging Study",
-      "sector": "Consulting/Marketing",
-      "valuations": {
-        "chatgpt51_codex": 67500
       },
       "variance_ratio": null
     },
