@@ -34,7 +34,7 @@ fs.writeFileSync(backupPath, JSON.stringify(masterData, null, 2));
 console.log(`✓ Backup created: ${backupPath}`);
 console.log('');
 
-// Define consolidation groups (9 high-confidence duplicates identified via agent audit)
+// Define consolidation groups (15 total: 9 high-confidence + 6 medium-confidence duplicates)
 const consolidations = [
   {
     name: 'Real Estate Appraisal',
@@ -93,6 +93,37 @@ const consolidations = [
       'master-brand-repositioning-visual-identity-system'
     ],
     canonicalName: 'Global Brand Repositioning'
+  },
+  // Medium-confidence duplicates (user approved)
+  {
+    name: 'IT Due Diligence',
+    keep: 'it_due_diligence',
+    merge: ['it-due-diligence-technical-assessment']
+  },
+  {
+    name: 'Cybersecurity Assessment',
+    keep: 'cybersecurity_assessment',
+    merge: ['enterprise-cybersecurity-assessment-remediation-plan']
+  },
+  {
+    name: 'Annual Financial Audit',
+    keep: 'annual_audit',
+    merge: ['audit-report-financial-statements']
+  },
+  {
+    name: 'Tax Opinion',
+    keep: 'tax_opinion',
+    merge: ['comprehensive-tax-opinion-package']
+  },
+  {
+    name: 'Cloud Migration',
+    keep: 'cloud_migration',
+    merge: ['cloud-migration-strategy-business-case']
+  },
+  {
+    name: 'Corporate Strategy',
+    keep: 'strategic_planning',
+    merge: ['enterprise-strategy-consulting-engagement']
   }
 ];
 

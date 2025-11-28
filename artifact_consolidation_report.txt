@@ -1,55 +1,85 @@
 ARTIFACT CONSOLIDATION REPORT
 ================================================================================
 
-Date: 2025-11-28T09:48:01.879Z
-Original Count: 451
-Final Count: 438
-Reduction: 13 artifacts (2.9%)
+Date: 2025-11-28T09:50:40.381Z
+Original Count: 438
+Final Count: 432
+Reduction: 6 artifacts (1.4%)
 
 MERGED GROUPS:
 ================================================================================
 
 1. Real Estate Appraisal
    Primary: property_appraisal
-   Merged: 4 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 6
 
 2. Pricing Strategy
    Primary: pricing_strategy
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 5
 
 3. Transfer Pricing
    Primary: transfer_pricing
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 5
 
 4. Financial Model
    Primary: financial-model-m-a-lbo
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 2
 
 5. Digital Transformation
    Primary: digital_transformation
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 10
 
 6. API Strategy
    Primary: api_strategy
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 6
 
 7. HIPAA Compliance
    Primary: hipaa_compliance
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 6
 
 8. Merger Integration
    Primary: merger_integration
-   Merged: 1 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 9
 
 9. Brand Repositioning
    Primary: brand_repositioning
-   Merged: 2 duplicate(s)
+   Merged: 0 duplicate(s)
    Total Models: 8
+
+10. IT Due Diligence
+   Primary: it_due_diligence
+   Merged: 1 duplicate(s)
+   Total Models: 6
+
+11. Cybersecurity Assessment
+   Primary: cybersecurity_assessment
+   Merged: 1 duplicate(s)
+   Total Models: 10
+
+12. Annual Financial Audit
+   Primary: annual_audit
+   Merged: 1 duplicate(s)
+   Total Models: 7
+
+13. Tax Opinion
+   Primary: tax_opinion
+   Merged: 1 duplicate(s)
+   Total Models: 7
+
+14. Cloud Migration
+   Primary: cloud_migration
+   Merged: 1 duplicate(s)
+   Total Models: 8
+
+15. Corporate Strategy
+   Primary: strategic_planning
+   Merged: 1 duplicate(s)
+   Total Models: 5

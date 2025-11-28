@@ -489,7 +489,8 @@
         "o3pro": 450000,
         "perplexity": null,
         "gemini30": null,
-        "claude_opus45_cli": 44000000
+        "claude_opus45_cli": 44000000,
+        "claude_opus45_agents": 2550000
       },
       "variance_ratio": 103.53
     },
@@ -857,9 +858,10 @@
         "chatgpt5": 400000,
         "o3pro": 1700000,
         "perplexity": 1750000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 3250000
       },
-      "variance_ratio": 4.38
+      "variance_ratio": 8.13
     },
     {
       "id": "securities_litigation",
@@ -1134,7 +1136,8 @@
         "chatgpt5": 150000,
         "o3pro": 250000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 150000
       },
       "variance_ratio": 3.33
     },
@@ -3436,15 +3439,6 @@
       "variance_ratio": 1.21
     },
     {
-      "id": "enterprise-strategy-consulting-engagement",
-      "name": "Enterprise Strategy Consulting Engagement",
-      "sector": "Management Consulting",
-      "valuations": {
-        "claude_opus45_cli": 3250000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "patent-litigation-complete-case-package",
       "name": "Patent Litigation Complete Case Package",
       "sector": "Legal Services",
@@ -3491,15 +3485,6 @@
       "variance_ratio": null
     },
     {
-      "id": "comprehensive-tax-opinion-package",
-      "name": "Comprehensive Tax Opinion Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 600000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "complex-sec-registration-statement",
       "name": "Complex SEC Registration Statement",
       "sector": "Legal Services",
@@ -3518,15 +3503,6 @@
         "chatgpt51_codex": 360000
       },
       "variance_ratio": 7.64
-    },
-    {
-      "id": "it-due-diligence-technical-assessment",
-      "name": "IT Due Diligence/Technical Assessment",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 150000
-      },
-      "variance_ratio": null
     },
     {
       "id": "data-analytics-strategy-implementation",
@@ -3957,15 +3933,6 @@
       "id": "global-brand-strategy-positioning-platform",
       "name": "Global Brand Strategy & Positioning Platform",
       "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 625000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "enterprise-cybersecurity-assessment-remediation-plan",
-      "name": "Enterprise Cybersecurity Assessment & Remediation Plan",
-      "sector": "Technology",
       "valuations": {
         "you_ari": 625000
       },
@@ -4820,15 +4787,6 @@
       "variance_ratio": null
     },
     {
-      "id": "audit-report-financial-statements",
-      "name": "Audit Report (Financial Statements)",
-      "sector": "Financial",
-      "valuations": {
-        "claude_opus45_agents": 2550000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "product-liability-defense-brief",
       "name": "Product Liability Defense Brief",
       "sector": "Legal Services",
@@ -5194,15 +5152,6 @@
       "sector": "Financial",
       "valuations": {
         "chatgpt51_codex": 345000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "cloud-migration-strategy-business-case",
-      "name": "Cloud Migration Strategy & Business Case",
-      "sector": "Technology",
-      "valuations": {
-        "chatgpt51_codex": 335000
       },
       "variance_ratio": null
     },
