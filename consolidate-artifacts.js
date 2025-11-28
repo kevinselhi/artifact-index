@@ -34,96 +34,64 @@ fs.writeFileSync(backupPath, JSON.stringify(masterData, null, 2));
 console.log(`✓ Backup created: ${backupPath}`);
 console.log('');
 
-// Define consolidation groups (15 total: 9 high-confidence + 6 medium-confidence duplicates)
+// Define consolidation groups (6 total: single-model scale modifier cleanup)
 const consolidations = [
-  {
-    name: 'Real Estate Appraisal',
-    keep: 'property_appraisal',
-    merge: [
-      'commercial-real-estate-valuation-large-portfolio',
-      'real-estate-appraisal-commercial',
-      'major-real-estate-portfolio-valuation',
-      'major-real-estate-appraisal-commercial'
-    ],
-    canonicalName: 'Commercial Property Appraisal'
-  },
-  {
-    name: 'Pricing Strategy',
-    keep: 'pricing_strategy',
-    merge: ['pricing-packaging-study'],
-    canonicalName: 'Pricing Strategy Analysis'
-  },
-  {
-    name: 'Transfer Pricing',
-    keep: 'transfer_pricing',
-    merge: ['large-cap-transfer-pricing-study-documentation']
-  },
-  {
-    name: 'Financial Model',
-    keep: 'financial-model-m-a-lbo',
-    merge: ['financial-model-valuation-model'],
-    canonicalName: 'Financial Model (M&A/Valuation)'
-  },
+  // GROUP 1: Digital Transformation (4→1)
   {
     name: 'Digital Transformation',
-    keep: 'digital_transformation',
-    merge: ['enterprise-digital-transformation-roadmap']
-  },
-  {
-    name: 'API Strategy',
-    keep: 'api_strategy',
-    merge: ['api_strategy_design']
-  },
-  {
-    name: 'HIPAA Compliance',
-    keep: 'hipaa_compliance',
-    merge: ['hipaa_risk_assessment'],
-    canonicalName: 'HIPAA Compliance & Risk Assessment'
-  },
-  {
-    name: 'Merger Integration',
-    keep: 'merger_integration',
-    merge: ['post_merger_integration']
-  },
-  {
-    name: 'Brand Repositioning',
-    keep: 'brand_repositioning',
+    keep: 'digital_transformation', // 10 models
     merge: [
-      'brand-strategy-repositioning',
-      'master-brand-repositioning-visual-identity-system'
+      'smart-city-iot-pilot-design',
+      'digital-twin-proof-of-concept',
+      'smart-factory-iiot-roadmap'
     ],
-    canonicalName: 'Global Brand Repositioning'
+    canonicalName: 'Digital Transformation Strategy'
   },
-  // Medium-confidence duplicates (user approved)
-  {
-    name: 'IT Due Diligence',
-    keep: 'it_due_diligence',
-    merge: ['it-due-diligence-technical-assessment']
-  },
+
+  // GROUP 2: Cybersecurity Assessment (3→1)
   {
     name: 'Cybersecurity Assessment',
-    keep: 'cybersecurity_assessment',
-    merge: ['enterprise-cybersecurity-assessment-remediation-plan']
+    keep: 'cybersecurity_assessment', // 10 models
+    merge: [
+      'enterprise-zero-trust-security-architecture',
+      'ransomware-readiness-assessment'
+    ]
   },
+
+  // GROUP 3: ESG/Sustainability (2→1)
   {
-    name: 'Annual Financial Audit',
-    keep: 'annual_audit',
-    merge: ['audit-report-financial-statements']
+    name: 'ESG/Sustainability Report',
+    keep: 'esg-sustainability-report', // 2 models
+    merge: ['major-corporate-social-responsibility-csr-report'],
+    canonicalName: 'ESG/Sustainability Report'
   },
+
+  // GROUP 4: Corporate Communications (4→1)
   {
-    name: 'Tax Opinion',
-    keep: 'tax_opinion',
-    merge: ['comprehensive-tax-opinion-package']
+    name: 'Corporate Communications',
+    keep: 'integrated-marketing-campaign', // 1 model
+    merge: [
+      'annual-report-design-production',
+      'press-release-media-kit',
+      'social-media-strategy'
+    ],
+    canonicalName: 'Corporate Communications Package'
   },
+
+  // GROUP 5: Risk Assessment (2→1)
   {
-    name: 'Cloud Migration',
-    keep: 'cloud_migration',
-    merge: ['cloud-migration-strategy-business-case']
+    name: 'Risk Assessment',
+    keep: 'risk-assessment-report', // 2 models
+    merge: ['major-corporate-risk-assessment-report'],
+    canonicalName: 'Corporate Risk Assessment Report'
   },
+
+  // GROUP 6: Commercial Lease (2→1)
   {
-    name: 'Corporate Strategy',
-    keep: 'strategic_planning',
-    merge: ['enterprise-strategy-consulting-engagement']
+    name: 'Commercial Lease',
+    keep: 'commercial-lease-agreement-package', // 2 models
+    merge: ['lease-agreement-commercial'],
+    canonicalName: 'Commercial Lease Agreement'
   }
 ];
 

@@ -3570,7 +3570,7 @@
     },
     {
       "id": "integrated-marketing-campaign",
-      "name": "Integrated Marketing Campaign",
+      "name": "Corporate Communications Package",
       "sector": "Creative Services",
       "valuations": {
         "claude_opus45_cli": 95000
@@ -3607,11 +3607,12 @@
     },
     {
       "id": "risk-assessment-report",
-      "name": "Risk Assessment Report",
+      "name": "Corporate Risk Assessment Report",
       "sector": "Management Consulting",
       "valuations": {
         "claude_opus45_cli": 100000,
-        "claude_opus45_agents": 55000
+        "claude_opus45_agents": 55000,
+        "you_ari": 92500
       },
       "variance_ratio": 1.82
     },
@@ -3655,7 +3656,7 @@
     },
     {
       "id": "commercial-lease-agreement-package",
-      "name": "Commercial Lease Agreement Package",
+      "name": "Commercial Lease Agreement",
       "sector": "Legal Services",
       "valuations": {
         "claude_opus45_cli": 50000,
@@ -3678,15 +3679,6 @@
       "sector": "Management Consulting",
       "valuations": {
         "claude_opus45_cli": 137500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "annual-report-design-production",
-      "name": "Annual Report Design & Production",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 100000
       },
       "variance_ratio": null
     },
@@ -3782,15 +3774,6 @@
       "variance_ratio": null
     },
     {
-      "id": "social-media-strategy",
-      "name": "Social Media Strategy",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 32500
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "trademark-registration",
       "name": "Trademark Registration",
       "sector": "Legal Services",
@@ -3825,15 +3808,6 @@
       "sector": "Creative Services",
       "valuations": {
         "claude_opus45_cli": 20000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "press-release-media-kit",
-      "name": "Press Release & Media Kit",
-      "sector": "Creative Services",
-      "valuations": {
-        "claude_opus45_cli": 10000
       },
       "variance_ratio": null
     },
@@ -4188,15 +4162,6 @@
       "variance_ratio": null
     },
     {
-      "id": "major-corporate-social-responsibility-csr-report",
-      "name": "Major Corporate Social Responsibility (CSR) Report",
-      "sector": "Creative/Marketing",
-      "valuations": {
-        "you_ari": 120000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "major-construction-cost-estimation-report",
       "name": "Major Construction Cost Estimation Report",
       "sector": "Architecture",
@@ -4232,15 +4197,6 @@
         "chatgpt51_codex": 150000
       },
       "variance_ratio": 1.25
-    },
-    {
-      "id": "major-corporate-risk-assessment-report",
-      "name": "Major Corporate Risk Assessment Report",
-      "sector": "Management Consulting",
-      "valuations": {
-        "you_ari": 92500
-      },
-      "variance_ratio": null
     },
     {
       "id": "major-healthcare-market-access-dossier",
@@ -4650,15 +4606,6 @@
       "variance_ratio": null
     },
     {
-      "id": "lease-agreement-commercial",
-      "name": "Lease Agreement (Commercial)",
-      "sector": "Real Estate/Legal",
-      "valuations": {
-        "claude_opus45_agents": 55000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "pharmaceutical-label-package-insert",
       "name": "Pharmaceutical Label/Package Insert",
       "sector": "Medical/Regulatory",
@@ -4764,9 +4711,10 @@
       "sector": "Consulting/Corporate",
       "valuations": {
         "claude_opus45_agents": 275000,
-        "chatgpt51_codex": 450000
+        "chatgpt51_codex": 450000,
+        "you_ari": 120000
       },
-      "variance_ratio": 1.64
+      "variance_ratio": 3.75
     },
     {
       "id": "investor-presentation-deck",
@@ -5048,15 +4996,6 @@
       "variance_ratio": null
     },
     {
-      "id": "enterprise-zero-trust-security-architecture",
-      "name": "Enterprise Zero-Trust Security Architecture",
-      "sector": "Technology",
-      "valuations": {
-        "chatgpt51_codex": 825000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "national-transportation-master-plan-urban-state",
       "name": "National Transportation Master Plan (Urban/State)",
       "sector": "Engineering/Architecture",
@@ -5165,15 +5104,6 @@
       "variance_ratio": null
     },
     {
-      "id": "smart-factory-iiot-roadmap",
-      "name": "Smart Factory / IIoT Roadmap",
-      "sector": "Technology/Engineering",
-      "valuations": {
-        "chatgpt51_codex": 300000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "rwe-heor-value-dossier-payer-submission",
       "name": "RWE/HEOR Value Dossier (Payer Submission)",
       "sector": "Medical/Pharma",
@@ -5237,29 +5167,11 @@
       "variance_ratio": null
     },
     {
-      "id": "smart-city-iot-pilot-design",
-      "name": "Smart City IoT Pilot Design",
-      "sector": "Technology/Engineering",
-      "valuations": {
-        "chatgpt51_codex": 225000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "litigation-ediscovery-plan-tar-protocol",
       "name": "Litigation eDiscovery Plan & TAR Protocol",
       "sector": "Legal/Tech",
       "valuations": {
         "chatgpt51_codex": 225000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "ransomware-readiness-assessment",
-      "name": "Ransomware Readiness Assessment",
-      "sector": "Cybersecurity",
-      "valuations": {
-        "chatgpt51_codex": 210000
       },
       "variance_ratio": null
     },
@@ -5366,15 +5278,6 @@
       "id": "brand-campaign-creative-concepting",
       "name": "Brand Campaign Creative Concepting",
       "sector": "Marketing/Creative",
-      "valuations": {
-        "chatgpt51_codex": 127500
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "digital-twin-proof-of-concept",
-      "name": "Digital Twin Proof-of-Concept",
-      "sector": "Engineering/Tech",
       "valuations": {
         "chatgpt51_codex": 127500
       },
@@ -5500,12 +5403,12 @@
   ],
   "metadata": {
     "generated": "2025-11-28",
-    "total_artifacts": 432,
+    "total_artifacts": 421,
     "artifacts_before_consolidation": 470,
-    "duplicates_merged": 38,
+    "duplicates_merged": 49,
     "consolidation_date": "2025-11-28",
     "total_sectors": 75,
     "total_models": 12,
-    "note": "Artifact count reduced from 470 to 432 after consolidating 38 duplicates across two phases: 12 high-confidence groups (initial) + 15 additional groups (agent audit)."
+    "note": "Artifact count reduced from 470 to 421 after consolidating 49 duplicates across three phases: 12 initial groups (470→451), 15 agent-identified groups (451→432), and 6 single-model scale modifier groups (432→421)."
   }
 }

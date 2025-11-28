@@ -1,13 +1,13 @@
 {
   "metadata": {
     "generated": "2025-11-28",
-    "total_artifacts": 432,
+    "total_artifacts": 421,
     "artifacts_before_consolidation": 470,
-    "duplicates_merged": 38,
+    "duplicates_merged": 49,
     "consolidation_date": "2025-11-28",
     "total_sectors": 75,
     "total_models": 12,
-    "note": "Dashboard uses inline data; this file provides reference metadata. Artifact count reduced from 470 to 432 after consolidating 38 duplicates across two phases: 12 initial high-confidence groups (470→451) + 15 agent-identified groups (451→432)."
+    "note": "Dashboard uses inline data; this file provides reference metadata. Artifact count reduced from 470 to 421 after consolidating 49 duplicates across three phases: 12 initial groups (470→451), 15 agent-identified groups (451→432), and 6 single-model scale modifier groups (432→421)."
   },
   "models": {
     "claude_sonnet45": {

@@ -1,85 +1,40 @@
 ARTIFACT CONSOLIDATION REPORT
 ================================================================================
 
-Date: 2025-11-28T09:50:40.381Z
-Original Count: 438
-Final Count: 432
-Reduction: 6 artifacts (1.4%)
+Date: 2025-11-28T10:38:28.915Z
+Original Count: 432
+Final Count: 421
+Reduction: 11 artifacts (2.5%)
 
 MERGED GROUPS:
 ================================================================================
 
-1. Real Estate Appraisal
-   Primary: property_appraisal
-   Merged: 0 duplicate(s)
-   Total Models: 6
-
-2. Pricing Strategy
-   Primary: pricing_strategy
-   Merged: 0 duplicate(s)
-   Total Models: 5
-
-3. Transfer Pricing
-   Primary: transfer_pricing
-   Merged: 0 duplicate(s)
-   Total Models: 5
-
-4. Financial Model
-   Primary: financial-model-m-a-lbo
-   Merged: 0 duplicate(s)
-   Total Models: 2
-
-5. Digital Transformation
+1. Digital Transformation
    Primary: digital_transformation
-   Merged: 0 duplicate(s)
+   Merged: 3 duplicate(s)
    Total Models: 10
 
-6. API Strategy
-   Primary: api_strategy
-   Merged: 0 duplicate(s)
-   Total Models: 6
-
-7. HIPAA Compliance
-   Primary: hipaa_compliance
-   Merged: 0 duplicate(s)
-   Total Models: 6
-
-8. Merger Integration
-   Primary: merger_integration
-   Merged: 0 duplicate(s)
-   Total Models: 9
-
-9. Brand Repositioning
-   Primary: brand_repositioning
-   Merged: 0 duplicate(s)
-   Total Models: 8
-
-10. IT Due Diligence
-   Primary: it_due_diligence
-   Merged: 1 duplicate(s)
-   Total Models: 6
-
-11. Cybersecurity Assessment
+2. Cybersecurity Assessment
    Primary: cybersecurity_assessment
-   Merged: 1 duplicate(s)
+   Merged: 2 duplicate(s)
    Total Models: 10
 
-12. Annual Financial Audit
-   Primary: annual_audit
+3. ESG/Sustainability Report
+   Primary: esg-sustainability-report
    Merged: 1 duplicate(s)
-   Total Models: 7
+   Total Models: 3
 
-13. Tax Opinion
-   Primary: tax_opinion
-   Merged: 1 duplicate(s)
-   Total Models: 7
+4. Corporate Communications
+   Primary: integrated-marketing-campaign
+   Merged: 3 duplicate(s)
+   Total Models: 1
 
-14. Cloud Migration
-   Primary: cloud_migration
+5. Risk Assessment
+   Primary: risk-assessment-report
    Merged: 1 duplicate(s)
-   Total Models: 8
+   Total Models: 3
 
-15. Corporate Strategy
-   Primary: strategic_planning
+6. Commercial Lease
+   Primary: commercial-lease-agreement-package
    Merged: 1 duplicate(s)
-   Total Models: 5
+   Total Models: 2
