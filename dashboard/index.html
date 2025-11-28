@@ -1103,7 +1103,16 @@
                                 <th>Cross-Model Comparison</th>
                             </tr>
                         </thead>
-                        <tbody id="top25TableBody"></tbody>
+                        <tbody id="top25TableBody">
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                                    <div style="display: inline-block;">
+                                        <div style="margin-bottom: 10px; font-size: 1.2em;">⏳</div>
+                                        <div>Loading top artifacts...</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
 
@@ -7245,7 +7254,10 @@
                 await loadData();
                 initOverviewCharts();
                 initComparisonCharts();
-                initTop25Table();
+
+                // Defer Top Artifacts table to allow page to render first (performance optimization)
+                setTimeout(() => initTop25Table(), 0);
+
                 initArtifactView();
                 initVarianceCharts();
             } catch (error) {
