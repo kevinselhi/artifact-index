@@ -5399,7 +5399,7 @@
         let comparisonChart = null;
         let comparisonPage = 0;
         const ARTIFACTS_PER_PAGE = 8;
-        const MAX_PAGES = 20; // Support up to 160 artifacts
+        // Removed MAX_PAGES limit - now supports all 451 artifacts (57 pages)
 
         // Initialize Comparison Charts
         // Populate Model Characteristics Panel
@@ -5720,7 +5720,7 @@
 
         // Create page indicator dots
         function createComparisonPageDots() {
-            const totalPages = Math.min(Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE), MAX_PAGES);
+            const totalPages = Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE);
             const dotsContainer = document.getElementById('comparisonPageDots');
 
             let dotsHTML = '';
@@ -5750,7 +5750,7 @@
 
         // Update pagination button states and page info
         function updatePaginationButtons() {
-            const totalPages = Math.min(Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE), MAX_PAGES);
+            const totalPages = Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE);
 
             // Update page info text
             document.getElementById('comparisonPageInfo').textContent = `Page ${comparisonPage + 1} of ${totalPages}`;
@@ -5778,7 +5778,7 @@
 
         // Navigate to next page
         function nextComparisonPage() {
-            const totalPages = Math.min(Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE), MAX_PAGES);
+            const totalPages = Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE);
             if (comparisonPage < totalPages - 1) {
                 comparisonPage++;
                 updateComparisonChart();
@@ -5787,7 +5787,7 @@
 
         // Go to specific page
         function goToComparisonPage(page) {
-            const totalPages = Math.min(Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE), MAX_PAGES);
+            const totalPages = Math.ceil(artifacts.length / ARTIFACTS_PER_PAGE);
             if (page >= 0 && page < totalPages) {
                 comparisonPage = page;
                 updateComparisonChart();
