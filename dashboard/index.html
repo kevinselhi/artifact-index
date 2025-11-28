@@ -6171,15 +6171,51 @@
 
             // Helper to get market value for an artifact
             function getMarketValue(artifact) {
+                // Primary: Use hardcoded market research data if available
                 const marketData = artifactMarketData[artifact.id];
-                if (!marketData || !marketData.totalMarketValue) return 0;
-                return (marketData.totalMarketValue.low + marketData.totalMarketValue.high) / 2;
+                if (marketData && marketData.totalMarketValue) {
+                    return (marketData.totalMarketValue.low + marketData.totalMarketValue.high) / 2;
+                }
+
+                // Fallback: Calculate median from model valuations
+                const values = Object.values(artifact.valuations || {})
+                    .filter(v => v !== null && v !== undefined && v > 0);
+
+                if (values.length === 0) return 0;
+
+                values.sort((a, b) => a - b);
+                const mid = Math.floor(values.length / 2);
+                return values.length % 2 === 0
+                    ? (values[mid - 1] + values[mid]) / 2
+                    : values[mid];
             }
 
             // Helper to get confidence for an artifact
             function getConfidence(artifact) {
+                // Primary: Use hardcoded market research confidence if available
                 const marketData = artifactMarketData[artifact.id];
-                return marketData ? marketData.confidence : 0;
+                if (marketData && marketData.confidence) {
+                    return marketData.confidence;
+                }
+
+                // Fallback: Calculate confidence from model coverage
+                // Higher model coverage = higher confidence in valuation
+                const values = Object.values(artifact.valuations || {})
+                    .filter(v => v !== null && v !== undefined && v > 0);
+
+                if (values.length === 0) return 0;
+
+                // Base confidence from model coverage (more models = higher confidence)
+                const coverageConfidence = (values.length / MAX_MODELS) * 100;
+
+                // Reduce confidence if high variance (inconsistent valuations)
+                if (artifact.variance_ratio && artifact.variance_ratio > 10) {
+                    // High variance reduces confidence
+                    const variancePenalty = Math.min(30, (artifact.variance_ratio - 10) * 2);
+                    return Math.max(0, Math.round(coverageConfidence - variancePenalty));
+                }
+
+                return Math.round(coverageConfidence);
             }
 
             // Helper to get confidence level (high/medium/lower)
