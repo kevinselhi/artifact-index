@@ -14,7 +14,7 @@
         "perplexity": 60000000,
         "gemini30": 212500,
         "claude_opus45_cli": 36500000,
-        "you_ari": 2250000
+        "you_ari": 1500000
       },
       "variance_ratio": 352.94
     },
@@ -50,7 +50,7 @@
         "perplexity": 15000000,
         "gemini30": null,
         "claude_opus45_cli": 85000000,
-        "you_ari": 61250000
+        "you_ari": 52500000
       },
       "variance_ratio": 170
     },
@@ -103,7 +103,7 @@
         "perplexity": 5500000,
         "gemini30": 1700000,
         "claude_opus45_cli": 27500000,
-        "you_ari": 21750000
+        "you_ari": 16000000
       },
       "variance_ratio": 27.94
     },
@@ -677,7 +677,7 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": null,
-        "you_ari": null
+        "you_ari": 725000
       },
       "variance_ratio": 3.85
     },
@@ -3428,48 +3428,51 @@
     }
   ],
   "metadata": {
-    "generated": "2025-11-25",
-    "total_artifacts": 227,
+    "generated": "2025-11-28",
+    "total_artifacts": 211,
     "total_sectors": 28,
+    "total_models": 10,
     "sectors": [
-      "Medical/Pharma",
-      "Financial Services",
-      "Technology",
-      "Management Consulting",
-      "Legal/Financial",
-      "Financial/Legal",
-      "Engineering",
-      "Technology/Compliance",
-      "Operations/Consulting",
-      "Legal",
-      "Environmental/Engineering",
-      "Tax/International",
-      "HR Consulting",
+      "Agriculture",
       "Architecture",
       "Creative/Marketing",
-      "Environmental",
-      "Real Estate",
-      "Legal/Compliance",
-      "Marketing",
-      "Legal/Technology",
-      "Healthcare",
       "Energy",
+      "Engineering",
+      "Environmental",
+      "Environmental/Engineering",
+      "Financial Services",
+      "Financial/Legal",
       "Government",
-      "Media/Entertainment",
-      "Telecommunications",
-      "Retail/Consumer",
+      "HR Consulting",
+      "Healthcare",
+      "Legal",
+      "Legal/Compliance",
+      "Legal/Financial",
+      "Legal/Technology",
+      "Management Consulting",
       "Manufacturing",
-      "Agriculture"
+      "Marketing",
+      "Media/Entertainment",
+      "Medical/Pharma",
+      "Operations/Consulting",
+      "Real Estate",
+      "Retail/Consumer",
+      "Tax/International",
+      "Technology",
+      "Technology/Compliance",
+      "Telecommunications"
     ],
     "models": [
       "chatgpt5",
       "chatgpt51",
-      "o3pro",
-      "perplexity",
+      "claude_opus45_cli",
       "claude_sonnet45",
-      "opus45",
       "gemini",
-      "gemini30"
+      "gemini30",
+      "o3pro",
+      "opus45",
+      "perplexity",
+      "you_ari"
     ]
   }
 }
