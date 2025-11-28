@@ -8673,7 +8673,7 @@
                         title="Click to view detailed analysis">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <strong style="text-decoration: underline; text-decoration-style: dotted;">${a.name}</strong>
-                            <span class="variance-low" style="font-size: 0.85em;">${a.variance_ratio.toFixed(2)}x</span>
+                            <span class="variance-low" style="font-size: 0.85em;">${(a.variance_ratio || 1).toFixed(2)}x</span>
                         </div>
                         <div style="font-size: 0.85em; color: var(--text-secondary); margin-top: 5px;">
                             ${modelCount} models agree around ${formatCurrency(avgValue)}
@@ -8790,7 +8790,7 @@
                         title="Click to view detailed analysis">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <strong style="text-decoration: underline; text-decoration-style: dotted;">${a.name}</strong>
-                            <span class="variance-high" style="font-size: 0.85em;">${a.variance_ratio.toFixed(1)}x</span>
+                            <span class="variance-high" style="font-size: 0.85em;">${(a.variance_ratio || 1).toFixed(1)}x</span>
                         </div>
                         <div style="font-size: 0.85em; color: var(--text-secondary); margin-top: 5px;">
                             <span style="color: ${modelColors[minEntry[0]]}">${modelNames[minEntry[0]]}</span>: ${formatCurrency(minEntry[1])}
@@ -9192,7 +9192,7 @@
                     suffix = mktVal > 0 ? ` — ${formatCurrency(mktVal)} market` : ' — N/A';
                 } else if (currentArtifactSort === 'consensus') {
                     const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                    suffix = ` — ${modelCount} models, ${a.variance_ratio.toFixed(1)}x var`;
+                    suffix = ` — ${modelCount} models, ${(a.variance_ratio || 1).toFixed(1)}x var`;
                 }
                 select.innerHTML += `<option value="${a.id}">${a.name}${suffix}</option>`;
             });
@@ -9320,7 +9320,7 @@
             const avgModelCount = industryArtifacts.reduce((sum, a) => {
                 return sum + Object.values(a.valuations).filter(v => v !== null).length;
             }, 0) / industryArtifacts.length;
-            const avgVariance = industryArtifacts.reduce((sum, a) => sum + a.variance_ratio, 0) / industryArtifacts.length;
+            const avgVariance = industryArtifacts.reduce((sum, a) => sum + (a.variance_ratio || 1), 0) / industryArtifacts.length;
 
             // Get US market spend for this industry
             const marketInfo = industryMarketData[industry] || { spend: null, source: 'Data not available' };
@@ -9357,7 +9357,7 @@
                     <div style="display: flex; flex-direction: column; gap: 6px; max-height: 400px; overflow-y: auto;">
                         ${sortedByValue.map((a, i) => {
                             const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                            const varianceClass = a.variance_ratio > 10 ? '#E07A5F' : a.variance_ratio > 3 ? '#F4A261' : '#81B29A';
+                            const varianceClass = (a.variance_ratio || 1) > 10 ? '#E07A5F' : (a.variance_ratio || 1) > 3 ? '#F4A261' : '#81B29A';
                             return `
                             <div onclick="document.getElementById('artifactSelect').value='${a.id}'; document.getElementById('artifactSelect').dispatchEvent(new Event('change'));"
                                  style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; cursor: pointer; transition: background 0.2s; border-left: 3px solid ${varianceClass};"
@@ -9366,7 +9366,7 @@
                                     <span style="color: #81B29A; font-weight: bold; min-width: 28px;">#${i + 1}</span>
                                     <div>
                                         <div style="color: var(--text-primary); font-weight: 500;">${a.name}</div>
-                                        <div style="font-size: 0.75em; color: var(--text-secondary);">${modelCount} models · ${a.variance_ratio.toFixed(1)}x variance</div>
+                                        <div style="font-size: 0.75em; color: var(--text-secondary);">${modelCount} models · ${(a.variance_ratio || 1).toFixed(1)}x variance</div>
                                     </div>
                                 </div>
                                 <span style="color: #4285F4; font-weight: 600; font-size: 0.95em;">${formatCurrency(calculateAverageValue(a))}</span>
@@ -9516,8 +9516,8 @@
                     </div>
                     <div style="margin-bottom: 15px;">
                         <strong>Variance Ratio:</strong>
-                        <span class="${artifact.variance_ratio > 10 ? 'variance-high' : artifact.variance_ratio > 3 ? 'variance-medium' : 'variance-low'}">
-                            ${artifact.variance_ratio.toFixed(2)}x
+                        <span class="${(artifact.variance_ratio || 1) > 10 ? 'variance-high' : (artifact.variance_ratio || 1) > 3 ? 'variance-medium' : 'variance-low'}">
+                            ${(artifact.variance_ratio || 1).toFixed(2)}x
                         </span>
                     </div>
                     <div style="margin-bottom: 15px;">
@@ -9619,15 +9619,15 @@
                     clusterDesc = `~${formatCurrency(Math.round(a.avgVal / 10000) * 10000)} range`;
                 }
 
-                const varianceClass = a.variance_ratio > 10 ? 'variance-high' :
-                                      a.variance_ratio > 3 ? 'variance-medium' : 'variance-low';
+                const varianceClass = (a.variance_ratio || 1) > 10 ? 'variance-high' :
+                                      (a.variance_ratio || 1) > 3 ? 'variance-medium' : 'variance-low';
 
                 table.innerHTML += `
                     <tr style="cursor: pointer;" onclick="document.getElementById('artifactSelect').value='${a.id}'; document.getElementById('artifactSelect').dispatchEvent(new Event('change'));">
                         <td>${a.name}</td>
                         <td><span style="background: rgba(129,178,154,0.3); padding: 2px 8px; border-radius: 4px;">${a.modelCount} models</span></td>
                         <td>${formatCurrency(a.minVal)} - ${formatCurrency(a.maxVal)}</td>
-                        <td class="${varianceClass}">${a.variance_ratio.toFixed(2)}x</td>
+                        <td class="${varianceClass}">${(a.variance_ratio || 1).toFixed(2)}x</td>
                         <td><strong style="color: #81B29A;">${clusterDesc}</strong></td>
                     </tr>
                 `;
@@ -9695,7 +9695,7 @@
                 const totalInIndustry = sourceArtifacts.length;
                 const highConsensusCount = consensusArtifacts.length;
                 const avgVariance = consensusArtifacts.length > 0
-                    ? consensusArtifacts.reduce((sum, a) => sum + a.variance_ratio, 0) / consensusArtifacts.length
+                    ? consensusArtifacts.reduce((sum, a) => sum + (a.variance_ratio || 1), 0) / consensusArtifacts.length
                     : 0;
                 const totalValue = consensusArtifacts.reduce((sum, a) => sum + a.avgVal, 0);
 
@@ -9721,7 +9721,7 @@
                         <div style="padding: 10px; background: rgba(129,178,154,0.1); border-radius: 6px; border-left: 3px solid #81B29A;">
                             <div style="font-size: 0.75em; color: #81B29A; font-weight: 600;">BEST CONSENSUS</div>
                             <div style="font-size: 0.9em; color: var(--text-primary);">${bestConsensus.name}</div>
-                            <div style="font-size: 0.8em; color: var(--text-secondary);">${bestConsensus.variance_ratio.toFixed(2)}x variance · ${bestConsensus.modelCount} models</div>
+                            <div style="font-size: 0.8em; color: var(--text-secondary);">${(bestConsensus.variance_ratio || 1).toFixed(2)}x variance · ${bestConsensus.modelCount} models</div>
                         </div>
                         ` : ''}
                     </div>
@@ -9883,8 +9883,8 @@
                 const minEntry = values.reduce((min, curr) => curr[1] < min[1] ? curr : min);
                 const maxEntry = values.reduce((max, curr) => curr[1] > max[1] ? curr : max);
 
-                const varianceClass = a.variance_ratio > 10 ? 'variance-high' :
-                                      a.variance_ratio > 3 ? 'variance-medium' : 'variance-low';
+                const varianceClass = (a.variance_ratio || 1) > 10 ? 'variance-high' :
+                                      (a.variance_ratio || 1) > 3 ? 'variance-medium' : 'variance-low';
 
                 // Generate contextual explanations based on artifact and variance type
                 let explanation;
@@ -9934,7 +9934,7 @@
                                 title="Click to view detailed analysis"
                             >${a.name}</span>
                         </td>
-                        <td class="${varianceClass}">${a.variance_ratio.toFixed(2)}x</td>
+                        <td class="${varianceClass}">${(a.variance_ratio || 1).toFixed(2)}x</td>
                         <td>${formatCurrency(minEntry[1])} (<span style="color: ${modelColors[minEntry[0]]}">${modelNames[minEntry[0]]}</span>)</td>
                         <td>${formatCurrency(maxEntry[1])} (<span style="color: ${modelColors[maxEntry[0]]}">${modelNames[maxEntry[0]]}</span>)</td>
                         <td>${explanation}</td>
@@ -9993,7 +9993,7 @@
             const sorted = [...multiModelArtifacts].sort((a, b) => b.variance_ratio - a.variance_ratio);
 
             // Find mid-range: skip highest variance items and take the next set
-            const highCount = sorted.filter(a => a.variance_ratio > 10).length;
+            const highCount = sorted.filter(a => (a.variance_ratio || 1) > 10).length;
             const midStart = Math.min(highCount, Math.floor(sorted.length / 3));
             const mid15 = sorted.slice(midStart, midStart + 15);
             populateVarianceTable(mid15, 'mid');
