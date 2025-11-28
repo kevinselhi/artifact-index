@@ -14,7 +14,9 @@
         "perplexity": 60000000,
         "gemini30": 212500,
         "claude_opus45_cli": 36500000,
-        "you_ari": 1500000
+        "you_ari": 1500000,
+        "claude_opus45_agents": 11000000,
+        "chatgpt51_codex": 1300000
       },
       "variance_ratio": 352.94
     },
@@ -33,7 +35,8 @@
         "gemini30": 850000,
         "claude_opus45_cli": 4000000,
         "you_ari": 2500000,
-        "claude_opus45_agents": 55000000
+        "claude_opus45_agents": 55000000,
+        "chatgpt51_codex": 1450000
       },
       "variance_ratio": 352.94
     },
@@ -124,7 +127,8 @@
         "perplexity": null,
         "gemini30": 1250000,
         "claude_opus45_cli": 10000000,
-        "you_ari": 42500000
+        "you_ari": 42500000,
+        "chatgpt51_codex": 2250000
       },
       "variance_ratio": 34
     },
@@ -160,9 +164,11 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 25000,
-        "claude_opus45_cli": 300000
+        "claude_opus45_cli": 300000,
+        "claude_opus45_agents": 275000,
+        "chatgpt51_codex": 335000
       },
-      "variance_ratio": 12
+      "variance_ratio": 13.4
     },
     {
       "id": "infrastructure_engineering",
@@ -254,9 +260,10 @@
         "o3pro": null,
         "perplexity": null,
         "gemini30": 80000,
-        "claude_opus45_cli": 85000
+        "claude_opus45_cli": 85000,
+        "chatgpt51_codex": 142500
       },
-      "variance_ratio": 2.78
+      "variance_ratio": 3.17
     },
     {
       "id": "quality_of_earnings",
@@ -944,8 +951,8 @@
         "opus45": 1200000,
         "chatgpt51": 1500000,
         "chatgpt5": 650000,
-        "o3pro": null,
-        "perplexity": null,
+        "o3pro": 1800000,
+        "perplexity": 2500000,
         "gemini30": 400000
       },
       "variance_ratio": 6.25
@@ -1081,23 +1088,6 @@
       "variance_ratio": 5
     },
     {
-      "id": "data_governance_framework",
-      "name": "Data Governance Framework",
-      "sector": "Technology",
-      "valuations": {
-        "claude_sonnet45": 300000,
-        "gemini": 900000,
-        "opus45": 500000,
-        "chatgpt51": null,
-        "chatgpt5": 250000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null,
-        "chatgpt51_codex": 265000
-      },
-      "variance_ratio": 3.6
-    },
-    {
       "id": "api_strategy",
       "name": "API Strategy & Platform Design",
       "sector": "Technology",
@@ -1178,22 +1168,6 @@
         "gemini30": null
       },
       "variance_ratio": 6
-    },
-    {
-      "id": "identity_access_management",
-      "name": "Identity & Access Management",
-      "sector": "Technology",
-      "valuations": {
-        "claude_sonnet45": 300000,
-        "gemini": 1000000,
-        "opus45": 500000,
-        "chatgpt51": null,
-        "chatgpt5": 250000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
-      },
-      "variance_ratio": 4
     },
     {
       "id": "data_warehouse",
@@ -2590,22 +2564,6 @@
       "variance_ratio": 26.67
     },
     {
-      "id": "hedge_fund_setup",
-      "name": "Hedge Fund Formation",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_sonnet45": 1500000,
-        "gemini": 5000000,
-        "opus45": 2500000,
-        "chatgpt51": 3000000,
-        "chatgpt5": 1200000,
-        "o3pro": 1800000,
-        "perplexity": 2500000,
-        "gemini30": 500000
-      },
-      "variance_ratio": 10
-    },
-    {
       "id": "private_equity_fund",
       "name": "Private Equity Fund Launch",
       "sector": "Financial Services",
@@ -2748,7 +2706,8 @@
         "chatgpt5": 400000,
         "o3pro": 600000,
         "perplexity": 750000,
-        "gemini30": 250000
+        "gemini30": 250000,
+        "chatgpt51_codex": 265000
       },
       "variance_ratio": 8
     },
@@ -3511,39 +3470,13 @@
     },
     {
       "id": "mega-deal-m-a-advisory-package",
-      "name": "Mega-Deal M&A Advisory Package",
+      "name": "Mega-Deal M&A Advisory Package (Sell-Side)",
       "sector": "Financial Services",
       "valuations": {
-        "claude_opus45_cli": 85000000
+        "claude_opus45_cli": 85000000,
+        "you_ari": 70000000
       },
-      "variance_ratio": null
-    },
-    {
-      "id": "phase-iii-clinical-trial-protocol-execution",
-      "name": "Phase III Clinical Trial Protocol & Execution",
-      "sector": "Medical/Pharmaceutical",
-      "valuations": {
-        "claude_opus45_cli": 36500000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "ipo-prospectus-securities-offering-package",
-      "name": "IPO Prospectus & Securities Offering Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 10000000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "complex-restructuring-chapter-11-advisory",
-      "name": "Complex Restructuring/Chapter 11 Advisory",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_opus45_cli": 27500000
-      },
-      "variance_ratio": null
+      "variance_ratio": 1.21
     },
     {
       "id": "enterprise-strategy-consulting-engagement",
@@ -3573,15 +3506,6 @@
       "variance_ratio": null
     },
     {
-      "id": "pma-premarket-approval-submission-package",
-      "name": "PMA (Premarket Approval) Submission Package",
-      "sector": "Medical/Pharmaceutical",
-      "valuations": {
-        "claude_opus45_cli": 1250000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "municipal-bond-offering-package",
       "name": "Municipal Bond Offering Package",
       "sector": "Financial Services",
@@ -3599,17 +3523,6 @@
         "claude_opus45_cli": 1250000
       },
       "variance_ratio": null
-    },
-    {
-      "id": "510-k-medical-device-submission",
-      "name": "510(k) Medical Device Submission",
-      "sector": "Medical/Pharmaceutical",
-      "valuations": {
-        "claude_opus45_cli": 300000,
-        "claude_opus45_agents": 275000,
-        "chatgpt51_codex": 335000
-      },
-      "variance_ratio": 1.22
     },
     {
       "id": "s-p-500-annual-audit",
@@ -3653,9 +3566,10 @@
       "name": "Bridge/Highway Design Package",
       "sector": "Engineering",
       "valuations": {
-        "claude_opus45_cli": 2750000
+        "claude_opus45_cli": 2750000,
+        "chatgpt51_codex": 360000
       },
-      "variance_ratio": null
+      "variance_ratio": 7.64
     },
     {
       "id": "it-due-diligence-technical-assessment",
@@ -3683,16 +3597,6 @@
         "claude_opus45_cli": 300000
       },
       "variance_ratio": null
-    },
-    {
-      "id": "soc-2-type-ii-audit-report",
-      "name": "SOC 2 Type II Audit & Report",
-      "sector": "Technology Services",
-      "valuations": {
-        "claude_opus45_cli": 85000,
-        "chatgpt51_codex": 142500
-      },
-      "variance_ratio": 1.68
     },
     {
       "id": "corporate-governance-advisory-package",
@@ -4046,15 +3950,6 @@
       "variance_ratio": null
     },
     {
-      "id": "m-a-sell-side-advisory-mandate-mega-deal",
-      "name": "M&A Sell-Side Advisory Mandate (Mega-Deal)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 70000000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "m-a-buy-side-advisory-mandate-mega-deal",
       "name": "M&A Buy-Side Advisory Mandate (Mega-Deal)",
       "sector": "Financial Services",
@@ -4082,15 +3977,6 @@
       "variance_ratio": null
     },
     {
-      "id": "bankruptcy-plan-of-reorganization-chapter-11",
-      "name": "Bankruptcy Plan of Reorganization (Chapter 11)",
-      "sector": "Financial Services",
-      "valuations": {
-        "you_ari": 16000000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "private-equity-due-diligence-report-large-cap",
       "name": "Private Equity Due Diligence Report (Large Cap)",
       "sector": "Financial Services",
@@ -4098,17 +3984,6 @@
         "you_ari": 3000000
       },
       "variance_ratio": null
-    },
-    {
-      "id": "clinical-trial-protocol-phase-iii-global",
-      "name": "Clinical Trial Protocol (Phase III, Global)",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 3000000,
-        "claude_opus45_agents": 11000000,
-        "chatgpt51_codex": 1300000
-      },
-      "variance_ratio": 8.46
     },
     {
       "id": "antitrust-competition-analysis-mega-deal",
@@ -4135,24 +4010,6 @@
       "sector": "Management Consulting",
       "valuations": {
         "you_ari": 3250000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "premarket-approval-pma-submission",
-      "name": "Premarket Approval (PMA) Submission",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 1750000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "phase-iii-clinical-trial-protocol-execution-1",
-      "name": "Phase III Clinical Trial Protocol & Execution",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "you_ari": 1500000
       },
       "variance_ratio": null
     },
@@ -5275,15 +5132,6 @@
       "variance_ratio": null
     },
     {
-      "id": "ipo-prospectus-s-1-drafting-readiness",
-      "name": "IPO Prospectus (S-1) Drafting & Readiness",
-      "sector": "Legal/Financial",
-      "valuations": {
-        "chatgpt51_codex": 2250000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "spac-s-4-de-spac-transaction-materials",
       "name": "SPAC S-4 / De-SPAC Transaction Materials",
       "sector": "Legal/Financial",
@@ -5298,15 +5146,6 @@
       "sector": "Financial Services",
       "valuations": {
         "chatgpt51_codex": 1600000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "fda-new-drug-application-nda-submission-dossier",
-      "name": "FDA New Drug Application (NDA) Submission Dossier",
-      "sector": "Medical/Regulatory",
-      "valuations": {
-        "chatgpt51_codex": 1450000
       },
       "variance_ratio": null
     },
@@ -5464,36 +5303,9 @@
       "variance_ratio": null
     },
     {
-      "id": "soc-2-type-ii-readiness-audit-package-enterprise",
-      "name": "SOC 2 Type II Readiness & Audit Package (Enterprise)",
-      "sector": "Technology/Regulatory",
-      "valuations": {
-        "chatgpt51_codex": 410000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "fda-510-k-premarket-notification",
-      "name": "FDA 510(k) Premarket Notification",
-      "sector": "Medical/Regulatory",
-      "valuations": {
-        "chatgpt51_codex": 375000
-      },
-      "variance_ratio": null
-    },
-    {
       "id": "enterprise-data-privacy-impact-assessment-suite",
       "name": "Enterprise Data Privacy Impact Assessment Suite",
       "sector": "Legal/Tech",
-      "valuations": {
-        "chatgpt51_codex": 360000
-      },
-      "variance_ratio": null
-    },
-    {
-      "id": "highway-bridge-detailed-design-package",
-      "name": "Highway/Bridge Detailed Design Package",
-      "sector": "Engineering",
       "valuations": {
         "chatgpt51_codex": 360000
       },

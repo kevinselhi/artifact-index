@@ -1,0 +1,70 @@
+ARTIFACT CONSOLIDATION REPORT
+================================================================================
+
+Date: 2025-11-28T05:05:24.788Z
+Original Count: 470
+Final Count: 451
+Reduction: 19 artifacts (4.0%)
+
+MERGED GROUPS:
+================================================================================
+
+1. Mega-Deal M&A Sell-Side Advisory
+   Primary: mega-deal-m-a-advisory-package
+   Merged: 1 duplicate(s)
+   Total Models: 2
+
+2. Phase III Clinical Trial
+   Primary: clinical_trial_phase3
+   Merged: 3 duplicate(s)
+   Total Models: 9
+
+3. IPO S-1 Prospectus
+   Primary: ipo_s1_registration
+   Merged: 2 duplicate(s)
+   Total Models: 8
+
+4. PMA (Premarket Approval)
+   Primary: pma_application
+   Merged: 2 duplicate(s)
+   Total Models: 6
+
+5. 510(k) Medical Device
+   Primary: medical_device_510k
+   Merged: 2 duplicate(s)
+   Total Models: 7
+
+6. Chapter 11 Reorganization
+   Primary: bankruptcy_restructuring
+   Merged: 2 duplicate(s)
+   Total Models: 8
+
+7. SOC 2 Type II Audit
+   Primary: soc2_audit
+   Merged: 2 duplicate(s)
+   Total Models: 6
+
+8. NDA (New Drug Application)
+   Primary: nda_bla_application
+   Merged: 1 duplicate(s)
+   Total Models: 7
+
+9. Data Governance Framework
+   Primary: data_governance
+   Merged: 1 duplicate(s)
+   Total Models: 9
+
+10. Identity & Access Management
+   Primary: identity_management
+   Merged: 1 duplicate(s)
+   Total Models: 8
+
+11. Highway/Bridge Design
+   Primary: bridge-highway-design-package
+   Merged: 1 duplicate(s)
+   Total Models: 2
+
+12. Hedge Fund Formation
+   Primary: hedge_fund_formation
+   Merged: 1 duplicate(s)
+   Total Models: 8
