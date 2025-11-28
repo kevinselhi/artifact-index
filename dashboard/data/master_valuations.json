@@ -12,9 +12,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 60000000,
-        "gemini30": 212500
+        "gemini30": 212500,
+        "claude_opus45_cli": 36500000,
+        "you_ari": 2250000
       },
-      "variance_ratio": 5.13
+      "variance_ratio": 352.94
     },
     {
       "id": "nda_bla_application",
@@ -28,9 +30,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 850000
+        "gemini30": 850000,
+        "claude_opus45_cli": 4000000,
+        "you_ari": 2500000
       },
-      "variance_ratio": 54.55
+      "variance_ratio": 352.94
     },
     {
       "id": "ma_advisory_large",
@@ -44,9 +48,11 @@
         "chatgpt5": 500000,
         "o3pro": 2200000,
         "perplexity": 15000000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 85000000,
+        "you_ari": 61250000
       },
-      "variance_ratio": 30
+      "variance_ratio": 170.0
     },
     {
       "id": "erp_implementation",
@@ -60,9 +66,10 @@
         "chatgpt5": 900000,
         "o3pro": 1200000,
         "perplexity": 2750000,
-        "gemini30": 375000
+        "gemini30": 375000,
+        "claude_opus45_cli": 7500000
       },
-      "variance_ratio": 22.22
+      "variance_ratio": 33.33
     },
     {
       "id": "digital_transformation",
@@ -76,7 +83,9 @@
         "chatgpt5": 450000,
         "o3pro": 1650000,
         "perplexity": 6000000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 1250000,
+        "you_ari": 3250000
       },
       "variance_ratio": 13.33
     },
@@ -92,9 +101,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 5500000,
-        "gemini30": 1700000
+        "gemini30": 1700000,
+        "claude_opus45_cli": 27500000,
+        "you_ari": 21750000
       },
-      "variance_ratio": 15.83
+      "variance_ratio": 27.94
     },
     {
       "id": "ipo_s1_registration",
@@ -108,9 +119,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 1250000
+        "gemini30": 1250000,
+        "claude_opus45_cli": 10000000,
+        "you_ari": 42500000
       },
-      "variance_ratio": 9.26
+      "variance_ratio": 34.0
     },
     {
       "id": "cloud_migration",
@@ -124,9 +137,11 @@
         "chatgpt5": 600000,
         "o3pro": 950000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 425000,
+        "you_ari": 1375000
       },
-      "variance_ratio": 4.17
+      "variance_ratio": 5.88
     },
     {
       "id": "medical_device_510k",
@@ -140,9 +155,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 25000
+        "gemini30": 25000,
+        "claude_opus45_cli": 300000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "infrastructure_engineering",
@@ -156,7 +172,9 @@
         "chatgpt5": 750000,
         "o3pro": null,
         "perplexity": 27500000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 3000000,
+        "you_ari": 950000
       },
       "variance_ratio": 533.33
     },
@@ -172,9 +190,11 @@
         "chatgpt5": 300000,
         "o3pro": 800000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 1250000,
+        "you_ari": 2125000
       },
-      "variance_ratio": 4.17
+      "variance_ratio": 7.08
     },
     {
       "id": "cybersecurity_assessment",
@@ -188,9 +208,11 @@
         "chatgpt5": 400000,
         "o3pro": 800000,
         "perplexity": 100000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 100000,
+        "you_ari": 625000
       },
-      "variance_ratio": 20
+      "variance_ratio": 13.75
     },
     {
       "id": "fairness_opinion",
@@ -204,9 +226,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 600000,
-        "gemini30": 1700000
+        "gemini30": 1700000,
+        "claude_opus45_cli": 1100000,
+        "you_ari": 5500000
       },
-      "variance_ratio": 6.67
+      "variance_ratio": 9.17
     },
     {
       "id": "soc2_audit",
@@ -220,7 +244,8 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 80000
+        "gemini30": 80000,
+        "claude_opus45_cli": 85000
       },
       "variance_ratio": 2.78
     },
@@ -236,9 +261,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 125000
+        "gemini30": 125000,
+        "claude_opus45_cli": 100000
       },
-      "variance_ratio": 4.91
+      "variance_ratio": 6.75
     },
     {
       "id": "supply_chain_optimization",
@@ -254,7 +280,7 @@
         "perplexity": null,
         "gemini30": 125000
       },
-      "variance_ratio": 6.88
+      "variance_ratio": 11.0
     },
     {
       "id": "litigation_expert",
@@ -268,7 +294,8 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 425000
+        "gemini30": 425000,
+        "you_ari": 425000
       },
       "variance_ratio": 7.06
     },
@@ -284,9 +311,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 550000,
-        "gemini30": 125000
+        "gemini30": 125000,
+        "claude_opus45_cli": 43000000,
+        "you_ari": 625000
       },
-      "variance_ratio": 78.18
+      "variance_ratio": 344.0
     },
     {
       "id": "transfer_pricing",
@@ -334,7 +363,7 @@
         "perplexity": null,
         "gemini30": 40000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "clinical_trial_phase2",
@@ -348,9 +377,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 13500000,
-        "gemini30": null
+        "gemini30": 150000,
+        "claude_opus45_cli": 16500000
       },
-      "variance_ratio": 3.38
+      "variance_ratio": 110.0
     },
     {
       "id": "clinical_trial_phase1",
@@ -364,9 +394,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 3000000,
-        "gemini30": null
+        "gemini30": 100000,
+        "claude_opus45_cli": 6000000
       },
-      "variance_ratio": 10.91
+      "variance_ratio": 60.0
     },
     {
       "id": "ma_advisory_midmarket",
@@ -380,9 +411,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 3500000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 2000000
       },
-      "variance_ratio": 1
+      "variance_ratio": 1.75
     },
     {
       "id": "cybersecurity_program",
@@ -398,7 +430,7 @@
         "perplexity": 300000,
         "gemini30": null
       },
-      "variance_ratio": 1
+      "variance_ratio": 0
     },
     {
       "id": "hospital_architecture",
@@ -414,7 +446,7 @@
         "perplexity": 8000000,
         "gemini30": null
       },
-      "variance_ratio": 1
+      "variance_ratio": 0
     },
     {
       "id": "annual_audit",
@@ -428,9 +460,10 @@
         "chatgpt5": null,
         "o3pro": 450000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 44000000
       },
-      "variance_ratio": 12.94
+      "variance_ratio": 103.53
     },
     {
       "id": "data_analytics_platform",
@@ -446,7 +479,7 @@
         "perplexity": 1650000,
         "gemini30": null
       },
-      "variance_ratio": 5.5
+      "variance_ratio": 2.36
     },
     {
       "id": "brand_repositioning",
@@ -460,7 +493,9 @@
         "chatgpt5": 150000,
         "o3pro": null,
         "perplexity": 5500000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 300000,
+        "you_ari": 625000
       },
       "variance_ratio": 36.67
     },
@@ -492,9 +527,10 @@
         "chatgpt5": 250000,
         "o3pro": 1300000,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 3250000
       },
-      "variance_ratio": 5.2
+      "variance_ratio": 13.0
     },
     {
       "id": "performance_improvement",
@@ -510,7 +546,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3.53
+      "variance_ratio": 3.95
     },
     {
       "id": "organizational_restructuring",
@@ -572,9 +608,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 3150000
       },
-      "variance_ratio": 1.57
+      "variance_ratio": 9.0
     },
     {
       "id": "real_estate_feasibility",
@@ -588,9 +625,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": 425000,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 300000
       },
-      "variance_ratio": 4.25
+      "variance_ratio": 2.12
     },
     {
       "id": "transportation_corridor",
@@ -606,7 +644,7 @@
         "perplexity": 1125000,
         "gemini30": null
       },
-      "variance_ratio": 1
+      "variance_ratio": 0
     },
     {
       "id": "tax_opinion",
@@ -620,9 +658,11 @@
         "chatgpt5": 350000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 600000,
+        "you_ari": 500000
       },
-      "variance_ratio": 1.75
+      "variance_ratio": 3.0
     },
     {
       "id": "architectural_design",
@@ -636,7 +676,8 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "you_ari": null
       },
       "variance_ratio": 3.85
     },
@@ -654,7 +695,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6
+      "variance_ratio": 6.0
     },
     {
       "id": "investment_advisory",
@@ -684,9 +725,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "you_ari": 800000
       },
-      "variance_ratio": 1
+      "variance_ratio": 1.25
     },
     {
       "id": "market_research",
@@ -716,9 +758,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 1250000,
+        "you_ari": 425000
       },
-      "variance_ratio": 8
+      "variance_ratio": 10.0
     },
     {
       "id": "blockchain_implementation",
@@ -750,7 +794,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 2
+      "variance_ratio": 2.0
     },
     {
       "id": "strategic_planning",
@@ -766,39 +810,39 @@
         "perplexity": 1750000,
         "gemini30": null
       },
-      "variance_ratio": 4.25
+      "variance_ratio": 4.38
     },
     {
       "id": "securities_litigation",
-      "name": "Securities Litigation Defense",
+      "name": "Securities Class Action Defense",
       "sector": "Legal",
       "valuations": {
-        "claude_sonnet45": 2500000,
-        "gemini": 5000000,
-        "opus45": 3500000,
-        "chatgpt51": null,
-        "chatgpt5": null,
+        "claude_sonnet45": 5000000,
+        "gemini": 25000000,
+        "opus45": 12000000,
+        "chatgpt51": 15000000,
+        "chatgpt5": 4000000,
         "o3pro": null,
-        "perplexity": null,
-        "gemini30": 1500000
+        "perplexity": 8000000,
+        "gemini30": 2000000
       },
-      "variance_ratio": 3.33
+      "variance_ratio": 12.5
     },
     {
       "id": "antitrust_filing",
-      "name": "Antitrust/Competition Filing",
-      "sector": "Legal",
+      "name": "Antitrust/HSR Filing Package",
+      "sector": "Legal/Financial",
       "valuations": {
         "claude_sonnet45": 1500000,
-        "gemini": 3000000,
-        "opus45": 2000000,
-        "chatgpt51": null,
-        "chatgpt5": null,
+        "gemini": 5000000,
+        "opus45": 2500000,
+        "chatgpt51": 3000000,
+        "chatgpt5": 1200000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": 600000
       },
-      "variance_ratio": 2
+      "variance_ratio": 8.33
     },
     {
       "id": "regulatory_investigation",
@@ -814,7 +858,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "ip_portfolio_audit",
@@ -853,16 +897,16 @@
       "name": "Hedge Fund Formation Package",
       "sector": "Financial Services",
       "valuations": {
-        "claude_sonnet45": 500000,
-        "gemini": 1500000,
-        "opus45": 800000,
-        "chatgpt51": null,
-        "chatgpt5": 400000,
+        "claude_sonnet45": 800000,
+        "gemini": 2500000,
+        "opus45": 1200000,
+        "chatgpt51": 1500000,
+        "chatgpt5": 650000,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": 400000
       },
-      "variance_ratio": 3.75
+      "variance_ratio": 6.25
     },
     {
       "id": "private_placement_memo",
@@ -878,23 +922,23 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "credit_rating_analysis",
-      "name": "Credit Rating Analysis",
+      "name": "Corporate Credit Rating Analysis",
       "sector": "Financial Services",
       "valuations": {
         "claude_sonnet45": 300000,
-        "gemini": 750000,
-        "opus45": 450000,
+        "gemini": 800000,
+        "opus45": 500000,
         "chatgpt51": null,
         "chatgpt5": 250000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "o3pro": 400000,
+        "perplexity": 450000,
+        "gemini30": 150000
       },
-      "variance_ratio": 3
+      "variance_ratio": 5.33
     },
     {
       "id": "portfolio_risk_assessment",
@@ -910,7 +954,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3
+      "variance_ratio": 3.0
     },
     {
       "id": "derivatives_documentation",
@@ -942,7 +986,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3
+      "variance_ratio": 3.0
     },
     {
       "id": "asset_backed_securities",
@@ -990,7 +1034,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 5.0
     },
     {
       "id": "data_governance_framework",
@@ -1026,19 +1070,19 @@
     },
     {
       "id": "devops_transformation",
-      "name": "DevOps Transformation Roadmap",
+      "name": "DevOps Transformation Program",
       "sector": "Technology",
       "valuations": {
-        "claude_sonnet45": 250000,
-        "gemini": 750000,
-        "opus45": 400000,
-        "chatgpt51": null,
-        "chatgpt5": 200000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "claude_sonnet45": 800000,
+        "gemini": 3000000,
+        "opus45": 1500000,
+        "chatgpt51": 2000000,
+        "chatgpt5": 650000,
+        "o3pro": 1000000,
+        "perplexity": 1200000,
+        "gemini30": 350000
       },
-      "variance_ratio": 3.75
+      "variance_ratio": 8.57
     },
     {
       "id": "it_due_diligence",
@@ -1086,7 +1130,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6
+      "variance_ratio": 6.0
     },
     {
       "id": "identity_access_management",
@@ -1102,23 +1146,23 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "data_warehouse",
-      "name": "Data Warehouse Implementation",
+      "name": "Enterprise Data Warehouse",
       "sector": "Technology",
       "valuations": {
-        "claude_sonnet45": 500000,
-        "gemini": 2000000,
-        "opus45": 1000000,
-        "chatgpt51": null,
-        "chatgpt5": 450000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "claude_sonnet45": 1500000,
+        "gemini": 6000000,
+        "opus45": 3000000,
+        "chatgpt51": 4000000,
+        "chatgpt5": 1200000,
+        "o3pro": 2000000,
+        "perplexity": 2500000,
+        "gemini30": 600000
       },
-      "variance_ratio": 4.44
+      "variance_ratio": 10.0
     },
     {
       "id": "mobile_app_development",
@@ -1148,9 +1192,11 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": null
+        "gemini30": null,
+        "claude_opus45_cli": 1250000,
+        "you_ari": 1750000
       },
-      "variance_ratio": 5
+      "variance_ratio": 8.0
     },
     {
       "id": "de_novo_classification",
@@ -1166,7 +1212,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3
+      "variance_ratio": 3.0
     },
     {
       "id": "clinical_study_report",
@@ -1182,7 +1228,7 @@
         "perplexity": null,
         "gemini30": 250000
       },
-      "variance_ratio": 6
+      "variance_ratio": 6.0
     },
     {
       "id": "drug_master_file",
@@ -1230,7 +1276,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3
+      "variance_ratio": 3.0
     },
     {
       "id": "pharmacovigilance_system",
@@ -1278,55 +1324,55 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "bridge_design",
-      "name": "Bridge Engineering Design",
+      "name": "Major Bridge Design Package",
       "sector": "Engineering",
       "valuations": {
-        "claude_sonnet45": 2000000,
-        "gemini": 15000000,
-        "opus45": 8000000,
-        "chatgpt51": 10000000,
-        "chatgpt5": null,
+        "claude_sonnet45": 5000000,
+        "gemini": 25000000,
+        "opus45": 12000000,
+        "chatgpt51": 15000000,
+        "chatgpt5": 4000000,
         "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "perplexity": 8000000,
+        "gemini30": 2000000
       },
-      "variance_ratio": 7.5
+      "variance_ratio": 12.5
     },
     {
       "id": "water_treatment_plant",
       "name": "Water Treatment Plant Design",
       "sector": "Engineering",
       "valuations": {
-        "claude_sonnet45": 1500000,
-        "gemini": 8000000,
-        "opus45": 4000000,
-        "chatgpt51": null,
-        "chatgpt5": null,
+        "claude_sonnet45": 2000000,
+        "gemini": 10000000,
+        "opus45": 5500000,
+        "chatgpt51": 7000000,
+        "chatgpt5": 1800000,
         "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "perplexity": 4000000,
+        "gemini30": 800000
       },
-      "variance_ratio": 5.33
+      "variance_ratio": 12.5
     },
     {
       "id": "tunnel_engineering",
-      "name": "Tunnel Engineering Design",
+      "name": "Urban Tunnel Engineering",
       "sector": "Engineering",
       "valuations": {
-        "claude_sonnet45": 3000000,
-        "gemini": 20000000,
-        "opus45": 10000000,
-        "chatgpt51": null,
-        "chatgpt5": null,
+        "claude_sonnet45": 8000000,
+        "gemini": 40000000,
+        "opus45": 20000000,
+        "chatgpt51": 25000000,
+        "chatgpt5": 6000000,
         "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "perplexity": 15000000,
+        "gemini30": 3500000
       },
-      "variance_ratio": 6.67
+      "variance_ratio": 11.43
     },
     {
       "id": "renewable_energy_design",
@@ -1342,7 +1388,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 5.0
     },
     {
       "id": "oil_gas_engineering",
@@ -1358,7 +1404,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6
+      "variance_ratio": 6.0
     },
     {
       "id": "property_appraisal",
@@ -1502,7 +1548,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "employee_engagement",
@@ -1534,7 +1580,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 5.0
     },
     {
       "id": "product_launch_campaign",
@@ -1550,7 +1596,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6
+      "variance_ratio": 6.0
     },
     {
       "id": "website_redesign",
@@ -1598,23 +1644,23 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 5.0
     },
     {
       "id": "lean_transformation",
-      "name": "Lean Transformation Program",
-      "sector": "Operations/Consulting",
+      "name": "Lean Manufacturing Transformation",
+      "sector": "Manufacturing",
       "valuations": {
-        "claude_sonnet45": 400000,
-        "gemini": 1500000,
-        "opus45": 800000,
-        "chatgpt51": null,
-        "chatgpt5": 350000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "claude_sonnet45": 1200000,
+        "gemini": 5000000,
+        "opus45": 2500000,
+        "chatgpt51": 3000000,
+        "chatgpt5": 1000000,
+        "o3pro": 1500000,
+        "perplexity": 2000000,
+        "gemini30": 500000
       },
-      "variance_ratio": 4.29
+      "variance_ratio": 10.0
     },
     {
       "id": "procurement_optimization",
@@ -1646,7 +1692,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 5.0
     },
     {
       "id": "inventory_optimization",
@@ -1662,7 +1708,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "logistics_network_design",
@@ -1678,7 +1724,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "sox_compliance",
@@ -1699,18 +1745,18 @@
     {
       "id": "gdpr_compliance",
       "name": "GDPR Compliance Program",
-      "sector": "Legal/Compliance",
+      "sector": "Legal",
       "valuations": {
-        "claude_sonnet45": 250000,
-        "gemini": 800000,
-        "opus45": 450000,
-        "chatgpt51": null,
-        "chatgpt5": 200000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": null
+        "claude_sonnet45": 500000,
+        "gemini": 2000000,
+        "opus45": 1000000,
+        "chatgpt51": 1200000,
+        "chatgpt5": 400000,
+        "o3pro": 600000,
+        "perplexity": 750000,
+        "gemini30": 220000
       },
-      "variance_ratio": 4
+      "variance_ratio": 9.09
     },
     {
       "id": "hipaa_compliance",
@@ -1726,7 +1772,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "enterprise_risk_management",
@@ -1806,7 +1852,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "leed_certification",
@@ -1838,7 +1884,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "actuarial_valuation",
@@ -1918,7 +1964,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "tariff_analysis",
@@ -1950,7 +1996,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "export_control",
@@ -1966,7 +2012,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "spac_merger_proxy",
@@ -1980,9 +2026,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 2500000
+        "gemini30": 2500000,
+        "claude_opus45_cli": 650000
       },
-      "variance_ratio": 1
+      "variance_ratio": 3.85
     },
     {
       "id": "eua_dossier",
@@ -1998,7 +2045,7 @@
         "perplexity": null,
         "gemini30": 1200000
       },
-      "variance_ratio": 1
+      "variance_ratio": 0
     },
     {
       "id": "bla_application",
@@ -2012,9 +2059,10 @@
         "chatgpt5": null,
         "o3pro": null,
         "perplexity": null,
-        "gemini30": 1000000
+        "gemini30": 1000000,
+        "you_ari": 2500000
       },
-      "variance_ratio": 50
+      "variance_ratio": 250.0
     },
     {
       "id": "economic_impact_study",
@@ -2078,7 +2126,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5
+      "variance_ratio": 5.0
     },
     {
       "id": "carve_out_analysis",
@@ -2126,7 +2174,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "customer_journey_mapping",
@@ -2142,7 +2190,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4
+      "variance_ratio": 4.0
     },
     {
       "id": "hospital_coo_certificate",
@@ -2174,7 +2222,7 @@
         "perplexity": null,
         "gemini30": 80000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "hipaa_risk_assessment",
@@ -2190,23 +2238,7 @@
         "perplexity": null,
         "gemini30": 50000
       },
-      "variance_ratio": 10
-    },
-    {
-      "id": "hedge_fund_formation",
-      "name": "Hedge Fund Formation Package",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_sonnet45": 800000,
-        "gemini": 2500000,
-        "opus45": 1200000,
-        "chatgpt51": 1500000,
-        "chatgpt5": 650000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": 400000
-      },
-      "variance_ratio": 6.25
+      "variance_ratio": 10.0
     },
     {
       "id": "private_equity_fund_docs",
@@ -2222,23 +2254,7 @@
         "perplexity": null,
         "gemini30": 500000
       },
-      "variance_ratio": 6
-    },
-    {
-      "id": "credit_rating_analysis",
-      "name": "Credit Rating Analysis",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_sonnet45": 300000,
-        "gemini": 1000000,
-        "opus45": 550000,
-        "chatgpt51": null,
-        "chatgpt5": 250000,
-        "o3pro": 400000,
-        "perplexity": null,
-        "gemini30": 150000
-      },
-      "variance_ratio": 6.67
+      "variance_ratio": 6.0
     },
     {
       "id": "derivatives_valuation",
@@ -2250,11 +2266,11 @@
         "opus45": 1000000,
         "chatgpt51": null,
         "chatgpt5": 400000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": 250000
+        "o3pro": 600000,
+        "perplexity": 800000,
+        "gemini30": 200000
       },
-      "variance_ratio": 8
+      "variance_ratio": 10.0
     },
     {
       "id": "saas_platform_architecture",
@@ -2286,7 +2302,7 @@
         "perplexity": null,
         "gemini30": 150000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "api_strategy_design",
@@ -2302,39 +2318,7 @@
         "perplexity": null,
         "gemini30": 120000
       },
-      "variance_ratio": 10
-    },
-    {
-      "id": "devops_transformation",
-      "name": "DevOps Transformation Program",
-      "sector": "Technology",
-      "valuations": {
-        "claude_sonnet45": 500000,
-        "gemini": 2000000,
-        "opus45": 1000000,
-        "chatgpt51": null,
-        "chatgpt5": 400000,
-        "o3pro": 700000,
-        "perplexity": null,
-        "gemini30": 180000
-      },
-      "variance_ratio": 11.1
-    },
-    {
-      "id": "antitrust_filing",
-      "name": "Antitrust/HSR Filing Package",
-      "sector": "Legal/Financial",
-      "valuations": {
-        "claude_sonnet45": 1500000,
-        "gemini": 5000000,
-        "opus45": 2500000,
-        "chatgpt51": 3000000,
-        "chatgpt5": 1200000,
-        "o3pro": null,
-        "perplexity": null,
-        "gemini30": 600000
-      },
-      "variance_ratio": 8.33
+      "variance_ratio": 10.0
     },
     {
       "id": "securities_class_action",
@@ -2385,22 +2369,6 @@
       "variance_ratio": 12.5
     },
     {
-      "id": "water_treatment_plant",
-      "name": "Water Treatment Plant Design",
-      "sector": "Engineering",
-      "valuations": {
-        "claude_sonnet45": 2000000,
-        "gemini": 10000000,
-        "opus45": 5500000,
-        "chatgpt51": 7000000,
-        "chatgpt5": 1800000,
-        "o3pro": null,
-        "perplexity": 4000000,
-        "gemini30": 800000
-      },
-      "variance_ratio": 12.5
-    },
-    {
       "id": "renewable_energy_feasibility",
       "name": "Renewable Energy Feasibility Study",
       "sector": "Engineering",
@@ -2414,7 +2382,7 @@
         "perplexity": 1500000,
         "gemini30": 350000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "reit_formation",
@@ -2430,7 +2398,7 @@
         "perplexity": null,
         "gemini30": 700000
       },
-      "variance_ratio": 11.4
+      "variance_ratio": 11.43
     },
     {
       "id": "mixed_use_development",
@@ -2446,7 +2414,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "actuarial_reserve_study",
@@ -2462,7 +2430,7 @@
         "perplexity": null,
         "gemini30": 250000
       },
-      "variance_ratio": 8
+      "variance_ratio": 8.0
     },
     {
       "id": "reinsurance_treaty",
@@ -2481,38 +2449,6 @@
       "variance_ratio": 7.5
     },
     {
-      "id": "clinical_trial_phase2",
-      "name": "Phase II Clinical Trial",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "claude_sonnet45": 11500000,
-        "gemini": 4000000,
-        "opus45": 10000000,
-        "chatgpt51": null,
-        "chatgpt5": null,
-        "o3pro": null,
-        "perplexity": 13500000,
-        "gemini30": 150000
-      },
-      "variance_ratio": 90
-    },
-    {
-      "id": "clinical_trial_phase1",
-      "name": "Phase I Clinical Trial",
-      "sector": "Medical/Pharma",
-      "valuations": {
-        "claude_sonnet45": 4000000,
-        "gemini": 550000,
-        "opus45": 2750000,
-        "chatgpt51": null,
-        "chatgpt5": null,
-        "o3pro": null,
-        "perplexity": 3000000,
-        "gemini30": 100000
-      },
-      "variance_ratio": 40
-    },
-    {
       "id": "biosimilar_development",
       "name": "Biosimilar Development Package",
       "sector": "Medical/Pharma",
@@ -2526,7 +2462,7 @@
         "perplexity": 25000000,
         "gemini30": 500000
       },
-      "variance_ratio": 90
+      "variance_ratio": 90.0
     },
     {
       "id": "fda_pma_submission",
@@ -2542,7 +2478,7 @@
         "perplexity": 3500000,
         "gemini30": 200000
       },
-      "variance_ratio": 25
+      "variance_ratio": 25.0
     },
     {
       "id": "drug_safety_report",
@@ -2558,7 +2494,7 @@
         "perplexity": 800000,
         "gemini30": 150000
       },
-      "variance_ratio": 8
+      "variance_ratio": 8.0
     },
     {
       "id": "clinical_data_management",
@@ -2574,7 +2510,7 @@
         "perplexity": 3500000,
         "gemini30": 600000
       },
-      "variance_ratio": 13.3
+      "variance_ratio": 13.33
     },
     {
       "id": "hedge_fund_setup",
@@ -2590,7 +2526,7 @@
         "perplexity": 2500000,
         "gemini30": 500000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "private_equity_fund",
@@ -2609,38 +2545,6 @@
       "variance_ratio": 12.5
     },
     {
-      "id": "credit_rating_analysis",
-      "name": "Corporate Credit Rating Analysis",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_sonnet45": 300000,
-        "gemini": 800000,
-        "opus45": 500000,
-        "chatgpt51": null,
-        "chatgpt5": 250000,
-        "o3pro": 400000,
-        "perplexity": 450000,
-        "gemini30": 150000
-      },
-      "variance_ratio": 5.3
-    },
-    {
-      "id": "derivatives_valuation",
-      "name": "Complex Derivatives Valuation",
-      "sector": "Financial Services",
-      "valuations": {
-        "claude_sonnet45": 500000,
-        "gemini": 2000000,
-        "opus45": 1000000,
-        "chatgpt51": null,
-        "chatgpt5": 400000,
-        "o3pro": 600000,
-        "perplexity": 800000,
-        "gemini30": 200000
-      },
-      "variance_ratio": 10
-    },
-    {
       "id": "wealth_management_platform",
       "name": "Wealth Management Platform",
       "sector": "Financial Services",
@@ -2654,7 +2558,7 @@
         "perplexity": 5000000,
         "gemini30": 1000000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "risk_model_validation",
@@ -2686,7 +2590,7 @@
         "perplexity": 900000,
         "gemini30": 300000
       },
-      "variance_ratio": 8.3
+      "variance_ratio": 8.33
     },
     {
       "id": "ai_ml_platform",
@@ -2705,38 +2609,6 @@
       "variance_ratio": 12.5
     },
     {
-      "id": "data_warehouse",
-      "name": "Enterprise Data Warehouse",
-      "sector": "Technology",
-      "valuations": {
-        "claude_sonnet45": 1500000,
-        "gemini": 6000000,
-        "opus45": 3000000,
-        "chatgpt51": 4000000,
-        "chatgpt5": 1200000,
-        "o3pro": 2000000,
-        "perplexity": 2500000,
-        "gemini30": 600000
-      },
-      "variance_ratio": 10
-    },
-    {
-      "id": "devops_transformation",
-      "name": "DevOps Transformation Program",
-      "sector": "Technology",
-      "valuations": {
-        "claude_sonnet45": 800000,
-        "gemini": 3000000,
-        "opus45": 1500000,
-        "chatgpt51": 2000000,
-        "chatgpt5": 650000,
-        "o3pro": 1000000,
-        "perplexity": 1200000,
-        "gemini30": 350000
-      },
-      "variance_ratio": 8.6
-    },
-    {
       "id": "api_platform",
       "name": "API Management Platform",
       "sector": "Technology",
@@ -2750,7 +2622,7 @@
         "perplexity": 900000,
         "gemini30": 280000
       },
-      "variance_ratio": 8.9
+      "variance_ratio": 8.93
     },
     {
       "id": "iot_platform",
@@ -2766,7 +2638,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "zero_trust_security",
@@ -2798,7 +2670,7 @@
         "perplexity": 750000,
         "gemini30": 250000
       },
-      "variance_ratio": 8
+      "variance_ratio": 8.0
     },
     {
       "id": "identity_management",
@@ -2828,9 +2700,10 @@
         "chatgpt5": 350000,
         "o3pro": 500000,
         "perplexity": 600000,
-        "gemini30": 180000
+        "gemini30": 180000,
+        "you_ari": 450000
       },
-      "variance_ratio": 8.3
+      "variance_ratio": 8.33
     },
     {
       "id": "trademark_clearance",
@@ -2849,22 +2722,6 @@
       "variance_ratio": 6.25
     },
     {
-      "id": "securities_litigation",
-      "name": "Securities Class Action Defense",
-      "sector": "Legal",
-      "valuations": {
-        "claude_sonnet45": 5000000,
-        "gemini": 25000000,
-        "opus45": 12000000,
-        "chatgpt51": 15000000,
-        "chatgpt5": 4000000,
-        "o3pro": null,
-        "perplexity": 8000000,
-        "gemini30": 2000000
-      },
-      "variance_ratio": 12.5
-    },
-    {
       "id": "antitrust_review",
       "name": "Antitrust Merger Review",
       "sector": "Legal",
@@ -2876,25 +2733,10 @@
         "chatgpt5": 2500000,
         "o3pro": null,
         "perplexity": 5000000,
-        "gemini30": 1200000
+        "gemini30": 1200000,
+        "you_ari": 3000000
       },
       "variance_ratio": 12.5
-    },
-    {
-      "id": "gdpr_compliance",
-      "name": "GDPR Compliance Program",
-      "sector": "Legal",
-      "valuations": {
-        "claude_sonnet45": 500000,
-        "gemini": 2000000,
-        "opus45": 1000000,
-        "chatgpt51": 1200000,
-        "chatgpt5": 400000,
-        "o3pro": 600000,
-        "perplexity": 750000,
-        "gemini30": 220000
-      },
-      "variance_ratio": 9.1
     },
     {
       "id": "employment_litigation",
@@ -2910,7 +2752,7 @@
         "perplexity": 3000000,
         "gemini30": 800000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "post_merger_integration",
@@ -2926,7 +2768,7 @@
         "perplexity": 5000000,
         "gemini30": 1200000
       },
-      "variance_ratio": 9.6
+      "variance_ratio": 10.0
     },
     {
       "id": "operational_excellence",
@@ -2942,7 +2784,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "cost_reduction",
@@ -2958,7 +2800,7 @@
         "perplexity": 1500000,
         "gemini30": 400000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "org_design",
@@ -2974,7 +2816,7 @@
         "perplexity": 1300000,
         "gemini30": 350000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "revenue_growth",
@@ -2990,7 +2832,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "customer_experience",
@@ -3006,7 +2848,7 @@
         "perplexity": 1700000,
         "gemini30": 450000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "nuclear_decommissioning",
@@ -3022,39 +2864,7 @@
         "perplexity": 100000000,
         "gemini30": 15000000
       },
-      "variance_ratio": 33.3
-    },
-    {
-      "id": "bridge_design",
-      "name": "Major Bridge Design Package",
-      "sector": "Engineering",
-      "valuations": {
-        "claude_sonnet45": 5000000,
-        "gemini": 25000000,
-        "opus45": 12000000,
-        "chatgpt51": 15000000,
-        "chatgpt5": 4000000,
-        "o3pro": null,
-        "perplexity": 8000000,
-        "gemini30": 2000000
-      },
-      "variance_ratio": 12.5
-    },
-    {
-      "id": "tunnel_engineering",
-      "name": "Urban Tunnel Engineering",
-      "sector": "Engineering",
-      "valuations": {
-        "claude_sonnet45": 8000000,
-        "gemini": 40000000,
-        "opus45": 20000000,
-        "chatgpt51": 25000000,
-        "chatgpt5": 6000000,
-        "o3pro": null,
-        "perplexity": 15000000,
-        "gemini30": 3500000
-      },
-      "variance_ratio": 11.4
+      "variance_ratio": 33.33
     },
     {
       "id": "airport_master_plan",
@@ -3070,7 +2880,7 @@
         "perplexity": 7000000,
         "gemini30": 1800000
       },
-      "variance_ratio": 11.1
+      "variance_ratio": 11.11
     },
     {
       "id": "seaport_expansion",
@@ -3086,7 +2896,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "dam_safety",
@@ -3134,7 +2944,7 @@
         "perplexity": 4000000,
         "gemini30": 1000000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "office_tower",
@@ -3150,7 +2960,7 @@
         "perplexity": 7000000,
         "gemini30": 1800000
       },
-      "variance_ratio": 11.1
+      "variance_ratio": 11.11
     },
     {
       "id": "industrial_park",
@@ -3166,7 +2976,7 @@
         "perplexity": 3000000,
         "gemini30": 750000
       },
-      "variance_ratio": 10.7
+      "variance_ratio": 10.67
     },
     {
       "id": "senior_living",
@@ -3182,7 +2992,7 @@
         "perplexity": 3500000,
         "gemini30": 900000
       },
-      "variance_ratio": 11.1
+      "variance_ratio": 11.11
     },
     {
       "id": "hospital_expansion",
@@ -3198,7 +3008,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "telemedicine_platform",
@@ -3214,7 +3024,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "health_system_merger",
@@ -3230,7 +3040,7 @@
         "perplexity": 15000000,
         "gemini30": 4000000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "ehr_implementation",
@@ -3262,7 +3072,7 @@
         "perplexity": 1500000,
         "gemini30": 400000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "oil_field_development",
@@ -3294,7 +3104,7 @@
         "perplexity": 35000000,
         "gemini30": 6000000
       },
-      "variance_ratio": 16.7
+      "variance_ratio": 16.67
     },
     {
       "id": "solar_farm",
@@ -3342,7 +3152,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "defense_contract",
@@ -3358,7 +3168,7 @@
         "perplexity": 10000000,
         "gemini30": 2000000
       },
-      "variance_ratio": 15
+      "variance_ratio": 15.0
     },
     {
       "id": "smart_city",
@@ -3374,7 +3184,7 @@
         "perplexity": 20000000,
         "gemini30": 5000000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "transit_system",
@@ -3422,7 +3232,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12
+      "variance_ratio": 12.0
     },
     {
       "id": "content_library",
@@ -3470,7 +3280,7 @@
         "perplexity": 25000000,
         "gemini30": 6000000
       },
-      "variance_ratio": 13.3
+      "variance_ratio": 13.33
     },
     {
       "id": "fiber_network",
@@ -3486,7 +3296,7 @@
         "perplexity": 12000000,
         "gemini30": 3000000
       },
-      "variance_ratio": 11.7
+      "variance_ratio": 11.67
     },
     {
       "id": "spectrum_auction",
@@ -3534,7 +3344,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "supply_chain_resilience",
@@ -3550,7 +3360,7 @@
         "perplexity": 1800000,
         "gemini30": 450000
       },
-      "variance_ratio": 11.1
+      "variance_ratio": 11.11
     },
     {
       "id": "factory_automation",
@@ -3582,23 +3392,7 @@
         "perplexity": 750000,
         "gemini30": 200000
       },
-      "variance_ratio": 10
-    },
-    {
-      "id": "lean_transformation",
-      "name": "Lean Manufacturing Transformation",
-      "sector": "Manufacturing",
-      "valuations": {
-        "claude_sonnet45": 1200000,
-        "gemini": 5000000,
-        "opus45": 2500000,
-        "chatgpt51": 3000000,
-        "chatgpt5": 1000000,
-        "o3pro": 1500000,
-        "perplexity": 2000000,
-        "gemini30": 500000
-      },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     },
     {
       "id": "precision_agriculture",
@@ -3614,7 +3408,7 @@
         "perplexity": 1500000,
         "gemini30": 350000
       },
-      "variance_ratio": 11.4
+      "variance_ratio": 11.43
     },
     {
       "id": "agribusiness_ma",
@@ -3630,7 +3424,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10
+      "variance_ratio": 10.0
     }
   ],
   "metadata": {

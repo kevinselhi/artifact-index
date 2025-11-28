@@ -1,0 +1,217 @@
+{
+  "model_key": "claude_opus45_cli",
+  "model_name": "Claude 4.5 Opus (CLI with Extended Thinking)",
+  "methodology": "Extended Thinking with Web Search via CLI - Multi-layered research across authoritative industry sources with cross-referencing and 2020-specific market conditions",
+  "artifacts": [
+    {
+      "name": "Mega-Deal M&A Advisory Package",
+      "value": 85000000,
+      "sector": "Financial Services",
+      "matched_id": "ma_advisory_large",
+      "confidence": "high"
+    },
+    {
+      "name": "Phase III Clinical Trial Protocol & Execution",
+      "value": 36500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "clinical_trial_phase3",
+      "confidence": "high"
+    },
+    {
+      "name": "Large-Scale ERP Implementation",
+      "value": 7500000,
+      "sector": "Technology",
+      "matched_id": "erp_implementation",
+      "confidence": "high"
+    },
+    {
+      "name": "IPO Prospectus & Securities Offering Package",
+      "value": 10000000,
+      "sector": "Financial Services",
+      "matched_id": "ipo_s1_registration",
+      "confidence": "high"
+    },
+    {
+      "name": "Complex Restructuring/Chapter 11 Advisory",
+      "value": 27500000,
+      "sector": "Legal/Financial",
+      "matched_id": "bankruptcy_restructuring",
+      "confidence": "high"
+    },
+    {
+      "name": "New Drug Application (NDA) Package",
+      "value": 4000000,
+      "sector": "Medical/Pharma",
+      "matched_id": "nda_bla_application",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Strategy Consulting Engagement",
+      "value": 3250000,
+      "sector": "Management Consulting",
+      "matched_id": "strategy_consulting",
+      "confidence": "high"
+    },
+    {
+      "name": "Major Environmental Impact Statement",
+      "value": 43000000,
+      "sector": "Environmental",
+      "matched_id": "environmental_impact_statement",
+      "confidence": "high"
+    },
+    {
+      "name": "Patent Litigation Complete Case Package",
+      "value": 3150000,
+      "sector": "Legal Services",
+      "matched_id": "patent_litigation",
+      "confidence": "high"
+    },
+    {
+      "name": "Large Corporate Due Diligence Report",
+      "value": 1250000,
+      "sector": "Financial Services",
+      "matched_id": "due_diligence_large",
+      "confidence": "high"
+    },
+    {
+      "name": "PMA (Premarket Approval) Submission Package",
+      "value": 1250000,
+      "sector": "Medical/Pharma",
+      "matched_id": "pma_submission",
+      "confidence": "high"
+    },
+    {
+      "name": "Complex M&A Advisory (Mid-Market)",
+      "value": 2000000,
+      "sector": "Financial Services",
+      "matched_id": "ma_advisory_midmarket",
+      "confidence": "high"
+    },
+    {
+      "name": "Municipal Bond Offering Package",
+      "value": 1250000,
+      "sector": "Financial Services",
+      "matched_id": "municipal_bond",
+      "confidence": "medium"
+    },
+    {
+      "name": "Enterprise Cloud Migration Project",
+      "value": 425000,
+      "sector": "Technology",
+      "matched_id": "cloud_migration",
+      "confidence": "high"
+    },
+    {
+      "name": "Fairness Opinion",
+      "value": 1100000,
+      "sector": "Financial Services",
+      "matched_id": "fairness_opinion",
+      "confidence": "high"
+    },
+    {
+      "name": "Digital Transformation Strategy",
+      "value": 1250000,
+      "sector": "Management Consulting",
+      "matched_id": "digital_transformation",
+      "confidence": "high"
+    },
+    {
+      "name": "AI/ML Enterprise Implementation",
+      "value": 1250000,
+      "sector": "Technology",
+      "matched_id": "ai_ml_implementation",
+      "confidence": "medium"
+    },
+    {
+      "name": "510(k) Medical Device Submission",
+      "value": 300000,
+      "sector": "Medical/Pharma",
+      "matched_id": "510k_submission",
+      "confidence": "high"
+    },
+    {
+      "name": "Complex Merger Proxy Statement",
+      "value": 650000,
+      "sector": "Legal Services",
+      "matched_id": "merger_proxy_statement",
+      "confidence": "high"
+    },
+    {
+      "name": "S&P 500 Annual Audit",
+      "value": 44000000,
+      "sector": "Financial Services",
+      "matched_id": "annual_audit_sp500",
+      "confidence": "high"
+    },
+    {
+      "name": "Phase II Clinical Trial Protocol",
+      "value": 16500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "clinical_trial_phase2",
+      "confidence": "high"
+    },
+    {
+      "name": "Large Infrastructure Engineering Design",
+      "value": 3000000,
+      "sector": "Engineering",
+      "matched_id": "infrastructure_design",
+      "confidence": "high"
+    },
+    {
+      "name": "Operations Transformation Project",
+      "value": 1000000,
+      "sector": "Management Consulting",
+      "matched_id": "operations_transformation",
+      "confidence": "medium"
+    },
+    {
+      "name": "Comprehensive Tax Opinion Package",
+      "value": 600000,
+      "sector": "Financial Services",
+      "matched_id": "tax_opinion",
+      "confidence": "high"
+    },
+    {
+      "name": "Quality of Earnings Report (Large Deal)",
+      "value": 100000,
+      "sector": "Financial Services",
+      "matched_id": "quality_of_earnings",
+      "confidence": "high"
+    },
+    {
+      "name": "Phase I Clinical Trial Protocol",
+      "value": 6000000,
+      "sector": "Medical/Pharma",
+      "matched_id": "clinical_trial_phase1",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Cybersecurity Assessment",
+      "value": 100000,
+      "sector": "Technology",
+      "matched_id": "cybersecurity_assessment",
+      "confidence": "high"
+    },
+    {
+      "name": "Commercial Real Estate Valuation (Large Portfolio)",
+      "value": 300000,
+      "sector": "Real Estate",
+      "matched_id": "commercial_real_estate_valuation",
+      "confidence": "medium"
+    },
+    {
+      "name": "SOC 2 Type II Audit & Report",
+      "value": 85000,
+      "sector": "Technology",
+      "matched_id": "soc2_audit",
+      "confidence": "high"
+    },
+    {
+      "name": "Brand Strategy & Repositioning",
+      "value": 300000,
+      "sector": "Creative Services",
+      "matched_id": "brand_strategy",
+      "confidence": "medium"
+    }
+  ]
+}

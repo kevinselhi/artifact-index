@@ -1,0 +1,217 @@
+{
+  "model_key": "you_ari",
+  "model_name": "You.com ARI",
+  "methodology": "Triangulated research from multiple sources - Professional service firm reports, industry analyst research, regulatory filings, and market research specific to 2020",
+  "artifacts": [
+    {
+      "name": "M&A Sell-Side Advisory Mandate (Mega-Deal)",
+      "value": 70000000,
+      "sector": "Financial Services",
+      "matched_id": "ma_advisory_large",
+      "confidence": "high"
+    },
+    {
+      "name": "M&A Buy-Side Advisory Mandate (Mega-Deal)",
+      "value": 52500000,
+      "sector": "Financial Services",
+      "matched_id": "ma_advisory_large",
+      "confidence": "high"
+    },
+    {
+      "name": "IPO Underwriting Syndicate Book (Large Cap)",
+      "value": 42500000,
+      "sector": "Financial Services",
+      "matched_id": "ipo_s1_registration",
+      "confidence": "high"
+    },
+    {
+      "name": "Corporate Restructuring Advisory (Large Cap)",
+      "value": 27500000,
+      "sector": "Legal/Financial",
+      "matched_id": "bankruptcy_restructuring",
+      "confidence": "high"
+    },
+    {
+      "name": "Bankruptcy Plan of Reorganization (Chapter 11)",
+      "value": 16000000,
+      "sector": "Legal/Financial",
+      "matched_id": "bankruptcy_restructuring",
+      "confidence": "high"
+    },
+    {
+      "name": "Fairness Opinion (Mega-Deal)",
+      "value": 5500000,
+      "sector": "Financial Services",
+      "matched_id": "fairness_opinion",
+      "confidence": "high"
+    },
+    {
+      "name": "Private Equity Due Diligence Report (Large Cap)",
+      "value": 3000000,
+      "sector": "Financial Services",
+      "matched_id": "due_diligence_large",
+      "confidence": "high"
+    },
+    {
+      "name": "Clinical Trial Protocol (Phase III, Global)",
+      "value": 3000000,
+      "sector": "Medical/Pharma",
+      "matched_id": "clinical_trial_phase3",
+      "confidence": "high"
+    },
+    {
+      "name": "Antitrust/Competition Analysis (Mega-Deal)",
+      "value": 3000000,
+      "sector": "Legal Services",
+      "matched_id": "antitrust_analysis",
+      "confidence": "medium"
+    },
+    {
+      "name": "Investment Banking Pitch Book (Mega-Deal)",
+      "value": 3000000,
+      "sector": "Financial Services",
+      "matched_id": "investment_banking_pitchbook",
+      "confidence": "medium"
+    },
+    {
+      "name": "Enterprise Digital Transformation Roadmap",
+      "value": 3250000,
+      "sector": "Management Consulting",
+      "matched_id": "digital_transformation",
+      "confidence": "high"
+    },
+    {
+      "name": "New Drug Application (NDA) Dossier",
+      "value": 2500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "nda_bla_application",
+      "confidence": "high"
+    },
+    {
+      "name": "Biologics License Application (BLA) Dossier",
+      "value": 2500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "bla_submission",
+      "confidence": "high"
+    },
+    {
+      "name": "Premarket Approval (PMA) Submission",
+      "value": 1750000,
+      "sector": "Medical/Pharma",
+      "matched_id": "pma_submission",
+      "confidence": "high"
+    },
+    {
+      "name": "Phase III Clinical Trial Protocol & Execution",
+      "value": 1500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "clinical_trial_phase3",
+      "confidence": "high"
+    },
+    {
+      "name": "M&A Due Diligence Report",
+      "value": 1250000,
+      "sector": "Financial Services",
+      "matched_id": "due_diligence_large",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Cloud Migration Blueprint",
+      "value": 1375000,
+      "sector": "Technology",
+      "matched_id": "cloud_migration",
+      "confidence": "high"
+    },
+    {
+      "name": "Major Transportation Corridor Design Package",
+      "value": 950000,
+      "sector": "Engineering",
+      "matched_id": "infrastructure_design",
+      "confidence": "high"
+    },
+    {
+      "name": "Regulatory Compliance Assessment (Banking/Healthcare)",
+      "value": 800000,
+      "sector": "Technology",
+      "matched_id": "regulatory_compliance_assessment",
+      "confidence": "medium"
+    },
+    {
+      "name": "Large-Scale Architectural Design & Construction Docs",
+      "value": 725000,
+      "sector": "Architecture",
+      "matched_id": "architectural_design",
+      "confidence": "medium"
+    },
+    {
+      "name": "Global Brand Strategy & Positioning Platform",
+      "value": 625000,
+      "sector": "Creative Services",
+      "matched_id": "brand_strategy",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Cybersecurity Assessment & Remediation Plan",
+      "value": 625000,
+      "sector": "Technology",
+      "matched_id": "cybersecurity_assessment",
+      "confidence": "high"
+    },
+    {
+      "name": "Large-Scale Environmental Impact Statement (EIS)",
+      "value": 625000,
+      "sector": "Environmental",
+      "matched_id": "environmental_impact_statement",
+      "confidence": "high"
+    },
+    {
+      "name": "IT Systems Integration Blueprint (Enterprise)",
+      "value": 550000,
+      "sector": "Technology",
+      "matched_id": "it_systems_integration",
+      "confidence": "medium"
+    },
+    {
+      "name": "Urban Master Plan (Major City)",
+      "value": 550000,
+      "sector": "Architecture",
+      "matched_id": "urban_master_plan",
+      "confidence": "medium"
+    },
+    {
+      "name": "Corporate Tax Structuring Report (Multinational)",
+      "value": 500000,
+      "sector": "Financial Services",
+      "matched_id": "tax_opinion",
+      "confidence": "high"
+    },
+    {
+      "name": "Patent Portfolio Valuation Report",
+      "value": 450000,
+      "sector": "Legal Services",
+      "matched_id": "patent_portfolio_valuation",
+      "confidence": "medium"
+    },
+    {
+      "name": "Large-Scale Litigation Expert Report",
+      "value": 425000,
+      "sector": "Legal Services",
+      "matched_id": "expert_witness_report",
+      "confidence": "medium"
+    },
+    {
+      "name": "Enterprise Data Analytics & AI Implementation Plan",
+      "value": 425000,
+      "sector": "Technology",
+      "matched_id": "ai_ml_implementation",
+      "confidence": "high"
+    },
+    {
+      "name": "Major Infrastructure Feasibility Study",
+      "value": 425000,
+      "sector": "Engineering",
+      "matched_id": "infrastructure_feasibility_study",
+      "confidence": "medium"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "model_key": "you_ari",
+  "model_name": "You.com ARI",
+  "methodology": "Triangulated research from multiple sources - Professional service firm reports, industry analyst research, regulatory filings, and market research specific to 2020",
+  "artifacts": [
+    {
+      "name": "M&A Advisory Mandate (Mega-Deal)",
+      "value": 61250000,
+      "sector": "Financial Services",
+      "matched_id": "ma_advisory_large",
+      "confidence": "high"
+    },
+    {
+      "name": "IPO Underwriting Syndicate Book (Large Cap)",
+      "value": 42500000,
+      "sector": "Financial Services",
+      "matched_id": "ipo_s1_registration",
+      "confidence": "high"
+    },
+    {
+      "name": "Corporate Restructuring Advisory",
+      "value": 21750000,
+      "sector": "Legal/Financial",
+      "matched_id": "bankruptcy_restructuring",
+      "confidence": "high"
+    },
+    {
+      "name": "Fairness Opinion (Mega-Deal)",
+      "value": 5500000,
+      "sector": "Financial Services",
+      "matched_id": "fairness_opinion",
+      "confidence": "high"
+    },
+    {
+      "name": "Due Diligence Report (Large Cap)",
+      "value": 2125000,
+      "sector": "Financial Services",
+      "matched_id": "due_diligence_financial",
+      "confidence": "high"
+    },
+    {
+      "name": "Clinical Trial Protocol (Phase III)",
+      "value": 2250000,
+      "sector": "Medical/Pharma",
+      "matched_id": "clinical_trial_phase3",
+      "confidence": "high"
+    },
+    {
+      "name": "Antitrust/Competition Analysis",
+      "value": 3000000,
+      "sector": "Legal Services",
+      "matched_id": "antitrust_review",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Digital Transformation Roadmap",
+      "value": 3250000,
+      "sector": "Management Consulting",
+      "matched_id": "digital_transformation",
+      "confidence": "high"
+    },
+    {
+      "name": "New Drug Application (NDA) Dossier",
+      "value": 2500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "nda_bla_application",
+      "confidence": "high"
+    },
+    {
+      "name": "Biologics License Application (BLA) Dossier",
+      "value": 2500000,
+      "sector": "Medical/Pharma",
+      "matched_id": "bla_application",
+      "confidence": "high"
+    },
+    {
+      "name": "Premarket Approval (PMA) Submission",
+      "value": 1750000,
+      "sector": "Medical/Pharma",
+      "matched_id": "pma_application",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Cloud Migration Blueprint",
+      "value": 1375000,
+      "sector": "Technology",
+      "matched_id": "cloud_migration",
+      "confidence": "high"
+    },
+    {
+      "name": "Infrastructure Engineering Design",
+      "value": 950000,
+      "sector": "Engineering",
+      "matched_id": "infrastructure_engineering",
+      "confidence": "high"
+    },
+    {
+      "name": "Regulatory Compliance Assessment",
+      "value": 800000,
+      "sector": "Technology",
+      "matched_id": "compliance_regulatory",
+      "confidence": "high"
+    },
+    {
+      "name": "Global Brand Strategy",
+      "value": 625000,
+      "sector": "Creative Services",
+      "matched_id": "brand_repositioning",
+      "confidence": "high"
+    },
+    {
+      "name": "Enterprise Cybersecurity Assessment",
+      "value": 625000,
+      "sector": "Technology",
+      "matched_id": "cybersecurity_assessment",
+      "confidence": "high"
+    },
+    {
+      "name": "Environmental Impact Statement",
+      "value": 625000,
+      "sector": "Environmental",
+      "matched_id": "environmental_impact_statement",
+      "confidence": "high"
+    },
+    {
+      "name": "Corporate Tax Structuring Report",
+      "value": 500000,
+      "sector": "Financial Services",
+      "matched_id": "tax_opinion",
+      "confidence": "high"
+    },
+    {
+      "name": "Patent Portfolio Analysis",
+      "value": 450000,
+      "sector": "Legal Services",
+      "matched_id": "patent_portfolio",
+      "confidence": "high"
+    },
+    {
+      "name": "Expert Witness Report",
+      "value": 425000,
+      "sector": "Legal Services",
+      "matched_id": "litigation_expert",
+      "confidence": "high"
+    },
+    {
+      "name": "AI Implementation Plan",
+      "value": 425000,
+      "sector": "Technology",
+      "matched_id": "ai_ml_implementation",
+      "confidence": "high"
+    }
+  ]
+}

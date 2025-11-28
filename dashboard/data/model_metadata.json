@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "generated": "2025-11-25",
+    "generated": "2025-11-27",
     "total_artifacts": 227,
     "total_sectors": 28,
-    "total_models": 8,
+    "total_models": 10,
     "note": "Dashboard uses inline data; this file provides reference metadata"
   },
   "models": {
@@ -99,6 +99,30 @@
       "artifact_count": 100,
       "top_artifact": "SPAC Merger Proxy Statement",
       "top_value": 2500000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "claude_opus45_cli": {
+      "name": "Claude 4.5 Opus CLI",
+      "color": "#34d399",
+      "methodology": "Extended Thinking with Web Search via CLI",
+      "valuation_approach": "Professional services billing",
+      "artifact_count": 100,
+      "top_artifact": "Mega-Deal M&A Advisory Package",
+      "top_value": 85000000,
+      "transparency": "High",
+      "has_confidence": false,
+      "has_automation_scores": false
+    },
+    "you_ari": {
+      "name": "You.com ARI",
+      "color": "#f59e0b",
+      "methodology": "Triangulated research from multiple sources",
+      "valuation_approach": "Professional services billing",
+      "artifact_count": 100,
+      "top_artifact": "M&A Sell-Side Advisory Mandate",
+      "top_value": 70000000,
       "transparency": "High",
       "has_confidence": false,
       "has_automation_scores": false
