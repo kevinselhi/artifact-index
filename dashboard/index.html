@@ -750,12 +750,20 @@
                 <span>ChatGPT 5-1</span>
             </div>
             <div class="legend-item">
+                <div class="legend-color" style="background: var(--chatgpt51-codex)"></div>
+                <span>ChatGPT 5-1 Codex</span>
+            </div>
+            <div class="legend-item">
                 <div class="legend-color" style="background: var(--o3pro)"></div>
                 <span>o3pro</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: var(--perplexity)"></div>
                 <span>Perplexity</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--you-ari)"></div>
+                <span>You.com ARI</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: var(--claude-sonnet45)"></div>
@@ -766,28 +774,20 @@
                 <span>Claude Opus 4.5</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: var(--gemini)"></div>
-                <span>Gemini 2.5 Pro</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: var(--gemini30)"></div>
-                <span>Gemini 3.0 Pro</span>
-            </div>
-            <div class="legend-item">
                 <div class="legend-color" style="background: var(--claude-opus45-cli)"></div>
                 <span>Claude 4.5 Opus CLI</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: var(--you-ari)"></div>
-                <span>You.com ARI</span>
             </div>
             <div class="legend-item">
                 <div class="legend-color" style="background: var(--claude-opus45-agents)"></div>
                 <span>Claude 4.5 Opus Agents</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: var(--chatgpt51-codex)"></div>
-                <span>ChatGPT 5-1 Codex</span>
+                <div class="legend-color" style="background: var(--gemini)"></div>
+                <span>Gemini 2.5 Pro</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: var(--gemini30)"></div>
+                <span>Gemini 3.0 Pro</span>
             </div>
         </div>
         <p style="font-size: 0.75em; color: #888; font-style: italic; text-align: center; margin-top: -10px; margin-bottom: 15px;">All models had Deep Research or Extended Thinking enabled</p>
@@ -1305,13 +1305,13 @@
             chatgpt51_codex: '#0EA5E9',
             o3pro: '#9B5DE5',
             perplexity: '#F9844A',
+            you_ari: '#f59e0b',
             claude_sonnet45: '#E07A5F',
             opus45: '#81B29A',
-            claude_opus45_agents: '#8B5CF6',
             claude_opus45_cli: '#34d399',
+            claude_opus45_agents: '#8B5CF6',
             gemini: '#4285F4',
-            gemini30: '#00BFA5',
-            you_ari: '#f59e0b'
+            gemini30: '#00BFA5'
         };
 
         const modelNames = {
@@ -1320,13 +1320,13 @@
             chatgpt51_codex: 'ChatGPT 5-1 Codex',
             o3pro: 'o3pro',
             perplexity: 'Perplexity',
+            you_ari: 'You.com ARI',
             claude_sonnet45: 'Claude Sonnet 4.5',
             opus45: 'Claude Opus 4.5',
-            claude_opus45_agents: 'Claude 4.5 Opus Agents',
             claude_opus45_cli: 'Claude 4.5 Opus CLI',
+            claude_opus45_agents: 'Claude 4.5 Opus Agents',
             gemini: 'Gemini 2.5 Pro',
-            gemini30: 'Gemini 3.0 Pro',
-            you_ari: 'You.com ARI'
+            gemini30: 'Gemini 3.0 Pro'
         };
 
         // Industry colors (global for use across functions)
@@ -4359,10 +4359,14 @@
         const modelData = {
             chatgpt5: { name: 'ChatGPT 5', top_value: 900000, top_artifact: 'ERP System Integration', top_artifact_id: 'erp_implementation', approach: 'Median Fees', transparency: 'Medium' },
             chatgpt51: { name: 'ChatGPT 5-1', top_value: 12500000, top_artifact: 'IPO Prospectus', top_artifact_id: 'ipo_s1_registration', approach: 'Market Rates', transparency: 'High' },
+            chatgpt51_codex: { name: 'ChatGPT 5-1 Codex', top_value: 3500000, top_artifact: 'Sell-Side M&A Info Memo', top_artifact_id: 'ma_sell_side_advisory', approach: 'Midpoint Value', transparency: 'High' },
             o3pro: { name: 'o3pro', top_value: 2200000, top_artifact: 'M&A Advisory Services', top_artifact_id: 'ma_advisory_large', approach: 'Project Fees', transparency: 'Medium' },
             perplexity: { name: 'Perplexity', top_value: 60000000, top_artifact: 'Phase III Clinical Trial', top_artifact_id: 'clinical_trial_phase3', approach: 'Taxonomy Gen.', transparency: 'High' },
+            you_ari: { name: 'You.com ARI', top_value: 70000000, top_artifact: 'M&A Sell-Side Mandate', top_artifact_id: 'ma_sell_side_advisory', approach: 'Service Billing', transparency: 'High' },
             claude_sonnet45: { name: 'Claude Sonnet 4.5', top_value: 22500000, top_artifact: 'Phase III Clinical Trial', top_artifact_id: 'clinical_trial_phase3', approach: 'Service Billing', transparency: 'High' },
             opus45: { name: 'Claude Opus 4.5', top_value: 400000000, top_artifact: 'Nuclear Plant Engineering', top_artifact_id: 'infrastructure_engineering', approach: 'Service Billing', transparency: 'High' },
+            claude_opus45_cli: { name: 'Claude 4.5 Opus CLI', top_value: 85000000, top_artifact: 'Mega-Deal M&A Package', top_artifact_id: 'ma_advisory_large', approach: 'Service Billing', transparency: 'High' },
+            claude_opus45_agents: { name: 'Claude 4.5 Opus Agents', top_value: 82500000, top_artifact: 'BLA Application', top_artifact_id: 'nda_bla_application', approach: 'Composite Score', transparency: 'High' },
             gemini: { name: 'Gemini 2.5 Pro', top_value: 300000000, top_artifact: 'New Drug Application (NDA)', top_artifact_id: 'nda_bla_application', approach: 'Production Cost', transparency: 'Medium' },
             gemini30: { name: 'Gemini 3.0 Pro', top_value: 2500000, top_artifact: 'SPAC Merger Proxy', top_artifact_id: 'spac_merger_proxy', approach: 'Max Economic', transparency: 'High' }
         };
