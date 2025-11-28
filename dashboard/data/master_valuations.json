@@ -52,7 +52,7 @@
         "claude_opus45_cli": 85000000,
         "you_ari": 61250000
       },
-      "variance_ratio": 170.0
+      "variance_ratio": 170
     },
     {
       "id": "erp_implementation",
@@ -123,7 +123,7 @@
         "claude_opus45_cli": 10000000,
         "you_ari": 42500000
       },
-      "variance_ratio": 34.0
+      "variance_ratio": 34
     },
     {
       "id": "cloud_migration",
@@ -158,7 +158,7 @@
         "gemini30": 25000,
         "claude_opus45_cli": 300000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "infrastructure_engineering",
@@ -280,7 +280,7 @@
         "perplexity": null,
         "gemini30": 125000
       },
-      "variance_ratio": 11.0
+      "variance_ratio": 11
     },
     {
       "id": "litigation_expert",
@@ -315,7 +315,7 @@
         "claude_opus45_cli": 43000000,
         "you_ari": 625000
       },
-      "variance_ratio": 344.0
+      "variance_ratio": 344
     },
     {
       "id": "transfer_pricing",
@@ -363,7 +363,7 @@
         "perplexity": null,
         "gemini30": 40000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "clinical_trial_phase2",
@@ -380,7 +380,7 @@
         "gemini30": 150000,
         "claude_opus45_cli": 16500000
       },
-      "variance_ratio": 110.0
+      "variance_ratio": 110
     },
     {
       "id": "clinical_trial_phase1",
@@ -397,7 +397,7 @@
         "gemini30": 100000,
         "claude_opus45_cli": 6000000
       },
-      "variance_ratio": 60.0
+      "variance_ratio": 60
     },
     {
       "id": "ma_advisory_midmarket",
@@ -430,7 +430,7 @@
         "perplexity": 300000,
         "gemini30": null
       },
-      "variance_ratio": 0
+      "variance_ratio": null
     },
     {
       "id": "hospital_architecture",
@@ -446,7 +446,7 @@
         "perplexity": 8000000,
         "gemini30": null
       },
-      "variance_ratio": 0
+      "variance_ratio": null
     },
     {
       "id": "annual_audit",
@@ -530,7 +530,7 @@
         "gemini30": null,
         "claude_opus45_cli": 3250000
       },
-      "variance_ratio": 13.0
+      "variance_ratio": 13
     },
     {
       "id": "performance_improvement",
@@ -611,7 +611,7 @@
         "gemini30": null,
         "claude_opus45_cli": 3150000
       },
-      "variance_ratio": 9.0
+      "variance_ratio": 9
     },
     {
       "id": "real_estate_feasibility",
@@ -628,7 +628,7 @@
         "gemini30": null,
         "claude_opus45_cli": 300000
       },
-      "variance_ratio": 2.12
+      "variance_ratio": 2.13
     },
     {
       "id": "transportation_corridor",
@@ -644,7 +644,7 @@
         "perplexity": 1125000,
         "gemini30": null
       },
-      "variance_ratio": 0
+      "variance_ratio": null
     },
     {
       "id": "tax_opinion",
@@ -662,7 +662,7 @@
         "claude_opus45_cli": 600000,
         "you_ari": 500000
       },
-      "variance_ratio": 3.0
+      "variance_ratio": 3
     },
     {
       "id": "architectural_design",
@@ -695,7 +695,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6.0
+      "variance_ratio": 6
     },
     {
       "id": "investment_advisory",
@@ -762,7 +762,7 @@
         "claude_opus45_cli": 1250000,
         "you_ari": 425000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "blockchain_implementation",
@@ -794,7 +794,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 2.0
+      "variance_ratio": 2
     },
     {
       "id": "strategic_planning",
@@ -858,7 +858,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "ip_portfolio_audit",
@@ -922,7 +922,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "credit_rating_analysis",
@@ -954,7 +954,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3.0
+      "variance_ratio": 3
     },
     {
       "id": "derivatives_documentation",
@@ -986,7 +986,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3.0
+      "variance_ratio": 3
     },
     {
       "id": "asset_backed_securities",
@@ -1034,7 +1034,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5.0
+      "variance_ratio": 5
     },
     {
       "id": "data_governance_framework",
@@ -1130,7 +1130,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6.0
+      "variance_ratio": 6
     },
     {
       "id": "identity_access_management",
@@ -1146,7 +1146,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "data_warehouse",
@@ -1162,7 +1162,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "mobile_app_development",
@@ -1196,7 +1196,7 @@
         "claude_opus45_cli": 1250000,
         "you_ari": 1750000
       },
-      "variance_ratio": 8.0
+      "variance_ratio": 8
     },
     {
       "id": "de_novo_classification",
@@ -1212,7 +1212,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3.0
+      "variance_ratio": 3
     },
     {
       "id": "clinical_study_report",
@@ -1228,7 +1228,7 @@
         "perplexity": null,
         "gemini30": 250000
       },
-      "variance_ratio": 6.0
+      "variance_ratio": 6
     },
     {
       "id": "drug_master_file",
@@ -1276,7 +1276,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 3.0
+      "variance_ratio": 3
     },
     {
       "id": "pharmacovigilance_system",
@@ -1324,7 +1324,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "bridge_design",
@@ -1388,7 +1388,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5.0
+      "variance_ratio": 5
     },
     {
       "id": "oil_gas_engineering",
@@ -1404,7 +1404,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6.0
+      "variance_ratio": 6
     },
     {
       "id": "property_appraisal",
@@ -1548,7 +1548,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "employee_engagement",
@@ -1580,7 +1580,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5.0
+      "variance_ratio": 5
     },
     {
       "id": "product_launch_campaign",
@@ -1596,7 +1596,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 6.0
+      "variance_ratio": 6
     },
     {
       "id": "website_redesign",
@@ -1644,7 +1644,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5.0
+      "variance_ratio": 5
     },
     {
       "id": "lean_transformation",
@@ -1660,7 +1660,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "procurement_optimization",
@@ -1692,7 +1692,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5.0
+      "variance_ratio": 5
     },
     {
       "id": "inventory_optimization",
@@ -1708,7 +1708,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "logistics_network_design",
@@ -1724,7 +1724,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "sox_compliance",
@@ -1772,7 +1772,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "enterprise_risk_management",
@@ -1852,7 +1852,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "leed_certification",
@@ -1884,7 +1884,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "actuarial_valuation",
@@ -1964,7 +1964,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "tariff_analysis",
@@ -1996,7 +1996,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "export_control",
@@ -2012,7 +2012,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "spac_merger_proxy",
@@ -2045,7 +2045,7 @@
         "perplexity": null,
         "gemini30": 1200000
       },
-      "variance_ratio": 0
+      "variance_ratio": null
     },
     {
       "id": "bla_application",
@@ -2062,7 +2062,7 @@
         "gemini30": 1000000,
         "you_ari": 2500000
       },
-      "variance_ratio": 250.0
+      "variance_ratio": 250
     },
     {
       "id": "economic_impact_study",
@@ -2126,7 +2126,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 5.0
+      "variance_ratio": 5
     },
     {
       "id": "carve_out_analysis",
@@ -2174,7 +2174,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "customer_journey_mapping",
@@ -2190,7 +2190,7 @@
         "perplexity": null,
         "gemini30": null
       },
-      "variance_ratio": 4.0
+      "variance_ratio": 4
     },
     {
       "id": "hospital_coo_certificate",
@@ -2222,7 +2222,7 @@
         "perplexity": null,
         "gemini30": 80000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "hipaa_risk_assessment",
@@ -2238,7 +2238,7 @@
         "perplexity": null,
         "gemini30": 50000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "private_equity_fund_docs",
@@ -2254,7 +2254,7 @@
         "perplexity": null,
         "gemini30": 500000
       },
-      "variance_ratio": 6.0
+      "variance_ratio": 6
     },
     {
       "id": "derivatives_valuation",
@@ -2270,7 +2270,7 @@
         "perplexity": 800000,
         "gemini30": 200000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "saas_platform_architecture",
@@ -2302,7 +2302,7 @@
         "perplexity": null,
         "gemini30": 150000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "api_strategy_design",
@@ -2318,7 +2318,7 @@
         "perplexity": null,
         "gemini30": 120000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "securities_class_action",
@@ -2382,7 +2382,7 @@
         "perplexity": 1500000,
         "gemini30": 350000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "reit_formation",
@@ -2414,7 +2414,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "actuarial_reserve_study",
@@ -2430,7 +2430,7 @@
         "perplexity": null,
         "gemini30": 250000
       },
-      "variance_ratio": 8.0
+      "variance_ratio": 8
     },
     {
       "id": "reinsurance_treaty",
@@ -2462,7 +2462,7 @@
         "perplexity": 25000000,
         "gemini30": 500000
       },
-      "variance_ratio": 90.0
+      "variance_ratio": 90
     },
     {
       "id": "fda_pma_submission",
@@ -2478,7 +2478,7 @@
         "perplexity": 3500000,
         "gemini30": 200000
       },
-      "variance_ratio": 25.0
+      "variance_ratio": 25
     },
     {
       "id": "drug_safety_report",
@@ -2494,7 +2494,7 @@
         "perplexity": 800000,
         "gemini30": 150000
       },
-      "variance_ratio": 8.0
+      "variance_ratio": 8
     },
     {
       "id": "clinical_data_management",
@@ -2526,7 +2526,7 @@
         "perplexity": 2500000,
         "gemini30": 500000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "private_equity_fund",
@@ -2558,7 +2558,7 @@
         "perplexity": 5000000,
         "gemini30": 1000000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "risk_model_validation",
@@ -2638,7 +2638,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "zero_trust_security",
@@ -2670,7 +2670,7 @@
         "perplexity": 750000,
         "gemini30": 250000
       },
-      "variance_ratio": 8.0
+      "variance_ratio": 8
     },
     {
       "id": "identity_management",
@@ -2752,7 +2752,7 @@
         "perplexity": 3000000,
         "gemini30": 800000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "post_merger_integration",
@@ -2768,7 +2768,7 @@
         "perplexity": 5000000,
         "gemini30": 1200000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "operational_excellence",
@@ -2784,7 +2784,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "cost_reduction",
@@ -2800,7 +2800,7 @@
         "perplexity": 1500000,
         "gemini30": 400000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "org_design",
@@ -2816,7 +2816,7 @@
         "perplexity": 1300000,
         "gemini30": 350000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "revenue_growth",
@@ -2832,7 +2832,7 @@
         "perplexity": 2000000,
         "gemini30": 500000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "customer_experience",
@@ -2848,7 +2848,7 @@
         "perplexity": 1700000,
         "gemini30": 450000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "nuclear_decommissioning",
@@ -2896,7 +2896,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "dam_safety",
@@ -2944,7 +2944,7 @@
         "perplexity": 4000000,
         "gemini30": 1000000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "office_tower",
@@ -3008,7 +3008,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "telemedicine_platform",
@@ -3024,7 +3024,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "health_system_merger",
@@ -3040,7 +3040,7 @@
         "perplexity": 15000000,
         "gemini30": 4000000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "ehr_implementation",
@@ -3072,7 +3072,7 @@
         "perplexity": 1500000,
         "gemini30": 400000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "oil_field_development",
@@ -3152,7 +3152,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "defense_contract",
@@ -3168,7 +3168,7 @@
         "perplexity": 10000000,
         "gemini30": 2000000
       },
-      "variance_ratio": 15.0
+      "variance_ratio": 15
     },
     {
       "id": "smart_city",
@@ -3184,7 +3184,7 @@
         "perplexity": 20000000,
         "gemini30": 5000000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "transit_system",
@@ -3232,7 +3232,7 @@
         "perplexity": 10000000,
         "gemini30": 2500000
       },
-      "variance_ratio": 12.0
+      "variance_ratio": 12
     },
     {
       "id": "content_library",
@@ -3344,7 +3344,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "supply_chain_resilience",
@@ -3392,7 +3392,7 @@
         "perplexity": 750000,
         "gemini30": 200000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     },
     {
       "id": "precision_agriculture",
@@ -3424,7 +3424,7 @@
         "perplexity": 2500000,
         "gemini30": 600000
       },
-      "variance_ratio": 10.0
+      "variance_ratio": 10
     }
   ],
   "metadata": {
