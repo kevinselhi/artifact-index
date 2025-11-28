@@ -1,0 +1,360 @@
+name: Integrate AI Model Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_file_path:
+        description: 'Path to model report (e.g., artifact_index_2020_model.md)'
+        required: true
+      model_key:
+        description: 'Model identifier (lowercase, underscores only, e.g., claude_opus45)'
+        required: true
+      model_name:
+        description: 'Display name (optional, auto-extracted if not provided)'
+        required: false
+      color:
+        description: 'Hex color code (optional, e.g., #FF5733)'
+        required: false
+      methodology:
+        description: 'Methodology description (optional, auto-extracted if not provided)'
+        required: false
+      dry_run:
+        description: 'Run without creating PR (for testing)'
+        type: boolean
+        default: true
+
+jobs:
+  integrate-model:
+    runs-on: ubuntu-latest
+
+    steps:
+      # STEP 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # STEP 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # STEP 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # STEP 4: Validate inputs
+      - name: Validate inputs
+        id: validate_inputs
+        run: |
+          echo "Validating inputs..."
+
+          # Validate model_key format
+          if ! echo "${{ inputs.model_key }}" | grep -qE '^[a-z0-9_]+$'; then
+            echo "::error::model_key must contain only lowercase letters, numbers, and underscores"
+            exit 1
+          fi
+
+          # Check if report file exists
+          if [ ! -f "${{ inputs.report_file_path }}" ]; then
+            echo "::error::Report file not found: ${{ inputs.report_file_path }}"
+            exit 1
+          fi
+
+          # Check if model already exists
+          if grep -q '"${{ inputs.model_key }}"' dashboard/data/model_metadata.json; then
+            echo "::warning::Model '${{ inputs.model_key }}' already exists in metadata - will update"
+          fi
+
+          echo "✅ All inputs valid"
+
+      # STEP 5: Extract data
+      - name: Extract model data
+        id: extract
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "Extracting data from report..."
+
+          # Run extraction
+          node extract-model-data.js "${{ inputs.report_file_path }}" "${{ inputs.model_key }}" | tee extraction.log
+
+          # Parse statistics from output
+          ARTIFACT_COUNT=$(grep -oP "Artifacts extracted: \K\d+" extraction.log || echo "0")
+          MATCHED_COUNT=$(grep -oP "Matched to existing: \K\d+" extraction.log || echo "0")
+          HIGH_CONF_COUNT=$(grep -oP "High confidence matches: \K\d+" extraction.log || echo "0")
+
+          echo "artifact_count=$ARTIFACT_COUNT" >> $GITHUB_OUTPUT
+          echo "matched_count=$MATCHED_COUNT" >> $GITHUB_OUTPUT
+          echo "high_conf_count=$HIGH_CONF_COUNT" >> $GITHUB_OUTPUT
+
+          if [ ! -f "dashboard/data/extracted/${{ inputs.model_key }}.json" ]; then
+            echo "::error::Extraction failed - no output file created"
+            exit 1
+          fi
+
+          echo "✅ Extracted $ARTIFACT_COUNT artifacts ($MATCHED_COUNT matched)"
+
+      # STEP 6: Pre-merge validation
+      - name: Validate extracted data
+        run: |
+          echo "Validating extracted data before merge..."
+
+          if ! node validate-dashboard-data.js --extracted "dashboard/data/extracted/${{ inputs.model_key }}.json"; then
+            echo "::error::Extracted data validation failed"
+            exit 1
+          fi
+
+          echo "✅ Extracted data validation passed"
+
+      # STEP 7: Create backup
+      - name: Create backup
+        id: backup
+        run: |
+          echo "Creating backup of master data..."
+
+          mkdir -p dashboard/data/backups
+          TIMESTAMP=$(date +%s)
+
+          cp dashboard/data/master_valuations.json "dashboard/data/backups/master_valuations_${TIMESTAMP}.json"
+          cp dashboard/data/model_metadata.json "dashboard/data/backups/model_metadata_${TIMESTAMP}.json"
+
+          echo "backup_timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "✅ Backup created: ${TIMESTAMP}"
+
+      # STEP 8: Merge data (includes metadata creation)
+      - name: Merge model data
+        id: merge
+        run: |
+          echo "Merging model data into dashboard..."
+
+          # merge-model-data.js automatically creates/updates metadata
+          node merge-model-data.js "${{ inputs.model_key }}" | tee merge.log
+
+          # Parse statistics
+          MATCHED=$(grep -oP "Matched and updated: \K\d+" merge.log || echo "0")
+          UNMATCHED=$(grep -oP "Unmatched artifacts: \K\d+" merge.log || echo "0")
+
+          echo "merged_count=$MATCHED" >> $GITHUB_OUTPUT
+          echo "unmatched_count=$UNMATCHED" >> $GITHUB_OUTPUT
+
+          echo "✅ Merged $MATCHED artifacts (${UNMATCHED} unmatched)"
+
+      # STEP 9: Post-merge validation (CRITICAL)
+      - name: Validate merged data
+        id: post_validation
+        run: |
+          echo "Validating complete dashboard data after merge..."
+
+          if ! node validate-dashboard-data.js --full; then
+            echo "validation_failed=true" >> $GITHUB_OUTPUT
+            echo "::error::Post-merge validation failed - will rollback"
+            exit 1
+          fi
+
+          echo "✅ Post-merge validation passed"
+
+      # STEP 10: Rollback (conditional - only on validation failure)
+      - name: Rollback on validation failure
+        if: failure() && steps.post_validation.outputs.validation_failed == 'true'
+        run: |
+          echo "⚠️  Rolling back to backup due to validation failure..."
+
+          TIMESTAMP=${{ steps.backup.outputs.backup_timestamp }}
+
+          cp "dashboard/data/backups/master_valuations_${TIMESTAMP}.json" dashboard/data/master_valuations.json
+          cp "dashboard/data/backups/model_metadata_${TIMESTAMP}.json" dashboard/data/model_metadata.json
+
+          echo "✅ Rollback complete - restored from backup ${TIMESTAMP}"
+
+      # STEP 11a: Upload artifacts on failure
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-failure-logs
+          path: |
+            extraction.log
+            merge.log
+            dashboard/data/extracted/${{ inputs.model_key }}.json
+            dashboard/data/backups/
+
+      # STEP 11b: Create issue on failure
+      - name: Create failure issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > issue-body.md << 'EOF'
+          ## Model Integration Failed
+
+          **Model Key:** `${{ inputs.model_key }}`
+          **Report File:** `${{ inputs.report_file_path }}`
+          **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          ### Error Details
+
+          The automated model integration workflow failed. Check the workflow logs and uploaded artifacts for details.
+
+          ### Artifacts Count
+          - Extracted: ${{ steps.extract.outputs.artifact_count || 'N/A' }}
+          - Matched: ${{ steps.extract.outputs.matched_count || 'N/A' }}
+          - High Confidence: ${{ steps.extract.outputs.high_conf_count || 'N/A' }}
+
+          ### Next Steps
+
+          1. Review the workflow logs
+          2. Check uploaded artifacts (extraction.log, merge.log)
+          3. Fix issues in the report or data
+          4. Re-run the workflow
+
+          ### Manual Fallback
+
+          If needed, run the integration manually:
+          ```bash
+          node extract-model-data.js "${{ inputs.report_file_path }}" "${{ inputs.model_key }}"
+          node merge-model-data.js "${{ inputs.model_key }}"
+          ```
+          EOF
+
+          gh issue create \
+            --title "Model Integration Failed: ${{ inputs.model_key }}" \
+            --body-file issue-body.md \
+            --label automation,needs-investigation
+
+      # STEP 12a: Generate PR summary (conditional - success only)
+      - name: Generate PR summary
+        if: success() && inputs.dry_run != true
+        id: pr_summary
+        run: |
+          # Load extracted data
+          EXTRACTED_DATA=$(cat dashboard/data/extracted/${{ inputs.model_key }}.json)
+          MODEL_NAME=$(echo "$EXTRACTED_DATA" | jq -r '.model_name // "${{ inputs.model_key }}"')
+
+          # Get top 10 artifacts
+          TOP_ARTIFACTS=$(echo "$EXTRACTED_DATA" | jq -r '.artifacts | sort_by(-.value) | limit(10;.[]) | "- **\(.name)**: $\((.value / 1000000) | floor)M"')
+
+          # Create PR body
+          cat > pr-body.md << EOF
+          ## Add ${MODEL_NAME} Valuations to Dashboard
+
+          This PR adds valuations from **${MODEL_NAME}** to the AI Opportunity Index dashboard.
+
+          ### Statistics
+
+          - **Artifacts Extracted:** ${{ steps.extract.outputs.artifact_count }}
+          - **Matched to Existing:** ${{ steps.extract.outputs.matched_count }} (${{ steps.merge.outputs.merged_count }} merged)
+          - **High Confidence:** ${{ steps.extract.outputs.high_conf_count }}
+          - **Unmatched:** ${{ steps.merge.outputs.unmatched_count }}
+
+          ### Top 10 Artifacts by Value
+
+          ${TOP_ARTIFACTS}
+
+          ### Files Changed
+
+          - \`dashboard/data/master_valuations.json\` - Added valuations for ${{ inputs.model_key }}
+          - \`dashboard/data/model_metadata.json\` - Added/updated model metadata
+          - \`dashboard/data/extracted/${{ inputs.model_key }}.json\` - Extracted data
+
+          ### Testing Checklist
+
+          Before merging, please verify:
+
+          - [ ] Dashboard loads without errors
+          - [ ] Model appears in legend with correct color
+          - [ ] Charts render correctly (no NaN values)
+          - [ ] Model Comparison tab shows new model
+          - [ ] Variance Analysis works
+          - [ ] Mobile view renders correctly
+
+          ### How to Test Locally
+
+          \`\`\`bash
+          gh pr checkout ${{ github.event.number }}
+          open dashboard/index.html
+          # Or serve via HTTP: python3 -m http.server 8000
+          \`\`\`
+
+          ---
+
+          🤖 Generated with automated model integration workflow
+          EOF
+
+          echo "pr_body_file=pr-body.md" >> $GITHUB_OUTPUT
+          echo "model_name=$MODEL_NAME" >> $GITHUB_OUTPUT
+
+      # STEP 12b: Create PR (conditional - success + not dry run)
+      - name: Create Pull Request
+        if: success() && inputs.dry_run != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Configure git
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # Create branch
+          BRANCH="auto/integrate-${{ inputs.model_key }}"
+          git checkout -b "$BRANCH"
+
+          # Stage changes
+          git add dashboard/data/master_valuations.json
+          git add dashboard/data/model_metadata.json
+          git add dashboard/data/extracted/${{ inputs.model_key }}.json
+
+          # Commit
+          git commit -m "Add ${{ steps.pr_summary.outputs.model_name }} valuations
+
+          - Extracted ${{ steps.extract.outputs.artifact_count }} artifacts
+          - Matched ${{ steps.merge.outputs.merged_count }} to existing IDs
+          - High confidence: ${{ steps.extract.outputs.high_conf_count }}
+
+          Automated integration via GitHub Actions"
+
+          # Push branch
+          git push origin "$BRANCH"
+
+          # Create PR
+          gh pr create \
+            --title "Add ${{ steps.pr_summary.outputs.model_name }} valuations to dashboard" \
+            --body-file pr-body.md \
+            --base main \
+            --head "$BRANCH"
+
+      # STEP 13: Workflow summary (always runs)
+      - name: Add workflow summary
+        if: always()
+        run: |
+          echo "## Model Integration Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "🧪 **DRY RUN MODE** - No PR created" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "**Model:** ${{ inputs.model_key }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Report:** \`${{ inputs.report_file_path }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "### ✅ Integration Successful" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "- **Artifacts Extracted:** ${{ steps.extract.outputs.artifact_count }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Matched:** ${{ steps.merge.outputs.merged_count }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **High Confidence:** ${{ steps.extract.outputs.high_conf_count }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            if [ "${{ inputs.dry_run }}" != "true" ]; then
+              echo "✅ Pull request created successfully" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "ℹ️  Dry run complete - no changes committed" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "### ❌ Integration Failed" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Check workflow logs and uploaded artifacts for details." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "A GitHub issue has been created automatically." >> $GITHUB_STEP_SUMMARY
+          fi
