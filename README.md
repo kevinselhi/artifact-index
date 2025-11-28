@@ -1,6 +1,6 @@
 # AI Opportunity Index
 
-An interactive dashboard comparing how 8 different AI models valued 227 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data and real-time industry intelligence powered by You.com Search API.
+An interactive dashboard comparing how 12 different AI models valued 421 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data and real-time industry intelligence powered by You.com Search API.
 
 ## Live Dashboard
 
@@ -32,10 +32,10 @@ Using multiple methods and models can be valuable because they ask different bus
   - Automation Opportunity Matrix (bubble chart by industry)
   - AI Disruption Readiness cards with 2024 market sizes
   - Filter industries by readiness level (High/Medium/Low)
-  - Top artifact values and methodology comparison across all 8 models
+  - Top artifact values and methodology comparison across all 12 models
 
 - **Artifact Deep Dive**:
-  - Analyze any of 227 artifacts with detailed breakdowns
+  - Analyze any of 421 artifacts with detailed breakdowns
   - Sort by: A-Z, Value, Market Size, or Model Consensus
   - Filter by industry sector
   - Filter by market estimate confidence (High ≥80%, Medium 65-79%, Lower <65%)
@@ -63,8 +63,8 @@ Using multiple methods and models can be valuable because they ask different bus
 
 ### Data Included
 
-- **227 professional artifacts** across 28 industry sectors
-- **8 AI model valuations** per artifact (where available)
+- **421 professional artifacts** across 75 industry sectors
+- **12 AI model valuations** per artifact (where available)
 - **2024 Market estimates** for each artifact type:
   - Annual volume (e.g., "150-250 Phase III trials/year")
   - Total addressable market (e.g., "$3B-$6B")
@@ -90,7 +90,7 @@ artifact-index/
 ├── dashboard/
 │   ├── index.html                    # Main interactive dashboard (static HTML/JS)
 │   └── data/
-│       ├── master_valuations.json    # 227 artifacts with valuations
+│       ├── master_valuations.json    # 421 artifacts with valuations
 │       ├── model_metadata.json       # Model characteristics and insights
 │       ├── industry-reports.json     # You.com API industry intelligence (28 sectors)
 │       └── you-search-results.json   # Artifact-specific search results
@@ -123,9 +123,13 @@ Note: Research documents and analysis files live at the repository root, not in 
 |-------|-------|-------------|--------------|-----------|
 | Claude Opus 4.5 | Green | WebSearch + Confidence | Nuclear Plant Engineering | $400M |
 | Gemini 2.5 Pro | Blue | Deep Research Synthesis | New Drug Application | $300M |
+| Claude 4.5 Opus CLI | Emerald | Extended Thinking + Web Search | Mega-Deal M&A Advisory | $85M |
+| Claude 4.5 Opus with Agents | Violet | Multi-agent + Web Search | Biologics License Application | $82.5M |
+| You.com ARI | Amber | Triangulated Research | M&A Sell-Side Advisory | $70M |
 | Perplexity | Orange | Taxonomy + 40 Citations | Phase III Clinical Trial | $60M |
 | Claude Sonnet 4.5 | Coral | WebSearch Investigation | Phase III Clinical Trial | $22.5M |
 | ChatGPT 5-1 | Teal | Deep Research | IPO Prospectus | $12.5M |
+| ChatGPT 5-1 Codex | Sky Blue | 65+ Sources + Frequency-Weighted | Sell-Side M&A Data Room | $3.5M |
 | Gemini 3.0 Pro | Cyan | Deep Research + Thinking | SPAC Merger Proxy | $2.5M |
 | o3pro | Purple | Market Analysis + Automation | M&A Advisory | $2.2M |
 | ChatGPT 5 | Red | Median Market Analysis | ERP Implementation | $900K |
@@ -166,11 +170,12 @@ Note: Research documents and analysis files live at the repository root, not in 
 ## Data Sources
 
 ### Model Valuations
-- Claude Sonnet 4.5 & Opus 4.5 (Anthropic)
+- Claude Sonnet 4.5, Opus 4.5, Opus 4.5 CLI & Opus 4.5 with Agents (Anthropic)
 - Gemini 2.5 Pro & 3.0 Pro (Google)
-- ChatGPT 5 & 5-1 (OpenAI)
+- ChatGPT 5, 5-1 & 5-1 Codex Max Thinking (OpenAI)
 - o3pro (OpenAI)
 - Perplexity
+- You.com ARI
 
 ### 2024 Market Research
 - **FDA**: Clinical trials (ClinicalTrials.gov), drug approvals (CDER), device submissions (CDRH)
@@ -226,6 +231,11 @@ npm start            # Production HTTP (after build)
 
 ## Recent Updates (November 2025)
 
+### Model Expansion & Data Consolidation
+- **12 AI Models**: Added Claude 4.5 Opus CLI, Claude 4.5 Opus with Agents, You.com ARI, and ChatGPT 5-1 Codex Max Thinking
+- **421 Artifacts**: Consolidated from 470 after merging 49 duplicates across three phases
+- **75 Industry Sectors**: Expanded sector coverage with new model contributions
+
 ### Dashboard Enhancements
 - **Renamed to "AI Opportunity Index"**: Better reflects the dashboard's focus on AI automation opportunities
 - **Model Characteristics Panel**: Quantitative behavioral analysis of each AI model
@@ -246,7 +256,7 @@ npm start            # Production HTTP (after build)
 
 ### Previous Updates
 - **Confidence Filter**: Filter artifacts by market estimate confidence level
-- **2024 Market Data**: All 227 artifacts now have research-backed market estimates
+- **2024 Market Data**: Research-backed market estimates for artifacts
 - **Mobile Optimization**: Improved bubble chart rendering on mobile devices
 - **Industry Market Sizes**: Updated with 2024 research data from industry reports
 
@@ -278,3 +288,5 @@ MIT License - See LICENSE file for details.
 **Project Status**: Research complete / Dashboard active
 
 **Last Updated**: November 2025
+
+**Dashboard Stats**: 421 artifacts, 75 sectors, 12 models
