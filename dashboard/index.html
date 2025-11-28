@@ -1334,9 +1334,39 @@
         let dataLoaded = false;
         let mcpEndpoint = 'http://localhost:3000/mcp';
 
+        // Load model metadata and update modelColors/modelNames dynamically
+        async function loadModelMetadata() {
+            try {
+                const response = await fetch('data/model_metadata.json');
+                const metadata = await response.json();
+
+                // Update modelColors and modelNames from metadata
+                if (metadata.models) {
+                    Object.keys(metadata.models).forEach(key => {
+                        const model = metadata.models[key];
+                        if (model.color && !modelColors[key]) {
+                            modelColors[key] = model.color;
+                        }
+                        if (model.name && !modelNames[key]) {
+                            modelNames[key] = model.name;
+                        }
+                    });
+                }
+
+                console.log(`Loaded metadata for ${Object.keys(modelColors).length} models`);
+                return metadata;
+            } catch (error) {
+                console.warn('Could not load model metadata, using defaults:', error);
+                return null;
+            }
+        }
+
         // Load data from JSON files
         async function loadData() {
             try {
+                // Load model metadata first to get colors/names
+                await loadModelMetadata();
+
                 const response = await fetch('data/master_valuations.json');
                 const valuationsData = await response.json();
 
