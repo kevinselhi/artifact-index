@@ -6252,67 +6252,30 @@
                     break;
             }
 
-            // When confidence filter is active, sort by confidence cluster then by market size within each cluster
-            if (currentConfidenceFilter === 'all' && currentArtifactSort === 'alpha') {
-                // Default view: cluster by confidence, then sort by market size within clusters
-            }
-
             // Rebuild dropdown
             select.innerHTML = '<option value="">Select an artifact to analyze...</option>';
 
-            // Group by confidence level if viewing all with alpha sort
-            if (currentConfidenceFilter === 'all' && currentArtifactSort === 'alpha') {
-                const highConf = filtered.filter(a => getConfidenceLevel(a) === 'high').sort((a, b) => getMarketValue(b) - getMarketValue(a));
-                const medConf = filtered.filter(a => getConfidenceLevel(a) === 'medium').sort((a, b) => getMarketValue(b) - getMarketValue(a));
-                const lowConf = filtered.filter(a => getConfidenceLevel(a) === 'lower').sort((a, b) => getMarketValue(b) - getMarketValue(a));
-
-                if (highConf.length > 0) {
-                    select.innerHTML += `<option disabled style="font-weight: bold; color: #81B29A;">── High Confidence (≥80%) ──</option>`;
-                    highConf.forEach(a => {
-                        const mktVal = getMarketValue(a);
-                        const conf = getConfidence(a);
-                        select.innerHTML += `<option value="${a.id}">${a.name} — ${formatCurrency(mktVal)} (${conf}%)</option>`;
-                    });
+            // Standard list with suffix based on sort type
+            filtered.forEach(a => {
+                const avgVal = calculateAverageValue(a);
+                const consensusScore = calculateConsensusScore(a);
+                let suffix = '';
+                if (currentArtifactSort === 'alpha') {
+                    // A-Z: Show market value and confidence percentage
+                    const mktVal = getMarketValue(a);
+                    const conf = getConfidence(a);
+                    suffix = ` — ${formatCurrency(mktVal)} (${conf}%)`;
+                } else if (currentArtifactSort === 'value') {
+                    suffix = ` — ${formatCurrency(avgVal)} avg`;
+                } else if (currentArtifactSort === 'market') {
+                    const mktVal = getMarketValue(a);
+                    suffix = mktVal > 0 ? ` — ${formatCurrency(mktVal)} market` : ' — N/A';
+                } else if (currentArtifactSort === 'consensus') {
+                    const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
+                    suffix = ` — ${modelCount} models, ${a.variance_ratio.toFixed(1)}x var`;
                 }
-                if (medConf.length > 0) {
-                    select.innerHTML += `<option disabled style="font-weight: bold; color: #F4A261;">── Medium Confidence (65-79%) ──</option>`;
-                    medConf.forEach(a => {
-                        const mktVal = getMarketValue(a);
-                        const conf = getConfidence(a);
-                        select.innerHTML += `<option value="${a.id}">${a.name} — ${formatCurrency(mktVal)} (${conf}%)</option>`;
-                    });
-                }
-                if (lowConf.length > 0) {
-                    select.innerHTML += `<option disabled style="font-weight: bold; color: #E07A5F;">── Lower Confidence (<65%) ──</option>`;
-                    lowConf.forEach(a => {
-                        const mktVal = getMarketValue(a);
-                        const conf = getConfidence(a);
-                        select.innerHTML += `<option value="${a.id}">${a.name} — ${formatCurrency(mktVal)} (${conf}%)</option>`;
-                    });
-                }
-            } else {
-                // Standard list with suffix based on sort type
-                filtered.forEach(a => {
-                    const avgVal = calculateAverageValue(a);
-                    const consensusScore = calculateConsensusScore(a);
-                    let suffix = '';
-                    if (currentArtifactSort === 'value') {
-                        suffix = ` — ${formatCurrency(avgVal)} avg`;
-                    } else if (currentArtifactSort === 'market') {
-                        const mktVal = getMarketValue(a);
-                        suffix = mktVal > 0 ? ` — ${formatCurrency(mktVal)} market` : ' — N/A';
-                    } else if (currentArtifactSort === 'consensus') {
-                        const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                        suffix = ` — ${modelCount} models, ${a.variance_ratio.toFixed(1)}x var`;
-                    } else if (currentConfidenceFilter !== 'all') {
-                        // Show market value when filtered by confidence
-                        const mktVal = getMarketValue(a);
-                        const conf = getConfidence(a);
-                        suffix = ` — ${formatCurrency(mktVal)} (${conf}%)`;
-                    }
-                    select.innerHTML += `<option value="${a.id}">${a.name}${suffix}</option>`;
-                });
-            }
+                select.innerHTML += `<option value="${a.id}">${a.name}${suffix}</option>`;
+            });
 
             // Restore selection if still in filtered list
             if (filtered.find(a => a.id === currentValue)) {
