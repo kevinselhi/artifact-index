@@ -153,6 +153,21 @@
             margin-bottom: 30px;
         }
 
+        /* Two-column layout for chart panels on wide screens */
+        .dashboard-grid.charts-two-column {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .dashboard-grid.charts-two-column .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid.charts-two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .card {
             background: var(--bg-card);
             border-radius: 12px;
@@ -913,7 +928,7 @@
                 </div>
             </div>
 
-            <div class="dashboard-grid">
+            <div class="dashboard-grid charts-two-column">
                 <div class="card">
                     <div class="card-title">Top Artifact Value by Model</div>
                     <div class="chart-container">
