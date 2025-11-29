@@ -24,7 +24,7 @@ window.DashboardConfig = (function() {
         chatgpt5: 'ChatGPT 5',
         chatgpt51: 'ChatGPT 5-1',
         o3pro: 'o3pro',
-        perplexity: 'Perplexity',
+        perplexity: 'Perplexity Pro',
         claude_sonnet45: 'Claude Sonnet 4.5',
         opus45: 'Claude Opus 4.5',
         gemini: 'Gemini 2.5 Pro',

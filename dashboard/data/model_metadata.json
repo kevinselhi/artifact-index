@@ -83,7 +83,7 @@
       "has_automation_scores": true
     },
     "perplexity": {
-      "name": "Perplexity",
+      "name": "Perplexity Pro",
       "color": "#F9844A",
       "methodology": "Taxonomy generation with 40 citations",
       "valuation_approach": "Research-backed ranges",
