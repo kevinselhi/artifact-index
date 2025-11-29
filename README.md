@@ -1,6 +1,6 @@
 # AI Opportunity Index
 
-An interactive dashboard comparing how 12 different AI models valued 421 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data and real-time industry intelligence powered by You.com Search API.
+An interactive dashboard comparing how 12 different AI models valued 421 professional artifacts (deliverables) from the pre-AI era of 2020, enriched with 2024 market research data and real-time industry intelligence powered by You.com Search API. All models tested with Deep Research or Extended Thinking enabled, and Websearch.
 
 ## Live Dashboard
 
