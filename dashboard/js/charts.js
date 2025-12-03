@@ -631,13 +631,23 @@ window.DashboardCharts = (function() {
                             label: function(context) {
                                 const idx = context.dataIndex;
                                 const d = chartData[idx];
-                                return [
+                                const minBias = config.MODEL_BIAS?.[d.minModel];
+                                const maxBias = config.MODEL_BIAS?.[d.maxModel];
+
+                                const lines = [
                                     `Range: ${utils.formatCurrency(d.min)} - ${utils.formatCurrency(d.max)}`,
-                                    `Low: ${config.MODEL_NAMES[d.minModel]}`,
-                                    `High: ${config.MODEL_NAMES[d.maxModel]}`,
-                                    `Variance: ${d.ratio.toFixed(2)}x`,
-                                    '(Click to view details)'
+                                    `Low: ${config.MODEL_NAMES[d.minModel]}${minBias && minBias.direction !== 'neutral' ? ' (' + minBias.label + ')' : ''}`,
+                                    `High: ${config.MODEL_NAMES[d.maxModel]}${maxBias && maxBias.direction !== 'neutral' ? ' (' + maxBias.label + ')' : ''}`,
+                                    `Variance: ${d.ratio.toFixed(2)}x`
                                 ];
+
+                                // Add bias warning for extreme models
+                                if ((minBias && minBias.percentage > 50) || (maxBias && maxBias.percentage > 50)) {
+                                    lines.push('⚠️ Extreme model bias detected');
+                                }
+
+                                lines.push('(Click to view details)');
+                                return lines;
                             }
                         }
                     }

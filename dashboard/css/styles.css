@@ -847,6 +847,87 @@ tr[data-clickable="true"]:focus {
     color: var(--color-error);
 }
 
+/* Variance tier badges */
+.tag--reliable {
+    background: rgba(129, 178, 154, 0.3);
+    color: var(--variance-low);
+    font-weight: 600;
+}
+
+.tag--scope-dependent {
+    background: rgba(249, 132, 74, 0.3);
+    color: var(--variance-medium);
+    font-weight: 600;
+}
+
+.tag--methodology-clash {
+    background: rgba(255, 107, 107, 0.3);
+    color: var(--variance-high);
+    font-weight: 600;
+}
+
+/* Consensus highlight row */
+.consensus-row {
+    background: rgba(255, 215, 0, 0.08) !important;
+    border-left: 3px solid gold;
+}
+
+.consensus-row:hover {
+    background: rgba(255, 215, 0, 0.12) !important;
+}
+
+/* Model count badge */
+.model-count {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    margin-left: 4px;
+}
+
+/* Sector filter in variance view */
+.variance-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.variance-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.variance-filter-group select {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+}
+
+.variance-filter-group select:focus {
+    outline: none;
+    border-color: var(--color-info);
+}
+
+/* Methodology tag in explanation column */
+.methodology-tag {
+    display: inline-block;
+    background: rgba(66, 133, 244, 0.2);
+    color: var(--color-info);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    margin-right: 6px;
+}
+
 /* -----------------------------------------------------------------------------
    Info tooltip
    ----------------------------------------------------------------------------- */

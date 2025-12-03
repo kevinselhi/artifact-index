@@ -1289,10 +1289,16 @@
                 <div class="card full-width">
                     <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                         <span id="varianceChartTitle">Highest Variance: Value Range Comparison</span>
-                        <div class="variance-btn-group" style="display: flex; gap: 8px; flex-shrink: 0;">
-                            <button id="highVarianceBtn" class="variance-toggle active" onclick="showHighVariance()">Highest</button>
-                            <button id="midVarianceBtn" class="variance-toggle" onclick="showMidVariance()">Mid-Range</button>
-                            <button id="lowVarianceBtn" class="variance-toggle" onclick="showLowVariance()">Lowest</button>
+                        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                            <select id="varianceSectorFilter" onchange="filterVarianceBySector()" style="padding: 6px 12px; background: var(--card-bg); color: var(--text-primary); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; font-size: 0.85em; cursor: pointer;">
+                                <option value="all">All Sectors</option>
+                                <!-- Options populated dynamically -->
+                            </select>
+                            <div class="variance-btn-group" style="display: flex; gap: 8px; flex-shrink: 0;">
+                                <button id="highVarianceBtn" class="variance-toggle active" onclick="showHighVariance()">Highest</button>
+                                <button id="midVarianceBtn" class="variance-toggle" onclick="showMidVariance()">Mid-Range</button>
+                                <button id="lowVarianceBtn" class="variance-toggle" onclick="showLowVariance()">Lowest</button>
+                            </div>
                         </div>
                     </div>
                     <div class="chart-container" style="height: 550px;">
@@ -1307,9 +1313,10 @@
                         <thead>
                             <tr>
                                 <th>Artifact</th>
-                                <th>Variance Ratio</th>
-                                <th>Lowest Value</th>
-                                <th>Highest Value</th>
+                                <th>Tier</th>
+                                <th>Models</th>
+                                <th>Variance</th>
+                                <th>Range (Low → High)</th>
                                 <th>Explanation</th>
                             </tr>
                         </thead>
@@ -1350,6 +1357,23 @@
             claude_opus45_agents: 'Claude 4.5 Opus Agents',
             gemini: 'Gemini 2.5 Pro',
             gemini30: 'Gemini 3.0 Pro'
+        };
+
+        // Model valuation bias - indicates tendency to over/undervalue
+        // Based on analysis of average valuations vs consensus
+        const MODEL_BIAS = {
+            chatgpt5: { direction: 'neutral', percentage: 0, label: 'Balanced' },
+            chatgpt51: { direction: 'neutral', percentage: 3, label: 'Balanced' },
+            chatgpt51_codex: { direction: 'neutral', percentage: 5, label: 'Balanced' },
+            o3pro: { direction: 'neutral', percentage: 5, label: 'Balanced' },
+            perplexity: { direction: 'high', percentage: 25, label: '+25% higher' },
+            you_ari: { direction: 'neutral', percentage: 8, label: 'Balanced' },
+            claude_sonnet45: { direction: 'neutral', percentage: 2, label: 'Balanced' },
+            opus45: { direction: 'high', percentage: 40, label: '+40% (premium scope)' },
+            claude_opus45_cli: { direction: 'low', percentage: 15, label: '-15% conservative' },
+            claude_opus45_agents: { direction: 'neutral', percentage: 10, label: 'Balanced' },
+            gemini: { direction: 'high', percentage: 86, label: '+86% (R&D cost focus)' },
+            gemini30: { direction: 'low', percentage: 88, label: '-88% (prep fees only)' }
         };
 
         // Global constant for maximum model count (used for scaling calculations)
@@ -9769,6 +9793,8 @@
 
         // Initialize Variance Analysis
         function initVarianceCharts() {
+            // Populate sector filter dropdown
+            populateSectorFilter();
             // Initialize with high variance view
             showHighVariance();
         }
@@ -9853,13 +9879,24 @@
                                 label: function(context) {
                                     const idx = context.dataIndex;
                                     const d = chartData[idx];
-                                    return [
+                                    const minBias = MODEL_BIAS[d.minModel];
+                                    const maxBias = MODEL_BIAS[d.maxModel];
+
+                                    // Build tooltip lines
+                                    const lines = [
                                         `Range: ${formatCurrency(d.min)} - ${formatCurrency(d.max)}`,
-                                        `Low: ${modelNames[d.minModel]}`,
-                                        `High: ${modelNames[d.maxModel]}`,
-                                        `Variance: ${d.ratio.toFixed(2)}x`,
-                                        '(Click to view details)'
+                                        `Low: ${modelNames[d.minModel]}${minBias && minBias.direction !== 'neutral' ? ' (' + minBias.label + ')' : ''}`,
+                                        `High: ${modelNames[d.maxModel]}${maxBias && maxBias.direction !== 'neutral' ? ' (' + maxBias.label + ')' : ''}`,
+                                        `Variance: ${d.ratio.toFixed(2)}x`
                                     ];
+
+                                    // Add bias warning for extreme models
+                                    if ((minBias && minBias.percentage >= 40) || (maxBias && maxBias.percentage >= 40)) {
+                                        lines.push('⚠️ Extreme model bias detected');
+                                    }
+
+                                    lines.push('(Click to view details)');
+                                    return lines;
                                 }
                             }
                         }
@@ -9906,7 +9943,54 @@
             document.getElementById('varianceChartTitle').textContent = chartTitles[varianceType] || chartTitles['high'];
         }
 
-        // Populate variance table with given artifacts
+        // Methodology decoder tags based on sector/artifact
+        const methodologyTags = {
+            'Medical/Pharma': { tag: 'R&D vs Fee', desc: 'Some models count full development cost' },
+            'Engineering': { tag: 'Scope Scale', desc: 'Basic feasibility vs full delivery' },
+            'Financial Services': { tag: 'Deal Premium', desc: 'Fee scales with transaction size' },
+            'Legal': { tag: 'Complexity Band', desc: 'Simple vs complex case structures' },
+            'Technology': { tag: 'Build vs Buy', desc: 'Custom development vs integration' },
+            'Environmental': { tag: 'Regulatory Tier', desc: 'Basic vs federal compliance scope' },
+            'Infrastructure': { tag: 'Scale Factor', desc: 'Regional vs national projects' }
+        };
+
+        // Get methodology tag for an artifact
+        function getMethodologyTag(artifact, varianceRatio) {
+            // Check artifact-specific explanations first
+            const artifactTags = {
+                'infrastructure_engineering': { tag: 'IT vs Nuclear', desc: 'Scope interpretation varies dramatically' },
+                'nda_bla_application': { tag: 'Fee vs R&D', desc: 'Filing fee vs total development cost' },
+                'erp_implementation': { tag: 'Mid vs Enterprise', desc: 'SMB implementation vs Fortune 500' },
+                'environmental_impact_statement': { tag: 'Basic vs Nuclear EIS', desc: 'Standard vs complex federal requirements' },
+                'securities_class_action': { tag: 'Case Complexity', desc: 'Settlement size drives legal fees' },
+                'smart_grid_design': { tag: 'Regional vs National', desc: 'Project scale interpretation' },
+                'water_treatment_plant': { tag: 'Capacity-Dependent', desc: 'Municipal vs industrial scale' },
+                'saas_platform_architecture': { tag: 'MVP vs Enterprise', desc: 'Startup prototype vs enterprise platform' },
+                'microservices_migration': { tag: 'Legacy Complexity', desc: 'Modern vs legacy system migration' }
+            };
+
+            if (artifactTags[artifact.id]) {
+                return artifactTags[artifact.id];
+            }
+
+            // Fall back to sector-based tags
+            const sector = artifact.sector || artifact.industry || '';
+            for (const [sectorKey, tagInfo] of Object.entries(methodologyTags)) {
+                if (sector.includes(sectorKey)) {
+                    return tagInfo;
+                }
+            }
+
+            // Generic tags based on variance level
+            if (varianceRatio > 10) {
+                return { tag: 'Methodology Clash', desc: 'Fundamental interpretation difference' };
+            } else if (varianceRatio > 3) {
+                return { tag: 'Scope Variation', desc: 'Different project scope assumptions' };
+            }
+            return { tag: 'Consensus', desc: 'Models generally agree on value' };
+        }
+
+        // Populate variance table with given artifacts (Phase 1 enhanced version)
         function populateVarianceTable(artifactList, varianceType) {
             const table = document.getElementById('varianceTable');
             table.innerHTML = '';
@@ -9917,49 +10001,57 @@
 
                 const minEntry = values.reduce((min, curr) => curr[1] < min[1] ? curr : min);
                 const maxEntry = values.reduce((max, curr) => curr[1] > max[1] ? curr : max);
+                const varianceRatio = a.variance_ratio || 1;
+                const modelCount = values.length;
 
-                const varianceClass = (a.variance_ratio || 1) > 10 ? 'variance-high' :
-                                      (a.variance_ratio || 1) > 3 ? 'variance-medium' : 'variance-low';
+                // Determine tier badge
+                let tierBadge, tierClass, tierTitle;
+                if (varianceRatio < 3) {
+                    tierBadge = 'RELIABLE';
+                    tierClass = 'variance-low';
+                    tierTitle = 'High consensus - models agree within 3x';
+                } else if (varianceRatio <= 10) {
+                    tierBadge = 'SCOPE-DEPENDENT';
+                    tierClass = 'variance-medium';
+                    tierTitle = 'Moderate variance - value depends on project scope assumptions';
+                } else {
+                    tierBadge = 'METHODOLOGY CLASH';
+                    tierClass = 'variance-high';
+                    tierTitle = 'Extreme variance - fundamental methodology differences between models';
+                }
 
-                // Generate contextual explanations based on artifact and variance type
+                // Determine if this is a consensus row (low variance + 4+ models)
+                const isConsensusRow = varianceRatio < 2 && modelCount >= 4;
+
+                // Get methodology tag
+                const methTag = getMethodologyTag(a, varianceRatio);
+
+                // Generate explanation with methodology context
                 let explanation;
                 if (varianceType === 'low') {
-                    // For low variance, show consensus details
-                    const modelCount = values.length;
                     const avgValue = values.reduce((sum, [k, v]) => sum + v, 0) / modelCount;
                     const percentSpread = ((maxEntry[1] - minEntry[1]) / avgValue * 100).toFixed(0);
-
-                    explanation = `${modelCount} models, tight cluster (${percentSpread}% spread)`;
+                    explanation = `<span style="color: var(--text-secondary)">${methTag.tag}</span> · ${percentSpread}% spread`;
                 } else if (varianceType === 'mid') {
-                    // For mid-range variance, show model coverage and mean/median comparison
-                    const modelCount = values.length;
                     const sortedValues = values.map(([k, v]) => v).sort((a, b) => a - b);
                     const mean = sortedValues.reduce((sum, v) => sum + v, 0) / sortedValues.length;
                     const median = sortedValues.length % 2 === 0
                         ? (sortedValues[sortedValues.length / 2 - 1] + sortedValues[sortedValues.length / 2]) / 2
                         : sortedValues[Math.floor(sortedValues.length / 2)];
-
                     const meanMedianDiff = Math.abs((mean - median) / median * 100).toFixed(0);
+                    const distType = meanMedianDiff > 15 ? 'skewed' : 'balanced';
+                    explanation = `<span style="color: var(--text-secondary)">${methTag.tag}</span> · ${distType} (${meanMedianDiff}% gap)`;
+                } else {
+                    // High variance - show methodology clash reason
+                    explanation = `<span style="color: var(--text-secondary)">${methTag.tag}</span> · ${methTag.desc}`;
+                }
 
-                    if (meanMedianDiff > 15) {
-                        explanation = `${modelCount}/${MAX_MODELS} models, skewed distribution (${meanMedianDiff}% mean/median gap)`;
-                    } else {
-                        explanation = `${modelCount}/${MAX_MODELS} models, balanced distribution (${meanMedianDiff}% mean/median gap)`;
-                    }
-                } else if (a.id === 'infrastructure_engineering') explanation = 'IT vs Nuclear scope';
-                else if (a.id === 'nda_bla_application') explanation = 'Fee vs R&D cost';
-                else if (a.id === 'erp_implementation') explanation = 'Mid vs Enterprise scope';
-                else if (a.id === 'environmental_impact_statement') explanation = 'Basic vs Nuclear EIS';
-                else if (a.id === 'securities_class_action') explanation = 'Case complexity varies';
-                else if (a.id === 'smart_grid_design') explanation = 'Regional vs national scale';
-                else if (a.id === 'water_treatment_plant') explanation = 'Capacity-dependent';
-                else if (a.id === 'saas_platform_architecture') explanation = 'Complexity varies';
-                else if (a.id === 'microservices_migration') explanation = 'Legacy system dependent';
-                else if (varianceType === 'high') explanation = 'Methodology difference';
-                else explanation = 'Strong consensus';
+                // Build row with consensus highlighting
+                const rowClass = isConsensusRow ? 'consensus-row' : '';
+                const rowStyle = isConsensusRow ? 'style="background: rgba(255, 215, 0, 0.08); border-left: 3px solid gold;"' : '';
 
                 table.innerHTML += `
-                    <tr>
+                    <tr class="${rowClass}" ${rowStyle}>
                         <td>
                             <span
                                 onclick="navigateToArtifact('${a.id}')"
@@ -9969,13 +10061,96 @@
                                 title="Click to view detailed analysis"
                             >${a.name}</span>
                         </td>
-                        <td class="${varianceClass}">${(a.variance_ratio || 1).toFixed(2)}x</td>
-                        <td>${formatCurrency(minEntry[1])} (<span style="color: ${modelColors[minEntry[0]]}">${modelNames[minEntry[0]]}</span>)</td>
-                        <td>${formatCurrency(maxEntry[1])} (<span style="color: ${modelColors[maxEntry[0]]}">${modelNames[maxEntry[0]]}</span>)</td>
+                        <td>
+                            <span class="${tierClass}" style="display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; background: rgba(255,255,255,0.1);" title="${tierTitle}">${tierBadge}</span>
+                        </td>
+                        <td style="text-align: center;">
+                            <span style="display: inline-block; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.85em;">${modelCount}/${MAX_MODELS}</span>
+                        </td>
+                        <td class="${tierClass}" style="font-weight: 600;">${varianceRatio.toFixed(1)}x</td>
+                        <td>
+                            ${formatCurrency(minEntry[1])} <span style="color: var(--text-secondary)">→</span> ${formatCurrency(maxEntry[1])}
+                            <div style="font-size: 0.75em; color: var(--text-secondary); margin-top: 2px;">
+                                <span style="color: ${modelColors[minEntry[0]]}">${modelNames[minEntry[0]]}</span> → <span style="color: ${modelColors[maxEntry[0]]}">${modelNames[maxEntry[0]]}</span>
+                            </div>
+                        </td>
                         <td>${explanation}</td>
                     </tr>
                 `;
             });
+        }
+
+        // Current sector filter state
+        let currentVarianceSector = 'all';
+
+        // Populate sector filter dropdown dynamically
+        function populateSectorFilter() {
+            const select = document.getElementById('varianceSectorFilter');
+            if (!select || !artifacts.length) return;
+
+            // Get unique sectors from artifacts
+            const sectors = new Map();
+            artifacts.forEach(a => {
+                const sector = a.sector || a.industry || 'Other';
+                if (!sectors.has(sector)) {
+                    // Calculate average variance for this sector
+                    const sectorArtifacts = artifacts.filter(art =>
+                        (art.sector || art.industry || 'Other') === sector &&
+                        Object.values(art.valuations).filter(v => v !== null).length >= 2
+                    );
+                    const avgVariance = sectorArtifacts.length > 0
+                        ? sectorArtifacts.reduce((sum, art) => sum + (art.variance_ratio || 1), 0) / sectorArtifacts.length
+                        : 1;
+                    sectors.set(sector, { count: 1, avgVariance });
+                } else {
+                    sectors.get(sector).count++;
+                }
+            });
+
+            // Sort sectors by artifact count (descending)
+            const sortedSectors = [...sectors.entries()]
+                .sort((a, b) => b[1].count - a[1].count)
+                .slice(0, 20); // Top 20 sectors
+
+            // Clear existing options except "All Sectors"
+            select.innerHTML = '<option value="all">All Sectors</option>';
+
+            // Add sector options with count
+            sortedSectors.forEach(([sector, data]) => {
+                const option = document.createElement('option');
+                option.value = sector;
+                option.textContent = `${sector} (${data.count})`;
+                select.appendChild(option);
+            });
+        }
+
+        // Filter variance by selected sector
+        function filterVarianceBySector() {
+            const select = document.getElementById('varianceSectorFilter');
+            currentVarianceSector = select.value;
+
+            // Re-trigger current variance view
+            const highBtn = document.getElementById('highVarianceBtn');
+            const midBtn = document.getElementById('midVarianceBtn');
+            const lowBtn = document.getElementById('lowVarianceBtn');
+
+            if (highBtn.classList.contains('active')) {
+                showHighVariance();
+            } else if (midBtn.classList.contains('active')) {
+                showMidVariance();
+            } else if (lowBtn.classList.contains('active')) {
+                showLowVariance();
+            }
+        }
+
+        // Get filtered artifacts based on current sector selection
+        function getFilteredArtifacts() {
+            if (currentVarianceSector === 'all') {
+                return artifacts;
+            }
+            return artifacts.filter(a =>
+                (a.sector || a.industry || 'Other') === currentVarianceSector
+            );
         }
 
         // Helper to clear all variance toggle buttons
@@ -9987,18 +10162,20 @@
 
         // Show highest variance artifacts
         function showHighVariance() {
-            document.getElementById('varianceTableTitle').textContent = 'Highest Variance Artifacts (>10x disagreement)';
+            const sectorLabel = currentVarianceSector === 'all' ? '' : ` (${currentVarianceSector})`;
+            document.getElementById('varianceTableTitle').textContent = `Highest Variance Artifacts (>10x disagreement)${sectorLabel}`;
             clearVarianceToggles();
             document.getElementById('highVarianceBtn').classList.add('active');
 
-            // Restore "Explanation" header
+            // Restore "Explanation" header (now at index 5)
             const headerCells = document.querySelectorAll('#variance table thead th');
-            if (headerCells.length >= 5) {
-                headerCells[4].textContent = 'Explanation';
+            if (headerCells.length >= 6) {
+                headerCells[5].textContent = 'Explanation';
             }
 
             // Filter artifacts with at least 2 models and sort by highest variance
-            const multiModelArtifacts = artifacts.filter(a => {
+            const filteredArtifacts = getFilteredArtifacts();
+            const multiModelArtifacts = filteredArtifacts.filter(a => {
                 const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
                 return modelCount >= 2;
             });
@@ -10010,18 +10187,20 @@
 
         // Show mid-range variance artifacts
         function showMidVariance() {
-            document.getElementById('varianceTableTitle').textContent = 'Mid-Range Variance Artifacts (3x-10x disagreement)';
+            const sectorLabel = currentVarianceSector === 'all' ? '' : ` (${currentVarianceSector})`;
+            document.getElementById('varianceTableTitle').textContent = `Mid-Range Variance Artifacts (3x-10x disagreement)${sectorLabel}`;
             clearVarianceToggles();
             document.getElementById('midVarianceBtn').classList.add('active');
 
-            // Change table header to "Notes"
+            // Change table header to "Notes" (now at index 5)
             const headerCells = document.querySelectorAll('#variance table thead th');
-            if (headerCells.length >= 5) {
-                headerCells[4].textContent = 'Notes';
+            if (headerCells.length >= 6) {
+                headerCells[5].textContent = 'Notes';
             }
 
             // Filter artifacts with at least 2 models and sort by variance
-            const multiModelArtifacts = artifacts.filter(a => {
+            const filteredArtifacts = getFilteredArtifacts();
+            const multiModelArtifacts = filteredArtifacts.filter(a => {
                 const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
                 return modelCount >= 2;
             });
@@ -10037,18 +10216,20 @@
 
         // Show lowest variance artifacts
         function showLowVariance() {
-            document.getElementById('varianceTableTitle').textContent = 'Lowest Variance Artifacts (<3x strong consensus)';
+            const sectorLabel = currentVarianceSector === 'all' ? '' : ` (${currentVarianceSector})`;
+            document.getElementById('varianceTableTitle').textContent = `Lowest Variance Artifacts (<3x strong consensus)${sectorLabel}`;
             clearVarianceToggles();
             document.getElementById('lowVarianceBtn').classList.add('active');
 
-            // Change table header from "Explanation" to "Notes"
+            // Change table header from "Explanation" to "Notes" (now at index 5)
             const headerCells = document.querySelectorAll('#variance table thead th');
-            if (headerCells.length >= 5) {
-                headerCells[4].textContent = 'Notes';
+            if (headerCells.length >= 6) {
+                headerCells[5].textContent = 'Notes';
             }
 
             // Filter artifacts with at least 2 models and sort by lowest variance
-            const multiModelArtifacts = artifacts.filter(a => {
+            const filteredArtifacts = getFilteredArtifacts();
+            const multiModelArtifacts = filteredArtifacts.filter(a => {
                 const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
                 return modelCount >= 2;
             });

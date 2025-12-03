@@ -31,6 +31,19 @@ window.DashboardConfig = (function() {
         gemini30: 'Gemini 3.0 Pro'
     });
 
+    // Model valuation bias - indicates tendency to over/undervalue
+    // Based on analysis of average valuations vs consensus
+    const MODEL_BIAS = Object.freeze({
+        chatgpt5: { direction: 'neutral', percentage: 0, label: 'Balanced' },
+        chatgpt51: { direction: 'neutral', percentage: 3, label: 'Balanced' },
+        o3pro: { direction: 'neutral', percentage: 5, label: 'Balanced' },
+        perplexity: { direction: 'high', percentage: 25, label: '+25% higher' },
+        claude_sonnet45: { direction: 'neutral', percentage: 2, label: 'Balanced' },
+        opus45: { direction: 'neutral', percentage: 3, label: 'Balanced' },
+        gemini: { direction: 'high', percentage: 86, label: '+86% (R&D cost focus)' },
+        gemini30: { direction: 'low', percentage: 88, label: '-88% (prep fees only)' }
+    });
+
     // Industry colors for consistent visualization
     const INDUSTRY_COLORS = Object.freeze({
         'Medical/Pharma': '#E07A5F',
@@ -127,6 +140,7 @@ window.DashboardConfig = (function() {
     return Object.freeze({
         MODEL_COLORS,
         MODEL_NAMES,
+        MODEL_BIAS,
         INDUSTRY_COLORS,
         INDUSTRY_MARKET_DATA,
         VARIANCE_THRESHOLDS,

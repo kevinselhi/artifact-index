@@ -308,9 +308,15 @@ window.DashboardData = (function() {
      * @param {number} limit - Max number to return
      * @returns {Array}
      */
-    function getHighVarianceArtifacts(limit = 15) {
-        return state.artifacts
-            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2)
+    function getHighVarianceArtifacts(limit = 15, sectorFilter = 'all') {
+        let filtered = state.artifacts
+            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2);
+
+        if (sectorFilter && sectorFilter !== 'all') {
+            filtered = filtered.filter(a => a.sector === sectorFilter);
+        }
+
+        return filtered
             .sort((a, b) => b.variance_ratio - a.variance_ratio)
             .slice(0, limit);
     }
@@ -318,11 +324,18 @@ window.DashboardData = (function() {
     /**
      * Get low variance artifacts
      * @param {number} limit - Max number to return
+     * @param {string} sectorFilter - Optional sector filter
      * @returns {Array}
      */
-    function getLowVarianceArtifacts(limit = 15) {
-        return state.artifacts
-            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2)
+    function getLowVarianceArtifacts(limit = 15, sectorFilter = 'all') {
+        let filtered = state.artifacts
+            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2);
+
+        if (sectorFilter && sectorFilter !== 'all') {
+            filtered = filtered.filter(a => a.sector === sectorFilter);
+        }
+
+        return filtered
             .sort((a, b) => a.variance_ratio - b.variance_ratio)
             .slice(0, limit);
     }
@@ -332,14 +345,92 @@ window.DashboardData = (function() {
      * @param {number} limit - Max number to return
      * @returns {Array}
      */
-    function getMidVarianceArtifacts(limit = 15) {
-        const sorted = state.artifacts
-            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2)
-            .sort((a, b) => b.variance_ratio - a.variance_ratio);
+    function getMidVarianceArtifacts(limit = 15, sectorFilter = 'all') {
+        let filtered = state.artifacts
+            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2);
 
+        if (sectorFilter && sectorFilter !== 'all') {
+            filtered = filtered.filter(a => a.sector === sectorFilter);
+        }
+
+        const sorted = filtered.sort((a, b) => b.variance_ratio - a.variance_ratio);
         const highCount = sorted.filter(a => a.variance_ratio > config.VARIANCE_THRESHOLDS.HIGH).length;
         const midStart = Math.min(highCount, Math.floor(sorted.length / 3));
         return sorted.slice(midStart, midStart + limit);
+    }
+
+    /**
+     * Get variance tier counts for display
+     * @param {string} sectorFilter - Optional sector filter
+     * @returns {Object} Counts for high, mid, low variance tiers
+     */
+    function getVarianceTierCounts(sectorFilter = 'all') {
+        let filtered = state.artifacts
+            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2);
+
+        if (sectorFilter && sectorFilter !== 'all') {
+            filtered = filtered.filter(a => a.sector === sectorFilter);
+        }
+
+        const highThreshold = config.VARIANCE_THRESHOLDS.HIGH;
+        const midThreshold = config.VARIANCE_THRESHOLDS.MEDIUM;
+
+        return {
+            high: filtered.filter(a => a.variance_ratio > highThreshold).length,
+            mid: filtered.filter(a => a.variance_ratio >= midThreshold && a.variance_ratio <= highThreshold).length,
+            low: filtered.filter(a => a.variance_ratio < midThreshold).length,
+            total: filtered.length
+        };
+    }
+
+    /**
+     * Get unique sectors that have variance data
+     * @returns {Array} Sorted array of sector names
+     */
+    function getVarianceSectors() {
+        const sectors = state.artifacts
+            .filter(a => Object.values(a.valuations).filter(v => v !== null).length >= 2)
+            .map(a => a.sector)
+            .filter(Boolean);
+        return [...new Set(sectors)].sort();
+    }
+
+    /**
+     * Get methodology tag for an artifact based on its sector
+     * @param {Object} artifact - Artifact object
+     * @returns {Object} Tag and explanation
+     */
+    function getMethodologyTag(artifact) {
+        const sector = artifact.sector || '';
+        const ratio = artifact.variance_ratio || 1;
+
+        // Sector-specific methodology explanations
+        const methodologyMap = {
+            'Medical/Pharma': { tag: 'R&D vs Fee', explanation: 'R&D cost vs consulting fee' },
+            'Engineering': { tag: 'Scope Scale', explanation: 'Project scope varies widely' },
+            'Financial Services': { tag: 'Deal Premium', explanation: 'Fee scales with deal size' },
+            'Technology': { tag: 'Scale Dependent', explanation: 'Implementation scope varies' },
+            'Legal': { tag: 'Hourly vs Fixed', explanation: 'Billing approach varies' },
+            'Environmental/Engineering': { tag: 'Scope Scale', explanation: 'Basic vs comprehensive study' },
+            'Management Consulting': { tag: 'Scope Dependent', explanation: 'Engagement size varies' }
+        };
+
+        // Check for specific artifact patterns
+        if (artifact.name?.toLowerCase().includes('clinical trial')) {
+            return { tag: 'R&D vs Fee', explanation: 'Full trial cost vs management fee' };
+        }
+        if (artifact.name?.toLowerCase().includes('drug') || artifact.name?.toLowerCase().includes('nda')) {
+            return { tag: 'R&D vs Fee', explanation: 'Development cost vs filing fee' };
+        }
+        if (artifact.name?.toLowerCase().includes('infrastructure') || artifact.name?.toLowerCase().includes('nuclear')) {
+            return { tag: 'Scope Scale', explanation: 'Basic design vs full delivery' };
+        }
+        if (artifact.name?.toLowerCase().includes('erp') || artifact.name?.toLowerCase().includes('implementation')) {
+            return { tag: 'Scale Dependent', explanation: 'SMB vs enterprise scale' };
+        }
+
+        // Return sector-specific or default
+        return methodologyMap[sector] || { tag: 'Methodology', explanation: 'Different valuation approaches' };
     }
 
     /**
@@ -462,6 +553,9 @@ window.DashboardData = (function() {
         getHighVarianceArtifacts,
         getLowVarianceArtifacts,
         getMidVarianceArtifacts,
+        getVarianceTierCounts,
+        getVarianceSectors,
+        getMethodologyTag,
         getConsensusArtifacts,
         getTopArtifactsByModel,
         getSectorStats,

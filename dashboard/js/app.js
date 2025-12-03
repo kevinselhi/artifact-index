@@ -966,19 +966,81 @@ window.DashboardApp = (function() {
     // Variance View
     // ==========================================================================
 
+    // Store current variance state
+    let currentVarianceType = 'high';
+    let currentVarianceSector = 'all';
+
     /**
      * Initialize variance view
      */
     function initVarianceView() {
+        initVarianceSectorFilter();
+        updateVarianceCounts();
         showHighVariance();
+    }
+
+    /**
+     * Initialize the sector filter dropdown
+     */
+    function initVarianceSectorFilter() {
+        const select = document.getElementById('varianceSectorFilter');
+        if (!select) return;
+
+        const sectors = dataManager.getVarianceSectors();
+
+        // Clear existing options except "All Sectors"
+        select.innerHTML = '<option value="all">All Sectors</option>';
+
+        // Add sector options
+        sectors.forEach(sector => {
+            const option = document.createElement('option');
+            option.value = sector;
+            option.textContent = sector;
+            select.appendChild(option);
+        });
+    }
+
+    /**
+     * Filter variance by sector
+     */
+    function filterVarianceBySector() {
+        const select = document.getElementById('varianceSectorFilter');
+        currentVarianceSector = select?.value || 'all';
+
+        updateVarianceCounts();
+
+        // Refresh current view with new filter
+        if (currentVarianceType === 'high') {
+            showHighVariance();
+        } else if (currentVarianceType === 'mid') {
+            showMidVariance();
+        } else {
+            showLowVariance();
+        }
+    }
+
+    /**
+     * Update variance tier counts in buttons
+     */
+    function updateVarianceCounts() {
+        const counts = dataManager.getVarianceTierCounts(currentVarianceSector);
+
+        const highCount = document.getElementById('highVarianceCount');
+        const midCount = document.getElementById('midVarianceCount');
+        const lowCount = document.getElementById('lowVarianceCount');
+
+        if (highCount) highCount.textContent = counts.high;
+        if (midCount) midCount.textContent = counts.mid;
+        if (lowCount) lowCount.textContent = counts.low;
     }
 
     /**
      * Show high variance artifacts
      */
     function showHighVariance() {
+        currentVarianceType = 'high';
         updateVarianceToggles('high');
-        const artifacts = dataManager.getHighVarianceArtifacts(15);
+        const artifacts = dataManager.getHighVarianceArtifacts(15, currentVarianceSector);
         charts.initVarianceChart(artifacts, 'high');
         populateVarianceTable(artifacts, 'high');
 
@@ -989,8 +1051,9 @@ window.DashboardApp = (function() {
      * Show mid variance artifacts
      */
     function showMidVariance() {
+        currentVarianceType = 'mid';
         updateVarianceToggles('mid');
-        const artifacts = dataManager.getMidVarianceArtifacts(15);
+        const artifacts = dataManager.getMidVarianceArtifacts(15, currentVarianceSector);
         charts.initVarianceChart(artifacts, 'mid');
         populateVarianceTable(artifacts, 'mid');
 
@@ -1001,8 +1064,9 @@ window.DashboardApp = (function() {
      * Show low variance artifacts
      */
     function showLowVariance() {
+        currentVarianceType = 'low';
         updateVarianceToggles('low');
-        const artifacts = dataManager.getLowVarianceArtifacts(15);
+        const artifacts = dataManager.getLowVarianceArtifacts(15, currentVarianceSector);
         charts.initVarianceChart(artifacts, 'low');
         populateVarianceTable(artifacts, 'low');
 
@@ -1017,6 +1081,21 @@ window.DashboardApp = (function() {
         document.getElementById('highVarianceBtn')?.classList.toggle('active', activeType === 'high');
         document.getElementById('midVarianceBtn')?.classList.toggle('active', activeType === 'mid');
         document.getElementById('lowVarianceBtn')?.classList.toggle('active', activeType === 'low');
+    }
+
+    /**
+     * Get variance tier badge HTML
+     * @param {number} ratio - Variance ratio
+     * @returns {string} Badge HTML
+     */
+    function getVarianceTierBadge(ratio) {
+        if (ratio < 3) {
+            return '<span class="tag tag--reliable">RELIABLE</span>';
+        } else if (ratio <= 10) {
+            return '<span class="tag tag--scope-dependent">SCOPE-DEPENDENT</span>';
+        } else {
+            return '<span class="tag tag--methodology-clash">METHODOLOGY CLASH</span>';
+        }
     }
 
     /**
@@ -1035,14 +1114,25 @@ window.DashboardApp = (function() {
             const minEntry = values.reduce((min, curr) => curr[1] < min[1] ? curr : min);
             const maxEntry = values.reduce((max, curr) => curr[1] > max[1] ? curr : max);
             const varianceClass = utils.getVarianceClass(a.variance_ratio);
+            const modelCount = values.length;
 
-            let explanation = 'Methodology difference';
+            // Get methodology tag and explanation
+            const methodology = dataManager.getMethodologyTag(a);
+
+            // Check for consensus (low variance + multiple models)
+            const isConsensus = a.variance_ratio < 2 && modelCount >= 4;
+            const rowClass = isConsensus ? 'consensus-row' : '';
+
+            // Build explanation with methodology tag
+            let explanation = '';
             if (varianceType === 'low') {
-                explanation = `${values.length} models, tight cluster`;
+                explanation = `${modelCount} models agree within ${((a.variance_ratio - 1) * 100).toFixed(0)}%`;
+            } else {
+                explanation = `<span class="methodology-tag">${utils.escapeHtml(methodology.tag)}</span>${utils.escapeHtml(methodology.explanation)}`;
             }
 
             return `
-                <tr>
+                <tr class="${rowClass}">
                     <td>
                         <span onclick="DashboardApp.navigateToArtifact('${utils.escapeAttr(a.id)}')"
                               style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted;"
@@ -1051,10 +1141,15 @@ window.DashboardApp = (function() {
                             ${utils.escapeHtml(a.name)}
                         </span>
                     </td>
+                    <td>${getVarianceTierBadge(a.variance_ratio)}</td>
+                    <td><span class="model-count">${modelCount}/8</span></td>
                     <td class="${varianceClass}">${a.variance_ratio.toFixed(2)}x</td>
-                    <td>${utils.formatCurrency(minEntry[1])} (<span style="color: ${config.MODEL_COLORS[minEntry[0]]}">${config.MODEL_NAMES[minEntry[0]]}</span>)</td>
-                    <td>${utils.formatCurrency(maxEntry[1])} (<span style="color: ${config.MODEL_COLORS[maxEntry[0]]}">${config.MODEL_NAMES[maxEntry[0]]}</span>)</td>
-                    <td>${utils.escapeHtml(explanation)}</td>
+                    <td>
+                        <span style="color: ${config.MODEL_COLORS[minEntry[0]]}">${utils.formatCurrency(minEntry[1])}</span>
+                        →
+                        <span style="color: ${config.MODEL_COLORS[maxEntry[0]]}">${utils.formatCurrency(maxEntry[1])}</span>
+                    </td>
+                    <td>${explanation}</td>
                 </tr>
             `;
         }).join('');
@@ -1200,7 +1295,12 @@ window.DashboardApp = (function() {
         navigateToArtifact,
         navigateToIndustry,
         filterByIndustry,
-        sortArtifacts
+        sortArtifacts,
+        // Variance view functions
+        showHighVariance,
+        showMidVariance,
+        showLowVariance,
+        filterVarianceBySector
     });
 })();
 
