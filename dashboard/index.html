@@ -1286,6 +1286,26 @@
         <!-- Variance Analysis View -->
         <div id="variance" class="view hidden">
             <div class="dashboard-grid">
+                <!-- Search and Filter Bar -->
+                <div class="card full-width" style="margin-bottom: 0; padding: 15px 20px;">
+                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <input type="text" id="varianceSearchBar"
+                                   placeholder="Search artifacts by name..."
+                                   onkeyup="filterVarianceBySearch(this.value)"
+                                   style="width: 100%; padding: 10px 15px; background: var(--bg-dark);
+                                          border: 1px solid var(--border); border-radius: 6px;
+                                          color: var(--text-primary); font-size: 0.9em;">
+                        </div>
+                        <button onclick="exportVarianceToCSV()"
+                                style="padding: 10px 20px; background: var(--opus45); color: #1a1a2e;
+                                       border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
+                                       display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                            <span style="font-size: 1.1em;">⬇</span> Export CSV
+                        </button>
+                    </div>
+                </div>
+
                 <div class="card full-width">
                     <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                         <span id="varianceChartTitle">Highest Variance: Value Range Comparison</span>
@@ -1305,24 +1325,209 @@
                         <canvas id="varianceChart"></canvas>
                     </div>
                 </div>
+
+                <!-- Outlier Exclusion Toggle -->
+                <div class="card full-width" style="padding: 15px 20px; background: linear-gradient(135deg, rgba(129,178,154,0.08) 0%, rgba(129,178,154,0.02) 100%);
+                     border-left: 3px solid #81B29A;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 4px;">Outlier Analysis</div>
+                            <div style="font-size: 0.85em; color: var(--text-secondary);">
+                                Exclude extreme model valuations (>2σ from mean) to see consensus-adjusted variance
+                            </div>
+                        </div>
+                        <label style="display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none;">
+                            <span style="font-size: 0.9em; color: var(--text-secondary);">Exclude Outliers</span>
+                            <div style="position: relative; width: 50px; height: 26px;">
+                                <input type="checkbox" id="outlierExclusionToggle" onchange="toggleOutlierExclusion()"
+                                       style="opacity: 0; width: 0; height: 0; position: absolute;">
+                                <span id="outlierToggleTrack" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+                                      background-color: rgba(255,255,255,0.15); transition: .3s; border-radius: 26px;"></span>
+                                <span id="outlierToggleThumb" style="position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px;
+                                      background-color: #666; transition: .3s; border-radius: 50%;"></span>
+                            </div>
+                        </label>
+                    </div>
+                    <div id="outlierSummary" style="margin-top: 15px; padding: 12px 15px;
+                         background: rgba(0,0,0,0.2); border-radius: 6px; font-size: 0.85em; display: none;">
+                    </div>
+                </div>
+
                 <div class="card full-width">
                     <div class="card-title">
                         <span id="varianceTableTitle">Highest Variance Artifacts</span>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Artifact</th>
-                                <th>Tier</th>
-                                <th>Models</th>
-                                <th>Variance</th>
-                                <th>Range (Low → High)</th>
-                                <th>Explanation</th>
-                            </tr>
-                        </thead>
-                        <tbody id="varianceTable"></tbody>
-                    </table>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Artifact</th>
+                                    <th>Tier</th>
+                                    <th>Models</th>
+                                    <th>Variance</th>
+                                    <th>Range (Low → High)</th>
+                                    <th style="text-align: right;">Mean</th>
+                                    <th style="text-align: right;">Median</th>
+                                    <th style="text-align: right;">Std Dev</th>
+                                    <th>Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="varianceTable"></tbody>
+                        </table>
+                    </div>
                 </div>
+
+                <!-- Model Agreement Heatmap -->
+                <div class="card full-width">
+                    <div class="card-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <span>Model Agreement Heatmap</span>
+                        <span style="font-size: 0.8em; color: var(--text-secondary);">
+                            Darker = higher agreement (valuations within 50% of each other)
+                        </span>
+                    </div>
+                    <div id="heatmapContainer" style="overflow-x: auto;">
+                        <canvas id="agreementHeatmapCanvas" style="max-width: 100%;"></canvas>
+                    </div>
+                    <div id="heatmapLegend" style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 20px; height: 20px; background: rgba(129,178,154,0.2); border-radius: 3px;"></div>
+                                <span style="font-size: 0.8em; color: var(--text-secondary);">Low (0-20%)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 20px; height: 20px; background: rgba(129,178,154,0.5); border-radius: 3px;"></div>
+                                <span style="font-size: 0.8em; color: var(--text-secondary);">Medium (20-50%)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 20px; height: 20px; background: rgba(129,178,154,0.8); border-radius: 3px;"></div>
+                                <span style="font-size: 0.8em; color: var(--text-secondary);">High (50-80%)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 20px; height: 20px; background: rgba(129,178,154,1); border-radius: 3px;"></div>
+                                <span style="font-size: 0.8em; color: var(--text-secondary);">Very High (80%+)</span>
+                            </div>
+                        </div>
+                        <div id="heatmapHoverInfo" style="font-size: 0.9em; color: var(--text-secondary); min-height: 1.5em;"></div>
+                    </div>
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                        <button onclick="openModelPairValidator()"
+                                style="padding: 10px 24px; background: linear-gradient(135deg, var(--opus45) 0%, #5a9a7a 100%);
+                                       color: #1a1a2e; border: none; border-radius: 6px; font-weight: 600;
+                                       cursor: pointer; font-size: 0.95em; transition: transform 0.2s, box-shadow 0.2s;"
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(129,178,154,0.4)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            Compare Any Two Models
+                        </button>
+                        <div style="font-size: 0.8em; color: var(--text-secondary); margin-top: 8px;">
+                            Click any cell in the heatmap or use this button to compare models in detail
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Distribution Modal -->
+    <div id="distributionModal" style="display: none; position: fixed; top: 0; left: 0;
+         width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000;
+         overflow-y: auto; padding: 20px; box-sizing: border-box;">
+        <div style="max-width: 1000px; margin: 30px auto; background: var(--bg-card);
+                    border-radius: 12px; padding: 30px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <button onclick="closeDistributionModal()"
+                    style="position: absolute; top: 15px; right: 20px; background: transparent;
+                           border: none; color: var(--text-secondary); font-size: 1.8em; cursor: pointer;
+                           width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+                           border-radius: 50%; transition: background 0.2s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                    onmouseout="this.style.background='transparent'">
+                &times;
+            </button>
+            <h3 id="distributionTitle" style="margin: 0 0 25px 0; font-size: 1.3em;">Value Distribution</h3>
+            <div class="chart-container" style="height: 400px; margin-bottom: 25px;">
+                <canvas id="distributionChart"></canvas>
+            </div>
+            <div id="distributionStats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px;"></div>
+            <div id="distributionOutliers" style="padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.9em;"></div>
+        </div>
+    </div>
+
+    <!-- Model Pair Validator Modal -->
+    <div id="modelValidatorModal" style="display: none; position: fixed; top: 0; left: 0;
+         width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000;
+         overflow-y: auto; padding: 20px; box-sizing: border-box;">
+        <div style="max-width: 1100px; margin: 30px auto; background: var(--bg-card);
+                    border-radius: 12px; padding: 30px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <button onclick="closeModelValidatorModal()"
+                    style="position: absolute; top: 15px; right: 20px; background: transparent;
+                           border: none; color: var(--text-secondary); font-size: 1.8em; cursor: pointer;
+                           width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+                           border-radius: 50%; transition: background 0.2s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                    onmouseout="this.style.background='transparent'">
+                &times;
+            </button>
+
+            <h3 style="margin: 0 0 20px 0; font-size: 1.3em;">Model Pair Comparison</h3>
+
+            <!-- Model Selectors -->
+            <div style="display: flex; gap: 20px; margin-bottom: 25px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.9em;">Model 1</label>
+                    <select id="validatorModel1" onchange="updateModelPairComparison()"
+                            style="width: 100%; padding: 10px; background: var(--bg-dark); color: var(--text-primary);
+                                   border: 1px solid var(--border); border-radius: 6px; font-size: 0.95em;">
+                    </select>
+                </div>
+                <div style="display: flex; align-items: flex-end; padding-bottom: 10px;">
+                    <span style="font-size: 1.5em; color: var(--text-secondary);">↔</span>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <label style="display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.9em;">Model 2</label>
+                    <select id="validatorModel2" onchange="updateModelPairComparison()"
+                            style="width: 100%; padding: 10px; background: var(--bg-dark); color: var(--text-primary);
+                                   border: 1px solid var(--border); border-radius: 6px; font-size: 0.95em;">
+                    </select>
+                </div>
+            </div>
+
+            <!-- Agreement Summary -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px;">
+                <div id="validatorCoverageRate" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Coverage Overlap</div>
+                    <div style="font-size: 1.8em; font-weight: 700;">--</div>
+                    <div style="font-size: 0.75em; color: var(--text-secondary);">Same artifacts valued</div>
+                </div>
+                <div id="validatorValueRate" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Value Agreement</div>
+                    <div style="font-size: 1.8em; font-weight: 700;">--</div>
+                    <div style="font-size: 0.75em; color: var(--text-secondary);">Within 50% of each other</div>
+                </div>
+                <div id="validatorCombinedRate" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Combined Score</div>
+                    <div style="font-size: 1.8em; font-weight: 700;">--</div>
+                    <div style="font-size: 0.75em; color: var(--text-secondary);">50% coverage + 50% value</div>
+                </div>
+                <div id="validatorVerdict" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Verdict</div>
+                    <div style="font-size: 1.1em; font-weight: 600;">--</div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div style="margin-bottom: 15px; font-weight: 600;">Top Disagreements</div>
+            <div style="overflow-x: auto; max-height: 400px; overflow-y: auto;">
+                <table>
+                    <thead style="position: sticky; top: 0; background: var(--bg-card);">
+                        <tr>
+                            <th>Artifact</th>
+                            <th id="model1Header" style="text-align: right;">Model 1</th>
+                            <th id="model2Header" style="text-align: right;">Model 2</th>
+                            <th style="text-align: right;">Ratio</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pairComparisonTable"></tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -7105,6 +7310,11 @@
                 if (tab.dataset.view === 'artifact') {
                     resetArtifactView();
                 }
+
+                // Render heatmap when variance tab is shown
+                if (tab.dataset.view === 'variance') {
+                    setTimeout(() => renderAgreementHeatmap(), 100);
+                }
             });
         });
 
@@ -9996,13 +10206,15 @@
             table.innerHTML = '';
 
             artifactList.forEach(a => {
-                const values = Object.entries(a.valuations).filter(([k, v]) => v !== null);
-                if (values.length < 2) return; // Skip artifacts with only one model
+                // Use adjusted values if outlier exclusion is enabled
+                const values = outlierExclusionEnabled ? getValuationsWithoutOutliers(a) : Object.entries(a.valuations).filter(([k, v]) => v !== null);
+                if (values.length < 2) return; // Skip artifacts with less than 2 models
 
                 const minEntry = values.reduce((min, curr) => curr[1] < min[1] ? curr : min);
                 const maxEntry = values.reduce((max, curr) => curr[1] > max[1] ? curr : max);
-                const varianceRatio = a.variance_ratio || 1;
+                const varianceRatio = outlierExclusionEnabled ? getAdjustedVarianceRatio(a) : (a.variance_ratio || 1);
                 const modelCount = values.length;
+                const originalModelCount = Object.values(a.valuations).filter(v => v !== null).length;
 
                 // Determine tier badge
                 let tierBadge, tierClass, tierTitle;
@@ -10050,30 +10262,52 @@
                 const rowClass = isConsensusRow ? 'consensus-row' : '';
                 const rowStyle = isConsensusRow ? 'style="background: rgba(255, 215, 0, 0.08); border-left: 3px solid gold;"' : '';
 
+                // Calculate statistical values
+                const vals = values.map(([k, v]) => v);
+                const mean = calculateMean(vals);
+                const median = calculateMedian(vals);
+                const stdDev = calculateStdDev(vals);
+
                 table.innerHTML += `
                     <tr class="${rowClass}" ${rowStyle}>
                         <td>
-                            <span
-                                onclick="navigateToArtifact('${a.id}')"
-                                style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted; transition: color 0.2s;"
-                                onmouseover="this.style.color='#E07A5F'"
-                                onmouseout="this.style.color='inherit'"
-                                title="Click to view detailed analysis"
-                            >${a.name}</span>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span
+                                    onclick="navigateToArtifact('${a.id}')"
+                                    style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted; transition: color 0.2s;"
+                                    onmouseover="this.style.color='#E07A5F'"
+                                    onmouseout="this.style.color='inherit'"
+                                    title="Click to view detailed analysis"
+                                >${a.name}</span>
+                                <button
+                                    onclick="showArtifactDistribution('${a.id}')"
+                                    style="background: rgba(255,255,255,0.1); border: none; padding: 4px 8px;
+                                           border-radius: 4px; cursor: pointer; font-size: 0.75em; color: var(--text-secondary);
+                                           transition: background 0.2s, color 0.2s;"
+                                    onmouseover="this.style.background='rgba(129,178,154,0.3)'; this.style.color='#81B29A'"
+                                    onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.color='var(--text-secondary)'"
+                                    title="View value distribution across models"
+                                >📊</button>
+                            </div>
                         </td>
                         <td>
                             <span class="${tierClass}" style="display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; background: rgba(255,255,255,0.1);" title="${tierTitle}">${tierBadge}</span>
                         </td>
                         <td style="text-align: center;">
-                            <span style="display: inline-block; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.85em;">${modelCount}/${MAX_MODELS}</span>
+                            <span style="display: inline-block; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.85em;"
+                                  title="${outlierExclusionEnabled && modelCount < originalModelCount ? `${originalModelCount - modelCount} outlier(s) excluded` : ''}"
+                            >${modelCount}/${MAX_MODELS}${outlierExclusionEnabled && modelCount < originalModelCount ? ` <span style="color: var(--variance-high); font-size: 0.8em;">(-${originalModelCount - modelCount})</span>` : ''}</span>
                         </td>
-                        <td class="${tierClass}" style="font-weight: 600;">${varianceRatio.toFixed(1)}x</td>
+                        <td class="${tierClass}" style="font-weight: 600;">${varianceRatio.toFixed(1)}x${outlierExclusionEnabled && modelCount < originalModelCount ? ' <span style="color: var(--variance-low); font-size: 0.7em;" title="Adjusted after excluding outliers">adj</span>' : ''}</td>
                         <td>
                             ${formatCurrency(minEntry[1])} <span style="color: var(--text-secondary)">→</span> ${formatCurrency(maxEntry[1])}
                             <div style="font-size: 0.75em; color: var(--text-secondary); margin-top: 2px;">
                                 <span style="color: ${modelColors[minEntry[0]]}">${modelNames[minEntry[0]]}</span> → <span style="color: ${modelColors[maxEntry[0]]}">${modelNames[maxEntry[0]]}</span>
                             </div>
                         </td>
+                        <td style="text-align: right; font-family: monospace; font-size: 0.85em;">${formatCurrency(mean)}</td>
+                        <td style="text-align: right; font-family: monospace; font-size: 0.85em;">${formatCurrency(median)}</td>
+                        <td style="text-align: right; font-family: monospace; font-size: 0.85em; color: var(--text-secondary);">${formatCurrency(stdDev)}</td>
                         <td>${explanation}</td>
                     </tr>
                 `;
@@ -10082,6 +10316,738 @@
 
         // Current sector filter state
         let currentVarianceSector = 'all';
+        let searchQuery = '';
+
+        // Statistical calculation functions
+        function calculateMean(values) {
+            if (!values || values.length === 0) return 0;
+            return values.reduce((sum, v) => sum + v, 0) / values.length;
+        }
+
+        function calculateMedian(values) {
+            if (!values || values.length === 0) return 0;
+            const sorted = [...values].sort((a, b) => a - b);
+            const mid = Math.floor(sorted.length / 2);
+            return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+        }
+
+        function calculateStdDev(values) {
+            if (!values || values.length < 2) return 0;
+            const mean = calculateMean(values);
+            const squaredDiffs = values.map(v => Math.pow(v - mean, 2));
+            return Math.sqrt(calculateMean(squaredDiffs));
+        }
+
+        // Search filter function
+        function filterVarianceBySearch(query) {
+            searchQuery = query.toLowerCase().trim();
+
+            // Re-trigger current variance view
+            const highBtn = document.getElementById('highVarianceBtn');
+            const midBtn = document.getElementById('midVarianceBtn');
+            const lowBtn = document.getElementById('lowVarianceBtn');
+
+            if (highBtn.classList.contains('active')) showHighVariance();
+            else if (midBtn.classList.contains('active')) showMidVariance();
+            else if (lowBtn.classList.contains('active')) showLowVariance();
+        }
+
+        // Outlier Exclusion Toggle
+        let outlierExclusionEnabled = false;
+
+        function toggleOutlierExclusion() {
+            const checkbox = document.getElementById('outlierExclusionToggle');
+            const track = document.getElementById('outlierToggleTrack');
+            const thumb = document.getElementById('outlierToggleThumb');
+
+            outlierExclusionEnabled = checkbox.checked;
+
+            // Update toggle appearance
+            if (outlierExclusionEnabled) {
+                track.style.backgroundColor = 'rgba(129,178,154,0.6)';
+                thumb.style.transform = 'translateX(24px)';
+                thumb.style.backgroundColor = '#81B29A';
+            } else {
+                track.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                thumb.style.transform = 'translateX(0)';
+                thumb.style.backgroundColor = '#666';
+            }
+
+            // Show/hide summary panel
+            const summaryPanel = document.getElementById('outlierSummary');
+            summaryPanel.style.display = outlierExclusionEnabled ? 'block' : 'none';
+
+            if (outlierExclusionEnabled) {
+                // Count and display outlier statistics
+                let totalOutliers = 0;
+                let affectedArtifacts = 0;
+                const outlierModels = {};
+
+                artifacts.forEach(a => {
+                    const values = Object.entries(a.valuations).filter(([k, v]) => v !== null);
+                    if (values.length < 3) return;
+
+                    const vals = values.map(([k, v]) => v);
+                    const mean = calculateMean(vals);
+                    const stdDev = calculateStdDev(vals);
+                    let hasOutlier = false;
+
+                    values.forEach(([model, value]) => {
+                        const zScore = Math.abs((value - mean) / stdDev);
+                        if (zScore > 2) {
+                            totalOutliers++;
+                            hasOutlier = true;
+                            outlierModels[model] = (outlierModels[model] || 0) + 1;
+                        }
+                    });
+
+                    if (hasOutlier) affectedArtifacts++;
+                });
+
+                const topOutliers = Object.entries(outlierModels)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 4)
+                    .map(([model, count]) => `<span style="color: ${modelColors[model]}">${modelNames[model]}</span>: ${count}`)
+                    .join(' · ');
+
+                summaryPanel.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
+                        <div>
+                            <span style="color: var(--variance-high); font-weight: 600;">${totalOutliers}</span> outlier valuations
+                            across <span style="font-weight: 600;">${affectedArtifacts}</span> artifacts will be excluded.
+                        </div>
+                        <div style="color: var(--text-secondary);">
+                            Most frequent: ${topOutliers}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Re-trigger current view with new calculations
+            const highBtn = document.getElementById('highVarianceBtn');
+            const midBtn = document.getElementById('midVarianceBtn');
+            const lowBtn = document.getElementById('lowVarianceBtn');
+
+            if (highBtn.classList.contains('active')) showHighVariance();
+            else if (midBtn.classList.contains('active')) showMidVariance();
+            else showLowVariance();
+        }
+
+        // Get valuations with outliers optionally removed
+        function getValuationsWithoutOutliers(artifact) {
+            const values = Object.entries(artifact.valuations).filter(([k, v]) => v !== null);
+            if (!outlierExclusionEnabled || values.length < 3) return values;
+
+            const vals = values.map(([k, v]) => v);
+            const mean = calculateMean(vals);
+            const stdDev = calculateStdDev(vals);
+
+            return values.filter(([model, value]) => {
+                const zScore = Math.abs((value - mean) / stdDev);
+                return zScore <= 2;
+            });
+        }
+
+        // Calculate adjusted variance ratio (excluding outliers if enabled)
+        function getAdjustedVarianceRatio(artifact) {
+            const values = getValuationsWithoutOutliers(artifact);
+            if (values.length < 2) return artifact.variance_ratio || 1;
+
+            const vals = values.map(([k, v]) => v);
+            const min = Math.min(...vals);
+            const max = Math.max(...vals);
+            return max / min;
+        }
+
+        // CSV Export function
+        function exportVarianceToCSV() {
+            const filtered = getFilteredArtifacts();
+            const multiModel = filtered.filter(a =>
+                Object.values(a.valuations).filter(v => v !== null).length >= 2
+            );
+
+            // Determine current tier based on active button
+            let tierFilter = 'all';
+            if (document.getElementById('highVarianceBtn').classList.contains('active')) {
+                tierFilter = 'high';
+            } else if (document.getElementById('midVarianceBtn').classList.contains('active')) {
+                tierFilter = 'mid';
+            } else if (document.getElementById('lowVarianceBtn').classList.contains('active')) {
+                tierFilter = 'low';
+            }
+
+            // Filter by variance tier
+            let exportArtifacts = multiModel;
+            if (tierFilter === 'high') {
+                exportArtifacts = multiModel.filter(a => (a.variance_ratio || 1) > 10);
+            } else if (tierFilter === 'mid') {
+                exportArtifacts = multiModel.filter(a => (a.variance_ratio || 1) > 3 && (a.variance_ratio || 1) <= 10);
+            } else if (tierFilter === 'low') {
+                exportArtifacts = multiModel.filter(a => (a.variance_ratio || 1) <= 3);
+            }
+
+            // Sort by variance
+            exportArtifacts.sort((a, b) => (b.variance_ratio || 1) - (a.variance_ratio || 1));
+
+            // Build CSV content
+            const headers = ['Artifact', 'Sector', 'Tier', 'Models', 'Variance', 'Min', 'Max', 'Mean', 'Median', 'StdDev'];
+            const rows = exportArtifacts.map(a => {
+                const values = Object.entries(a.valuations).filter(([k, v]) => v !== null);
+                const vals = values.map(([k, v]) => v);
+                const min = Math.min(...vals);
+                const max = Math.max(...vals);
+                const mean = calculateMean(vals);
+                const median = calculateMedian(vals);
+                const stdDev = calculateStdDev(vals);
+                const tier = (a.variance_ratio || 1) > 10 ? 'METHODOLOGY CLASH' :
+                             (a.variance_ratio || 1) > 3 ? 'SCOPE-DEPENDENT' : 'RELIABLE';
+
+                return [
+                    `"${a.name}"`,
+                    `"${a.sector || a.industry || 'Other'}"`,
+                    tier,
+                    values.length,
+                    (a.variance_ratio || 1).toFixed(2),
+                    min,
+                    max,
+                    mean.toFixed(0),
+                    median.toFixed(0),
+                    stdDev.toFixed(0)
+                ].join(',');
+            });
+
+            const csv = [headers.join(','), ...rows].join('\n');
+
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `variance_analysis_${tierFilter}_${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Distribution Modal
+        let distributionChart = null;
+
+        function showArtifactDistribution(artifactId) {
+            const artifact = artifacts.find(a => a.id === artifactId);
+            if (!artifact) return;
+
+            const values = Object.entries(artifact.valuations)
+                .filter(([k, v]) => v !== null)
+                .sort((a, b) => b[1] - a[1]);
+
+            if (values.length === 0) return;
+
+            document.getElementById('distributionTitle').textContent =
+                `Value Distribution: ${artifact.name}`;
+
+            const ctx = document.getElementById('distributionChart');
+            if (distributionChart) distributionChart.destroy();
+
+            distributionChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: values.map(([k]) => modelNames[k] || k),
+                    datasets: [{
+                        label: 'Valuation',
+                        data: values.map(([k, v]) => v),
+                        backgroundColor: values.map(([k]) => modelColors[k] || '#666'),
+                        borderRadius: 6,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'logarithmic',
+                            title: { display: true, text: 'Value (USD)', color: '#a0a0a0' },
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: {
+                                color: '#a0a0a0',
+                                callback: function(value) {
+                                    if (value >= 1000000) return '$' + (value / 1000000).toFixed(0) + 'M';
+                                    if (value >= 1000) return '$' + (value / 1000).toFixed(0) + 'K';
+                                    return '$' + value;
+                                }
+                            }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#a0a0a0', font: { size: 11 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => formatCurrency(ctx.raw),
+                                afterLabel: ctx => {
+                                    const modelKey = values[ctx.dataIndex][0];
+                                    const bias = MODEL_BIAS[modelKey];
+                                    if (bias && bias.percentage > 15) {
+                                        return `Bias: ${bias.label}`;
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Calculate stats
+            const vals = values.map(([k, v]) => v);
+            const mean = calculateMean(vals);
+            const median = calculateMedian(vals);
+            const stdDev = calculateStdDev(vals);
+            const min = Math.min(...vals);
+            const max = Math.max(...vals);
+            const range = max / min;
+
+            document.getElementById('distributionStats').innerHTML = `
+                <div style="text-align: center; padding: 18px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px;">Mean</div>
+                    <div style="font-size: 1.3em; font-weight: 600;">${formatCurrency(mean)}</div>
+                </div>
+                <div style="text-align: center; padding: 18px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px;">Median</div>
+                    <div style="font-size: 1.3em; font-weight: 600;">${formatCurrency(median)}</div>
+                </div>
+                <div style="text-align: center; padding: 18px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px;">Std Dev</div>
+                    <div style="font-size: 1.3em; font-weight: 600;">${formatCurrency(stdDev)}</div>
+                </div>
+                <div style="text-align: center; padding: 18px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px;">Range</div>
+                    <div style="font-size: 1.3em; font-weight: 600; color: ${range > 10 ? 'var(--variance-high)' : range > 3 ? 'var(--variance-medium)' : 'var(--variance-low)'};">${range.toFixed(1)}x</div>
+                </div>
+                <div style="text-align: center; padding: 18px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <div style="font-size: 0.8em; color: var(--text-secondary); margin-bottom: 5px;">Models</div>
+                    <div style="font-size: 1.3em; font-weight: 600;">${values.length}/${MAX_MODELS}</div>
+                </div>
+            `;
+
+            // Identify outliers (>2 standard deviations from mean)
+            const outliers = values.filter(([k, v]) => {
+                const zScore = Math.abs((v - mean) / stdDev);
+                return zScore > 2;
+            });
+
+            if (outliers.length > 0) {
+                document.getElementById('distributionOutliers').innerHTML = `
+                    <div style="color: var(--variance-high); font-weight: 600; margin-bottom: 8px;">
+                        Statistical Outliers (>2σ)
+                    </div>
+                    <div style="color: var(--text-secondary);">
+                        ${outliers.map(([k, v]) => {
+                            const zScore = ((v - mean) / stdDev).toFixed(1);
+                            return `<span style="color: ${modelColors[k]};">${modelNames[k]}</span>: ${formatCurrency(v)} (${zScore > 0 ? '+' : ''}${zScore}σ)`;
+                        }).join(' · ')}
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.85em; color: var(--text-secondary);">
+                        Without outliers: Range would be ${(max / Math.min(...vals.filter(v => {
+                            return Math.abs((v - mean) / stdDev) <= 2;
+                        }))).toFixed(1)}x
+                    </div>
+                `;
+                document.getElementById('distributionOutliers').style.display = 'block';
+            } else {
+                document.getElementById('distributionOutliers').innerHTML = `
+                    <div style="color: var(--variance-low);">
+                        No statistical outliers detected. Model valuations are within normal distribution.
+                    </div>
+                `;
+            }
+
+            document.getElementById('distributionModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDistributionModal() {
+            document.getElementById('distributionModal').style.display = 'none';
+            document.body.style.overflow = '';
+            if (distributionChart) {
+                distributionChart.destroy();
+                distributionChart = null;
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeDistributionModal();
+            }
+        });
+
+        // Close modal on background click
+        document.getElementById('distributionModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDistributionModal();
+            }
+        });
+
+        // Model Agreement Heatmap
+        let agreementMatrix = null;
+        let heatmapModels = [];
+
+        function calculateModelAgreementMatrix() {
+            const models = Object.keys(modelNames);
+            const matrix = {};
+
+            models.forEach(m1 => {
+                matrix[m1] = {};
+                models.forEach(m2 => {
+                    if (m1 === m2) {
+                        matrix[m1][m2] = { rate: 1, comparisons: 0, agreements: 0, m1Only: 0, m2Only: 0, coverageRate: 1, valueRate: 1, combined: 1 };
+                        return;
+                    }
+
+                    // Count coverage overlap and value agreement
+                    let m1Only = 0, m2Only = 0, both = 0;
+                    let valueAgreements = 0;
+
+                    artifacts.forEach(a => {
+                        const hasM1 = a.valuations[m1] !== null && a.valuations[m1] !== undefined;
+                        const hasM2 = a.valuations[m2] !== null && a.valuations[m2] !== undefined;
+
+                        if (hasM1 && hasM2) {
+                            both++;
+                            const ratio = Math.max(a.valuations[m1], a.valuations[m2]) /
+                                         Math.min(a.valuations[m1], a.valuations[m2]);
+                            if (ratio <= 1.5) valueAgreements++; // Within 50%
+                        } else if (hasM1) {
+                            m1Only++;
+                        } else if (hasM2) {
+                            m2Only++;
+                        }
+                    });
+
+                    const totalCovered = m1Only + m2Only + both;
+                    const coverageRate = totalCovered > 0 ? both / totalCovered : 0;
+                    const valueRate = both > 0 ? valueAgreements / both : 0;
+
+                    // Combined score: 50% coverage weight + 50% value agreement
+                    // Models that cover same artifacts AND agree on values score highest
+                    const combined = (coverageRate * 0.5) + (valueRate * 0.5);
+
+                    matrix[m1][m2] = {
+                        rate: combined, // Use combined score for heatmap color
+                        comparisons: both,
+                        agreements: valueAgreements,
+                        m1Only: m1Only,
+                        m2Only: m2Only,
+                        coverageRate: coverageRate,
+                        valueRate: valueRate,
+                        combined: combined
+                    };
+                });
+            });
+
+            return matrix;
+        }
+
+        function renderAgreementHeatmap() {
+            if (!artifacts || artifacts.length === 0) return;
+
+            agreementMatrix = calculateModelAgreementMatrix();
+            heatmapModels = Object.keys(modelNames);
+
+            const canvas = document.getElementById('agreementHeatmapCanvas');
+            const ctx = canvas.getContext('2d');
+            const container = document.getElementById('heatmapContainer');
+
+            const n = heatmapModels.length;
+            const cellSize = 50;
+            const labelWidth = 120;
+            const labelHeight = 100;
+
+            canvas.width = labelWidth + (n * cellSize);
+            canvas.height = labelHeight + (n * cellSize);
+
+            // Clear canvas
+            ctx.fillStyle = '#1a1a2e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw column labels (rotated)
+            ctx.save();
+            ctx.textAlign = 'left';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillStyle = '#a0a0a0';
+
+            heatmapModels.forEach((model, i) => {
+                ctx.save();
+                ctx.translate(labelWidth + (i * cellSize) + cellSize/2, labelHeight - 10);
+                ctx.rotate(-Math.PI / 4);
+                ctx.fillText(modelNames[model], 0, 0);
+                ctx.restore();
+            });
+            ctx.restore();
+
+            // Draw row labels
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillStyle = '#a0a0a0';
+
+            heatmapModels.forEach((model, i) => {
+                ctx.fillText(modelNames[model], labelWidth - 10, labelHeight + (i * cellSize) + cellSize/2);
+            });
+
+            // Draw cells
+            heatmapModels.forEach((m1, i) => {
+                heatmapModels.forEach((m2, j) => {
+                    const x = labelWidth + (j * cellSize);
+                    const y = labelHeight + (i * cellSize);
+                    const data = agreementMatrix[m1][m2];
+                    const rate = data.rate;
+
+                    // Color based on agreement rate
+                    const alpha = 0.15 + (rate * 0.85);
+                    ctx.fillStyle = `rgba(129, 178, 154, ${alpha})`;
+                    ctx.fillRect(x + 1, y + 1, cellSize - 2, cellSize - 2);
+
+                    // Draw percentage text for non-diagonal cells
+                    if (m1 !== m2 && data.comparisons > 0) {
+                        ctx.fillStyle = rate > 0.5 ? '#1a1a2e' : '#ffffff';
+                        ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(`${Math.round(rate * 100)}%`, x + cellSize/2, y + cellSize/2);
+                    }
+
+                    // Draw border
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                    ctx.strokeRect(x, y, cellSize, cellSize);
+                });
+            });
+
+            // Add hover interaction
+            canvas.onmousemove = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const col = Math.floor((x - labelWidth) / cellSize);
+                const row = Math.floor((y - labelHeight) / cellSize);
+
+                const hoverInfo = document.getElementById('heatmapHoverInfo');
+
+                if (col >= 0 && col < n && row >= 0 && row < n) {
+                    const m1 = heatmapModels[row];
+                    const m2 = heatmapModels[col];
+                    const data = agreementMatrix[m1][m2];
+
+                    if (m1 === m2) {
+                        hoverInfo.innerHTML = `<span style="color: ${modelColors[m1]};">${modelNames[m1]}</span>`;
+                    } else {
+                        const totalArtifacts = data.m1Only + data.m2Only + data.comparisons;
+                        hoverInfo.innerHTML = `<span style="color: ${modelColors[m1]};">${modelNames[m1]}</span> ↔ <span style="color: ${modelColors[m2]};">${modelNames[m2]}</span>: ` +
+                            `<strong>${Math.round(data.combined * 100)}%</strong> combined ` +
+                            `(Coverage: ${data.comparisons}/${totalArtifacts}=${Math.round(data.coverageRate * 100)}%, ` +
+                            `Value: ${data.agreements}/${data.comparisons}=${Math.round(data.valueRate * 100)}%)`;
+                    }
+                } else {
+                    hoverInfo.textContent = 'Hover over cells: Combined = 50% coverage overlap + 50% value agreement';
+                }
+            };
+
+            canvas.onmouseleave = function() {
+                document.getElementById('heatmapHoverInfo').textContent = 'Hover over cells to see agreement details';
+            };
+
+            // Add click handler to open model pair validator
+            canvas.onclick = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const col = Math.floor((x - labelWidth) / cellSize);
+                const row = Math.floor((y - labelHeight) / cellSize);
+
+                if (col >= 0 && col < n && row >= 0 && row < n && row !== col) {
+                    const m1 = heatmapModels[row];
+                    const m2 = heatmapModels[col];
+                    openModelPairValidator(m1, m2);
+                }
+            };
+
+            // Change cursor on hover over cells
+            canvas.style.cursor = 'pointer';
+        }
+
+        // Model Pair Validator Modal Functions
+        function openModelPairValidator(model1 = 'claude_sonnet45', model2 = 'chatgpt5') {
+            // Populate model selectors
+            const select1 = document.getElementById('validatorModel1');
+            const select2 = document.getElementById('validatorModel2');
+
+            select1.innerHTML = '';
+            select2.innerHTML = '';
+
+            Object.keys(modelNames).forEach(key => {
+                const opt1 = document.createElement('option');
+                opt1.value = key;
+                opt1.textContent = modelNames[key];
+                opt1.selected = key === model1;
+                select1.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = key;
+                opt2.textContent = modelNames[key];
+                opt2.selected = key === model2;
+                select2.appendChild(opt2);
+            });
+
+            document.getElementById('modelValidatorModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            updateModelPairComparison();
+        }
+
+        function closeModelValidatorModal() {
+            document.getElementById('modelValidatorModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function updateModelPairComparison() {
+            const model1 = document.getElementById('validatorModel1').value;
+            const model2 = document.getElementById('validatorModel2').value;
+
+            // Update headers
+            document.getElementById('model1Header').innerHTML = `<span style="color: ${modelColors[model1]}">${modelNames[model1]}</span>`;
+            document.getElementById('model2Header').innerHTML = `<span style="color: ${modelColors[model2]}">${modelNames[model2]}</span>`;
+
+            // Build comparison data with coverage tracking
+            const comparisons = [];
+            let m1Only = 0, m2Only = 0, both = 0;
+
+            artifacts.forEach(a => {
+                const v1 = a.valuations[model1];
+                const v2 = a.valuations[model2];
+                const hasM1 = v1 !== null && v1 !== undefined;
+                const hasM2 = v2 !== null && v2 !== undefined;
+
+                if (hasM1 && hasM2) {
+                    both++;
+                    const ratio = Math.max(v1, v2) / Math.min(v1, v2);
+                    comparisons.push({
+                        artifact: a.name,
+                        id: a.id,
+                        sector: a.sector || a.industry || 'Other',
+                        value1: v1,
+                        value2: v2,
+                        ratio: ratio,
+                        agrees: ratio <= 1.5 // Within 50%
+                    });
+                } else if (hasM1) {
+                    m1Only++;
+                } else if (hasM2) {
+                    m2Only++;
+                }
+            });
+
+            // Calculate metrics
+            const totalCovered = m1Only + m2Only + both;
+            const coverageRate = totalCovered > 0 ? both / totalCovered : 0;  // Jaccard similarity
+            const agreementCount = comparisons.filter(c => c.agrees).length;
+            const valueRate = comparisons.length > 0 ? agreementCount / comparisons.length : 0;
+            const combinedScore = (coverageRate * 0.5) + (valueRate * 0.5);
+
+            // Update Coverage Overlap card
+            const coverageColor = coverageRate >= 0.5 ? 'var(--variance-low)' : coverageRate >= 0.25 ? 'var(--variance-medium)' : 'var(--variance-high)';
+            document.getElementById('validatorCoverageRate').innerHTML = `
+                <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Coverage Overlap</div>
+                <div style="font-size: 1.8em; font-weight: 700; color: ${coverageColor};">${Math.round(coverageRate * 100)}%</div>
+                <div style="font-size: 0.75em; color: var(--text-secondary);">${both} shared / ${totalCovered} total</div>
+            `;
+
+            // Update Value Agreement card
+            const valueColor = valueRate >= 0.5 ? 'var(--variance-low)' : valueRate >= 0.25 ? 'var(--variance-medium)' : 'var(--variance-high)';
+            document.getElementById('validatorValueRate').innerHTML = `
+                <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Value Agreement</div>
+                <div style="font-size: 1.8em; font-weight: 700; color: ${valueColor};">${Math.round(valueRate * 100)}%</div>
+                <div style="font-size: 0.75em; color: var(--text-secondary);">${agreementCount} agree / ${both} compared</div>
+            `;
+
+            // Update Combined Score card
+            const combinedColor = combinedScore >= 0.5 ? 'var(--variance-low)' : combinedScore >= 0.3 ? 'var(--variance-medium)' : 'var(--variance-high)';
+            document.getElementById('validatorCombinedRate').innerHTML = `
+                <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Combined Score</div>
+                <div style="font-size: 1.8em; font-weight: 700; color: ${combinedColor};">${Math.round(combinedScore * 100)}%</div>
+                <div style="font-size: 0.75em; color: var(--text-secondary);">50% coverage + 50% value</div>
+            `;
+
+            // Determine verdict based on combined score
+            let verdict, verdictColor;
+            if (combinedScore >= 0.6) {
+                verdict = 'High Agreement - Models are largely interchangeable';
+                verdictColor = 'var(--variance-low)';
+            } else if (combinedScore >= 0.35) {
+                verdict = 'Moderate Agreement - Use with caution';
+                verdictColor = 'var(--variance-medium)';
+            } else if (coverageRate >= 0.5 && valueRate < 0.2) {
+                verdict = 'Methodology Clash - Same artifacts, different values';
+                verdictColor = 'var(--variance-high)';
+            } else if (coverageRate < 0.3) {
+                verdict = 'Different Focus - Models cover different artifacts';
+                verdictColor = 'var(--variance-high)';
+            } else {
+                verdict = 'Low Agreement - Different methodologies';
+                verdictColor = 'var(--variance-high)';
+            }
+
+            document.getElementById('validatorVerdict').innerHTML = `
+                <div style="font-size: 0.85em; color: var(--text-secondary); margin-bottom: 8px;">Verdict</div>
+                <div style="font-size: 1.1em; font-weight: 600; color: ${verdictColor};">${verdict}</div>
+            `;
+
+            // Populate comparison table (top disagreements)
+            const table = document.getElementById('pairComparisonTable');
+            const topDisagreements = comparisons
+                .sort((a, b) => b.ratio - a.ratio)
+                .slice(0, 20);
+
+            table.innerHTML = topDisagreements.map(c => {
+                const ratioClass = c.ratio > 10 ? 'variance-high' : c.ratio > 3 ? 'variance-medium' : 'variance-low';
+                const methTag = getMethodologyTag({ id: c.id, sector: c.sector }, c.ratio);
+
+                return `
+                    <tr>
+                        <td>
+                            <span onclick="closeModelValidatorModal(); showArtifactDistribution('${c.id}')"
+                                  style="cursor: pointer; text-decoration: underline dotted;">
+                                ${c.artifact}
+                            </span>
+                            <div style="font-size: 0.75em; color: var(--text-secondary);">${c.sector}</div>
+                        </td>
+                        <td style="text-align: right; font-family: monospace; color: ${modelColors[model1]};">${formatCurrency(c.value1)}</td>
+                        <td style="text-align: right; font-family: monospace; color: ${modelColors[model2]};">${formatCurrency(c.value2)}</td>
+                        <td style="text-align: right; font-weight: 600;" class="${ratioClass}">${c.ratio.toFixed(1)}x</td>
+                        <td style="font-size: 0.85em; color: var(--text-secondary);">${methTag.tag}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModelValidatorModal();
+            }
+        });
+
+        // Close modal on background click
+        document.getElementById('modelValidatorModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModelValidatorModal();
+            }
+        });
 
         // Populate sector filter dropdown dynamically
         function populateSectorFilter() {
@@ -10145,12 +11111,21 @@
 
         // Get filtered artifacts based on current sector selection
         function getFilteredArtifacts() {
-            if (currentVarianceSector === 'all') {
-                return artifacts;
+            let filtered = currentVarianceSector === 'all'
+                ? artifacts
+                : artifacts.filter(a => (a.sector || a.industry || 'Other') === currentVarianceSector);
+
+            // Apply search filter
+            if (searchQuery) {
+                filtered = filtered.filter(a =>
+                    a.name.toLowerCase().includes(searchQuery) ||
+                    (a.id && a.id.toLowerCase().includes(searchQuery)) ||
+                    (a.sector && a.sector.toLowerCase().includes(searchQuery)) ||
+                    (a.industry && a.industry.toLowerCase().includes(searchQuery))
+                );
             }
-            return artifacts.filter(a =>
-                (a.sector || a.industry || 'Other') === currentVarianceSector
-            );
+
+            return filtered;
         }
 
         // Helper to clear all variance toggle buttons
@@ -10163,23 +11138,28 @@
         // Show highest variance artifacts
         function showHighVariance() {
             const sectorLabel = currentVarianceSector === 'all' ? '' : ` (${currentVarianceSector})`;
-            document.getElementById('varianceTableTitle').textContent = `Highest Variance Artifacts (>10x disagreement)${sectorLabel}`;
+            const outlierLabel = outlierExclusionEnabled ? ' [outliers excluded]' : '';
+            document.getElementById('varianceTableTitle').textContent = `Highest Variance Artifacts (>10x disagreement)${sectorLabel}${outlierLabel}`;
             clearVarianceToggles();
             document.getElementById('highVarianceBtn').classList.add('active');
 
-            // Restore "Explanation" header (now at index 5)
+            // Restore "Explanation" header (now at index 8 after statistical columns)
             const headerCells = document.querySelectorAll('#variance table thead th');
-            if (headerCells.length >= 6) {
-                headerCells[5].textContent = 'Explanation';
+            if (headerCells.length >= 9) {
+                headerCells[8].textContent = 'Explanation';
             }
 
             // Filter artifacts with at least 2 models and sort by highest variance
             const filteredArtifacts = getFilteredArtifacts();
             const multiModelArtifacts = filteredArtifacts.filter(a => {
-                const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                return modelCount >= 2;
+                const values = outlierExclusionEnabled ? getValuationsWithoutOutliers(a) : Object.entries(a.valuations).filter(([k, v]) => v !== null);
+                return values.length >= 2;
             });
-            const sorted = [...multiModelArtifacts].sort((a, b) => b.variance_ratio - a.variance_ratio);
+            const sorted = [...multiModelArtifacts].sort((a, b) => {
+                const ratioA = outlierExclusionEnabled ? getAdjustedVarianceRatio(a) : (a.variance_ratio || 1);
+                const ratioB = outlierExclusionEnabled ? getAdjustedVarianceRatio(b) : (b.variance_ratio || 1);
+                return ratioB - ratioA;
+            });
             const top15 = sorted.slice(0, 15);
             populateVarianceTable(top15, 'high');
             updateVarianceChart(top15, 'high');
@@ -10188,26 +11168,34 @@
         // Show mid-range variance artifacts
         function showMidVariance() {
             const sectorLabel = currentVarianceSector === 'all' ? '' : ` (${currentVarianceSector})`;
-            document.getElementById('varianceTableTitle').textContent = `Mid-Range Variance Artifacts (3x-10x disagreement)${sectorLabel}`;
+            const outlierLabel = outlierExclusionEnabled ? ' [outliers excluded]' : '';
+            document.getElementById('varianceTableTitle').textContent = `Mid-Range Variance Artifacts (3x-10x disagreement)${sectorLabel}${outlierLabel}`;
             clearVarianceToggles();
             document.getElementById('midVarianceBtn').classList.add('active');
 
-            // Change table header to "Notes" (now at index 5)
+            // Change table header to "Notes" (now at index 8 after statistical columns)
             const headerCells = document.querySelectorAll('#variance table thead th');
-            if (headerCells.length >= 6) {
-                headerCells[5].textContent = 'Notes';
+            if (headerCells.length >= 9) {
+                headerCells[8].textContent = 'Notes';
             }
 
             // Filter artifacts with at least 2 models and sort by variance
             const filteredArtifacts = getFilteredArtifacts();
             const multiModelArtifacts = filteredArtifacts.filter(a => {
-                const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                return modelCount >= 2;
+                const values = outlierExclusionEnabled ? getValuationsWithoutOutliers(a) : Object.entries(a.valuations).filter(([k, v]) => v !== null);
+                return values.length >= 2;
             });
-            const sorted = [...multiModelArtifacts].sort((a, b) => b.variance_ratio - a.variance_ratio);
+            const sorted = [...multiModelArtifacts].sort((a, b) => {
+                const ratioA = outlierExclusionEnabled ? getAdjustedVarianceRatio(a) : (a.variance_ratio || 1);
+                const ratioB = outlierExclusionEnabled ? getAdjustedVarianceRatio(b) : (b.variance_ratio || 1);
+                return ratioB - ratioA;
+            });
 
             // Find mid-range: skip highest variance items and take the next set
-            const highCount = sorted.filter(a => (a.variance_ratio || 1) > 10).length;
+            const highCount = sorted.filter(a => {
+                const ratio = outlierExclusionEnabled ? getAdjustedVarianceRatio(a) : (a.variance_ratio || 1);
+                return ratio > 10;
+            }).length;
             const midStart = Math.min(highCount, Math.floor(sorted.length / 3));
             const mid15 = sorted.slice(midStart, midStart + 15);
             populateVarianceTable(mid15, 'mid');
@@ -10217,23 +11205,28 @@
         // Show lowest variance artifacts
         function showLowVariance() {
             const sectorLabel = currentVarianceSector === 'all' ? '' : ` (${currentVarianceSector})`;
-            document.getElementById('varianceTableTitle').textContent = `Lowest Variance Artifacts (<3x strong consensus)${sectorLabel}`;
+            const outlierLabel = outlierExclusionEnabled ? ' [outliers excluded]' : '';
+            document.getElementById('varianceTableTitle').textContent = `Lowest Variance Artifacts (<3x strong consensus)${sectorLabel}${outlierLabel}`;
             clearVarianceToggles();
             document.getElementById('lowVarianceBtn').classList.add('active');
 
-            // Change table header from "Explanation" to "Notes" (now at index 5)
+            // Change table header from "Explanation" to "Notes" (now at index 8 after statistical columns)
             const headerCells = document.querySelectorAll('#variance table thead th');
-            if (headerCells.length >= 6) {
-                headerCells[5].textContent = 'Notes';
+            if (headerCells.length >= 9) {
+                headerCells[8].textContent = 'Notes';
             }
 
             // Filter artifacts with at least 2 models and sort by lowest variance
             const filteredArtifacts = getFilteredArtifacts();
             const multiModelArtifacts = filteredArtifacts.filter(a => {
-                const modelCount = Object.values(a.valuations).filter(v => v !== null).length;
-                return modelCount >= 2;
+                const values = outlierExclusionEnabled ? getValuationsWithoutOutliers(a) : Object.entries(a.valuations).filter(([k, v]) => v !== null);
+                return values.length >= 2;
             });
-            const sorted = [...multiModelArtifacts].sort((a, b) => a.variance_ratio - b.variance_ratio);
+            const sorted = [...multiModelArtifacts].sort((a, b) => {
+                const ratioA = outlierExclusionEnabled ? getAdjustedVarianceRatio(a) : (a.variance_ratio || 1);
+                const ratioB = outlierExclusionEnabled ? getAdjustedVarianceRatio(b) : (b.variance_ratio || 1);
+                return ratioA - ratioB;
+            });
             const top15 = sorted.slice(0, 15);
             populateVarianceTable(top15, 'low');
             updateVarianceChart(top15, 'low');

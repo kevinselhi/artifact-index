@@ -218,29 +218,58 @@ ChatGPT5     95%    12%     100%      89%
 - Added `populateSectorFilter()`, `filterVarianceBySector()`, `getFilteredArtifacts()` functions
 - Chart tooltips now show model bias labels and extreme bias warnings
 
-### Sprint 2 (Phase 2): Core Visualizations
-1. [ ] Model agreement heatmap
-2. [ ] Sector variance treemap
-3. [ ] Distribution expansion on click
-4. [ ] Outlier exclusion toggle
+### Sprint 2 (Phase 2): Core Visualizations ✅ COMPLETED
+1. [x] Model agreement heatmap (12x12 canvas-based, with hover interactions)
+2. [ ] Sector variance treemap (deferred - lower priority)
+3. [x] Distribution modal on click (horizontal bar chart + outlier detection)
+4. [x] Outlier exclusion toggle (>2σ exclusion with summary statistics)
 
-**Estimated:** 8-12 hours
+**Completed:** 2025-12-03
 
-### Sprint 3 (Phase 3-4): Statistics & UX
-1. [ ] Statistical columns
-2. [ ] Pre-calculate variance_statistics.json
-3. [ ] Adjustable thresholds
-4. [ ] Search/filter bar
-5. [ ] Export functionality
+**Implementation Notes:**
+- Custom canvas-based heatmap for model agreement (no Chart.js plugin needed)
+- Heatmap cells clickable to open Model Pair Validator
+- Distribution modal shows bar chart with model colors, statistics, and outlier analysis
+- Outlier toggle recalculates all variance views with adjusted ratios
 
-**Estimated:** 6-8 hours
+### Sprint 3 (Phase 3-4): Statistics & UX ✅ COMPLETED
+1. [x] Statistical columns (Mean, Median, Std Dev in variance table)
+2. [ ] Pre-calculate variance_statistics.json (deferred - runtime calculation sufficient)
+3. [ ] Adjustable thresholds (deferred - lower priority)
+4. [x] Search/filter bar (searches name, id, sector)
+5. [x] CSV Export functionality (includes all statistics)
 
-### Sprint 4 (Phase 5): Advanced Features
-1. [ ] Model pair validator modal
-2. [ ] Methodology grouping view
-3. [ ] Confidence score gauge
+**Completed:** 2025-12-03
 
-**Estimated:** 6-8 hours
+**Implementation Notes:**
+- Added `calculateMean()`, `calculateMedian()`, `calculateStdDev()` helper functions
+- Search filters artifacts across name, id, and sector fields
+- CSV export respects current tier and sector filters
+
+### Sprint 4 (Phase 5): Advanced Features ✅ COMPLETED
+1. [x] Model pair validator modal (with dropdowns, agreement rate, top disagreements table)
+2. [x] Data audit and agreement metric improvements
+3. [ ] Methodology grouping view (deferred)
+4. [ ] Confidence score gauge (deferred)
+
+**Completed:** 2025-12-03
+
+**Implementation Notes:**
+- Model Pair Validator shows 4 separate metric cards:
+  - **Coverage Overlap**: Jaccard similarity (what % of artifacts both models value)
+  - **Value Agreement**: When both value an artifact, do they agree within 50%
+  - **Combined Score**: 50% coverage + 50% value agreement
+  - **Verdict**: Contextual assessment (High Agreement, Moderate, Methodology Clash, Different Focus)
+- Click any heatmap cell or use "Compare Any Two Models" button to open
+- Links from comparison table to Distribution Modal for deep dive
+- Heatmap now uses combined score (not just value agreement)
+- Heatmap tooltip shows breakdown: "Combined X% (Coverage: Y%, Value: Z%)"
+
+**Data Audit Findings (2025-12-03):**
+- Claude Opus CLI vs Opus Agents: 18% coverage (30/165), 10% value agreement → 14% combined
+- Claude Sonnet vs ChatGPT 5: 78% coverage (153/196), 93% value agreement → 86% combined
+- Low agreement between Opus variants explained by different artifact focus, not methodology clash
+- Agreement metrics now properly weight BOTH coverage AND value agreement
 
 ---
 
