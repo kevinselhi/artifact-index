@@ -9,7 +9,11 @@
     "dev:http": "ts-node --esm src/mcp-server.ts --http --port 3000",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/mcp-server.js --http --port ${PORT:-3000}",
-    "test": "echo \"No automated tests yet\" && exit 0"
+    "test": "echo \"No automated tests yet\" && exit 0",
+    "agent": "ts-node --esm report-generation-agent.ts",
+    "agent:generate": "ts-node --esm report-generation-agent.ts generate",
+    "agent:parse": "ts-node --esm report-generation-agent.ts parse",
+    "agent:load": "ts-node --esm report-generation-agent.ts load"
   },
   "keywords": [],
   "author": "",
